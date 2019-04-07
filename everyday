@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>button</title>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+<p></p>
+<script>
+    let order =
+        $.ajax({
+            type: 'POST',
+            url: "search.php",
+            success: function (data) {
+                let result = JSON.parse(data);
+                let order_start = new Date('10.16.2018 09:00');
+                let order_end = new Date('10.16.2018 18:00');
+               console.log( get_busy(result, order_start, order_end));
+
+            },
+        });
+
+    function get_busy(timeArray, order_start, order_end) {
+        for (let i = 0; i < timeArray.length; i++) {
+            let start = new Date(timeArray[i]['start']);
+            let end = new Date(timeArray[i]['end']);
+            if (order_start >= start && order_start <= end) return false;
+            if (order_end >= start && order_end <= end) return false;
+            if (order_start <= start && order_end >= end) return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
+
+
+или попробуй спарсить дату через Date.parse
