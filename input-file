@@ -1,0 +1,2 @@
+<input type="file" id="selectedFile" style="display: none;" />
+<input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
