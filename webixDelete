@@ -1,7 +1,9 @@
-let webixDelete=setInterval(function () {
+(function () {
+    let webixDelete=setInterval(function () {
         console.log(1);
         if(($('.webix_error')).length!=0){
-           clearInterval(webixDelete);
+            clearInterval(webixDelete);
         }
         $('.webix_error').remove();
     }, 1);
+}());
