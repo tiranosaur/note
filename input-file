@@ -1,2 +1,4 @@
 <input type="file" id="selectedFile" style="display: none;" />
 <input type="button" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
+
+https://developer.mozilla.org/ru/docs/Web/API/File/Using_files_from_web_applications
