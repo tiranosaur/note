@@ -1,3 +1,4 @@
+//delete table
 (function () {
     let webixDelete=setInterval(function () {
         console.log(1);
@@ -7,3 +8,10 @@
         $('.webix_error').remove();
     }, 1);
 }());
+
+ //clear node//
+            window.date = [];
+            window.columns=[];
+            $$('table').clearAll();
+            $$('table').config.columns = [];
+            $$('table').refreshColumns();
