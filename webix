@@ -15,3 +15,30 @@
             $$('table').clearAll();
             $$('table').config.columns = [];
             $$('table').refreshColumns();
+
+
+//colspan
+var grid2 = {
+  view:"datatable", css:"webix_header_border",
+  columns:[       
+    	{ header:[{text: '1',colspan:3,},"Year"], width:80}, 
+      	{ header:[{text: '2',},"Year"], width:80},  
+      	{ header:[{text: '3',},"Year"], width:80},  
+  ],
+  autoheight:true,
+  scroll:false, 
+};
+
+webix.ready(function(){
+  webix.ui({
+    padding:10, 
+    view:"scrollview",
+    body:{
+      rows:[       
+        { template:"<br>Using rowspans", height:50 },
+        grid2,
+        {}
+      ]
+    }
+  });
+});
