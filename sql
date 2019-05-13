@@ -1,3 +1,5 @@
+http://www.mysqltutorial.org/tryit/query/mysql-case-function/#2
+
 DROP TABLE
 IF
 	EXISTS `aghold`.`Untitled`;
@@ -37,3 +39,5 @@ CREATE TEMPORARY TABLE `aghold`.`Untitled` (
 `day31` CHAR ( 10 ),
 PRIMARY KEY ( `id` ) 
 );
+
+
