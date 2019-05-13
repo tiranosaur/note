@@ -1,43 +1,38 @@
 http://www.mysqltutorial.org/tryit/query/mysql-case-function/#2
 
-DROP TABLE
-IF
-	EXISTS `aghold`.`Untitled`;
-CREATE TEMPORARY TABLE `aghold`.`Untitled` (
-`id` INT ( 0 ) NOT NULL,
-`inn` CHAR ( 10 ) NULL,
-`day1` CHAR ( 10 ),
-`day2` CHAR ( 10 ),
-`day3` CHAR ( 10 ),
-`day4` CHAR ( 10 ),
-`day5` CHAR ( 10 ),
-`day6` CHAR ( 10 ),
-`day7` CHAR ( 10 ),
-`day8` CHAR ( 10 ),
-`day9` CHAR ( 10 ),
-`day10` CHAR ( 10 ),
-`day11` CHAR ( 10 ),
-`day12` CHAR ( 10 ),
-`day13` CHAR ( 10 ),
-`day14` CHAR ( 10 ),
-`day15` CHAR ( 10 ),
-`day16` CHAR ( 10 ),
-`day17` CHAR ( 10 ),
-`day18` CHAR ( 10 ),
-`day19` CHAR ( 10 ),
-`day20` CHAR ( 10 ),
-`day21` CHAR ( 10 ),
-`day22` CHAR ( 10 ),
-`day23` CHAR ( 10 ),
-`day24` CHAR ( 10 ),
-`day25` CHAR ( 10 ),
-`day26` CHAR ( 10 ),
-`day27` CHAR ( 10 ),
-`day28` CHAR ( 10 ),
-`day29` CHAR ( 10 ),
-`day30` CHAR ( 10 ),
-`day31` CHAR ( 10 ),
-PRIMARY KEY ( `id` ) 
-);
-
-
+SELECT 
+SUM(CASE WHEN DAYOFMONTH(work_day)=1 THEN 1 ELSE 0 END) AS 'day1',
+SUM(CASE WHEN DAYOFMONTH(work_day)=2 THEN 1 ELSE 0 END) AS 'day2',
+SUM(CASE WHEN DAYOFMONTH(work_day)=3 THEN 1 ELSE 0 END) AS 'day3',
+SUM(CASE WHEN DAYOFMONTH(work_day)=4 THEN 1 ELSE 0 END) AS 'day4',
+SUM(CASE WHEN DAYOFMONTH(work_day)=5 THEN 1 ELSE 0 END) AS 'day5',
+SUM(CASE WHEN DAYOFMONTH(work_day)=6 THEN 1 ELSE 0 END) AS 'day6',
+SUM(CASE WHEN DAYOFMONTH(work_day)=7 THEN 1 ELSE 0 END) AS 'day7',
+SUM(CASE WHEN DAYOFMONTH(work_day)=8 THEN 1 ELSE 0 END) AS 'day8',
+SUM(CASE WHEN DAYOFMONTH(work_day)=9 THEN 1 ELSE 0 END) AS 'day9',
+SUM(CASE WHEN DAYOFMONTH(work_day)=10 THEN 1 ELSE 0 END) AS 'day10',
+SUM(CASE WHEN DAYOFMONTH(work_day)=11 THEN 1 ELSE 0 END) AS 'day11',
+SUM(CASE WHEN DAYOFMONTH(work_day)=12 THEN 1 ELSE 0 END) AS 'day12',
+SUM(CASE WHEN DAYOFMONTH(work_day)=13 THEN 1 ELSE 0 END) AS 'day13',
+SUM(CASE WHEN DAYOFMONTH(work_day)=14 THEN 1 ELSE 0 END) AS 'day14',
+SUM(CASE WHEN DAYOFMONTH(work_day)=15 THEN 1 ELSE 0 END) AS 'day15',
+SUM(CASE WHEN DAYOFMONTH(work_day)=16 THEN 1 ELSE 0 END) AS 'day16',
+SUM(CASE WHEN DAYOFMONTH(work_day)=17 THEN 1 ELSE 0 END) AS 'day17',
+SUM(CASE WHEN DAYOFMONTH(work_day)=18 THEN 1 ELSE 0 END) AS 'day18',
+SUM(CASE WHEN DAYOFMONTH(work_day)=19 THEN 1 ELSE 0 END) AS 'day19',
+SUM(CASE WHEN DAYOFMONTH(work_day)=20 THEN 1 ELSE 0 END) AS 'day20',
+SUM(CASE WHEN DAYOFMONTH(work_day)=21 THEN 1 ELSE 0 END) AS 'day21',
+SUM(CASE WHEN DAYOFMONTH(work_day)=22 THEN 1 ELSE 0 END) AS 'day22',
+SUM(CASE WHEN DAYOFMONTH(work_day)=23 THEN 1 ELSE 0 END) AS 'day23',
+SUM(CASE WHEN DAYOFMONTH(work_day)=24 THEN 1 ELSE 0 END) AS 'day24',
+SUM(CASE WHEN DAYOFMONTH(work_day)=25 THEN 1 ELSE 0 END) AS 'day25',
+SUM(CASE WHEN DAYOFMONTH(work_day)=26 THEN 1 ELSE 0 END) AS 'day26',
+SUM(CASE WHEN DAYOFMONTH(work_day)=27 THEN 1 ELSE 0 END) AS 'day27',
+SUM(CASE WHEN DAYOFMONTH(work_day)=28 THEN 1 ELSE 0 END) AS 'day28',
+SUM(CASE WHEN DAYOFMONTH(work_day)=29 THEN 1 ELSE 0 END) AS 'day29',
+SUM(CASE WHEN DAYOFMONTH(work_day)=30 THEN 1 ELSE 0 END) AS 'day30',
+SUM(CASE WHEN DAYOFMONTH(work_day)=31 THEN 1 ELSE 0 END) AS 'day31',
+    inn
+FROM
+    sb_guarding
+GROUP BY inn
