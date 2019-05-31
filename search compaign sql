@@ -1,0 +1,78 @@
+SELECT
+	`r`.`id`,
+	`r`.`name`,
+	`r`.`type`,
+	`r`.`productId`,
+	`r`.`partnerId`,
+	`r`.`status`,
+	`r`.`priority`,
+	`r`.`timeZone`,
+	`r`.`creationDatetime`,
+	`r`.`minPrice`,
+	`r`.`wasActivated`,
+	`r`.`trackingId`,
+	`r`.`soldPingUrl`,
+	`r`.`isProtected`,
+	`r`.`pingTreePosition`,
+	`r`.`customInt1`,
+	`r`.`customInt2`,
+	`r`.`customInt3`,
+	`r`.`customStr1`,
+	`r`.`customStr2`,
+	`r`.`customStr3`,
+	COALESCE ( cfb.customInt1, '' ) defaultCustomInt1,
+	COALESCE ( cfb.customInt2, '' ) defaultCustomInt2,
+	COALESCE ( cfb.customInt3, '' ) defaultCustomInt3,
+	COALESCE ( cfb.customStr1, '' ) defaultCustomStr1,
+	COALESCE ( cfb.customStr2, '' ) defaultCustomStr2,
+	COALESCE ( cfb.customStr3, '' ) defaultCustomStr3,
+	COALESCE ( s.settingIntegrationId, 0 ) AS settingIntegrationId,
+	COALESCE ( i.NAME, '-' ) AS integrationName,
+	`p`.`name` AS `partnerName`,
+	`ct`.`name` AS `campaignTypeName`,
+	`pr`.`name` AS `productName`,
+	`pr`.`currency` 
+FROM
+	`partner_campaign` `r`
+	JOIN `partner` `p` ON p.id = r.partnerId
+	JOIN `ref_product` `pr` ON ( pr.id = r.productId AND pr.isPhone = 0 ) 
+	AND pr.id IN (
+	1,
+	2,
+	3,
+	4,
+	5,
+	8,
+	9,
+	14,
+	19,
+	22,
+	23,
+	25,
+	29,
+	31,
+	34,
+	35,
+	42,
+	43,
+	44,
+	100,
+	101,
+	102,
+	104 
+	)
+	JOIN `ref_partner_campaign_type` `ct` ON ct.id = r.type
+	LEFT JOIN `partner_campaign_setting` `s` ON s.campaignId = r.id
+	LEFT JOIN `partner_custom_fields_default` `cfb` ON cfb.partnerId = r.partnerId 
+	AND cfb.productId = r.productId
+	LEFT JOIN `ref_integration` `i` ON i.integrationId = s.settingIntegrationId 
+	AND i.productId = s.settingProductId 
+WHERE
+	`r`.`id` = '194' 
+	AND `r`.`type` NOT IN ( 8, 10, 9 ) 
+	AND `r`.`status` <> 10 
+GROUP BY
+	`r`.`id` 
+ORDER BY
+	`r`.`id` DESC 
+	LIMIT 100
