@@ -1,3 +1,0 @@
-/var/www/zpopenmarket.com/panel/vendor/yiisoft/yii2/db/Command.php
-protected function queryInternal($method, $fetchMode = null)
-$this->pdoStatement->closeCursor();
