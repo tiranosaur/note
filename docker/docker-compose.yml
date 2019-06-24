@@ -1,0 +1,102 @@
+version: '3.7'
+# Секция настройки сети.
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.19.0.0/24
+# Секция с волумами
+volumes:
+  mysql_data:
+  redis_data:
+  mongodb_data:
+# Секция настройки котнейнеров.
+services:
+  www:
+    image: git.zeroparallel.com:4567/docker/dev/www:dev
+    container_name: www
+    restart: always
+    privileged: true
+    working_dir: /var/www/
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
+    dns: 8.8.8.8
+    networks:
+      default:
+        ipv4_address: 172.19.0.101
+    environment:
+      - USERMAP_UID
+      - USERMAP_GID
+      - TERM=xterm
+      - XDEBUG_AUTOSTART=true
+      - OPCACHE=false
+    # ports:
+    #   - "127.0.0.1:443:443"
+    #   - "127.0.0.1:80:80"
+    #   - "9000:9000"
+    #   - "9022:22"
+    volumes:
+      - /var/www:/var/www
+      - /zero:/zero
+      - /zero/logs/supervisor:/var/log/supervisor
+      - /storage:/storage
+      - $HOME:/home/zero
+    links:
+      - db
+      - redis
+      - memcached
+      - mongodb
+    extra_hosts:
+      - cp.zpopenmarket.com leads.zpopenmarket.com cdn101.zpopenmarket.com main.zpopenmarket.com openid.zpopenmarket.com:127.0.0.1
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=zerosql
+      - MYSQL_USER=zero
+      - MYSQL_PASSWORD=zerosql
+      - MYSQL_DATABASE=testdb
+    # ports:
+    # - "3306:3306"
+    command: "--sql-mode=NO_ZERO_IN_DATE"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      default:
+        ipv4_address: 172.19.0.102
+
+  redis:
+    image: redis:3.2
+    container_name: redis
+    restart: always
+    volumes:
+      - redis_data:/data
+    networks:
+      default:
+        ipv4_address: 172.19.0.103
+
+  memcached:
+    image: memcached:1.5.3-alpine
+    container_name: memcached
+    restart: always
+    command: "memcached -p 11211 -m 2048 -c 8092"
+    networks:
+      default:
+        ipv4_address: 172.19.0.104
+
+  mongodb:
+    image: 'bitnami/mongodb:3.6'
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - 'mongodb_data:/bitnami'
+    networks:
+          default:
+            ipv4_address: 172.19.0.105

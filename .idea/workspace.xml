@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92c56816-4dc6-4d36-a5a8-6be62b07ded6" name="Default Changelist" comment="" />
+    <list default="true" id="92c56816-4dc6-4d36-a5a8-6be62b07ded6" name="Default Changelist" comment="1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/gitPHP_MYSQL_xdebug" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/install-docker.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/readme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/zero/config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/zero/dev" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/zero/logs/supervisor/haproxy.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/zero/logs/supervisor/nginx.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/zero/logs/supervisor/php.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/zero/logs/supervisor/sshd.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/zero/logs/supervisor/supervisord.log" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,17 +26,7 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/rusakov_article/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -48,6 +50,7 @@
         <option value="$PROJECT_DIR$/req.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/rusakov_article/index.php" />
+        <option value="$PROJECT_DIR$/docker/zero/config/.gitignore" />
       </list>
     </option>
   </component>
@@ -105,17 +108,18 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docker" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docker" />
+      <recent name="F:\OSPanel\domains\note\php" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\OSPanel\domains\note\rusakov_article" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\OSPanel\domains\note\php" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -152,6 +156,7 @@
       <workItem from="1558701583479" duration="4671000" />
       <workItem from="1559038975412" duration="5085000" />
       <workItem from="1561407574180" duration="649000" />
+      <workItem from="1561408468236" duration="1448000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1559081461497</created>
@@ -167,20 +172,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561408213120</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1">
+      <created>1561408517687</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1561408517687</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12993000" />
+    <option name="totallyTimeSpent" value="14441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17129135" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17289221" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Migrations" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -190,9 +200,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32969433" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" weight="0.3993576" />
+      <window_info anchor="bottom" id="Migrations" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -274,10 +285,31 @@
     <entry file="file://$PROJECT_DIR$/req.php" />
     <entry file="file://$PROJECT_DIR$/rusakov_article/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+        <state relative-caret-position="279">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker/git">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker/zero/config/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker/zero/config/sites-enabled/main.zpopenmarket.com.conf">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker/zero/config/sites-available/arbitrageleads.phonexa.com.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker/zero/config/nginx/auth/git-status.auth">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
