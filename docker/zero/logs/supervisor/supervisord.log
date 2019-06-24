@@ -1,0 +1,518 @@
+2019-05-29 12:57:03,361 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-29 12:57:03,362 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-29 12:57:03,362 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-29 12:57:03,362 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-29 12:57:03,362 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-29 12:57:03,367 INFO RPC interface 'supervisor' initialized
+2019-05-29 12:57:03,367 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-29 12:57:03,368 INFO supervisord started with pid 1
+2019-05-29 12:57:04,371 INFO spawned: 'haproxy' with pid 33
+2019-05-29 12:57:04,375 INFO spawned: 'nginx' with pid 34
+2019-05-29 12:57:04,377 INFO spawned: 'php' with pid 35
+2019-05-29 12:57:04,379 INFO spawned: 'sshd' with pid 36
+2019-05-29 12:57:05,528 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 12:57:05,528 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 12:57:05,528 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 12:57:05,528 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 13:21:33,440 WARN received SIGTERM indicating exit request
+2019-05-29 13:21:33,440 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-29 13:21:33,441 INFO stopped: sshd (exit status 0)
+2019-05-29 13:21:33,457 INFO stopped: php (exit status 0)
+2019-05-29 13:21:33,516 INFO stopped: nginx (exit status 0)
+2019-05-29 13:21:33,517 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-29 13:22:43,831 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-29 13:22:43,831 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-29 13:22:43,831 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-29 13:22:43,831 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-29 13:22:43,831 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-29 13:22:43,837 INFO RPC interface 'supervisor' initialized
+2019-05-29 13:22:43,837 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-29 13:22:43,837 INFO supervisord started with pid 1
+2019-05-29 13:22:44,840 INFO spawned: 'haproxy' with pid 28
+2019-05-29 13:22:44,844 INFO spawned: 'nginx' with pid 29
+2019-05-29 13:22:44,845 INFO spawned: 'php' with pid 30
+2019-05-29 13:22:44,845 INFO spawned: 'sshd' with pid 31
+2019-05-29 13:22:45,991 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 13:22:45,992 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 13:22:45,992 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 13:22:45,992 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 13:32:04,815 INFO reaped unknown pid 68
+2019-05-29 13:38:43,257 WARN received SIGTERM indicating exit request
+2019-05-29 13:38:43,257 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-29 13:38:43,258 INFO stopped: sshd (exit status 0)
+2019-05-29 13:38:43,274 INFO stopped: php (exit status 0)
+2019-05-29 13:38:43,325 INFO stopped: nginx (exit status 0)
+2019-05-29 13:38:43,325 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-29 14:22:57,940 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-29 14:22:57,940 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-29 14:22:57,940 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-29 14:22:57,940 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-29 14:22:57,940 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-29 14:22:57,948 INFO RPC interface 'supervisor' initialized
+2019-05-29 14:22:57,948 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-29 14:22:57,948 INFO supervisord started with pid 1
+2019-05-29 14:22:58,950 INFO spawned: 'haproxy' with pid 32
+2019-05-29 14:22:58,952 INFO spawned: 'nginx' with pid 33
+2019-05-29 14:22:58,953 INFO spawned: 'php' with pid 34
+2019-05-29 14:22:58,954 INFO spawned: 'sshd' with pid 35
+2019-05-29 14:23:00,106 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 14:23:00,107 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 14:23:00,107 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-29 14:23:00,107 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 07:09:24,972 WARN received SIGTERM indicating exit request
+2019-05-30 07:09:24,972 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-30 07:09:24,972 INFO stopped: sshd (exit status 0)
+2019-05-30 07:09:24,990 INFO stopped: php (exit status 0)
+2019-05-30 07:09:25,037 INFO stopped: nginx (exit status 0)
+2019-05-30 07:09:25,039 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-30 07:49:17,036 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-30 07:49:17,036 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-30 07:49:17,036 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-30 07:49:17,036 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-30 07:49:17,036 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-30 07:49:17,042 INFO RPC interface 'supervisor' initialized
+2019-05-30 07:49:17,042 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-30 07:49:17,042 INFO supervisord started with pid 1
+2019-05-30 07:49:18,045 INFO spawned: 'haproxy' with pid 32
+2019-05-30 07:49:18,049 INFO spawned: 'nginx' with pid 33
+2019-05-30 07:49:18,052 INFO spawned: 'php' with pid 34
+2019-05-30 07:49:18,055 INFO spawned: 'sshd' with pid 35
+2019-05-30 07:49:19,232 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 07:49:19,233 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 07:49:19,233 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 07:49:19,233 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:00:00,068 WARN received SIGTERM indicating exit request
+2019-05-30 09:00:00,068 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-30 09:00:00,069 INFO stopped: sshd (exit status 0)
+2019-05-30 09:00:00,089 INFO stopped: php (exit status 0)
+2019-05-30 09:00:00,136 INFO stopped: nginx (exit status 0)
+2019-05-30 09:00:00,136 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-30 09:00:24,486 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-30 09:00:24,487 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-30 09:00:24,487 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-30 09:00:24,487 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-30 09:00:24,487 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-30 09:00:24,497 INFO RPC interface 'supervisor' initialized
+2019-05-30 09:00:24,497 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-30 09:00:24,497 INFO supervisord started with pid 1
+2019-05-30 09:00:25,503 INFO spawned: 'haproxy' with pid 28
+2019-05-30 09:00:25,522 INFO spawned: 'nginx' with pid 29
+2019-05-30 09:00:25,526 INFO spawned: 'php' with pid 30
+2019-05-30 09:00:25,537 INFO spawned: 'sshd' with pid 31
+2019-05-30 09:00:27,404 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:00:27,404 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:00:27,404 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:00:27,404 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:24:55,138 WARN received SIGTERM indicating exit request
+2019-05-30 09:24:55,138 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-30 09:24:55,139 INFO stopped: sshd (exit status 0)
+2019-05-30 09:24:55,160 INFO stopped: php (exit status 0)
+2019-05-30 09:24:55,203 INFO stopped: nginx (exit status 0)
+2019-05-30 09:24:55,204 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-30 09:25:21,531 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-30 09:25:21,532 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-30 09:25:21,532 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-30 09:25:21,532 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-30 09:25:21,532 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-30 09:25:21,547 INFO RPC interface 'supervisor' initialized
+2019-05-30 09:25:21,547 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-30 09:25:21,547 INFO supervisord started with pid 1
+2019-05-30 09:25:22,550 INFO spawned: 'haproxy' with pid 28
+2019-05-30 09:25:22,554 INFO spawned: 'nginx' with pid 29
+2019-05-30 09:25:22,558 INFO spawned: 'php' with pid 30
+2019-05-30 09:25:22,561 INFO spawned: 'sshd' with pid 31
+2019-05-30 09:25:24,394 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:25:24,394 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:25:24,394 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 09:25:24,394 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 12:10:04,364 WARN received SIGTERM indicating exit request
+2019-05-30 12:10:04,364 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-30 12:10:04,365 INFO stopped: sshd (exit status 0)
+2019-05-30 12:10:04,382 INFO stopped: php (exit status 0)
+2019-05-30 12:10:04,427 INFO stopped: nginx (exit status 0)
+2019-05-30 12:10:04,427 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-30 12:11:28,023 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-30 12:11:28,024 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-30 12:11:28,024 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-30 12:11:28,024 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-30 12:11:28,024 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-30 12:11:28,029 INFO RPC interface 'supervisor' initialized
+2019-05-30 12:11:28,030 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-30 12:11:28,030 INFO supervisord started with pid 1
+2019-05-30 12:11:29,031 INFO spawned: 'haproxy' with pid 28
+2019-05-30 12:11:29,032 INFO spawned: 'nginx' with pid 29
+2019-05-30 12:11:29,033 INFO spawned: 'php' with pid 30
+2019-05-30 12:11:29,034 INFO spawned: 'sshd' with pid 31
+2019-05-30 12:11:30,184 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 12:11:30,185 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 12:11:30,185 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-30 12:11:30,185 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 07:26:08,220 WARN received SIGTERM indicating exit request
+2019-05-31 07:26:08,221 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-31 07:26:08,222 INFO stopped: sshd (exit status 0)
+2019-05-31 07:26:08,250 INFO stopped: php (exit status 0)
+2019-05-31 07:26:08,291 INFO stopped: nginx (exit status 0)
+2019-05-31 07:26:08,292 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-31 07:26:33,996 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-31 07:26:33,997 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-31 07:26:33,997 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-31 07:26:33,997 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-31 07:26:33,997 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-31 07:26:34,007 INFO RPC interface 'supervisor' initialized
+2019-05-31 07:26:34,007 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-31 07:26:34,007 INFO supervisord started with pid 1
+2019-05-31 07:26:35,008 INFO spawned: 'haproxy' with pid 28
+2019-05-31 07:26:35,009 INFO spawned: 'nginx' with pid 29
+2019-05-31 07:26:35,010 INFO spawned: 'php' with pid 30
+2019-05-31 07:26:35,011 INFO spawned: 'sshd' with pid 31
+2019-05-31 07:26:36,507 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 07:26:36,507 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 07:26:36,507 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 07:26:36,507 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 11:02:45,759 WARN received SIGTERM indicating exit request
+2019-05-31 11:02:45,759 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-31 11:02:45,760 INFO stopped: sshd (exit status 0)
+2019-05-31 11:02:45,785 INFO stopped: php (exit status 0)
+2019-05-31 11:02:45,816 INFO stopped: nginx (exit status 0)
+2019-05-31 11:02:45,817 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-31 11:03:09,968 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-31 11:03:09,969 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-31 11:03:09,969 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-31 11:03:09,969 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-31 11:03:09,969 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-31 11:03:09,978 INFO RPC interface 'supervisor' initialized
+2019-05-31 11:03:09,978 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-31 11:03:09,978 INFO supervisord started with pid 1
+2019-05-31 11:03:10,980 INFO spawned: 'haproxy' with pid 28
+2019-05-31 11:03:10,981 INFO spawned: 'nginx' with pid 29
+2019-05-31 11:03:10,982 INFO spawned: 'php' with pid 30
+2019-05-31 11:03:10,983 INFO spawned: 'sshd' with pid 31
+2019-05-31 11:03:12,551 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 11:03:12,551 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 11:03:12,552 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 11:03:12,552 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 15:02:41,716 WARN received SIGTERM indicating exit request
+2019-05-31 15:02:41,716 INFO waiting for haproxy, nginx, sshd, php to die
+2019-05-31 15:02:41,717 INFO stopped: sshd (exit status 0)
+2019-05-31 15:02:41,736 INFO stopped: php (exit status 0)
+2019-05-31 15:02:41,784 INFO stopped: nginx (exit status 0)
+2019-05-31 15:02:41,784 INFO stopped: haproxy (terminated by SIGTERM)
+2019-05-31 15:14:03,250 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-05-31 15:14:03,251 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-05-31 15:14:03,251 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-05-31 15:14:03,251 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-05-31 15:14:03,251 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-05-31 15:14:03,260 INFO RPC interface 'supervisor' initialized
+2019-05-31 15:14:03,260 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-05-31 15:14:03,260 INFO supervisord started with pid 1
+2019-05-31 15:14:04,263 INFO spawned: 'haproxy' with pid 28
+2019-05-31 15:14:04,267 INFO spawned: 'nginx' with pid 29
+2019-05-31 15:14:04,267 INFO spawned: 'php' with pid 30
+2019-05-31 15:14:04,268 INFO spawned: 'sshd' with pid 31
+2019-05-31 15:14:05,720 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 15:14:05,720 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 15:14:05,720 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-05-31 15:14:05,721 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-03 07:30:50,018 WARN received SIGTERM indicating exit request
+2019-06-03 07:30:50,018 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-03 07:30:50,019 INFO stopped: sshd (exit status 0)
+2019-06-03 07:30:50,040 INFO stopped: php (exit status 0)
+2019-06-03 07:30:50,074 INFO stopped: nginx (exit status 0)
+2019-06-03 07:30:50,074 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-03 07:33:21,255 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-03 07:33:21,256 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-03 07:33:21,257 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-03 07:33:21,257 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-03 07:33:21,257 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-03 07:33:21,270 INFO RPC interface 'supervisor' initialized
+2019-06-03 07:33:21,270 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-03 07:33:21,270 INFO supervisord started with pid 1
+2019-06-03 07:33:22,272 INFO spawned: 'haproxy' with pid 29
+2019-06-03 07:33:22,274 INFO spawned: 'nginx' with pid 30
+2019-06-03 07:33:22,275 INFO spawned: 'php' with pid 31
+2019-06-03 07:33:22,276 INFO spawned: 'sshd' with pid 32
+2019-06-03 07:33:23,729 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-03 07:33:23,729 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-03 07:33:23,729 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-03 07:33:23,729 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-07 10:35:53,665 INFO reaped unknown pid 1626
+2019-06-07 10:49:25,606 WARN received SIGTERM indicating exit request
+2019-06-07 10:49:25,609 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-07 10:49:25,609 INFO stopped: sshd (exit status 0)
+2019-06-07 10:49:25,640 INFO stopped: php (exit status 0)
+2019-06-07 10:49:25,697 INFO stopped: nginx (exit status 0)
+2019-06-07 10:49:25,698 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-07 10:50:38,695 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-07 10:50:38,696 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-07 10:50:38,696 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-07 10:50:38,696 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-07 10:50:38,696 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-07 10:50:38,711 INFO RPC interface 'supervisor' initialized
+2019-06-07 10:50:38,711 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-07 10:50:38,711 INFO supervisord started with pid 1
+2019-06-07 10:50:39,715 INFO spawned: 'haproxy' with pid 28
+2019-06-07 10:50:39,719 INFO spawned: 'nginx' with pid 29
+2019-06-07 10:50:39,719 INFO spawned: 'php' with pid 30
+2019-06-07 10:50:39,720 INFO spawned: 'sshd' with pid 31
+2019-06-07 10:50:41,167 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-07 10:50:41,167 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-07 10:50:41,168 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-07 10:50:41,168 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-08 16:43:20,635 WARN received SIGTERM indicating exit request
+2019-06-08 16:43:20,680 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-08 16:43:20,683 INFO stopped: sshd (exit status 0)
+2019-06-08 16:43:20,707 INFO stopped: php (exit status 0)
+2019-06-08 16:43:20,776 INFO stopped: nginx (exit status 0)
+2019-06-08 16:43:20,777 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-08 16:43:58,572 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-08 16:43:58,574 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-08 16:43:58,574 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-08 16:43:58,574 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-08 16:43:58,574 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-08 16:43:58,601 INFO RPC interface 'supervisor' initialized
+2019-06-08 16:43:58,602 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-08 16:43:58,602 INFO supervisord started with pid 1
+2019-06-08 16:43:59,605 INFO spawned: 'haproxy' with pid 28
+2019-06-08 16:43:59,608 INFO spawned: 'nginx' with pid 29
+2019-06-08 16:43:59,609 INFO spawned: 'php' with pid 30
+2019-06-08 16:43:59,610 INFO spawned: 'sshd' with pid 31
+2019-06-08 16:44:01,054 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-08 16:44:01,054 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-08 16:44:01,055 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-08 16:44:01,055 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 06:44:30,196 WARN received SIGTERM indicating exit request
+2019-06-10 06:44:30,196 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-10 06:44:30,203 INFO stopped: sshd (exit status 0)
+2019-06-10 06:44:30,279 INFO stopped: php (exit status 0)
+2019-06-10 06:44:30,319 INFO stopped: nginx (exit status 0)
+2019-06-10 06:44:30,320 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-10 06:44:54,643 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-10 06:44:54,644 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-10 06:44:54,644 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-10 06:44:54,644 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-10 06:44:54,644 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-10 06:44:54,655 INFO RPC interface 'supervisor' initialized
+2019-06-10 06:44:54,655 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-10 06:44:54,655 INFO supervisord started with pid 1
+2019-06-10 06:44:55,657 INFO spawned: 'haproxy' with pid 28
+2019-06-10 06:44:55,658 INFO spawned: 'nginx' with pid 29
+2019-06-10 06:44:55,659 INFO spawned: 'php' with pid 30
+2019-06-10 06:44:55,660 INFO spawned: 'sshd' with pid 31
+2019-06-10 06:44:57,122 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 06:44:57,122 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 06:44:57,123 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 06:44:57,123 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 09:44:37,406 WARN received SIGTERM indicating exit request
+2019-06-10 09:44:37,407 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-10 09:44:37,407 INFO stopped: sshd (exit status 0)
+2019-06-10 09:44:37,432 INFO stopped: php (exit status 0)
+2019-06-10 09:44:37,478 INFO stopped: nginx (exit status 0)
+2019-06-10 09:44:37,478 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-10 09:45:05,123 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-10 09:45:05,124 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-10 09:45:05,124 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-10 09:45:05,124 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-10 09:45:05,124 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-10 09:45:05,134 INFO RPC interface 'supervisor' initialized
+2019-06-10 09:45:05,135 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-10 09:45:05,135 INFO supervisord started with pid 1
+2019-06-10 09:45:06,137 INFO spawned: 'haproxy' with pid 28
+2019-06-10 09:45:06,138 INFO spawned: 'nginx' with pid 29
+2019-06-10 09:45:06,138 INFO spawned: 'php' with pid 30
+2019-06-10 09:45:06,139 INFO spawned: 'sshd' with pid 31
+2019-06-10 09:45:07,728 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 09:45:07,729 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 09:45:07,729 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 09:45:07,729 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:19:09,636 WARN received SIGTERM indicating exit request
+2019-06-10 16:19:09,636 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-10 16:19:09,638 INFO stopped: sshd (exit status 0)
+2019-06-10 16:19:09,674 INFO stopped: php (exit status 0)
+2019-06-10 16:19:09,704 INFO stopped: nginx (exit status 0)
+2019-06-10 16:19:09,704 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-10 16:19:32,962 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-10 16:19:32,963 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-10 16:19:32,963 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-10 16:19:32,963 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-10 16:19:32,963 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-10 16:19:32,977 INFO RPC interface 'supervisor' initialized
+2019-06-10 16:19:32,977 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-10 16:19:32,977 INFO supervisord started with pid 1
+2019-06-10 16:19:33,981 INFO spawned: 'haproxy' with pid 29
+2019-06-10 16:19:33,984 INFO spawned: 'nginx' with pid 30
+2019-06-10 16:19:33,985 INFO spawned: 'php' with pid 31
+2019-06-10 16:19:33,985 INFO spawned: 'sshd' with pid 32
+2019-06-10 16:19:35,435 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:19:35,436 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:19:35,436 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:19:35,436 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:20:48,536 WARN received SIGTERM indicating exit request
+2019-06-10 16:20:48,536 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-10 16:20:48,538 INFO stopped: sshd (exit status 0)
+2019-06-10 16:20:48,572 INFO stopped: php (exit status 0)
+2019-06-10 16:20:48,600 INFO stopped: nginx (exit status 0)
+2019-06-10 16:20:48,600 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-10 16:21:15,931 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-10 16:21:15,932 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-10 16:21:15,932 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-10 16:21:15,932 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-10 16:21:15,932 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-10 16:21:15,944 INFO RPC interface 'supervisor' initialized
+2019-06-10 16:21:15,944 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-10 16:21:15,944 INFO supervisord started with pid 1
+2019-06-10 16:21:16,948 INFO spawned: 'haproxy' with pid 28
+2019-06-10 16:21:16,951 INFO spawned: 'nginx' with pid 29
+2019-06-10 16:21:16,952 INFO spawned: 'php' with pid 30
+2019-06-10 16:21:16,953 INFO spawned: 'sshd' with pid 31
+2019-06-10 16:21:18,418 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:21:18,418 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:21:18,418 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-10 16:21:18,418 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-13 10:01:59,962 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-13 10:01:59,963 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-13 10:01:59,963 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-13 10:01:59,963 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-13 10:01:59,963 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-13 10:02:00,290 INFO RPC interface 'supervisor' initialized
+2019-06-13 10:02:00,290 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-13 10:02:00,291 INFO supervisord started with pid 1
+2019-06-13 10:02:01,295 INFO spawned: 'haproxy' with pid 28
+2019-06-13 10:02:01,298 INFO spawned: 'nginx' with pid 29
+2019-06-13 10:02:01,299 INFO spawned: 'php' with pid 30
+2019-06-13 10:02:01,300 INFO spawned: 'sshd' with pid 31
+2019-06-13 10:02:02,722 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-13 10:02:02,722 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-13 10:02:02,722 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-13 10:02:02,722 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 10:38:47,562 WARN received SIGTERM indicating exit request
+2019-06-17 10:38:47,735 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-17 10:38:47,990 INFO stopped: sshd (exit status 0)
+2019-06-17 10:38:48,347 INFO stopped: php (exit status 0)
+2019-06-17 10:38:48,523 INFO stopped: nginx (exit status 0)
+2019-06-17 10:38:48,526 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-17 10:39:18,736 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-17 10:39:18,737 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-17 10:39:18,737 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-17 10:39:18,737 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-17 10:39:18,737 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-17 10:39:18,748 INFO RPC interface 'supervisor' initialized
+2019-06-17 10:39:18,748 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-17 10:39:18,748 INFO supervisord started with pid 1
+2019-06-17 10:39:19,752 INFO spawned: 'haproxy' with pid 28
+2019-06-17 10:39:19,755 INFO spawned: 'nginx' with pid 29
+2019-06-17 10:39:19,759 INFO spawned: 'php' with pid 30
+2019-06-17 10:39:19,763 INFO spawned: 'sshd' with pid 31
+2019-06-17 10:39:21,274 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 10:39:21,274 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 10:39:21,274 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 10:39:21,274 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 11:39:52,857 WARN received SIGTERM indicating exit request
+2019-06-17 11:39:52,858 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-17 11:39:52,858 INFO stopped: sshd (exit status 0)
+2019-06-17 11:39:52,884 INFO stopped: php (exit status 0)
+2019-06-17 11:39:52,944 INFO stopped: nginx (exit status 0)
+2019-06-17 11:39:52,945 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-17 11:41:45,998 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-17 11:41:46,000 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-17 11:41:46,000 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-17 11:41:46,000 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-17 11:41:46,000 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-17 11:41:46,020 INFO RPC interface 'supervisor' initialized
+2019-06-17 11:41:46,020 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-17 11:41:46,020 INFO supervisord started with pid 1
+2019-06-17 11:41:47,024 INFO spawned: 'haproxy' with pid 28
+2019-06-17 11:41:47,027 INFO spawned: 'nginx' with pid 29
+2019-06-17 11:41:47,028 INFO spawned: 'php' with pid 30
+2019-06-17 11:41:47,029 INFO spawned: 'sshd' with pid 31
+2019-06-17 11:41:48,469 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 11:41:48,469 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 11:41:48,469 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 11:41:48,470 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 13:18:56,392 WARN received SIGTERM indicating exit request
+2019-06-17 13:18:56,392 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-17 13:18:56,393 INFO stopped: sshd (exit status 0)
+2019-06-17 13:18:56,421 INFO stopped: php (exit status 0)
+2019-06-17 13:18:56,464 INFO stopped: nginx (exit status 0)
+2019-06-17 13:18:56,465 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-17 13:20:49,028 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-17 13:20:49,029 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-17 13:20:49,029 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-17 13:20:49,029 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-17 13:20:49,029 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-17 13:20:49,039 INFO RPC interface 'supervisor' initialized
+2019-06-17 13:20:49,039 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-17 13:20:49,039 INFO supervisord started with pid 1
+2019-06-17 13:20:50,041 INFO spawned: 'haproxy' with pid 28
+2019-06-17 13:20:50,042 INFO spawned: 'nginx' with pid 29
+2019-06-17 13:20:50,042 INFO spawned: 'php' with pid 30
+2019-06-17 13:20:50,043 INFO spawned: 'sshd' with pid 31
+2019-06-17 13:20:51,594 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 13:20:51,594 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 13:20:51,594 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-17 13:20:51,594 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 07:47:54,179 WARN received SIGTERM indicating exit request
+2019-06-19 07:47:54,183 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-19 07:47:54,184 INFO stopped: sshd (exit status 0)
+2019-06-19 07:47:54,229 INFO stopped: php (exit status 0)
+2019-06-19 07:47:54,268 INFO stopped: nginx (exit status 0)
+2019-06-19 07:47:54,268 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-19 07:48:21,189 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-19 07:48:21,192 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-19 07:48:21,192 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-19 07:48:21,192 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-19 07:48:21,192 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-19 07:48:21,239 INFO RPC interface 'supervisor' initialized
+2019-06-19 07:48:21,240 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-19 07:48:21,240 INFO supervisord started with pid 1
+2019-06-19 07:48:22,242 INFO spawned: 'haproxy' with pid 28
+2019-06-19 07:48:22,243 INFO spawned: 'nginx' with pid 29
+2019-06-19 07:48:22,244 INFO spawned: 'php' with pid 30
+2019-06-19 07:48:22,244 INFO spawned: 'sshd' with pid 31
+2019-06-19 07:48:23,693 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 07:48:23,693 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 07:48:23,693 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 07:48:23,693 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 08:05:17,626 WARN received SIGTERM indicating exit request
+2019-06-19 08:05:17,627 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-19 08:05:17,642 INFO stopped: sshd (exit status 0)
+2019-06-19 08:05:17,676 INFO stopped: php (exit status 0)
+2019-06-19 08:05:17,804 INFO stopped: nginx (exit status 0)
+2019-06-19 08:05:17,806 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-19 08:05:45,493 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-19 08:05:45,495 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-19 08:05:45,495 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-19 08:05:45,495 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-19 08:05:45,495 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-19 08:05:45,526 INFO RPC interface 'supervisor' initialized
+2019-06-19 08:05:45,526 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-19 08:05:45,526 INFO supervisord started with pid 1
+2019-06-19 08:05:46,530 INFO spawned: 'haproxy' with pid 28
+2019-06-19 08:05:46,532 INFO spawned: 'nginx' with pid 29
+2019-06-19 08:05:46,541 INFO spawned: 'php' with pid 30
+2019-06-19 08:05:46,544 INFO spawned: 'sshd' with pid 31
+2019-06-19 08:05:48,290 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 08:05:48,290 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 08:05:48,290 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 08:05:48,290 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 09:01:57,807 WARN received SIGTERM indicating exit request
+2019-06-19 09:01:57,807 INFO waiting for haproxy, nginx, sshd, php to die
+2019-06-19 09:01:57,808 INFO stopped: sshd (exit status 0)
+2019-06-19 09:01:57,873 INFO stopped: php (exit status 0)
+2019-06-19 09:01:57,904 INFO stopped: nginx (exit status 0)
+2019-06-19 09:01:57,904 INFO stopped: haproxy (terminated by SIGTERM)
+2019-06-19 09:02:22,013 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2019-06-19 09:02:22,013 INFO Included extra file "/etc/supervisor.d/haproxy.conf" during parsing
+2019-06-19 09:02:22,013 INFO Included extra file "/etc/supervisor.d/nginx.conf" during parsing
+2019-06-19 09:02:22,013 INFO Included extra file "/etc/supervisor.d/php-fpm.conf" during parsing
+2019-06-19 09:02:22,013 INFO Included extra file "/etc/supervisor.d/sshd.conf" during parsing
+2019-06-19 09:02:22,023 INFO RPC interface 'supervisor' initialized
+2019-06-19 09:02:22,023 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2019-06-19 09:02:22,023 INFO supervisord started with pid 1
+2019-06-19 09:02:23,025 INFO spawned: 'haproxy' with pid 28
+2019-06-19 09:02:23,026 INFO spawned: 'nginx' with pid 29
+2019-06-19 09:02:23,026 INFO spawned: 'php' with pid 30
+2019-06-19 09:02:23,027 INFO spawned: 'sshd' with pid 31
+2019-06-19 09:02:24,945 INFO success: haproxy entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 09:02:24,945 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 09:02:24,945 INFO success: php entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2019-06-19 09:02:24,945 INFO success: sshd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
