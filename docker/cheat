@@ -1,0 +1,3 @@
+docker ps
+select container
+docker exec -it {selected container} bash
