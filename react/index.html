@@ -12,7 +12,25 @@
 </head>
 <body>
 
+<div id="root"></div>
 
+<script type="text/babel">
+    class Button extends React.Component {
+        render() {
+            const num=777
+            const elem = (
+                <div>
+                    <p>{num*10}</p>
+                </div>
+            )
+            return (
+                elem
+            )
+        }
+    }
+
+    ReactDOM.render(< Button/>, document.querySelectorAll('#root')[0])
+</script>
 
 </body>
 </html>
