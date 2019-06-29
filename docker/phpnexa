@@ -1,0 +1,82 @@
+Docker for Develpment environment
+
+Prepare workstation
+Создаём структру директорий
+sudo mkdir -p /zero /var/www/zpopenmarket.com /storage
+sudo chown -R ${USER}. /zero /var/www /storage
+Клоним репы с кнофигами и docker-compose файлами
+git clone git@git.zeroparallel.com:Docker/dev.git               /zero/dev
+git clone git@git.zeroparallel.com:administrators/config.git    /zero/config
+Клоним репы с проектом
+git clone git@git.zeroparallel.com:root/leads-zpopenmarket-com.git  /var/www/zpopenmarket.com/leads
+git clone git@git.zeroparallel.com:root/cp-zpopenmarket-com.git     /var/www/zpopenmarket.com/panel
+git clone git@git.zeroparallel.com:root/promo-zpopenmarket-com.git  /var/www/zpopenmarket.com/promo
+git clone git@git.zeroparallel.com:administrators/openid.git        /var/www/openid.zpopenmarket.com
+git clone git@git.zeroparallel.com:administrators/paravoz.git       /var/www/main.zpopenmarket.com
+Подготавливаем локальные конфиги проектов
+cp /var/www/zpopenmarket.com/leads/config/local.default.php     /var/www/zpopenmarket.com/leads/config/local.php
+cp /var/www/zpopenmarket.com/panel/config/local.default.php     /var/www/zpopenmarket.com/panel/config/local.php
+cp /var/www/main.zpopenmarket.com/config/local.default.php      /var/www/main.zpopenmarket.com/config/local.php
+cp /var/www/openid.zpopenmarket.com/config/local.default.php    /var/www/openid.zpopenmarket.com/config/local.php
+Создаём симлинки для nginx конфигов
+mkdir /zero/config/sites-enabled/
+ln -s /zero/config/sites-available/upstreams-dev.conf               /zero/config/sites-enabled/
+ln -s /zero/config/sites-available/dev/main.zpopenmarket.com.conf   /zero/config/sites-enabled/
+ln -s /zero/config/sites-available/dev/zpopenmarket.com.conf        /zero/config/sites-enabled/
+ln -s /zero/config/sites-available/dev/openid.zpopenmarket.com.conf /zero/config/sites-enabled/
+Чтоб локально можно было юзать сертификаты от CloudFlare
+Качаем Cloudflare-Origin-CA и добавляем сертификаты Chrome в ЦЕНТРЫ СЕРТИФИКАЦИИ
+
+Installation
+
+Install Docker Engine
+
+   sudo apt-get update
+   
+   sudo apt-get install -y \
+       apt-transport-https \
+       ca-certificates \
+       curl \
+       software-properties-common
+   
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   
+   sudo add-apt-repository \
+      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) \
+      stable"
+      
+   sudo apt-get update
+   sudo apt-get install docker-ce
+   sudo usermod -aG docker ${USER}
+   sudo reboot now       
+
+Install docker-compose
+
+    sudo curl -L https://github.com/docker/compose/releases/download/1.23.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+Авторизируемся в нашем Docker Registry
+
+docker login git.zeroparallel.com:4567
+Login: username@doubledmarketing.com
+Pass: Your Pass
+
+
+Bash Aliases
+Эта штука нам поможет удобно работать с Docker кон/zero/config/sites-enabled/тейнерами.
+
+    mkdir -p /zero/logs/supervisor 
+    echo "source /zero/dev/.bash_docker_dev" >> ~/.bashrc
+    source ~/.bashrc
+
+www  - Вы попадёте в docker контейнер www под пользователем ZERO
+wwwsu - Вы попадёте в docker контейнер www под пользователем ROOT
+db   - Вы попадёте в docker контейнер db под пользователем ROOT
+sv   - suervisorctl внутри контейнера www
+sv restart nginx php - Перезапустит внутри контейнера nginx и php-fpm
+
+
+Запуск докер-контейнеров
+docker-compose pull
+docker-compose up -d
