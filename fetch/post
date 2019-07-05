@@ -1,0 +1,20 @@
+var obj = {"foo": "bar", "baz": "boom", "php": "hypertext processor"};
+    var str = jQuery.param(obj);
+    console.log(str);
+
+    fetch('/count.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: str
+    })
+        .then(response => response.json())
+        .then(
+            (result) => {
+                console.log(result);
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
