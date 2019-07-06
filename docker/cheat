@@ -2,5 +2,10 @@
 docker ps
 select container
 docker exec -it {selected container} bash
+
+//Запуск докер-контейнеров
+docker-compose pull
+docker-compose up -d
+
 //remove image
 docker rm -f $(docker ps -a -q)
