@@ -1,2 +1,4 @@
 sudo chown -R $USER:www-data storage
 sudo chown -R $USER:www-data bootstrap/cache
+
+https://habr.com/ru/post/439346/
