@@ -3,3 +3,6 @@ sudo chown -R $USER:www-data bootstrap/cache
 
 https://habr.com/ru/post/439346/
 sudo chown -R $USER:$USER ~/laravel-app
+
+помогло 
+chmod -R 777 {app folder} в докере 
