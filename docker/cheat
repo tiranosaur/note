@@ -1,3 +1,6 @@
+//enter to image
 docker ps
 select container
 docker exec -it {selected container} bash
+//remove image
+docker rm -f $(docker ps -a -q)
