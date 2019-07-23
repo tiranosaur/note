@@ -1,0 +1,13 @@
+//.htaccess
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_URI} !echo.php
+RewriteRule .* echo.php?ua=%{REQUEST_URI} [L]
+
+
+
+//echo.php in root folder
+
+<?php
+phpinfo(INFO_VARIABLES);
