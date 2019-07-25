@@ -9,3 +9,7 @@ docker-compose up -d
 
 //remove image
 docker rm -f $(docker ps -a -q)
+
+
+//update docker docker-compose.yml in derectory
+docker-compose pull
