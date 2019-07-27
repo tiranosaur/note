@@ -1,0 +1,6 @@
+  $sql = "";
+
+        foreach (array_filter(array_map('trim', explode(';', $sql))) as $row) {
+            $this->db->createCommand($row)->execute();
+        }
+        return true;
