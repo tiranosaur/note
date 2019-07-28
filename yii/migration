@@ -4,3 +4,13 @@
             $this->db->createCommand($row)->execute();
         }
         return true;
+        
+        
+ public function up()
+    {
+        $this->createTable('article', [
+            'id'     => $this->primaryKey(),
+            'created' => 'datetime DEFAULT NOW()',
+            'updated' => 'datetime ON UPDATE NOW()',
+        ]);
+    }
