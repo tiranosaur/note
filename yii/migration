@@ -14,3 +14,10 @@
             'updated' => 'datetime ON UPDATE NOW()',
         ]);
     }
+
+
+$this->createTable('articles', [
+            'id'     => $this->primaryKey(),
+            'created' => 'timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP',
+            'updated' => 'timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0)',
+        ]);
