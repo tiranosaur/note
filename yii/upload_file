@@ -1,13 +1,18 @@
- $model = new Image();
+ public function actionSetImage($id)
+    {
+            $model = new Image();
 
-        if ($model->load(Yii::$app->request->post())) {
+            if ($model->load(Yii::$app->request->post())) {
+                $article= $this->findModel($id);
+                $file=UploadedFile::getInstance($model, 'image');
+                $model->name=$article->image = $file->name;
+                $article->save();
 
-            $file=UploadedFile::getInstance($model, 'image');
-
-            $fp = fopen($file->tempName, 'r');
-            $content = file_get_contents($file->tempName);
-            fclose($fp);
-            $model->img = $content;
-            $model->save();
-            return $this->render('success');
-        }
+                $content = file_get_contents($file->tempName);
+                $model->name = $file->name;
+                $model->img = $content;
+                $model->save();
+                return $this->render('success');
+            }
+            return $this->render('image', ['model' => $model]);
+    }
