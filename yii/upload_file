@@ -1,0 +1,13 @@
+ $model = new Image();
+
+        if ($model->load(Yii::$app->request->post())) {
+
+            $file=UploadedFile::getInstance($model, 'image');
+
+            $fp = fopen($file->tempName, 'r');
+            $content = file_get_contents($file->tempName);
+            fclose($fp);
+            $model->img = $content;
+            $model->save();
+            return $this->render('success');
+        }
