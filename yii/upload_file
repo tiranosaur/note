@@ -1,3 +1,11 @@
+ if data too big
+ htaccess
+ php_value upload_max_filesize 10M
+php_value post_max_size 10M
+ 
+ 
+ 
+ 
  public function actionSetImage($id)
     {
             $model = new Image();
