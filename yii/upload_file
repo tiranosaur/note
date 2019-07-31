@@ -24,3 +24,28 @@ php_value post_max_size 10M
             }
             return $this->render('image', ['model' => $model]);
     }
+
+
+
+
+show image
+
+<?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns'      => [
+
+            'id',
+            'name',
+            [
+                'attribute' => 'file',
+                'format'    => 'raw',
+                'label' => 'ImageColumnLable',
+                'value' => function ($data) {
+                    $img = base64_encode($data['file']);
+                    return "<img src='data:image/jpeg;base64,{$img}'>";
+                }
+            ],
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
