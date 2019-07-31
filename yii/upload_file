@@ -28,21 +28,21 @@ php_value post_max_size 10M
 
 
 
-show image
+show image 
 
 <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns'      => [
 
-            'id',
+            ['attribute' => 'id', 'headerOptions' => ['style' => 'width:60px']],
             'name',
             [
                 'attribute' => 'file',
                 'format'    => 'raw',
-                'label' => 'ImageColumnLable',
-                'value' => function ($data) {
+                'label'     => 'ImageColumnLable',
+                'value'     => function ($data) {
                     $img = base64_encode($data['file']);
-                    return "<img src='data:image/jpeg;base64,{$img}'>";
+                    return "<img src='data:image/jpeg;base64,{$img}' style='width: 160px;;'>";
                 }
             ],
 
