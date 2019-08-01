@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92c56816-4dc6-4d36-a5a8-6be62b07ded6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/git/cheat" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/migration/m190730_230158_create_users.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/migration/m190730_231954_create_role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/models/ContactForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/models/LoginForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/models/SignupForm.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/models/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/site/about.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/site/contact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/site/error.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/site/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/site/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yii/Auth/site/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,19 +28,51 @@
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/git/cheat">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docker/git">
+        <entry file="file://$PROJECT_DIR$/yii/auth">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yii/Auth/migration/m190730_230158_create_users.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yii/Auth/models/User.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yii/Auth/site/about.php">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docker/zeroProject/sample.env">
+        <entry file="file://$PROJECT_DIR$/yii/Auth/site/index.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yii/Auth/site/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-46" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yii/Auth/site/signup.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker/git">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -40,7 +84,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/docker/zeroProject" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -97,13 +141,34 @@
             <path>
               <item name="note" type="b2602c69:ProjectViewProjectNode" />
               <item name="note" type="462c0819:PsiDirectoryNode" />
-              <item name="docker" type="462c0819:PsiDirectoryNode" />
-              <item name="zeroProject" type="462c0819:PsiDirectoryNode" />
+              <item name="yii" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="note" type="b2602c69:ProjectViewProjectNode" />
               <item name="note" type="462c0819:PsiDirectoryNode" />
-              <item name="rusakov_article" type="462c0819:PsiDirectoryNode" />
+              <item name="yii" type="462c0819:PsiDirectoryNode" />
+              <item name="Auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="note" type="b2602c69:ProjectViewProjectNode" />
+              <item name="note" type="462c0819:PsiDirectoryNode" />
+              <item name="yii" type="462c0819:PsiDirectoryNode" />
+              <item name="Auth" type="462c0819:PsiDirectoryNode" />
+              <item name="migration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="note" type="b2602c69:ProjectViewProjectNode" />
+              <item name="note" type="462c0819:PsiDirectoryNode" />
+              <item name="yii" type="462c0819:PsiDirectoryNode" />
+              <item name="Auth" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="note" type="b2602c69:ProjectViewProjectNode" />
+              <item name="note" type="462c0819:PsiDirectoryNode" />
+              <item name="yii" type="462c0819:PsiDirectoryNode" />
+              <item name="Auth" type="462c0819:PsiDirectoryNode" />
+              <item name="site" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -115,7 +180,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/yii/Auth" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -166,6 +231,7 @@
       <workItem from="1561408468236" duration="1448000" />
       <workItem from="1561411263446" duration="655000" />
       <workItem from="1561416774624" duration="240000" />
+      <workItem from="1564684289142" duration="250000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1559081461497</created>
@@ -206,13 +272,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15336000" />
+    <option name="totallyTimeSpent" value="15586000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17662753" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.178762" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -258,6 +324,20 @@
                 </list>
               </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
           </value>
         </entry>
       </map>
@@ -355,26 +435,37 @@
     <entry file="file://$PROJECT_DIR$/docker/zero/config/sites-enabled/main.zpopenmarket.com.conf" />
     <entry file="file://$PROJECT_DIR$/docker/zero/config/sites-available/arbitrageleads.phonexa.com.conf" />
     <entry file="file://$PROJECT_DIR$/docker/zero/config/nginx/auth/git-status.auth" />
-    <entry file="file://$PROJECT_DIR$/docker/zeroProject/www/index.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker/zeroProject/www/phpinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docker/zeroProject/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/docker/zeroProject/www/index.php" />
+    <entry file="file://$PROJECT_DIR$/docker/zeroProject/www/phpinfo.php" />
+    <entry file="file://$PROJECT_DIR$/docker/zeroProject/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/docker/zeroProject/sample.env" />
     <entry file="file://$PROJECT_DIR$/git/cheat">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docker/git">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker/zeroProject/sample.env">
+    <entry file="file://$PROJECT_DIR$/yii/auth">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yii/Auth/migration/m190730_230158_create_users.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yii/Auth/models/User.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yii/Auth/site/about.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yii/Auth/site/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yii/Auth/site/signup.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yii/Auth/site/index.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
