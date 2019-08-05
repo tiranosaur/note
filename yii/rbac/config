@@ -1,0 +1,8 @@
+  'authManager' => [
+            'class'           => 'yii\rbac\DbManager',
+            'itemTable'       => 'role',
+            'itemChildTable'  => 'role_child',
+            'assignmentTable' => 'role_user',
+            'ruleTable'       => 'role_rule',
+            'defaultRoles'    => ['guest'],// роль которая назначается всем пользователям по умолчанию
+        ],
