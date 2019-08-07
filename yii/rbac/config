@@ -1,4 +1,7 @@
-  'authManager' => [
+ yii migrate --migrationPath=@yii/rbac/migrations
+ 
+ //in config
+ 'authManager' => [
             'class'           => 'yii\rbac\DbManager',
             'itemTable'       => 'role',
             'itemChildTable'  => 'role_child',
