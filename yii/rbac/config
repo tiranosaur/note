@@ -1,6 +1,6 @@
  yii migrate --migrationPath=@yii/rbac/migrations
  
- //in config
+ //in web.php and console.php
  'authManager' => [
             'class'           => 'yii\rbac\DbManager',
             'itemTable'       => 'role',
