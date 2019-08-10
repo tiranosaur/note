@@ -1,9 +1,9 @@
 DROP PROCEDURE IF EXISTS  test;
 
-CREATE   PROCEDURE `test`()
+CREATE   PROCEDURE `test`(IN countRow INTEGER)
 BEGIN 
 
- DECLARE i INT DEFAULT 0;
+ DECLARE i INT DEFAULT 1;
  DECLARE town_id INT DEFAULT 1;
  DECLARE citizen VARCHAR(32);
 
@@ -12,7 +12,7 @@ BEGIN
  SELECT id, name INTO town_id, citizen   FROM town ORDER BY RAND() LIMIT 1;
  SET @str = CONCAT(@str," (\"", town_id,'_',citizen,"\")");
  
-  WHILE i < 10 DO
+  WHILE i < countRow DO
  		SET i = i+1;
  		SELECT id, name INTO town_id, citizen   FROM town ORDER BY RAND() LIMIT 1;
  		SET @str = CONCAT(@str,", (\"", town_id,'_',citizen,"\")");
@@ -29,4 +29,4 @@ DEALLOCATE PREPARE stmt;
 
 END;
 
-CALL test();
+CALL test(10);
