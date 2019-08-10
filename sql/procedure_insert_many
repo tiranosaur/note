@@ -6,33 +6,45 @@ BEGIN
  DECLARE i INT DEFAULT 1;
  DECLARE town_id INT DEFAULT 1;
  DECLARE citizen VARCHAR(32);
+SELECT 0 INTO @id;
+SELECT id INTO @id FROM citizen  ORDER BY id DESC  LIMIT 1;
+#------------------------------------------------------------------------------------------------------
+SET i = 1;
 
   SELECT id, name INTO town_id, citizen   FROM town ORDER BY RAND() LIMIT 1;
 			 SET @str1 = "INSERT INTO citizen (`name`) VALUES ";
 			 SET @str1 = CONCAT(@str1,"(\"", town_id,'_',citizen,"\")"); 
-
-			 SET @str2 = "INSERT INTO citizen_town (citizen_id, town_id) VALUES ";
-			 SET @str2 = CONCAT(@str2," (", i,',',town_id,")");
- 
+			 
   WHILE i < countRow DO
  		SET i = i+1;
  		SELECT id, name INTO town_id, citizen   FROM town ORDER BY RAND() LIMIT 1;
- 		SET @str1 = CONCAT(@str1,", (\"", town_id,'_',citizen,"\")");
-		SET @str2 = CONCAT(@str2,", (", i,',',town_id,")"); 		
- END WHILE;
+ 		SET @str1 = CONCAT(@str1,", (\"", town_id,'_',citizen,"\")");	
+ END WHILE; 
  
  SET @str1 = CONCAT( @str1, ";");
+ 
+PREPARE stmt1 FROM @str1;
+EXECUTE stmt1;
+DEALLOCATE PREPARE stmt1; 
+
+#------------------------------------------------------------------------------------------------------
+SET i = 1;
+
+SELECT id, name INTO town_id, citizen   FROM town ORDER BY RAND() LIMIT 1;			
+			 SET @str2 = "INSERT INTO citizen_town (citizen_id, town_id) VALUES ";
+			 SET @str2 = CONCAT(@str2," (", i+@id,',',town_id,")");
+ 
+  WHILE i < countRow DO
+ 		SET i = i+1;
+ 		SELECT id, name INTO town_id, citizen   FROM town ORDER BY RAND() LIMIT 1; 		
+		SET @str2 = CONCAT(@str2,", (",  i+@id,',',town_id,")"); 		
+ END WHILE;
+
  SET @str2 = CONCAT( @str2, ";");
 
+PREPARE stmt2 FROM @str2;
+EXECUTE stmt2;
+DEALLOCATE PREPARE stmt2; 
 
-PREPARE stmt FROM @str1;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt; 
-
-PREPARE stmt FROM @str2;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt; 
 
 END;
-
-CALL test(10);
