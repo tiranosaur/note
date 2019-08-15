@@ -1,30 +1,3 @@
-<?php	6
-
-
- $roleName = User::find(Auth::user()->id)->roles()->get()->pluck('name')->toArray();	In my recent project, I handled these requirement in that way.. First of All Database Table Structure/Migration
-
-
- User Table
-class CreateUserTable extends Migration {
-
-
- $articles = Article::on()->orderBy('id')->paginate(10)->toArray();	    public function up() {
-$articles = $articles['data'];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 In my recent project, I handled these requirement in that way.. First of All Database Table Structure/Migration
 
 User Table
