@@ -1,43 +1,82 @@
 <?php
 
-namespace App;
+namespace App\Http\Controllers;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Http\Model\Role;
+use App\User;
+use Illuminate\Http\Request;
 
-class User extends Authenticatable
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
+class UserController extends Controller
 {
-    use Notifiable;
+    /**
+     *
+     */
+    public function index()
+    {
+        $users = User::all();
+        return view('user.index', ['users' => $users]);
+    }
 
     /**
-     * The attributes that are mass assignable.
      *
-     * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    public function create()
+    {
+    }
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * @param Request $request
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function store(Request $request)
+    {
+    }
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * @param User $user
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function show(User $user)
+    {
+    }
 
-    public function role(){
-        return $this->belongsToMany(Role::class);
+    /**
+     * @param User $user
+     */
+    public function edit(User $user)
+    {
+        $roles = Role::all();
+        $userRoles = [];
+        foreach ($user->roles as $item) {
+            array_push($userRoles, $item->name);
+        }
+        return view('user.edit', ['user' => $user, 'roles' => $roles, 'userRoles' => $userRoles]);
+    }
+
+    /**
+     * @param Request $request
+     * @param User $user
+     */
+    public function update(Request $request, User $user)
+    {
+        $roles = Role::all();
+        $userRoles = User::getRoles($user);
+        foreach ($roles as $item){
+            try{
+                empty($request->{$item->name}) ? $user->roles()->detach($item->id) : $user->roles()->attach($item->id);
+            }catch (\Exception $e){
+                $aa = 1;
+            }
+        }
+        return $this->index();
+    }
+
+    /**
+     * @param User $user
+     */
+    public function destroy(User $user)
+    {
     }
 }
