@@ -44,12 +44,4 @@ class User extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Role::class);
     }
-
-    public static function getRoles(User $user){
-        $userRoles = [];
-        foreach ($user->roles as $item) {
-            array_push($userRoles, $item->name);
-        }
-        return $userRoles;
-    }
 }
