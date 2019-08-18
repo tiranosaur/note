@@ -38,6 +38,17 @@ RUN docker-php-ext-install -j$(nproc) intl
 
 RUN docker-php-ext-install mbstring
 
+#install mc commander
+RUN apt-get install -y mc
+RUN apt-get update && apt-get install -y mc
+
+# Install Node.js
+RUN apt-get update
+RUN apt-get -y install curl gnupg
+RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
+RUN apt-get -y install nodejs
+RUN npm install
+
 RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ 
 RUN docker-php-ext-install -j$(nproc) gd
