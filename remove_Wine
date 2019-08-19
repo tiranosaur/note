@@ -1,0 +1,11 @@
+/home/eromanov/.wine/drive_c/Program Files/PremiumSoft/Navicat Premium 12
+
+sudo apt-get remove winehq-stable
+
+sudo apt-get purge winehq-stable
+sudo apt-get autoremove
+sudo apt-get clean
+sudo apt-get install -f
+rm -r ~/.wine
+rm -r ~/.local/share/applications/wine/Программы
+rm -rf ~/.local/share/applications/wine*
