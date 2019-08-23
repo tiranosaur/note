@@ -1,0 +1,19 @@
+sudo mysql; parag 2
+
+1. сначала запустите эти команды bash
+sudo /etc/init.d/mysql stop # stop mysql service
+sudo mysqld_safe --skip-grant-tables & # start mysql without password
+# enter -> go
+mysql -uroot # connect to mysql
+2. затем запустите команды mysql => скопируйте и вставьте это в cli вручную
+use mysql; # use mysql table
+update user set authentication_string=PASSWORD("") where User='root'; # update password to nothing
+update user set plugin="mysql_native_password" where User='root'; # set password resolving to default mechanism for root user
+
+flush privileges;
+quit;
+3. запустить больше команд bash
+sudo /etc/init.d/mysql stop 
+sudo /etc/init.d/mysql start # reset mysql
+# try login to database, just press enter at password prompt because your password is now blank
+mysql -u root -p 
