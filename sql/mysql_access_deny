@@ -1,4 +1,10 @@
-sudo mysql; parag 2
+################full remove 
+sudo service mysql stop   &&
+sudo apt-get remove --purge mysql-server mysql-client mysql-common &&
+sudo apt-get autoremove &&
+sudo apt-get autoclean
+
+#################sudo mysql; parag 2
 
 1. сначала запустите эти команды bash
 sudo /etc/init.d/mysql stop # stop mysql service
