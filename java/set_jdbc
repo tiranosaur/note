@@ -1,0 +1,31 @@
+ctrl-alt-s -> java compiler -> per-module bytecode version = 6
+
+
+import java.sql.*;
+import java.util.Properties;
+
+public class Main {
+    private static final String url = "jdbc:mysql://localhost:3306/test";
+    private static final String user = "root";
+    private static final String password = "";
+
+    public static void main(String[] args) throws Exception {
+
+          Properties prop=new Properties();
+          prop.setProperty("useSSL", "false");
+          prop.setProperty("serverTimezone", "Europe/Moscow");
+          Class.forName("com.mysql.cj.jdbc.Driver");
+
+          Connection connection =DriverManager.getConnection("jdbc:mysql://root@localhost:3306/test", prop);
+
+          Statement statement = connection.createStatement();
+          ResultSet resultSet = statement.executeQuery("select * from title");
+          while (resultSet.next()){
+              System.out.println(resultSet.getString("title"));
+          }
+          resultSet.close();
+          statement.close();
+          connection.close();
+
+    }
+}
