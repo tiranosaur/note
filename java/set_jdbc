@@ -1,32 +1,48 @@
 ctrl-alt-s -> java compiler -> per-module bytecode version = 6
 
 
+package com.company;
+
 import java.sql.*;
 import java.util.Properties;
 
 public class Main {
-    private static final String url = "jdbc:mysql://localhost:3306/test";
-    private static final String user = "root";
-    private static final String password = "";
+    private static String table = "articles";
 
     public static void main(String[] args) throws Exception {
 
-          Properties prop=new Properties();
-          prop.setProperty("useSSL", "false");
-          prop.setProperty("serverTimezone", "Europe/Moscow");
-          Class.forName("com.mysql.cj.jdbc.Driver");
-
+        Properties prop = new Properties();
+        prop.setProperty("useSSL", "false");
+        prop.setProperty("serverTimezone", "Europe/Moscow");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 //        Connection connection = DriverManager.getConnection("jdbc:mysql://user:password@localhost:3306/database", prop);
         Connection connection = DriverManager.getConnection("jdbc:mysql://root@localhost:3306/test", prop);
 
-          Statement statement = connection.createStatement();
-          ResultSet resultSet = statement.executeQuery("select * from title");
-          while (resultSet.next()){
-              System.out.println(resultSet.getString("title"));
-          }
-          resultSet.close();
-          statement.close();
-          connection.close();
+        Statement statement = connection.createStatement();
+        boolean deleteTable = statement.execute("DROP TABLE IF EXISTS `"+table+"`;");
+        boolean createTable = statement.execute("" +
+                "CREATE TABLE IF NOT EXISTS `"+table+"`(" +
+                "id INT AUTO_INCREMENT," +
+                "title VARCHAR ( 128 )," +
+                "`author` VARCHAR ( 128 )," +
+                "`created_at` TIMESTAMP (0) NOT NULL DEFAULT CURRENT_TIMESTAMP," +
+                "`updated_at` TIMESTAMP (0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP (0)," +
+                " PRIMARY KEY (id)" +
+                ") ENGINE = INNODB;"
+        );
 
+        for (int i = 0; i < 100; i++) {
+            String tmp = i + ". " + Math.random();
+            boolean insert = statement.execute("INSERT INTO "+table+" (`title`) VALUES ('"+tmp+"')");
+        }
+
+        ResultSet resultSet = statement.executeQuery("SELECT title FROM "+table+"");
+        while (resultSet.next()){
+            System.out.println(resultSet.getString("title"));
+        }
+
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 }
