@@ -2,3 +2,8 @@
   <maven.compiler.source>1.8</maven.compiler.source>
   <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
+
+
+В file->settings->Build->Compiler->Java Compiler кроме Проджект байкоде версион , можно еще нажать на свой проект в окне Module и поменять Таргет байт коде версион... 
+
+P.S.не называйте в своём проекте папки именем "java".
