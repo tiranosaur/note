@@ -1,9 +1,13 @@
+                                                            git pull origin release
 обновить репозиторий                                        git pull
 посмотреть в какой ветке                                    git branch   
-выбор ветки                                                 git checkout имя_ветки                      (git checkout release)
+выбор ветки или создание                                    git checkout имя_ветки                      (git checkout release)
 просмотр всего                                              git status
 добавить коммит                                             git add имя_файла_из_git_status             (git add extensions/controllers/ListController.php)
 добавляя файлы в коммит                                     git add <file1> <file2>
 выполнить коммит                                            git commit -m 'Комментарий к коммиту'       (git commit -m "romanov_2_year_select_error")
 пушим коммит                                                git push origin dev                         (git push origin romanov_2_year_select_error)
 сравнение веток                                             git diff ветка1 ветка2                      (git diff release romanov_2_year_select_error)
+показать изменения коммита                                  git log -p
+удалить ветку                                               git branch -d <имя_ветки>
+создать удаленную ветку                                     git branch -t <local_name> <remote_name>    (git branch -t <romanov_2_year_select_error> <origin/romanov_2_year_select_error> )
