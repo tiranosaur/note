@@ -16,7 +16,8 @@ public class Main {
         prop.setProperty("serverTimezone", "Europe/Moscow");
         Class.forName("com.mysql.cj.jdbc.Driver");
 //        Connection connection = DriverManager.getConnection("jdbc:mysql://user:password@localhost:3306/database", prop);
-        Connection connection = DriverManager.getConnection("jdbc:mysql://root@localhost:3306/test", prop);
+//        Connection connection = DriverManager.getConnection("jdbc:mysql://root@localhost:3306/test", prop);
+        Connection connection = DriverManager.getConnection("jdbc:mysql://png:png@127.0.0.1:3306/png", prop);
 
         Statement statement = connection.createStatement();
         boolean deleteTable = statement.execute("DROP TABLE IF EXISTS `"+table+"`;");
