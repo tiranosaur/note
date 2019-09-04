@@ -1,0 +1,22 @@
+ public function signup(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'name'     => 'required|string|unique:users',
+            'username' => 'required|string|unique:users',
+            'email'    => 'required|string|email|unique:users',
+            'password' => 'required|string'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['message' => 'User is registered'], 201);
+        }else{
+            $user = new User([
+                'name'     => $request->name,
+                'username' => $request->name,
+                'email'    => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+            $user->save();
+            return response()->json(['message' => 'Successfully created user!'], 201);
+        }
+    }
