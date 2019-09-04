@@ -4,3 +4,5 @@ https://medium.com/modulr/create-api-authentication-with-passport-of-laravel-5-6
 header->
 Accept : application/json
 Authorization : Bearer {access_token}
+
+auth('api')->user()->id  /////////get user id
