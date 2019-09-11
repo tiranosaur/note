@@ -12,3 +12,11 @@
 удалить ветку                                               git branch -d <имя_ветки>
 создать удаленную ветку                                     git branch -t <local_name> <remote_name>    (git branch -t <romanov_2_year_select_error> <origin/romanov_2_year_select_error> )
 отменить коммит сохранить изменения                         git reset HEAD~1         (несколько коммитов ~1 изменить на хеш коммита)     http://evtuhovich.ru/blog/2009/04/03/git-reset/
+
+
+git stash apply - применить изменения к текущей версии
+git stash list - вывести список изменений
+git stash show - вывести последние изменния
+git stash drop - удалить последние изменения в списке 
+git stash pop - [apply] + [drop]
+git stash clear - очистить список изменений
