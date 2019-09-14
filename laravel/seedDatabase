@@ -9,17 +9,17 @@ class ArticlesSeeder extends Seeder
     {
         //
         DB::insert("INSERT INTO `articles` (`title`, `text`) VALUES (?, ?)", [
-            'TITLE', 'rOMANOFFak440944 rOMANOFFak440944 rOMANOFFak440944'
+            'TITLE', 'rOM4'
         ]);
 
         DB::table('articles')->insert([
-            ['title'=>'RomanoffAK440944', 'text'=>'Skinhead88 rOMANOFFak440944 rOMANOFFak440944'],
-            ['title'=>'RSkinhead88omanoffAK440944', 'text'=>'SkRomanoffAK440944inhead88 rOMANOFFak440944 rOMANOFFak440944'],
+            ['title'=>'Ro4', 'text'=>'Ski8 rOMAN4 rOMAN4'],
+            ['title'=>'RSk944', 'text'=>'zdsrgsawergazwer zdsrgsawergazwer sdfathergawserfg'],
         ]);
 
         $article = new \App\Http\Model\Article();
         $article->title = "ormTitle";
-        $article->text = "RomanoffAK440944 Skinhead88 RomanoffAK440944 Skinhead88";
+        $article->text = "srhsrezsgaw zdsrgsawergazwer zdsrgsawergazwer";
         $article->save();
     }
 }
