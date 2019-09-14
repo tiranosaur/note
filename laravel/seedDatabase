@@ -27,3 +27,31 @@ class ArticlesSeeder extends Seeder
         Article::create(['title' => 'srhsrezsgaw', 'text' => 'srhsrezsgaw srhsrezsgaw srhsrezsgaw']);
     }
 }
+
+
+
+
+
+
+
+
+<?php
+
+use App\Http\Model\Article as Article;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        var_dump("lksdjf");
+        // $this->call(UsersTableSeeder::class);
+//        $this->call(ArticlesSeeder::class);
+        factory(Article::class, 10)->create();
+    }
+}
