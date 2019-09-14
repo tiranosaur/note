@@ -21,5 +21,9 @@ class ArticlesSeeder extends Seeder
         $article->title = "ormTitle";
         $article->text = "srhsrezsgaw zdsrgsawergazwer zdsrgsawergazwer";
         $article->save();
+       
+       
+       
+        Article::create(['title' => 'srhsrezsgaw', 'text' => 'srhsrezsgaw srhsrezsgaw srhsrezsgaw']);
     }
 }
