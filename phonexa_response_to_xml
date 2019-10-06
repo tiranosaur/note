@@ -1,0 +1,34 @@
+<?php
+
+$fff['mmmmm'] = 'oweirut';
+$fff['first'] = ['m' => 22, 'a' => 'lsdkfj'];
+$fff['cc'] = 5;
+$ppp=['trig'=>$fff];
+(new PrintArray)->printArr($ppp);
+
+class printArray
+{
+    private $prefix = [];
+
+    function printArr($arr)
+    {
+        if (count($arr) == 0) return;
+
+        $currentKey = array_keys($arr)[0];
+        $currentValue = $arr[$currentKey];
+        unset($arr[$currentKey]);
+
+        if (!is_array($currentValue)) {
+            echo implode('->', $this->prefix);
+            if (count($this->prefix)>0) echo '->';
+            echo $currentKey . ' = ' . $currentValue;
+            echo '<br>';
+        } else {
+            array_push($this->prefix, $currentKey);
+            $this->printArr($currentValue);
+        }
+
+        if (count($arr)==0) array_pop($this->prefix);
+        $this->printArr($arr);
+    }
+}
