@@ -23,3 +23,5 @@ git stash clear - очистить список изменений
 
 
 git stash save "my_stash"
+git stash list
+git stash pop stash@{0} - выбрать по хешу
