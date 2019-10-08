@@ -20,3 +20,6 @@ git stash show - вывести последние изменния
 git stash drop - удалить последние изменения в списке 
 git stash pop - [apply] + [drop]
 git stash clear - очистить список изменений
+
+
+git stash save "my_stash"
