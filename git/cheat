@@ -13,6 +13,7 @@
 создать удаленную ветку                                     git branch -t <local_name> <remote_name>    (git branch -t <romanov_2_year_select_error> <origin/romanov_2_year_select_error> )
 отменить коммит сохранить изменения                         git reset HEAD~1         (несколько коммитов ~1 изменить на хеш коммита)     http://evtuhovich.ru/blog/2009/04/03/git-reset/
 
+прщсмотр удаленных веток и поиск                            git branch -a | grep romanov
 
 git stash apply - применить изменения к текущей версии
 git stash list - вывести список изменений
