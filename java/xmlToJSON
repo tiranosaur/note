@@ -1,0 +1,5 @@
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
+
+XML.toJSONObject(xml_text).toString()
