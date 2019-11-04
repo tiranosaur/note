@@ -7,3 +7,19 @@
 В file->settings->Build->Compiler->Java Compiler кроме Проджект байкоде версион , можно еще нажать на свой проект в окне Module и поменять Таргет байт коде версион... 
 
 P.S.не называйте в своём проекте папки именем "java".
+
+
+in pom.xml
+
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
