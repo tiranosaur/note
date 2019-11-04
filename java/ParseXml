@@ -1,0 +1,52 @@
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.StringReader;
+import java.util.HashMap;
+
+public class ParseXml {
+    public static String fieldString;
+
+    public static void main(String[] args) {
+        fieldString = "<note>  \n" +
+                "  <to>Tove</to>  \n" +
+                "  <from>Jani</from>  \n" +
+                "  <heading>Reminder</heading>  \n" +
+                "  <body>Don't forget me this weekend!</body>  \n" +
+                "</note>  ";
+        HashMap<String, String> values=convertXml();
+        System.out.println(values.toString());
+    }
+
+    public static HashMap convertXml() {
+        HashMap<String, String> values = new HashMap<String, String>();
+        Document xml = convertStringToDocument(fieldString);
+        Node user = xml.getFirstChild();
+        NodeList childs = user.getChildNodes();
+        Node child;
+        for (int i = 0; i < childs.getLength(); i++) {
+            child = childs.item(i);
+            if (child.getNodeName().indexOf("#text")<0){
+                values.put(child.getNodeName(), child.getTextContent());
+            }
+        }
+        return values;
+    }
+
+    private static Document convertStringToDocument(String xmlStr) {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder;
+        try {
+            builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
+            return doc;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+}
