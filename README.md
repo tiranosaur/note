@@ -8,8 +8,6 @@ https://github.com/Sukora-Stas/JavaRushTasks/blob/master/1.JavaSyntax/src/com/ja
 
 https://github.com/avedensky/JavaRushTasks
 
-http://spec-zone.ru/RU/Java/Tutorials/java/index.html
-
 
 proglib.io
 
