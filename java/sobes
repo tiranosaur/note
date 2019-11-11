@@ -1,0 +1,9 @@
+//public class Main {
+//
+//}
+//equals
+public class Main extends Object{
+    Main(){
+        super();
+    }
+}
