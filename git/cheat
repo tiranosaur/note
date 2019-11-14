@@ -9,7 +9,8 @@
 пушим коммит                                                git push origin dev                         (git push origin romanov_2_year_select_error)
 сравнение веток                                             git diff ветка1 ветка2                      (git diff release romanov_2_year_select_error)
 показать изменения коммита                                  git log -p
-удалить ветку                                               git branch -d <имя_ветки>
+удалить ветку                                               git branch -В <имя_ветки>
+удалить ветку гита                                          git branch -D origin/update_integration_prime_lead
 создать удаленную ветку                                     git branch -t <local_name> <remote_name>    (git branch -t <romanov_2_year_select_error> <origin/romanov_2_year_select_error> )
 отменить коммит сохранить изменения                         git reset HEAD~1         (несколько коммитов ~1 изменить на хеш коммита)     http://evtuhovich.ru/blog/2009/04/03/git-reset/
 
@@ -27,7 +28,4 @@ git stash save "my_stash"
 git stash list
 git stash pop stash@{0} - выбрать по хешу
 
-git checkout твоя ветка
-git fetch(или pull)
-git rebase origin/release
-git push --force
+https://pingvinus.ru/git/1591
