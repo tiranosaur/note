@@ -26,3 +26,8 @@ git stash clear - очистить список изменений
 git stash save "my_stash"
 git stash list
 git stash pop stash@{0} - выбрать по хешу
+
+git checkout твоя ветка
+git fetch(или pull)
+git rebase origin/release
+git push --force
