@@ -29,3 +29,31 @@ git stash list
 git stash pop stash@{0} - выбрать по хешу
 
 https://pingvinus.ru/git/1591
+
+
+Внимание! Для тех, у кого есть проблемы с ребейзом:mkdir /home/$USER/mypatches/
+git fetch --all
+git checkout my_branch
+git pull origin my_branch
+git pull origin release
+git diff origin/release > /home/$USER/mypatches/my_branch.patch
+git checkout origin release
+git reset --hard origin/release
+git clean -f -d
+git checkout -b my_branch_patched
+git apply /home/$USER/mypatches/my_branch.patch
+git add .
+git commit -m '[my_branch_patched] patched branch'
+git push origin my_branch_patched
+
+
+
+Если старая ветка или аналог rebase
+
+git fetch
+git merge origin/release
+git add .
+git commit -m
+git reset --soft origin/release
+git push --force origin branch_name
+git diff --name-only origin/release
