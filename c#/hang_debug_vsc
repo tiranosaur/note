@@ -1,0 +1,1 @@
+debug -> open configuration -> change ("console": "internalConsole",)->("console": "externalTerminal",)
