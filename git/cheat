@@ -54,6 +54,6 @@ git fetch
 git merge origin/release
 git add .
 git commit -m
-git reset --soft origin/release
-git push --force origin branch_name
+git reset --soft origin/release  
+git push --force origin branch_name    (smart force push git push --force-with-lease origin branch_name)
 git diff --name-only origin/release
