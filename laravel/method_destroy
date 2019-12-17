@@ -1,0 +1,20 @@
+@if ($tasks>0)
+        <div class="container">
+            <div class="card">
+                <div class="card-header">Tasks for you</div>
+                <div class="card-body">
+                    @foreach($tasks as $item)
+                        <form action="{{ route("task.destroy", $item->id) }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <div>
+                                <label for="name" class=" col-sm-2">{{ $item->name }}</label>
+                                <button type="submit" class="btn btn-light"><big><b>-</b></big> Delete task</button>
+                            </div>
+                        </form>
+                        <hr>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
