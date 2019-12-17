@@ -1,0 +1,28 @@
+1. create new politic     ./artisan make:policy TaskPolicy  
+
+1.2 register politic in laravel/app/Providers/AuthServiceProvider.php
+protected $policies = [
+        // 'App\Model' => 'App\Policies\ModelPolicy',
+       'App\Http\Models\Task' => 'App\Policies\TaskPolicy',
+    ];
+
+2. controller func to auth
+    public function destroy(Task $task)
+    {
+        $this->authorize('destroy', $task);
+        $task->delete();
+        return $this->index();
+
+    }
+    
+3. taskPolicy
+class TaskPolicy
+{
+    use HandlesAuthorization;
+
+    public function destroy(User $user, Task $task)
+    {
+        $aa=$user->id === $task->user_id;
+        return $user->id === $task->user_id;
+    }
+}
