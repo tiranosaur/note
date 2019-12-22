@@ -2,7 +2,9 @@
   "require-dev": {       
         "squizlabs/php_codesniffer": "3.*"
     },
-2. setting composer -> install.
+2. setting composer(zero_webserver:latest) -> install->update.
+  2.2 check /vendor/bin/phpcs and /vendor/bin/phpcbf
 3. reboot phpstrom
 4. settings->quality tool->code sniffer
 5.  php code sniffer path -> /opt/project/vendor/bin/phpcs
+6. enable code sniffer
