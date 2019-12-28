@@ -1,0 +1,28 @@
+$matrixArr = [ -1, -1, -1, -1];
+        $count = range(0, 4);
+        while ($matrixArr[0]!=count($count) - 1) {
+            while (true) {
+                ++$matrixArr[count($matrixArr) - 1];
+
+
+                System("clear");
+                echo implode(' ', $matrixArr);
+                usleep(10);
+
+                if ($matrixArr[count($matrixArr) - 1] == count($count) - 1) {
+                    break;
+                }
+            }
+            $matrixArr[count($matrixArr) - 1] = 0;
+            for ($item = count($matrixArr) - 2; $item >= 0; $item--) {
+                if ($matrixArr[$item] < $this->_bricksTypeCount - 1) {
+                    ++$matrixArr[$item];
+                    break;
+                } elseif (isset($matrixArr[$item - 1]) && $matrixArr[$item - 1] < count($count) - 1) {
+                    $matrixArr[$item] = 0;
+                    ++$matrixArr[$item - 1];
+                    break;
+                }
+
+            }
+        }
