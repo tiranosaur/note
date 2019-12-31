@@ -19,3 +19,11 @@ var obj = {"foo": "bar", "baz": "boom", "php": "hypertext processor"};
                 console.log(error);
             }
         )
+
+
+
+
+fetch("<?php echo "{$_ENV['URL']}/testCounter}" ?>", {
+        method: 'POST',
+        body:new URLSearchParams("email=test@example.com&password=pw")
+    });
