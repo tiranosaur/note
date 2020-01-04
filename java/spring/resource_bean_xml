@@ -4,19 +4,19 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-<!--    подключить файл контекста. потом можно ${musicPlayer.name}
+<!--
+        <context:property-placeholder location="music.properties"/>
+        подключить файл контекста. потом можно ${musicPlayer.name}
         main/resources/music_context.xml
         musicPlayer.name=Some name
         musicPlayer.volume = 70
 -->
     <context:property-placeholder location="music.properties"/>
-    
-<!--    scope метод создания или нью обжект или синглтон-->
+
+<!--scope - метод создания или нью обжект или синглтон-->
     <bean id="music" class="ClassicalMusic" scope="singleton">
-<!--        конструктор-->
-        <constructor-arg value="MySong"/>
-<!--        сеттер-->
-        <property name="song" value="${musicPlayer.name}"/>
+    <constructor-arg value="MySong"/>                           <!--конструктор-->
+        <property name="song" value="${musicPlayer.name}"/>     <!--сеттер-->
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
