@@ -13,14 +13,24 @@
 -->
     <context:property-placeholder location="music.properties"/>
 
-<!--scope - метод создания или нью обжект или синглтон-->
     <bean id="music" class="ClassicalMusic" scope="singleton">
     <constructor-arg value="MySong"/>                           <!--конструктор-->
         <property name="song" value="${musicPlayer.name}"/>     <!--сеттер-->
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
-    <bean id="musicPlayer" class="MusicPlayer" scope="prototype">
+
+<!--
+    scope - метод создания или нью обжект или синглтон
+    init-method - метод при создании объекта
+    destroy-method - метод при уничтожении объекта
+-->
+    <bean id="musicPlayer"
+          class="MusicPlayer"
+          scope="prototype"
+          init-method="initMethod"
+          destroy-method="destroyMethod"
+    >
         <constructor-arg ref="music"/>
     </bean>
 </beans>
