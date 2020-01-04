@@ -6,12 +6,13 @@
 
     <context:property-placeholder location="music.properties"/>
 
-    <bean id="music" class="ClassicalMusic">
+    <bean id="music" class="ClassicalMusic" scope="singleton">
         <constructor-arg value="MySong"/>
         <property name="song" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
-    <bean id="musicPlayer" class="MusicPlayer">
+
+    <bean id="musicPlayer" class="MusicPlayer" scope="prototype">
         <constructor-arg ref="music"/>
     </bean>
 </beans>
