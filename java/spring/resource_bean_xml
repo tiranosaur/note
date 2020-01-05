@@ -5,6 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 <!--
+        ClassPathXmlApplicationContext cpx = new ClassPathXmlApplicationContext("music_context.xml");
+        MusicPlayer player = cpx.getBean("musicPlayer", MusicPlayer.class);
+        cpx.close();
+
         <context:property-placeholder location="music.properties"/>
         подключить файл контекста. потом можно ${musicPlayer.name}
         main/resources/music_context.xml
@@ -13,7 +17,7 @@
 -->
     <context:property-placeholder location="music.properties"/>
 
-    <bean id="music" class="ClassicalMusic" scope="singleton">
+    <bean id="music" class="ClassicalMusic" scope="prototype">
     <constructor-arg value="MySong"/>                           <!--конструктор-->
         <property name="song" value="${musicPlayer.name}"/>     <!--сеттер-->
         <property name="volume" value="${musicPlayer.volume}"/>
@@ -23,11 +27,11 @@
 <!--
     scope - метод создания или нью обжект или синглтон
     init-method - метод при создании объекта
-    destroy-method - метод при уничтожении объекта
+    destroy-method - метод при уничтожении объекта  если scope="prototype" не вызывается
 -->
     <bean id="musicPlayer"
           class="MusicPlayer"
-          scope="prototype"
+          scope="singleton"
           init-method="initMethod"
           destroy-method="destroyMethod"
     >
