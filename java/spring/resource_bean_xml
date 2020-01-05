@@ -8,15 +8,15 @@
         ClassPathXmlApplicationContext cpx = new ClassPathXmlApplicationContext("music_context.xml");
         MusicPlayer player = cpx.getBean("musicPlayer", MusicPlayer.class);
         cpx.close();
--->        
+-->
     
 <!--
         public class ClassicalMusic extends Music {
-        
+
             private ClassicalMusic() {
                 super();
             }
-        
+
             public static ClassicalMusic getClassicalMusic() {
                 return new ClassicalMusic();
             }
@@ -26,7 +26,7 @@
         main/resources/music_context.xml
         musicPlayer.name=Some name
         musicPlayer.volume = 70
-        factory-method="getClassicalMusic"
+        factory-method="getClassicalMusic" создание объекта через фабричный метод
 -->
     <context:property-placeholder location="music.properties"/>
 
