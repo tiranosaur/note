@@ -9,7 +9,7 @@
         MusicPlayer player = cpx.getBean("musicPlayer", MusicPlayer.class);
         cpx.close();
 -->
-    
+
 <!--
         public class ClassicalMusic extends Music {
 
