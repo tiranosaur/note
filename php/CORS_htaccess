@@ -1,0 +1,2 @@
+Header Set Access-Control-Allow-Origin https://www.youtube.com
+    accept youtube request
