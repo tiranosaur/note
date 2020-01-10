@@ -11,6 +11,6 @@ https://sandro-keil.de/blog/docker-php-xdebug-cli-debugging/
         PHP_IDE_CONFIG: "serverName=DockerServer"
 4. restart phpstorm
 5. lang and framework -> php -> server ->
-  create new server name - DockerServer host - DockerServer port - {from docker ps}
+  create new server name - DockerServer host(from docker-compose.yml) - DockerServer port - {from docker ps}
   set project file.
 6. set brearpoint and run script from command line
