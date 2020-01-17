@@ -1,0 +1,7 @@
+private function scaleImageHeight($height=400)
+    {
+        $image = new SimpleImage();
+        $image->load($_FILES['image']['tmp_name']);
+        $image->resizeToHeight($height);
+        $image->save($_FILES['image']['tmp_name'], $image->image_type);
+    }
