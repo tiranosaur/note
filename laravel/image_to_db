@@ -1,3 +1,14 @@
+ public function up()
+    {
+        Schema::create('images', function (Blueprint $table) {
+            $table->integer('user_id');
+            $table->string('name');
+            $table->string('mime_type');
+        });
+
+        DB::statement("ALTER TABLE `images` ADD image LONGBLOB");
+    }
+ 
  if ($request->avatar) {
                 $image            = new Image();
                 $image->user_id   = $user->id;
