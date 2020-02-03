@@ -12,8 +12,8 @@
  if ($request->avatar) {
                 $image            = new Image();
                 $image->user_id   = $user->id;
-                $image->mime_type = $request->avatar->getMimeType();
-                $image->name      = $request->avatar->getClientOriginalName();
-                $image->imgage    = base64_encode($request->file('avatar')->get($image->getConnectionName()));
+                $image->name      = $request->file('image')->getClientOriginalName();
+                $image->mime_type = $request->file('image')->getMimeType();
+                $image->image     = base64_encode($request->file('image')->get($image->name));
                 $image->save();
             }
