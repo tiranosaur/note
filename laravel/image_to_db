@@ -17,3 +17,7 @@
                 $image->image     = base64_encode($request->file('image')->get($image->name));
                 $image->save();
             }
+
+
+
+ <img src='data:image/jpeg;base64, {{ $user->images[0]->image }}' style="width: 100px">
