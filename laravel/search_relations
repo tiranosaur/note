@@ -1,0 +1,5 @@
+        if ($request->input('locations')) {
+            $jobPosts->whereHas('locations', function ($query) use ($request) {
+                $query->whereIn('locations.id', $request->input('locations'));
+            })->get();
+        }
