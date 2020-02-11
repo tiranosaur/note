@@ -1,1 +1,21 @@
 http://www.itmathrepetitor.ru/laravel-5-5-shpargalka-po-otnosheniyam-v-eloquent/
+
+********oneToMany**********
+    class Car extends Model
+    {   
+        public function owners(){
+            return $this->belongsTo(Owner::class, 'owner_id', 'id');
+        }
+    }
+    class Owner extends Model
+    {
+        public function cars(){
+            return $this->hasMany(Car::class, "owner_id", "id");
+        }
+    }
+    public function carToOwner(){
+        $owner = Owner::find(2);
+        $car = new Car();
+        $car->name = "name";
+        $car->owners()->associate($owner)->save();
+    }
