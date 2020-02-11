@@ -1,6 +1,8 @@
 http://www.itmathrepetitor.ru/laravel-5-5-shpargalka-po-otnosheniyam-v-eloquent/
 
+***************************
 ********oneToMany**********
+***************************
     class Car extends Model
     {   
         public function owners(){
@@ -19,3 +21,12 @@ http://www.itmathrepetitor.ru/laravel-5-5-shpargalka-po-otnosheniyam-v-eloquent/
         $car->name = "name";
         $car->owners()->associate($owner)->save();
     }
+    public function ownerToCar(){
+        $owner = Owner::find(2);
+        $car = new Car();
+        $car->name = "llllllllllllllllllll";
+        $owner->cars()->save($car);
+    }
+********************************************************************
+**********************************************************************
+*********************************************************************
