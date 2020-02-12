@@ -1,0 +1,40 @@
+[
+  {
+    ‌"foodItemsList": [
+      ‌{
+        ‌"id": 7,
+        ‌"price": 240,
+        ‌"quantity": 1‌
+      },
+      ‌{
+        ‌"id": 8,
+        ‌"quantity": 1‌
+      }
+    ],
+    ‌"price": 340,
+    ‌"customer_id": 1
+  },
+  {
+    ‌"foodItemsList": [
+      ‌{
+        ‌"id": 7,
+        ‌"quantity": 1‌
+      },
+      ‌{
+        ‌"id": 8,
+        ‌"quantity": 1‌
+      }
+    ],
+    ‌"customer_id": 2
+  }
+]
+
+return [
+
+‌ '*.customer_id' => 'required|numeric|exists:customers,id',
+
+‌ '*.foodItemsList.*.id' => 'required|exists:food_items,id',
+
+‌ '*.foodItemsList.*.quantity' => 'required|numeric',
+
+‌ ];
