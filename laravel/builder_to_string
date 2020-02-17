@@ -1,0 +1,2 @@
+ $query = str_replace(array('?'), array('\'%s\''), $builder->toSql());
+$query = vsprintf($query, $builder->getBindings());
