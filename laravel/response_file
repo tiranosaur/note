@@ -1,0 +1,2 @@
+return response()->download(\Storage::getDriver()->getAdapter()->getPathPrefix().$document->path);
+return response(Storage::get($document->path));
