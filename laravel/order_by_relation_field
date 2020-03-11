@@ -1,0 +1,9 @@
+$response = SubscriptionRequest::with('users')
+            ->with('subscriptionTypes')
+            ->with('receipts')
+            ->leftJoin('subscription_receipts', 'subscription_receipts.request_id', "=", 'subscription_requests.id')
+            ->select('subscription_requests.*')
+            ->orderBy('subscription_receipts.created_at', 'asc')
+            ->paginate($request->input('per_page'))->toArray();
+            
+            from left join
