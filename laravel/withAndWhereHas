@@ -1,0 +1,11 @@
+I want to extend the answer from @lukasgeiter using static functions.
+
+public static function withAndWhereHas($relation, $constraint){
+    return (new static)->whereHas($relation, $constraint)
+        ->with([$relation => $constraint]);
+}
+Usage is the same
+
+User::withAndWhereHas('submissions', function($query) use ($id){
+    $query->where('taskid', $id);
+})->get();
