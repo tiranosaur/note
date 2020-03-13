@@ -1,0 +1,86 @@
+call find_overall('lsc_site', 'back to button')
+
+
+
+
+DROP PROCEDURE IF EXISTS find_overall;
+delimiter $$
+CREATE PROCEDURE find_overall(
+  p_dbname VARCHAR(64),
+  p_search VARCHAR(255)
+)
+BEGIN
+  DECLARE search_string VARCHAR(512);
+  DECLARE table_name VARCHAR(64);
+  DECLARE column_name VARCHAR(64);
+  DECLARE selections TEXT;
+  DECLARE conditions TEXT;
+  DECLARE eof BOOL;
+  DECLARE curs_tables CURSOR FOR
+    SELECT DISTINCT c.table_name
+    FROM information_schema.columns c
+    WHERE c.table_schema = p_dbname
+      AND c.data_type IN (
+        'char', 'varchar', 'binary', 'varbinary',
+        'tinytext', 'text', 'mediumtext', 'longtext',
+        'tinyblob', 'blob', 'mediumblob', 'longblob'
+      );
+  DECLARE curs_columns CURSOR FOR
+    SELECT c.column_name
+    FROM information_schema.columns c
+    WHERE c.table_schema = p_dbname
+      AND c.table_name = table_name
+      AND c.data_type IN (
+        'char', 'varchar', 'binary', 'varbinary',
+        'tinytext', 'text', 'mediumtext', 'longtext',
+        'tinyblob', 'blob', 'mediumblob', 'longblob'
+      );
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET eof = TRUE;
+
+  SET search_string = QUOTE(p_search);
+  SET search_string = SUBSTR(search_string, 2, LENGTH(search_string) - 2);
+
+  OPEN curs_tables;
+  SET eof = FALSE;
+
+  L_tables: LOOP
+    FETCH curs_tables INTO table_name;
+
+    IF eof THEN LEAVE L_tables; END IF;
+
+    OPEN curs_columns;
+    SET selections = '';
+    SET conditions = '';
+
+    L_columns: LOOP
+      FETCH curs_columns INTO column_name;
+
+      IF eof THEN LEAVE L_columns; END IF;
+
+      SET selections = CONCAT(selections,
+        IF(selections = '', '', ', '),
+        'IF(`', column_name, '` LIKE "%', search_string, '%", `', column_name, '`, NULL)',
+        ' `', column_name, '`'
+      );
+      SET conditions = CONCAT(conditions,
+        IF(conditions = '', '', ' OR '),
+        '`', column_name, '` LIKE "%', search_string, '%"'
+      );
+    END LOOP;
+
+    CLOSE curs_columns;
+    SET eof = FALSE;
+
+    SET @stm = CONCAT(
+      'SELECT "', table_name, '" `$table$`, ', selections,
+      ' FROM `', p_dbname, '`.`', table_name, '`',
+      ' WHERE ', conditions
+    );
+    PREPARE find_overall FROM @stm;
+    EXECUTE find_overall;
+    DROP PREPARE find_overall;
+  END LOOP;
+
+  CLOSE curs_tables;
+END;$$
+delimiter ;
