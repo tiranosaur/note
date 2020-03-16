@@ -1,0 +1,43 @@
+1.  class User extends Authenticatable implements JWTSubject, MustVerifyEmail
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+    
+2.    public function registration()
+    {
+        $name     = request('name');
+        $email    = request('email');
+        $password = request('password');
+
+        $user                 = new User();
+        $user->name           = $name;
+        $user->email          = $email;
+        $user->password       = Hash::make($password);
+        $user->remember_token = Str::random();
+        $user->save();
+
+        Notification::send($user, new SendVerifyEmail($user));   
+
+        return response()->json(['message' => 'Successfully registration!', 'user' => $user->toArray()]);
+    }
+3. Route::get('/email/verify', 'VerifyController@verify')->name('verification.verify');
+
+4.  class VerifyController
+    {
+        public function verify(Request $request){
+            $user = User::where('email', $request->input('email'))->first();
+            auth()->login($user);
+            if ($user->remember_token == $request->input('token')){
+                $token = auth()->tokenById($user->getKey());
+            }else{
+                $aa = 1;
+            }
+        }
+    }
+  
