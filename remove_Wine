@@ -19,3 +19,6 @@ sudo apt-get remove winehq-stable && sudo apt-get purge winehq-stable && sudo ap
 
 
 sudo apt-get remove --autoremove wine-* && remove winehq-stable && sudo apt-get purge winehq-stable && sudo apt-get autoremove && sudo apt-get clean && sudo apt-get install -f && rm -r ~/.wine && rm -r ~/.local/share/applications/wine/Программы  && rm -rf ~/.local/share/applications/wine*
+
+
+sudo apt install wine-stable
