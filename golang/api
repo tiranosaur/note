@@ -1,0 +1,40 @@
+package api
+
+//http://localhost:10000/
+
+import (
+"fmt"
+	"io/ioutil"
+	"log"
+"net/http"
+)
+
+func main() {
+	handleRequests()
+}
+
+func index(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, file_get_content("view/index.html")) //in project root folder
+	fmt.Println("Endpoint Hit: index")
+}
+
+func home(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "home!")
+	fmt.Println("Endpoint Hit: home")
+}
+
+func handleRequests() {
+	http.HandleFunc("/", index)
+	http.HandleFunc("/index", index)
+	http.HandleFunc("/home", home)
+	log.Fatal(http.ListenAndServe(":10000", nil))
+}
+
+func file_get_content(file string) string {
+	data, err := ioutil.ReadFile(file)
+	if err != nil {
+		fmt.Println("File reading error", err)
+		return "file not found"
+	}
+	return string(data)
+}
