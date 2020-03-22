@@ -1,0 +1,3 @@
+for $INDEX$ := 0; $INDEX$ < $LIMIT$; $INDEX$++{
+ $END$
+}
