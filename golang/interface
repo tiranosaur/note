@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+
+type person struct {
+	name string
+}
+
+func (person person) getName() string {
+	return person.name
+}
+
+type PersonInterface interface {
+	getName() string
+}
+
+func getName(p PersonInterface) string {
+	return p.getName()
+}
+
+func main() {
+	tom := person{name: "Tom"}
+	fmt.Println(getName(tom))
+}
