@@ -1,3 +1,14 @@
+import (
+	"database/sql"
+	"fmt"
+	_ "github.com/go-sql-driver/mysql"
+)
+
+type user struct {
+	id   int
+	name string
+}
+
 func main() {
 	db, _ := sql.Open("mysql", "png:png@tcp(localhost:3306)/png")
 	rows, _ := db.Query("SELECT * FROM users")
