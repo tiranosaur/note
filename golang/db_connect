@@ -1,0 +1,1 @@
+db, error := sql.Open("mysql", "png:png@tcp(localhost:3306)/png")
