@@ -1,3 +1,7 @@
+// go get github.com/go-sql-driver/mysql
+
+
+
 import (
 	"database/sql"
 	"fmt"
