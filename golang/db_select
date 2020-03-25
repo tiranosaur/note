@@ -1,0 +1,17 @@
+func main() {
+	db, _ := sql.Open("mysql", "png:png@tcp(localhost:3306)/png")
+	rows, _ := db.Query("SELECT * FROM users")
+	defer rows.Close()
+	users := []user{}
+	for rows.Next() {
+		user := user{}
+		err := rows.Scan(&user.id, &user.name)
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		users = append(users, user)
+	}
+	fmt.Println(users)
+
+}
