@@ -1,0 +1,13 @@
+type User struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+
+func TokenHandler(w http.ResponseWriter, r *http.Request) {
+	
+	buf := make([]byte, r.ContentLength)
+	r.Body.Read(buf)
+	user := model.User{}
+	json2.Unmarshal(buf, &user)
+}
