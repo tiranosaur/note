@@ -1,0 +1,16 @@
+package main
+
+import (
+	"database/sql"
+)
+
+type singleton *sql.DB
+
+var instance singleton
+
+func GetInstance() sql.DB {
+	if instance == nil {
+		instance, _ = sql.Open("mysql", "png:png@tcp(localhost:3306)/png")
+	}
+	return *instance
+}
