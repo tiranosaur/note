@@ -1,0 +1,14 @@
+1 ./artisan make:rule CustomNameRule
+2  CustomNameRule
+     public function passes($attribute, $value)
+    {
+       
+        return true; //if pass
+        return false; //if can't pass
+    }
+3  public function rules()
+    {
+        return [
+            'id' => ['integer', new CustomNameRule],           
+        ];
+    }
