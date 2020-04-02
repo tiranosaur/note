@@ -1,0 +1,30 @@
+1 create custom Request
+
+2 fill rule
+
+3 add  to custom request
+    public function messages()
+    {
+        return [
+            'integer'  => 'The :attributsdfsdfsdnteger.',            
+        ];
+    }
+    
+4 Exception/handler
+  public function render($request, Throwable $exception)
+    {
+        $request->headers->set('Accept', 'application/json'); // force json response
+
+        if ($exception instanceof UnauthorizedHttpException) { //custom 
+            return response()->json(['error' => 'Unauthorized.'], 410);
+        }
+        return parent::render($request, $exception);
+    }
+
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return response()->json([
+            'error' => $exception->getMessage(),
+            'errors' => $exception->errors(),
+        ], $exception->status);
+    }
