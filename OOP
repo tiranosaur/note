@@ -16,3 +16,6 @@ S - Single-responsiblity principle
     реализована в классе объекта
 O - Open-closed principle
     Классы должны быть открыты для расширения и закрыты для изменения
+L - Liskov substitution principle.
+I - Interface segregation principle.
+D - Dependency Inversion Principle.
