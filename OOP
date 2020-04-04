@@ -17,5 +17,6 @@ S - Single-responsiblity principle
 O - Open-closed principle
     Классы должны быть открыты для расширения и закрыты для изменения
 L - Liskov substitution principle.
+    Поведение наследуемых классов не должно противоречить поведению заданному базовым классом
 I - Interface segregation principle.
 D - Dependency Inversion Principle.
