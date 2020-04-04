@@ -1,0 +1,3 @@
+run phpinfo
+find 20-xdebug.so
+add remote_autostart
