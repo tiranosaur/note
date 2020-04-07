@@ -1,3 +1,0 @@
-https://blog.teamtreehouse.com/set-up-a-linux-server-on-virtualbox
-
-sudo nano /etc/ssh/sshd_config
