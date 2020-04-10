@@ -1,3 +1,4 @@
 run phpinfo
 find 20-xdebug.so
-add remote_autostart
+add xdebug.remote_autostart = on
+(not 1 or true)
