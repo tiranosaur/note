@@ -1,4 +1,6 @@
-*  if global error - vagrant box update
-
 * vagrant destroy
   vagrant up --provision
+
+*  if global error - vagrant box update
+
+
