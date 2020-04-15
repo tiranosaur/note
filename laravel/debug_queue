@@ -1,0 +1,2 @@
+php artisan queue:restart
+\Log::info(__CLASS__.': '.__FUNCTION__);
