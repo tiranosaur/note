@@ -20,6 +20,8 @@ S - Single-responsiblity principle
 O - Open-closed principle
     Принцип открытости закрытости.
     Классы должны быть открыты для расширения и закрыты для изменения
+    https://netsh.pp.ua/2020/03/principy-solid-v-oop-ocp-chast-2-iz-5/
+    
 L - Liskov substitution principle. 
     Принцип подстановки Лисков.
     Поведение наследуемых классов не должно противоречить поведению заданному базовым классом.
