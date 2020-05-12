@@ -1,0 +1,6 @@
+SELECT maker,  
+sum(IF(type = 'PC',1,0)) PC,
+sum(IF(type = 'Laptop',1,0)) Laptop,
+sum(IF(type = 'Printer',1,0)) Printer
+FROM Product
+GROUP BY maker
