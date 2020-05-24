@@ -1,7 +1,10 @@
 const IMG_DIR = '/public/images/';
 
-private function uploadFile($url){
+ private function uploadFile($url){
         $filename = $this->getFilenameFromUrl($url);
+        if (!is_dir(storage_path().self::IMG_DIR)){
+            mkdir(storage_path() . self::IMG_DIR, 0777, true);
+        }
         copy($url,storage_path().self::IMG_DIR.$filename);
         return $filename;
-    }
+}
