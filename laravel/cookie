@@ -1,0 +1,8 @@
+<div class="card-body">
+                    {{ Cookie::get('user_first_name') }}
+                    {{ Cookie::queue('user_first_name', 'sdf', 60) }}
+                    @if (Cookie::get('user_first_name') == 'sdf')
+                        fuck
+                    @endif
+                    You are logged in!
+                </div>
