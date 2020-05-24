@@ -1,1 +1,7 @@
+const IMG_DIR = '/public/images/';
 
+private function uploadFile($url){
+        $filename = $this->getFilenameFromUrl($url);
+        copy($url,storage_path().self::IMG_DIR.$filename);
+        return $filename;
+    }
