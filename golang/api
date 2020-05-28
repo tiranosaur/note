@@ -1,34 +1,16 @@
-package api
-
-//http://localhost:10000/
+package main
 
 import (
-"fmt"
+	"fmt"
 	"io/ioutil"
 	"log"
-"net/http"
+	"net/http"
 )
 
 func main() {
 	handleRequests()
 }
-
-func index(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintf(w, file_get_content("view/index.html")) //in project root folder	
-	fp := filepath.Join("view", "index.html")
-	t := template.Must(template.ParseFiles(fp))
-	t.Execute(w, nil)
-	fmt.Println("Endpoint Hit: index")
-}
-
-func home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "home!")
-	fmt.Println("Endpoint Hit: home")
-}
-
 func handleRequests() {
-	// add js script <script src="/static/main.js"></script>
-	// js script -> /view
 	fs := http.FileServer(http.Dir("./view"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
@@ -36,13 +18,19 @@ func handleRequests() {
 	http.HandleFunc("/index", index)
 	http.HandleFunc("/home", home)
 	log.Fatal(http.ListenAndServe(":10000", nil))
-
-	http.HandleFunc("/", index)
-	http.HandleFunc("/index", index)
-	http.HandleFunc("/home", home)
-	log.Fatal(http.ListenAndServe(":10000", nil))
+}
+func index(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, file_get_content("view/index.html")) //in project root folder
+	//fp := filepath.Join("view", "index.html")
+	//t := template.Must(template.ParseFiles(fp))
+	//t.Execute(w, nil)
+	fmt.Println("Endpoint Hit: index")
 }
 
+func home(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "home!")
+	fmt.Println("Endpoint Hit: home")
+}
 func file_get_content(file string) string {
 	data, err := ioutil.ReadFile(file)
 	if err != nil {
