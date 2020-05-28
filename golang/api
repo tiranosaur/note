@@ -14,7 +14,10 @@ func main() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, file_get_content("view/index.html")) //in project root folder
+	//fmt.Fprintf(w, file_get_content("view/index.html")) //in project root folder	
+	fp := filepath.Join("view", "index.html")
+	t := template.Must(template.ParseFiles(fp))
+	t.Execute(w, nil)
 	fmt.Println("Endpoint Hit: index")
 }
 
