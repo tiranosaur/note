@@ -1,0 +1,2 @@
+layout := "Monday, January 1, 2006 3:04 PM"
+		time, _ :=time.Parse(layout, "Friday, April 4, 8527 8:45 AM")
