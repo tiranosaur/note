@@ -13,5 +13,5 @@ func main() {
 	s:=new(model.Second)
 	s.SetName("SSSSS")
 	s.SetAge(38)
-	fmt.Println()
+	fmt.Println(s.GetName())
 }
