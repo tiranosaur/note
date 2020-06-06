@@ -1,0 +1,6 @@
+<?php
+$arr2 = ['name' => 'john', 'age' => 38];
+$arr1 = ['name' => 'john', 'age' => 38, 'wife' => 'mary'];
+$arr  = array_intersect_assoc($arr1, $arr2);
+$arr  = array_diff_assoc(array_merge($arr1, $arr2), $arr);
+$arr = 1; //$arr["wife"] == 'mary'
