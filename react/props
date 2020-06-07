@@ -1,0 +1,19 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function Main(props) {
+    return (
+        <div>
+            <p style={{color: 'green'}}>UserName: {props.name}</p>
+            <p style={{color: 'red'}}>Gender: {props.sex ? 'man' : 'woman'}</p>
+            <p style={{color: 'grey'}}>Age: {props.age}</p>
+        </div>
+    );
+}
+
+Main.defaultProps = {sex: true}
+export default Main;
+
+ReactDOM.render(<Main/>, document.getElementById('root'))
+axios.get('/api/user/11')
+    .then(response => ReactDOM.render(<Main {...response.data}/>, document.querySelector('#root')))
