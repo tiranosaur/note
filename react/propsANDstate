@@ -1,0 +1,40 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {useState} from 'react';
+
+function Main(props) {
+    const [name, setName] = useState(props.name);
+    const [age, setAge] = useState(props.age);
+    const [input, setInput] = useState('')
+
+    const updateInput = (elem) => {
+        setInput(elem.currentTarget.value);
+    }
+
+    const updateUser = () => {
+        axios.get('/api/user/11')
+            .then(response => {
+                var data = response.data;
+                if (response.status === 200) {
+                    setName(data.name);
+                    setAge(data.age);
+                }
+            })
+    }
+    updateUser();
+
+    return (
+        <div>
+            <input type="text" onChange={updateInput}/>
+            <p>Current Input : {input}</p>
+            <p style={{color: 'red'}}>UserName: {name}</p>
+            <p>Age: {age}</p>
+        </div>
+    );
+}
+
+export default Main;
+// axios.get('/api/user/11')
+//     .then(response => ReactDOM.render(<Main {...response.data}/>, document.querySelector('#root')))
+ReactDOM.render(<Main/>, document.querySelector('#root'))
+
