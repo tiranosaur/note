@@ -12,7 +12,17 @@ class Form extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log(this.state);
+        axios.post('/api/user', this.state)
+            .then(resp => {
+                if (resp.status === 200) {
+                    alert(resp.data.message)
+                } else {
+                    alert(resp.data.error)
+                }
+            })
+            .catch((error, aa)=>{
+                alert(error.response.data.error)
+            })
     }
 
     onChange(event) {
