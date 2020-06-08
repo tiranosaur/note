@@ -19,6 +19,4 @@ function Main() {
 }
 
 export default Main
-// axios.get('http://laravel.example.loc/api/user/11')
-//     .then(resp => ReactDOM.render(<Main {...resp.data}/>, document.getElementById('root')))
 ReactDOM.render(<Main/>, document.getElementById('root'))
