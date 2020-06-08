@@ -1,40 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {useState} from 'react';
+import React, {useState} from 'react'
+import ReactDOM from 'react-dom'
 
-function Main(props) {
-    const [name, setName] = useState(props.name);
-    const [age, setAge] = useState(props.age);
-    const [input, setInput] = useState('')
+function Main() {
+    const [data, setData] = useState({name: 'NoName', age: 16})
 
-    const updateInput = (elem) => {
-        setInput(elem.currentTarget.value);
+    const update = () => {
+        axios.get('http://laravel.example.loc/api/user/11')
+            .then(resp => setData(resp.data))
     }
-
-    const updateUser = () => {
-        axios.get('/api/user/11')
-            .then(response => {
-                var data = response.data;
-                if (response.status === 200) {
-                    setName(data.name);
-                    setAge(data.age);
-                }
-            })
-    }
-    updateUser();
-
+    update()
+    
     return (
         <div>
-            <input type="text" onChange={updateInput}/>
-            <p>Current Input : {input}</p>
-            <p style={{color: 'red'}}>UserName: {name}</p>
-            <p>Age: {age}</p>
+            <h1>{data.name}</h1>
+            <h1>{data.age}</h1>
         </div>
-    );
+    )
 }
 
-export default Main;
-// axios.get('/api/user/11')
-//     .then(response => ReactDOM.render(<Main {...response.data}/>, document.querySelector('#root')))
-ReactDOM.render(<Main/>, document.querySelector('#root'))
-
+export default Main
+// axios.get('http://laravel.example.loc/api/user/11')
+//     .then(resp => ReactDOM.render(<Main {...resp.data}/>, document.getElementById('root')))
+ReactDOM.render(<Main/>, document.getElementById('root'))
