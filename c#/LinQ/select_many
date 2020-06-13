@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            List<User> users = new List<User>()
+            {
+                new User("Tom", 38, 1, 2),
+                new User("John", 22, 2, 3)
+            };
+
+            var result1 =
+                from user in users
+                from lang in user.Language
+                join language in Language.Dict on lang equals language.Key
+                select new {user.Name, user.Age, language.Value};
+            
+            var result2 = users.SelectMany(user => user.Language, (user, lang) => new {user, lang})
+                .Join(Language.Dict, @t => @t.lang, language => language.Key,
+                    (@t, language) => new {@t.user.Name, @t.user.Age, language.Value});
+            
+           
+            Console.WriteLine();
+        }
+        
+        class Language
+        {
+            public static Dictionary<int, string> Dict = new Dictionary<int, string>()
+            {
+                {1, "english"},
+                {2, "french"},
+                {3, "russian"},
+                {4, "korean"}
+            };
+        }
+
+        class User
+        {
+            public string Name { get; }
+            public int Age { get; }
+            public List<int> Language;
+
+            public User(string name, int age, params int[] language)
+            {
+                this.Name = name;
+                this.Age = age;
+                this.Language = language.ToList();
+            }
+        }
+    }
+}
