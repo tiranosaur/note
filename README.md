@@ -1,3 +1,8 @@
+php artisan cache:clear
+php artisan config:cache
+
+
+
 https://geekbrains.ru/posts/resources_for_programming_practice    <br>
 https://tproger.ru/digest/learn-to-code-while-playing-games/    <br>
 https://edabit.com/challenges/java    <br>
