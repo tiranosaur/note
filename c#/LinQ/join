@@ -1,0 +1,18 @@
+using System.Linq;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        delegate float Operation(float xxx);
+
+        public static void Main(string[] args)
+        {
+            int[] arr1 = Enumerable.Range(1, 10).ToArray();
+            int[] arr2 = Enumerable.Range(11, 20).ToArray();
+
+            var result = arr1
+                .Join(arr2, x => x, y => y - 10, (x, y) => new {x, y});
+        }
+    }
+}
