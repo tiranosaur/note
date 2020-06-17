@@ -1,7 +1,7 @@
 1. В rider изменить драйвер по умолчанию на Microsoft SQL servet jTds
 2. порт 1433
 
-
+//////////////connect
 namespace TestApp
 {
     class Program
@@ -26,6 +26,46 @@ namespace TestApp
 
                 Console.WriteLine("State: {0}", connection.State);
                 Console.WriteLine("ConnectionString: {0}", connection.ConnectionString);
+            }
+        }
+    }
+}
+
+
+
+///////////////////////select
+using System;
+using System.Data.SqlClient;
+
+namespace TestApp
+{
+    class Program
+    {
+        const string connectionString = "Data Source=.;Initial Catalog=test_database;Integrated Security=True;";
+
+        public static void Main(string[] args)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.CommandText = "Select * From Users";
+                command.Connection = connection;
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    Console.WriteLine("{0}\t{1}\t{2}", reader.GetName(0), reader.GetName(1), reader.GetName(2));
+                    
+                    while (reader.Read())
+                    {
+                        object Id = reader.GetValue(0);
+                        object Username = reader.GetValue(1);
+                        object Password = reader.GetValue(2);
+
+                        Console.WriteLine("{0} \t{1} \t{2}", Id, Username, Password);
+                    }
+                }
             }
         }
     }
