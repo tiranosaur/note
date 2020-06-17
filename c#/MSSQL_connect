@@ -1,2 +1,32 @@
 1. В rider изменить драйвер по умолчанию на Microsoft SQL servet jTds
 2. порт 1433
+
+
+namespace TestApp
+{
+    class Program
+    {
+        //    jdbc:jtds:sqlserver://localhost:1433/test_database;instance=DESKTOP-SQQLNL3
+        /*
+             SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=ServerName; Initial Catalog=DataBaseName; User id=UserName; Password=Secret;";
+            conn.Open();
+            
+            //local
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = "Data Source=DESKTOP-SQQLNL3;Initial Catalog=test_database;Integrated Security=True;"; // same "Data Source=.;Initial Catalog=test_database;Integrated Security=True;"
+            conn.Open();
+         */
+        public static void Main(string[] args)
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = "Data Source=.;Initial Catalog=test_database;Integrated Security=True;";
+                connection.Open();
+
+                Console.WriteLine("State: {0}", connection.State);
+                Console.WriteLine("ConnectionString: {0}", connection.ConnectionString);
+            }
+        }
+    }
+}
