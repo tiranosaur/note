@@ -11,8 +11,14 @@ namespace ConsoleApp1
             int[] arr1 = Enumerable.Range(1, 10).ToArray();
             int[] arr2 = Enumerable.Range(11, 20).ToArray();
 
-            var result = arr1
+            var result1 = arr1
                 .Join(arr2, x => x, y => y - 10, (x, y) => new {x, y});
+
+            var arr = new List<string>() {"one", "two", "three", "four"};
+            var range = Enumerable.Range(1, 4).ToArray();
+            var result2 = range.Join(arr, ind => ind, str => arr.IndexOf(str)+1, (ind, str) => new {ind, str});
+
+            var json = JsonConvert.SerializeObject(result);
         }
     }
 }
