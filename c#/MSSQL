@@ -33,7 +33,7 @@ namespace TestApp
 
 
 
-///////////////////////select
+//-------------------------------INSERT         UPDATE          SELECT
 using System;
 using System.Data.SqlClient;
 
@@ -45,6 +45,32 @@ namespace TestApp
 
         public static void Main(string[] args)
         {
+            //-------------------------INSERT
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.CommandText = "INSERT INTO Users (Username, Password) VALUES ('Admin', 'AdminPassword')";
+                command.Connection = connection;
+                var result = command.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+
+            //-------------------------UPDATE
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.CommandText =
+                    "UPDATE Users SET Username='SuperAdmin', Password='SuperPassword' WHERE Username='Admin'";
+                command.Connection = connection;
+                var result = command.ExecuteNonQuery();
+                Console.WriteLine(result);
+            }
+
+            //-------------------------SELECT
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -56,7 +82,7 @@ namespace TestApp
                 if (reader.HasRows)
                 {
                     Console.WriteLine("{0}\t{1}\t{2}", reader.GetName(0), reader.GetName(1), reader.GetName(2));
-                    
+
                     while (reader.Read())
                     {
                         object Id = reader.GetValue(0);
