@@ -1,5 +1,10 @@
 1. В rider изменить драйвер по умолчанию на Microsoft SQL servet jTds
 2. порт 1433
+3. install
+    System.Data.SqlClient       // must have
+    Microsoft.Extensions.Configuration
+    Microsoft.Extensions.Configuration.FileExtensions
+    Microsoft.Extensions.Configuration.Json
 
 //////////////connect
 namespace TestApp
