@@ -15,15 +15,15 @@ namespace ConsoleApp
             //builder.SetBasePath(Directory.GetCurrentDirectory());
             //builder.AddJsonFile("appsettings.json");
             //var config = builder.Build();
-            //string connectionString = config.GetConnectionString("Default");
             //
             //equal
-            var connectionString = new ConfigurationBuilder()
+            var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .Build()
-                .GetConnectionString("Default");
-            
+                .Build();
+
+           string connectionString = config.GetConnectionString("DefaultConnection");
+
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
             var options = optionsBuilder.UseSqlServer(connectionString).Options;
 
