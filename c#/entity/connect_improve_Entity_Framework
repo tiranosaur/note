@@ -1,0 +1,96 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.IO;
+using System.Linq;
+
+namespace ConsoleApp
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //var builder = new ConfigurationBuilder();
+            //builder.SetBasePath(Directory.GetCurrentDirectory());
+            //builder.AddJsonFile("appsettings.json");
+            //var config = builder.Build();
+            //string connectionString = config.GetConnectionString("Default");
+            //
+            //equal
+            var connectionString = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build()
+                .GetConnectionString("Default");
+            
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+            var options = optionsBuilder.UseSqlServer(connectionString).Options;
+
+            //truncate
+            System.Console.WriteLine("----------------------------truncate-------------------");
+            using (ApplicationContext db = new ApplicationContext(options))
+            {
+                db.RemoveRange(db.Users.Select(user => user));
+                db.SaveChanges();
+                var users = db.Users.ToList<User>();
+                foreach (var item in users)
+                {
+                    System.Console.WriteLine($"{item.Id}, {item.Name}, {item.Age}");
+                }
+            }
+
+            //Add
+            System.Console.WriteLine("----------------------------add-------------------");
+            using (ApplicationContext db = new ApplicationContext(options))
+            {
+                User user1 = new User() { Name = "Tom", Age = 38 };
+                User user2 = new User() { Name = "Jerry", Age = 24 };
+                User user3 = new User() { Name = "Terry", Age = 67 };
+                User user4 = new User() { Name = "Mary", Age = 5 };
+                User user5 = new User() { Name = "John", Age = 7 };
+                db.Users.Add(user1);
+                db.Users.Add(user2);
+                db.SaveChanges();
+
+                var users = db.Users.ToList<User>();
+                foreach (var item in users)
+                {
+                    System.Console.WriteLine($"{item.Id}, {item.Name}, {item.Age}");
+                }
+            }
+
+            //Update
+            System.Console.WriteLine("----------------------------update-------------------");
+            using (ApplicationContext db = new ApplicationContext(options))
+            {
+                var user = db.Users.Where(user => user.Name == "Tom").Select(user => user).FirstOrDefault();
+                user.Age = 32;
+                db.Update(user);
+                db.SaveChanges();
+
+                var users = db.Users.ToList<User>();
+                foreach (var item in users)
+                {
+                    System.Console.WriteLine($"{item.Id}, {item.Name}, {item.Age}");
+                }
+            }
+        }
+    }
+    public class ApplicationContext : DbContext
+    {
+        public DbSet<User> Users { get; set; }
+      
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+        {
+            Database.EnsureCreated();
+        }     
+    }
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
+}
+
