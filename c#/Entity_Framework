@@ -1,0 +1,78 @@
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
+namespace ConsoleApp
+{
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //truncate
+            System.Console.WriteLine("----------------------------truncate-------------------");
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                db.RemoveRange(db.Users.Select(user=>user));
+                db.SaveChanges();
+                var users = db.Users.ToList<User>();
+                foreach (var item in users)
+                {
+                    System.Console.WriteLine($"{item.Id}, {item.Name}, {item.Age}");
+                }
+            }
+
+            //Add
+            System.Console.WriteLine("----------------------------add-------------------");
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                User user1 = new User() { Name = "Tom", Age = 38 };
+                User user2 = new User() { Name = "Jerry", Age = 18 };
+                db.Users.Add(user1);
+                db.Users.Add(user2);
+                db.SaveChanges();               
+
+                var users = db.Users.ToList<User>();
+                foreach (var item in users)
+                {
+                    System.Console.WriteLine($"{item.Id}, {item.Name}, {item.Age}");
+                }
+            }
+
+            //Update
+            System.Console.WriteLine("----------------------------update-------------------");
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                var user = db.Users.Where(user => user.Name == "Tom").Select(user => user).FirstOrDefault();
+                user.Age = 32;
+                db.Update(user);
+                db.SaveChanges();
+
+                var users = db.Users.ToList<User>();
+                foreach (var item in users)
+                {
+                    System.Console.WriteLine($"{item.Id}, {item.Name}, {item.Age}");
+                }
+            }
+        }
+    }
+
+    public class ApplicationContext : DbContext
+    {
+        public DbSet<User> Users { get; set; }
+        public ApplicationContext()
+        {
+            Database.EnsureCreated();
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=DESKTOP-SQQLNL3;Database=test_database;Trusted_Connection=True;");
+        }
+    }
+    public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
+}
+
