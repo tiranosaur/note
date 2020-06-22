@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace ConsoleApp
+{
+    public static class Program
+    {
+        public static void Main(string[] args)
+        {
+            Human human = new Human() { Name ="jn777"};
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(human);
+
+            if (!Validator.TryValidateObject(human, context, results, true))
+            {
+                foreach (var error in results)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
+            Console.WriteLine();
+        }
+    }
+
+    public class Human
+    {
+        [Required]
+        [RegularExpression("^[A-Za-z]$", ErrorMessage = "Only latin character.")]
+        [MinLength(10, ErrorMessage = "Min Lenght = 10")]
+        [MaxLength(32, ErrorMessage = "Max Lenght = 32")]
+        public string Name { get; set; }
+    }
+}
