@@ -1,5 +1,5 @@
 //  GET INDEX BY NAME
-  (int)Enum.Parse(typeof(EnumLanguage), lang
+  (int)Enum.Parse(typeof(EnumLanguage), lang)
   
 //  GET NAME BY INDEX
   (EnumLanguage)1
