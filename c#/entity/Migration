@@ -37,6 +37,9 @@ namespace ConsoleApp
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // many-to-many
+            modelBuilder.Entity<LanguageUser>().HasKey(key => new { key.UserId, key.LanguageId });
+            
             modelBuilder.Entity<UserRole>().HasData(
                 new UserRole[]
                 {
@@ -69,10 +72,40 @@ namespace ConsoleApp
 
         [ForeignKey("RoleId")]
         public UserRole Role { get; set; }
+        
+        // many-to-many
+        public List<LanguageUser> LanguageUser { get; set; }
+
+        public User()
+        {
+            LanguageUser = new List<LanguageUser>();
+        }
     }
+    
     public class UserRole
     {       
         public int Id { get; set; }
         public string Role { get; set; }
+    }
+    
+    public class Language
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<LanguageUser> LanguageUser { get; set; }
+        // many-to-many
+        public Language()
+        {
+            LanguageUser = new List<LanguageUser>();
+        }
+    }
+    
+    // many-to-many
+    public class LanguageUser
+    {
+        public int UserId { get; set; }
+        public User User;
+        public int LanguageId { get; set; }
+        public Language Language;
     }
 }
