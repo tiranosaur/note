@@ -1,0 +1,64 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+
+namespace ConsoleApp
+{
+    public static class Program
+    {
+        public static void Main(string[] args)
+        {           
+        }
+    }
+
+    public class ApplicationContext : DbContext
+    {
+        internal DbSet<User> Users { get; set; }
+        internal DbSet<UserRole> Role { get; set; }
+
+        public ApplicationContext()
+        {
+            // Database.EnsureCreated();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+            string connectionString = config.GetConnectionString("Default");
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UserRole>().HasData(
+                new UserRole[]
+                {
+                      new UserRole {Id = 1, Role = "User"},
+                      new UserRole {Id = 2, Role = "Admin"}
+                }
+            );
+
+            modelBuilder.Entity<User>().HasData(
+                new { Id = 1, UserName = "Admin", RoleId = 2 },
+                new { Id = 2, UserName = "User", RoleId = 1 }
+                );
+        }
+    }
+
+    public class User
+    {
+        public int Id { get; set; }
+
+        public string UserName { get; set; }
+
+        public UserRole Role { get; set; }
+    }
+    public class UserRole
+    {       
+        public int Id { get; set; }
+        public string Role { get; set; }
+    }
+}
