@@ -45,6 +45,13 @@ namespace ConsoleApp
                 new { Id = 1, UserName = "Admin", RoleId = 2 },
                 new { Id = 2, UserName = "User", RoleId = 1 }
                 );
+                
+            modelBuilder.Entity<User>().HasData(
+                new User[]
+                {
+                    new User {Id = 7, UserName = "User_7", RoleId = 1}
+                }
+            );
         }
     }
 
@@ -53,7 +60,10 @@ namespace ConsoleApp
         public int Id { get; set; }
 
         public string UserName { get; set; }
+        
+        public int? RoleId;
 
+        [ForeignKey("RoleId")]
         public UserRole Role { get; set; }
     }
     public class UserRole
