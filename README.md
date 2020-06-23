@@ -1,5 +1,9 @@
-php artisan cache:clear
-php artisan config:cache
+php artisan view:clear              <br>
+php artisan route:cache              <br>
+php artisan route:clear              <br>
+php artisan cache:clear              <br>
+php artisan config:cache              <br>
+composer dump-autoload              <br>
 
 
 
