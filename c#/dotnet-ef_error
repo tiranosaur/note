@@ -1,0 +1,15 @@
+For Linux and macOS, add a line to your shell's configuration:
+
+bash/zsh:
+
+export PATH="$PATH:$HOME/.dotnet/tools/"
+csh/tcsh:
+
+set path = ($path $HOME/.dotnet/tools/)
+When you start a new shell/terminal (or the next time you log in) dotnet ef should work.
+
+For Windows:
+
+See this question on how to add to the PATH environment variable.
+
+You need to add %USERPROFILE%\.dotnet\tools to the PATH.
