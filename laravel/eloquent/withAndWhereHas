@@ -9,3 +9,14 @@ Usage is the same
 User::withAndWhereHas('submissions', function($query) use ($id){
     $query->where('taskid', $id);
 })->get();
+
+
+
+/////////////////////////////////
+$creditFilter = function ($q) use ($status) {
+    $q->where('credit_status', $status);
+};
+
+Player::with(['photo', 'credit' => $creditFilter])
+    ->whereHas('credit', $creditFilter)
+    ->paginate(15);
