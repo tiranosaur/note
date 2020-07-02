@@ -6,6 +6,8 @@ php artisan config:cache              <br>
 composer dump-autoload              <br>
 
 
+https://github.com/Imangazaliev/git-tips
+
 
 https://geekbrains.ru/posts/resources_for_programming_practice    <br>
 https://tproger.ru/digest/learn-to-code-while-playing-games/    <br>
