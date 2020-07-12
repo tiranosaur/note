@@ -4,7 +4,7 @@ services:
   webserver:
     build: 
       context: ./bin/webserver
-    container_name: 'webserver'
+    container_name: 'webserver73'
     restart: 'always'
     ports:
       - "80:80"
@@ -19,9 +19,10 @@ services:
     environment:
       XDEBUG_CONFIG: "remote_host=172.17.0.1"
       PHP_IDE_CONFIG: "serverName=DockerServer"
+
   mysql:
     build: ./bin/mysql
-    container_name: 'mysql'
+    container_name: 'mysql73'
     restart: 'always'
     ports:
       - "3306:3306"
@@ -33,9 +34,16 @@ services:
       MYSQL_DATABASE: png
       MYSQL_USER: png
       MYSQL_PASSWORD: png
+
+  memcached:
+    container_name: mymemcached
+    image: memcached:latest
+    ports:
+      - "11211:11211"
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: 'phpmyadmin'
+    container_name: 'phpmyadmin73'
     links:
       - mysql
     environment:
@@ -50,8 +58,9 @@ services:
       - '8080:80'
     volumes: 
       - /sessions
+
   redis:
-    container_name: 'redis'
+    container_name: 'redis73'
     image: redis:latest
     ports:
       - "6379:6379"
