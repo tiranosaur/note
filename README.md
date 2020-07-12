@@ -6,7 +6,7 @@ php artisan config:cache              <br>
 composer dump-autoload              <br>
 
 <br><br><br>
-"<?php xdebug_break(); ?>"
+"?php xdebug_break(); >"
 
 
 https://github.com/Imangazaliev/git-tips
