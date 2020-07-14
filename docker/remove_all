@@ -1,1 +1,9 @@
+docker system prune -f
+docker image prune
+docker volume prune
+docker network prune
+
+docker container stop $(docker container ls -aq)
+docker container rm $(docker container ls -aq)
+
 https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/
