@@ -1,7 +1,7 @@
 docker system prune -f
-docker image prune
-docker volume prune
-docker network prune
+docker image prune -f
+docker volume prune -f
+docker network prune -f
 
 docker container stop $(docker container ls -aq)
 docker container rm $(docker container ls -aq)
