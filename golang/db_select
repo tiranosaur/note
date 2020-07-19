@@ -32,8 +32,7 @@ func main() {
 	
 	//count 
 	var count int
-	result, _ := db.Query("SELECT count(*) max FROM `users`")
-	result.Next()
-	result.Scan(&count)
+	db.QueryRow("SELECT count(*) max FROM `users`").Scan(&count)
+	fmt.Println(count)
 
 }
