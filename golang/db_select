@@ -28,5 +28,12 @@ func main() {
 		users = append(users, user)
 	}
 	fmt.Println(users)
+	
+	
+	//count 
+	var count int
+	result, _ := db.Query("SELECT count(*) max FROM `users`")
+	result.Next()
+	result.Scan(&count)
 
 }
