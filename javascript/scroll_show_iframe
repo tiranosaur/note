@@ -1,0 +1,12 @@
+function iframeScrollLazyLoad(iframeId) {
+    var elem = $('#' + iframeId);
+    var win = $(window)
+    if (elem.attr('url') != '' && elem.attr('url') != undefined)
+        win.scroll(function (event) {
+            if (win.scrollTop() + win.height() >= elem.offset().top) {
+                $(this).unbind(event)
+                console.log("frame");
+                elem.attr('src', elem.attr('url'))
+            }
+        });
+};
