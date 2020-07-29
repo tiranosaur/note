@@ -9,6 +9,10 @@ composer dump-autoload              <br>
 <br><br><br>
 "?php xdebug_break(); >"
 
+<br><br><br>
+Здесь есть все <br>
+https://rosettacode.org/wiki/Category:Programming_Tasks
+
 
 https://github.com/Imangazaliev/git-tips
 
