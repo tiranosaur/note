@@ -8,3 +8,6 @@ var result = teams.Select(x => x.First());
  var arr = Enumerable.Range(1, 10).ToArray();         
 var result = arr.Aggregate(0, (x, y) => x + y);       //reduce
 Console.WriteLine(result);
+
+
+private static readonly Func<int, int> Factorial = (x) => x < 1 ? 1 : x * Factorial(x-1);
