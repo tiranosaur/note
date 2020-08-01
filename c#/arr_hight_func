@@ -2,3 +2,4 @@ string[] teams = {"Бавария", "Боруссия", "Реал Мадрид",
 Array.ForEach(teams, item=>Console.WriteLine(item));   //не изменяет
 
 var result = Array.ConvertAll(teams, x => x.First()); // map
+var result = teams.Select(x => x.First());
