@@ -1,2 +1,4 @@
 string[] teams = {"Бавария", "Боруссия", "Реал Мадрид", "Манчестер Сити", "ПСЖ", "Барселона"};
 Array.ForEach(teams, item=>Console.WriteLine(item));
+
+ Console.WriteLine(String.Join(", ", teams));
