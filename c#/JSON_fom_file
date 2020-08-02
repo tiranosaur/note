@@ -1,0 +1,58 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Text.Json;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static Func<BigInteger, BigInteger> _factorial = x => x < 1 ? 1 : x * _factorial(x - 1);
+
+        static void Main(string[] args)
+        {
+            string FileName = "users.json";
+            var str = File.ReadAllText(FileName);
+            User[] users = JsonSerializer.Deserialize<JSON>(str).objects;
+            var result = users.GroupBy(x => x.email.Split("@")[1]).Select(x => x.Key).ToList();
+            result.ForEach(x => Console.WriteLine(x));
+
+        }
+    }
+
+    class JSON
+    {
+        public User[] objects { get; set; }
+    }
+    class User
+    {
+        public string email{ get; set; }
+        public string last_name{ get; set; }
+        public string country{ get; set; }
+        public string city{ get; set; }
+        public string gender{ get; set; }
+        public string birth_date{ get; set; }
+    }
+}
+
+// {
+//   "objects": [
+//     {
+//       "email": "Logan_Devonport3313@tonsy.org",
+//       "last_name": "Devonport",
+//       "country": "Oman",
+//       "city": "Madrid",
+//       "gender": "Male",
+//       "birth_date": "Friday, April 4, 8527 8:45 AM"
+//     },
+//     {
+//       "email": "Valerie_Gavin9167@nimogy.biz",
+//       "last_name": "Gavin",
+//       "country": "Kazakhstan",
+//       "city": "Miami",
+//       "gender": "Female",
+//       "birth_date": "Monday, March 28, 8546 2:32 AM"
+//     }
+//   ]
+// }
