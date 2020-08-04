@@ -1,0 +1,17 @@
+import java.util.function.Function;
+
+@FunctionalInterface
+interface INumsFunctional<T extends Number> {
+    T call(T x);
+}
+
+public class Main {
+
+    static final Function<Integer, Integer> factorial = x -> x == 1 ? x : x * Main.factorial.apply(x - 1);
+    static final INumsFunctional<Integer> fact = x -> x.equals(1) ? x : x * Main.fact.call(x - 1);
+
+    public static void main(String[] args) {
+        System.out.println(fact.call(5));
+        System.out.println(factorial.apply(5));
+    }
+}
