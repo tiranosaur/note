@@ -1,0 +1,40 @@
+package com.company;
+
+import java.util.Date;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+
+public class Main {
+    public static void main(String[] args) {
+        var start = System.nanoTime();
+        long x = simpleFactorial(35l);
+        var end = System.nanoTime();
+        System.out.println(x);
+        System.out.println(end - start);
+        System.out.println(tailFactorial(5));
+        System.out.println();
+
+        start = System.nanoTime();
+        x = tailFactorial(35);
+        end = System.nanoTime();
+        System.out.println(x);
+        System.out.println(end - start);
+        System.out.println(tailFactorial(5));
+        System.out.println();
+    }
+
+    public static long simpleFactorial(long x) {
+        return x <= 1 ? 1 : x * simpleFactorial(x - 1);
+    }
+
+    public static long tailFactorial(int x) {
+        return factorialTail(x, 1);
+    }
+
+    private static long factorialTail(int x, long tail) {
+        if (x == 0) return tail;
+        return factorialTail(x - 1, x * tail);
+    }
+}
+
