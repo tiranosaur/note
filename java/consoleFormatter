@@ -1,5 +1,0 @@
-
- for (int i = 0; i < 1000; i++) {
-            String color1 = (char)27+"["+i+"m";
-            System.out.println(color1+"RomanoffAK440944---"+i);
-        }
