@@ -12,3 +12,9 @@ public static void main(String[] args) throws IOException
  inStream.close(); //закрываем потоки
  outStream.close();
 }
+
+
+String[] strings = {"aaa", "bbb", "ccc"};
+Arrays.stream(strings).forEach(x-> System.out.println(x));
+int[] ints = {234, 56, 23, 76834};
+Arrays.stream(ints).forEach(x-> System.out.println(x));
