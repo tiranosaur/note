@@ -28,3 +28,6 @@ https://jsehelper.blogspot.com/2016/01/sql-1.html    <br>
 
 <strong>mysql explain</strong>    <br>
 https://mattweb.ru/moj-blog/bazy-dannykh/item/65-ispolzuem-explain-dlya-optimizacii-zaprosov-k-mysql    <br>
+<br>
+Игнорировать изменения прав доступа к файлам при коммите
+git config core.fileMode false
