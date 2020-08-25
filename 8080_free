@@ -1,0 +1,34 @@
+<div class="post-text" itemprop="text">
+<p>You can track down the process running on port 8080 and kill it. </p>
+
+<p><strong>For macOS or Linux</strong>:</p>
+
+<pre><code>sudo lsof -iTCP:8080 -sTCP:LISTEN
+</code></pre>
+
+<p>You should get an output something like:</p>
+
+<pre><code>COMMAND   PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+yarn    12017 user   12u  IPv6 1876683      0t0  TCP *:8080 (LISTEN)
+</code></pre>
+
+<p>Now that you have the process ID(PID), you can kill the process. First try:</p>
+
+<pre><code>kill 12017(whatever the PID is)
+</code></pre>
+
+<p>If that does nothing, try:</p>
+
+<pre><code>kill -9 12017
+</code></pre>
+
+<p><strong>For Windows:</strong></p>
+
+<pre><code>netstat -ano | findstr :8080 (the port number)
+</code></pre>
+
+<p>This should give you the process to kill. You can then run:</p>
+
+<pre><code>taskkill /F /PID 12017(or whatever the process ID is)
+</code></pre>
+    </div>
