@@ -1,3 +1,13 @@
+//front
 <form  method="post" enctype="multipart/form-data">
+  <input type="file" name="myFile" id="myFile">
+</form>
 
-$movie->setImage(base64_encode(file_get_contents($_FILES['image']['tmp_name'])));
+//back 
+file_put_contents($GLOBALS["_FILES"]["myFile"]["name"], file_get_contents($GLOBALS["_FILES"]["myFile"]["tmp_name"]));
+
+
+//file code
+base64_encode(file_get_contents($_FILES['image']['tmp_name']))
+
+
