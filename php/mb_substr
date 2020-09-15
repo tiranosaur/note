@@ -1,0 +1,3 @@
+function mb_substr($str, $s, $l = null) {
+            return join("", array_slice(preg_split("//u", $str, -1, PREG_SPLIT_NO_EMPTY), $s, $l));
+        }
