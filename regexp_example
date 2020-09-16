@@ -1,0 +1,2 @@
+1. filename from url
+    [\w\s:/*.]+/{1}
