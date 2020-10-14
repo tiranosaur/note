@@ -7,6 +7,7 @@ docker container stop $(docker container ls -aq)
 docker container rm $(docker container ls -aq)
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
 
 docker system prune -a
 docker image prune -a
