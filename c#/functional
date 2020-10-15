@@ -11,3 +11,11 @@ Console.WriteLine(result);
 
 
 static Func<int, int> Factorial = (x) => x < 1 ? 1 : x * Factorial(x-1);
+
+
+static int fact(int x) => x switch
+ {
+     1 => 1,
+     _ => x * factorial(x - 1)
+ };
+ Console.WriteLine(fact(5));
