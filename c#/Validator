@@ -1,0 +1,35 @@
+class Program
+    {
+        public static void Main(string[] args)
+        {
+            Human human = new Human() {Status = true};
+            Console.WriteLine(human.Validate());
+            Console.WriteLine(human.HumanValidator());
+
+            human.Status = false;
+            human.Name = "Tom";
+            Console.WriteLine(human.Validate());
+            Console.WriteLine(human.HumanValidator());
+        }
+    }
+
+    public class Human
+    {
+        public bool Status { get; set; }
+        public string Name { get; set; }
+
+        public string Validate() => this switch
+        {
+            {Status: true} => "+1",
+            {Status: false, Name:"Tom"} => "Hello Tom"
+        };
+    }
+
+    public static class Validator
+    {
+        public static string HumanValidator(this Human human) => human switch
+        {
+            {Status: true} => "+1",
+            {Status: false, Name:"Tom"} => "Hello Tom"
+        };
+    }
