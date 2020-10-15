@@ -1,0 +1,14 @@
+public static void Main(string[] args)
+        {
+            var result = new {name = "Roman", age = 40, status = true};
+            string json = JsonSerializer.Serialize(result);
+            Console.WriteLine(json);
+            var obj = JObject.Parse(json);
+            Console.WriteLine(obj["name"]);
+            Console.WriteLine(obj["age"]);
+            Console.WriteLine(obj["status"]);
+            foreach (var item in obj)
+            {
+                Console.WriteLine($"{item.Key} = {item.Value}");
+            }
+        }
