@@ -1,6 +1,40 @@
-where T : struct, 
-          IComparable, 
-          IComparable<T>, 
-          IConvertible, 
-          IEquatable<T>, 
-          IFormattable
+class Program
+    {
+        public static void Main(string[] args)
+        {
+            Account<long> account1 = new Account<long>();
+            account1.Put(145);
+            account1.Withdraw(800);
+            Console.WriteLine(account1.Get());
+            Account<double> account2 = new Account<double>();
+            account2.Put(145.9324875);
+            account2.Withdraw(29.000034534534523);
+            Console.WriteLine(account2.Get());
+        }
+    }
+
+    class Account<T> where T : struct, IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
+    {
+        private T balance = default;
+
+        public T Get()
+        {
+            return this.balance;
+        }
+
+        public T Put(T sum)
+        {
+            dynamic x = this.balance;
+            dynamic y = sum;
+            this.balance = x + y;
+            return this.balance;
+        }
+
+        public T Withdraw(T sum)
+        {
+            dynamic x = this.balance;
+            dynamic y = sum;
+            this.balance = x - y;
+            return this.balance;
+        }
+    }
