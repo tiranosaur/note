@@ -1,0 +1,56 @@
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Account<long> account1 = new Account<long>();
+            account1.Notify += (string message) =>
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(message);
+                Console.ResetColor();
+            };
+            account1.Notify += NotifAdv;
+            account1.Put(145);
+            account1.Withdraw(800);
+            Console.WriteLine(account1.Get());
+        }
+
+        public static void NotifAdv(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"cow says {message}");
+            Console.ResetColor();
+        }
+    }
+
+    class Account<T> where T : struct, IComparable, IComparable<T>, IConvertible, IEquatable<T>, IFormattable
+    {
+        private T balance = default;
+
+        public delegate void NotifyDelegate(string message);
+
+        public event NotifyDelegate Notify;
+
+        public T Get()
+        {
+            return this.balance;
+        }
+
+        public T Put(T sum)
+        {
+            dynamic x = this.balance;
+            dynamic y = sum;
+            this.balance = x + y;
+            Notify?.Invoke($"Put {sum}$ Balance {this.balance}$");
+            return this.balance;
+        }
+
+        public T Withdraw(T sum)
+        {
+            dynamic x = this.balance;
+            dynamic y = sum;
+            this.balance = x - y;
+            Notify?.Invoke($"Withdraw {sum}$ Balance {this.balance}$");
+            return this.balance;
+        }
+    }
