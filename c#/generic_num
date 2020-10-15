@@ -1,0 +1,6 @@
+where T : struct, 
+          IComparable, 
+          IComparable<T>, 
+          IConvertible, 
+          IEquatable<T>, 
+          IFormattable
