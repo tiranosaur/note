@@ -1,0 +1,23 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            string fileName = "test.txt";
+            File.Delete(fileName);
+            using (FileStream fileStream = new FileStream(fileName, FileMode.OpenOrCreate))
+            {
+                //(fileName).ToCharArray().ToList().ForEach(x => fileStream.WriteByte((byte) x));
+               byte[] arr = System.Text.Encoding.Default
+                    .GetBytes("BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));");
+               fileStream.Write(arr);
+            }
+
+            using (FileStream fileStream = File.OpenRead(fileName))
+            {
+                byte[] arr = new byte[fileStream.Length];
+                fileStream.Read(arr);
+                Console.WriteLine(System.Text.Encoding.Default.GetString(arr));
+            }
+            
+        }
+    }
