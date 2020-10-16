@@ -21,3 +21,23 @@
             
         }
     }
+    
+    
+    
+class Program
+    {
+        static void Main(string[] args)
+        {
+            string fileName = "test.txt";
+            File.Delete(fileName);
+            using (StreamWriter streamWriter = new StreamWriter(fileName))
+            {
+                streamWriter.Write("BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));");
+            }
+
+            using (StreamReader streamReader = new StreamReader(fileName))
+            {
+                Console.WriteLine(streamReader.ReadToEnd());
+            }
+        }
+    }
