@@ -1,2 +1,5 @@
 Pomelo.EntityFrameworkCore.MySql
+//linux
 optionsBuilder.UseMySql("server=192.168.10.10;port=3306;user=homestead;password=secret;database=png;");
+//windows
+optionsBuilder.UseMySql("server=localhost;UserId=mysql;Password=mysql;database=png;");
