@@ -1,3 +1,7 @@
+dotnet tool install --global dotnet-ef
+
+/////////////////////////////////////////////////////
+
 For Linux and macOS, add a line to your shell's configuration:
 
 bash/zsh:
