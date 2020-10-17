@@ -1,40 +1,45 @@
-Pomelo.EntityFrameworkCore.MySql
-//linux
-optionsBuilder.UseMySql("server=192.168.10.10;port=3306;user=homestead;password=secret;database=png;");
+//windows
+//microsoft.entityframeworkcore.tools  - может понадобится даунгрейд. если критует при f5
+//pomelo.entityframeworkcore.mysql
+//migration add 
+//dotnet ef migrations add InitialCreate --project "/home/tiranosaur/Documents/sharp/ConsoleApp/ConsoleApp"
+//dotnet ef database update --project "/home/tiranosaur/Documents/sharp/ConsoleApp/ConsoleApp"
 
-
-
-
-using System;
-using Microsoft.EntityFrameworkCore;
-
-namespace ConsoleApp
-{
     class Programm
     {
         public static void Main(string[] args)
         {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                
+            }
         }
     }
 
-public class ApplicationContext : DbContext
-{
-    internal DbSet<Author> authors { get; set; }
-    internal DbSet<Article> articles { get; set; }
-
-    public ApplicationContext()
+    public class ApplicationContext : DbContext
     {
-      // Database.EnsureCreated();
+        internal DbSet<User> users { get; set; }
+
+        public ApplicationContext()
+        {
+           // Database.EnsureCreated();
+        }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=png;password=png;database=png;");
+        }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            Console.WriteLine();
+        }
     }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public class User
     {
-        optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=png;password=png;database=png;");
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Article { get; set; }
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-    Console.WriteLine();
-    }
-  }
-}
