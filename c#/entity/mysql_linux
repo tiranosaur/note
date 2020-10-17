@@ -1,5 +1,40 @@
 Pomelo.EntityFrameworkCore.MySql
 //linux
 optionsBuilder.UseMySql("server=192.168.10.10;port=3306;user=homestead;password=secret;database=png;");
-//windows
-optionsBuilder.UseMySql("server=localhost;UserId=mysql;Password=mysql;database=png;");
+
+
+
+
+using System;
+using Microsoft.EntityFrameworkCore;
+
+namespace ConsoleApp
+{
+    class Programm
+    {
+        public static void Main(string[] args)
+        {
+        }
+    }
+
+public class ApplicationContext : DbContext
+{
+    internal DbSet<Author> authors { get; set; }
+    internal DbSet<Article> articles { get; set; }
+
+    public ApplicationContext()
+    {
+      // Database.EnsureCreated();
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=png;password=png;database=png;");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+    Console.WriteLine();
+    }
+  }
+}
