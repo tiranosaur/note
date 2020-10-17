@@ -1,0 +1,2 @@
+//windows
+optionsBuilder.UseMySql("server=localhost;UserId=mysql;Password=mysql;database=png;");
