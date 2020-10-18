@@ -1,0 +1,48 @@
+public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseRouting();
+            app.UseMiddleware<TokenMiddleware>();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGet("", async context => { await context.Response.WriteAsync($"home"); });
+                endpoints.MapGet("/help", async context => { await context.Response.WriteAsync($"help"); });
+            });
+
+            app.Run(async ctx => await ctx.Response.WriteAsync("404"));
+        }
+    }
+
+    public class TokenMiddleware
+    {
+        private readonly RequestDelegate _next;
+
+        public TokenMiddleware(RequestDelegate next)
+        {
+            this._next = next;
+        }
+
+        public async Task InvokeAsync(HttpContext ctx)
+        {
+            string token = ctx.Request.Query["token"];
+            if (token != "123")
+            {
+                ctx.Response.StatusCode = 403;
+            }
+            else
+            {
+                await _next.Invoke(ctx);
+            }
+        }
+    }
