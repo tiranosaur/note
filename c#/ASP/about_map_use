@@ -1,15 +1,33 @@
- public class Startup
+public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.Map("/aaa", app => app.Run(async ctx => await ctx.Response.WriteAsync("RomanoffAK440944")));
+
+            app.UseRouting();
+            int x = 1;
+            int y = 1;
+            app.Use(async (ctx, next) =>
+            {
+                x++;
+                y *= 2;
+                next.Invoke();
+            });
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGet("", async context => { await context.Response.WriteAsync($"Home \nx = {x} \ny = {y}"); });
+                endpoints.MapGet("help", async context => { await context.Response.WriteAsync($"x = {x} \ny = {y}"); });
+            });
+            
+            app.Map("/aaa", app => app.Run(async ctx => await ctx.Response.WriteAsync("Roma")));
             app.Map("/about", About);
             app.Run(async ctx => await ctx.Response.WriteAsync("404"));
         }
