@@ -1,1 +1,28 @@
+ public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+        }
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            app.Map("/aaa", app => app.Run(async ctx => await ctx.Response.WriteAsync("RomanoffAK440944")));
+            app.Map("/about", About);
+            app.Run(async ctx => await ctx.Response.WriteAsync("404"));
+        }
 
+        void About(IApplicationBuilder app)
+        {
+            app.Map("/index", app => app.Run(async ctx => await ctx.Response.WriteAsync("about index2")));
+            app.Map("/empty", app => app.Run(async ctx => await ctx.Response.WriteAsync("about index1")));
+            app.Map("/info", app => app.Run(async ctx => await ctx.Response.WriteAsync("about info")));
+            app.MapWhen(
+                ctx => ctx.Request.Query.ContainsKey("id"),
+                app => app.Run(async ctx => ctx.Response.WriteAsync($"id = {ctx.Request.Query["id"]}"))
+            );
+            app.Run(async ctx => await ctx.Response.WriteAsync("default"));
+        }
+    }
