@@ -25,6 +25,7 @@ public class Startup
             {
                 endpoints.MapGet("", async context => { await context.Response.WriteAsync($"Home \nx = {x} \ny = {y}"); });
                 endpoints.MapGet("help", async context => { await context.Response.WriteAsync($"x = {x} \ny = {y}"); });
+                endpoints.MapControllerRoute(name: "default", pattern: "{controller=Main}/{action=Index}/{id?}");
             });
             
             app.Map("/aaa", app => app.Run(async ctx => await ctx.Response.WriteAsync("Roma")));
