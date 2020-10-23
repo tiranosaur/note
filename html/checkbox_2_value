@@ -1,0 +1,5 @@
+<form action="/"method="post">
+    <input type="hidden" id="status_2_" name="status_2" value="0">
+    <input type="checkbox" onclick="document.querySelector('[name=status_2]').value = this.checked?1:0"/>
+    <input type="submit">
+</form
