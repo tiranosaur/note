@@ -1,4 +1,4 @@
 1. filename from url
     [\w\s:/*.]+/{1}
 2. phpStorm replace
-    (^[\s]*)(\S*)([\s]*$)    =>         <li>($2)</li>
+    (^[\s]*)(\S*)([\s]*$)    =>         <li>$2</li>
