@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Net.Http;
+using System.Text;
+using System.Xml.Serialization;
+
+
+namespace ConsoleApp
+{
+    class Programm
+    {
+        public static void Main(string[] args)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ValCurs));
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
+            HttpClient client = new HttpClient();
+            var result = (ValCurs) xmlSerializer.Deserialize(client
+                .GetAsync("http://www.cbr.ru/scripts/XML_daily.asp?date_req=02/03/2002").Result.Content
+                .ReadAsStreamAsync().Result);
+            result.ForEach(x => Console.WriteLine($"ID = {x.valuteID}, name = {x.name}\n"));
+            Console.WriteLine();
+        }
+    }
+
+    public class Valute
+    {
+        [Key] [XmlIgnore] public int Id { get; set; }
+        [XmlAttribute("ID")] public string valuteID { get; set; }
+        [XmlElement("NumCode")] public string numCode { get; set; }
+        [XmlElement("Nominal")] public int nominal { get; set; }
+        [XmlElement("CharCode")] public string сharCode { get; set; }
+        [XmlElement("Name")] public string name { get; set; }
+        [XmlElement("Value")] public string value { get; set; }
+        [XmlElement("Date")] public DateTime date { get; set; }
+    }
+
+    [XmlRoot("ValCurs")]
+    public class ValCurs : List<Valute>
+    {
+        [XmlAttribute("Date")] public string Date { get; set; }
+        [XmlAttribute("name")] public string Name { get; set; }
+    }
+}
