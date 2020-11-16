@@ -1,0 +1,4 @@
+UPDATE page_contents 
+SET page_contents.content = REPLACE (content, 'support', 'clients' ) 
+WHERE
+	content LIKE '%support%'
