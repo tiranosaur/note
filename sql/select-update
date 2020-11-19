@@ -1,4 +1,9 @@
 UPDATE page_contents 
 SET page_contents.content = REPLACE (content, 'support', 'clients' ) 
-WHERE
-	content LIKE '%support%'
+WHERE	content LIKE '%support%';
+
+
+
+UPDATE page_contents 
+SET content = REGEXP_REPLACE(content,'( )([a-zA-Z0-9-_.]+@[a-zA-Z0-9-_.]+[a-zA-Z])',' <a href="mailto:\\2" target="_blank" rel="noopener">\\2</a>') 
+WHERE content like '%@%';
