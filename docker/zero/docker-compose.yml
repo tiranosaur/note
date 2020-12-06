@@ -4,7 +4,7 @@ services:
   webserver:
     build: 
       context: ./bin/webserver
-    container_name: 'png-webserver'
+    container_name: 'webserver73'
     restart: 'always'
     ports:
       - "80:80"
@@ -16,9 +16,13 @@ services:
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
       - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
       - ${LOG_DIR-./logs/apache2}:/var/log/apache2
+    environment:
+      XDEBUG_CONFIG: "remote_host=172.17.0.1"
+      PHP_IDE_CONFIG: "serverName=DockerServer"
+
   mysql:
     build: ./bin/mysql
-    container_name: 'png-mysql'
+    container_name: 'mysql73'
     restart: 'always'
     ports:
       - "3306:3306"
@@ -30,20 +34,32 @@ services:
       MYSQL_DATABASE: png
       MYSQL_USER: png
       MYSQL_PASSWORD: png
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: 'png-phpmyadmin'
+    container_name: 'phpmyadmin73'
     links:
       - mysql
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
+      PMA_USER: png
+      PMA_PASSWORD: png
+      MYSQL_ROOT_PASSWORD: png
+      MYSQL_USER: png
+      MYSQL_PASSWORD: png
     ports:
       - '8080:80'
     volumes: 
       - /sessions
+
   redis:
-    container_name: 'png-redis'
+    container_name: 'redis73'
     image: redis:latest
     ports:
       - "6379:6379"
+  memcached:
+    container_name: 'memcached73'
+    image: memcached:latest
+    ports:
+        - "11211:11211"
