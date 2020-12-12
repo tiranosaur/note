@@ -1,4 +1,6 @@
 ------------------multiple framework-------------------------------
+//$tmp = 'laravel';
+//Route::get($tmp.'/', function () {    return view('welcome');});
 Options +FollowSymLinks
 RewriteEngine On
 RewriteRule ^laravel$ /laravel/public/index.php [NC,QSA,L]
