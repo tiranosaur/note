@@ -1,0 +1,7 @@
+------------------multiple framework-------------------------------
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^laravel$ /laravel/public/index.php [NC,QSA,L]
+#RewriteRule ^blog/(.+)$ /laravel/public/index.php [NC,QSA,L]
+RewriteRule ^laravel/(.+) /laravel/public/$1 [NC,QSA,L]
+-------------------------------------------------------------------
