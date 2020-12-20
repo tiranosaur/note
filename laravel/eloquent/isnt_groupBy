@@ -1,0 +1,1 @@
+DB::statement("SET sql_mode = '' ");
