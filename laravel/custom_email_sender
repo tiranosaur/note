@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use Swift_Mailer;
+use Swift_SmtpTransport;
+
+class FeedbackMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public $feedback;
+    public $toEmail;
+
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($feedbackId, $toEmail)
+    {
+        $this->toEmail = $toEmail;
+        $this->feedback = DB::table('feedback')->select('feedback.*', 'pages.url as pageUrl')->leftJoin('pages', 'feedback.pageId', '=', 'pages.id')->orderByDesc('created_at')->first();
+    }
+
+    /**
+     * Build the message.
+     *
+     * @return $this
+     */
+    public function build()
+    {
+        return $this->view('emails.feedback');
+    }
+
+    public function send($mailer)
+    {
+        $feedbackTransport = new Swift_SmtpTransport(Config('mail.mailers.feedback.host'), Config('mail.mailers.feedback.port'), Config('mail.mailers.feedback.encryption'));
+        $feedbackTransport->setUsername(Config('mail.mailers.smtp.username'));
+        $feedbackTransport->setPassword(Config('mail.mailers.smtp.password'));
+        $mail = new Swift_Mailer($feedbackTransport);
+
+        $mailer->setSwiftMailer($mail);
+        $mailer->to($this->toEmail);
+        return parent::send($mailer);
+    }
+}
