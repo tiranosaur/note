@@ -1,0 +1,6 @@
+string str = "My favorite string";
+str = Regex.Replace(str, "([a-z])", "$1_");
+var result = Regex.IsMatch(str, "^[a-zA-Z0-9_]*$");
+Console.WriteLine(str);
+Console.WriteLine(result);
+Regex.Split(str, " ").ToList().ForEach(Console.WriteLine);
