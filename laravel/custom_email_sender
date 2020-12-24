@@ -51,6 +51,7 @@ class ChangeMenuMail extends Mailable
     {
         foreach ($this->toEmail[$this->request->language] as $item)
             $this->to($item);
+    // mailer name in config file mail.php
         $this->mailer = 'change';
         return parent::send($mailer);
     }
