@@ -2,29 +2,33 @@
 
 namespace App\Mail;
 
+use App\Menu;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\DB;
-use Swift_Mailer;
-use Swift_SmtpTransport;
+use Illuminate\Support\Facades\URL;
 
-class FeedbackMail extends Mailable
+class ChangeMenuMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $feedback;
-    public $toEmail;
+    private $menu;
+    private $request;
+    private $toEmail = [
+        'ru' => ['ti@gmail.com', 'nov@gmail.com'],
+        'en' => ['ti@gmail.com', 'nov@gmail.com']
+    ];
+
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($feedbackId, $toEmail)
+    public function __construct($id, $request)
     {
-        $this->toEmail = $toEmail;
-        $this->feedback = DB::table('feedback')->select('feedback.*', 'pages.url as pageUrl')->leftJoin('pages', 'feedback.pageId', '=', 'pages.id')->orderByDesc('created_at')->first();
+        $this->menu    = Menu::find($id);
+        $this->request = $request;
     }
 
     /**
@@ -34,18 +38,20 @@ class FeedbackMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.feedback');
+        return $this->view('emails.changeMenu')
+            ->with([
+                       'lang'   => $this->request->language,
+                       'menuId' => $this->request->parent_id,
+                       'url'    => URL::to($this->request->full_url),
+                       'ctype'  => $this->request->ctype
+                   ]);
     }
 
     public function send($mailer)
     {
-        $feedbackTransport = new Swift_SmtpTransport(Config('mail.mailers.feedback.host'), Config('mail.mailers.feedback.port'), Config('mail.mailers.feedback.encryption'));
-        $feedbackTransport->setUsername(Config('mail.mailers.smtp.username'));
-        $feedbackTransport->setPassword(Config('mail.mailers.smtp.password'));
-        $mail = new Swift_Mailer($feedbackTransport);
-
-        $mailer->setSwiftMailer($mail);
-        $mailer->to($this->toEmail);
+        foreach ($this->toEmail[$this->request->language] as $item)
+            $this->to($item);
+        $this->mailer = 'change';
         return parent::send($mailer);
     }
 }
