@@ -22,22 +22,23 @@ function diff($old, $new)
         diff(array_slice($old, $omax + $maxlen), array_slice($new, $nmax + $maxlen)));
 }
 
-function htmlDiff($old, $new)
+function htmlDiff($old, $new, $byChar = false)
 {
     $ret  = '';
     $diff = diff(preg_split("/[\s]+/", $old), preg_split("/[\s]+/", $new));
     foreach ($diff as $k) {
         if (is_array($k))
-            $ret .= (!empty($k['d']) ? "<span style='background-color: red'>" . implode(' ', $k['d']) . "</span> " : '') .
-                (!empty($k['i']) ? "<span style='background-color:greenyellow;'>" . implode(' ', $k['i']) . "</span> " : '');
+            $ret .= (!empty($k['d']) ? "####span style='background-color: orange'!!!!" . implode(' ', $k['d']) . "####/span!!!! " : '') .
+                (!empty($k['i']) ? "####span style='background-color:greenyellow;'!!!!" . implode(' ', $k['i']) . "####/span!!!! " : '');
         else $ret .= $k . ' ';
     }
+
+    $ret = htmlspecialchars($ret);
+    $ret = str_replace(['####', '!!!!'], ['<', '>'], $ret);
     return $ret;
 }
 
-$text1 = '
-Во всех операци1онных системах есть такая утилита diff для нахождения разницы в двух файлах. Если бы я захотел найти аналог в php, я бы погуглил "php diff". Находится вот такое, например:';
-$text2 = '
-Во всех операционных системах есть такая утилита diff для нахождения разницы в двух файлах. Если бы я захотел найти аналог в php, я бы погуглил "php diff". Находится вот такое, например: ';
-echo htmlDiff($text1, $text2);
 
+$text1 = '<pre style="background-color: #ffffff; color: #080808; font-family: \'JetBrains Mono\',monospace; font-size: 12.0pt;">Сервис покупки внутридневных опционов доступен с понедельника 00:01 UTC+3 (время первого опциона 00:04 UTC+3) по пятницу 23:50 UTC+3 (время последнего опциона 23:49 UTC+3). Ограничения по количеству покупки опционов в сутки отсутствуют.<br />Покупка срочных опционов доступна круглосуточно.</pre>';
+$text2 = '<p>The service for buying intraday options is available from Monday 00:01 UTC + 3 (the time of the first option is 00:04 UTC + 3) to Friday 23:50 UTC + 3 (the time of the last option is 23:49 UTC + 3). There are no restrictions on the number of options purchased per day.<br />The purchase of term options is available around the clock.</p>';
+echo htmlDiff($text1, $text2);
