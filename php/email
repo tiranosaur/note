@@ -8,7 +8,7 @@
     $mail->Password   = 'password';
     $mail->SMTPSecure = 'tls';
 
-    $mail->From     = 'feedback@tech2.instaforex.com';
+    $mail->From     = 'email@gmail.com';
     $mail->FromName = 'Mailer';
     $mail->addAddress('tiranosaur88@gmail.com');
 
