@@ -1,0 +1,23 @@
+  $mail = new PHPMailer;
+
+    $mail->isSMTP();
+    $mail->Host       = 'mxtem';
+    $mail->Port       = 587;
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'email@gmail.com';
+    $mail->Password   = 'password';
+    $mail->SMTPSecure = 'tls';
+
+    $mail->From     = 'feedback@tech2.instaforex.com';
+    $mail->FromName = 'Mailer';
+    $mail->addAddress('tiranosaur88@gmail.com');
+
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+
+    if (!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo 'Message has been sent';
+    }
