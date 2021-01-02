@@ -9,3 +9,12 @@
   php bin/magento admin:user:create --admin-user=admin --admin-password=admin123admin --admin-email=hi@mageplaza.com --admin-firstname=Mageplaza --admin-lastname=Family
 // disable TwoFactorAuth
   php bin/magento module:disable Magento_TwoFactorAuth
+
+
+
+
+
+php bin/magento sampledata:deploy
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy
