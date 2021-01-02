@@ -13,7 +13,7 @@
 
 
 
-
+php bin/magento deploy:mode:set developer
 php bin/magento sampledata:deploy
 php bin/magento setup:upgrade
 php bin/magento setup:di:compile
