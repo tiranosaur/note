@@ -1,0 +1,3 @@
+/bin/magento
+./magento setup:install --db-host=localhost --db-name=magento --db-user=homestead --db-password=secret
+./magento module:disable {Magento_Elasticsearch,Magento_InventoryElasticsearch,Magento_Elasticsearch6,Magento_Elasticsearch7}
