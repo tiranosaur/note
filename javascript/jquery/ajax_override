@@ -1,0 +1,12 @@
+    var $ajax = $.ajax;
+
+    $.ajax = function (a) {
+       console.log(a);
+       return $ajax.apply(this, arguments);
+    }
+
+    $.ajax({
+        url: "lambda.php",
+        beforeSend: ()=>console.log("before")
+    })
+        .done(() => console.log("done"))
