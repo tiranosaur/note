@@ -1,0 +1,36 @@
+public function download(Request $request)
+    {
+        if (empty($request->from)) $from = Carbon::now()->subHour(1);
+        else $from = new Carbon($request->from);
+        if (empty($request->to)) $to = Carbon::now();
+        else $to = new Carbon($request->to);
+
+        $result = SearchHistory::query()
+            ->whereBetween('created_at', [(new Carbon($from->toString())), (new Carbon($to->toString()))])
+            ->orderBy('created_at', 'DESC')->get();
+
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=result.csv",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $columns = array('id', 'lang', 'term', 'date');
+        $callback = function () use ($result, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+            foreach ($result as $item) {
+                $row['id']   = $item->id;
+                $row['lang'] = $item->lang;
+                $row['term'] = $item->term;
+                $row['date'] = $item->created_at;
+                fputcsv($file, array($row['id'], $row['lang'], $row['term'], $row['date']));
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
