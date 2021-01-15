@@ -1,0 +1,10 @@
+function getCaptchaLang(){
+    $langs = [
+        'cn' => 'zh-HK',
+        'ua' => 'uk',
+        'gr' => 'el'
+    ];
+    return $langs[app()->getLocale()] ?? app()->getLocale();
+}
+
+<script src="https://www.google.com/recaptcha/api.js?hl={{ getCaptchaLang() }}"></script>
