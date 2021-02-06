@@ -1,0 +1,65 @@
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.function.IntUnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+public class MainJava {
+    public static void main(String[] args) throws IOException {
+        String inputFileName = "source.txt";
+        List<String> fileStream = Files.readAllLines(Paths.get(inputFileName));
+        List<Integer> fibo = FibonacciStream.stream().takeWhile(x -> x < (long) fileStream.size()).boxed().collect(Collectors.toList());
+        IntStream.range(0, fileStream.size()).forEach(x -> FileSaver.save(fileStream.get(x), fibo.contains(x + 1)));
+        FileSaver.close();
+    }
+}
+
+class FibonacciStream {
+    public static IntStream stream() {
+        return IntStream.iterate(1, new IntUnaryOperator() {
+            private int currentValue = 0;
+
+            @Override
+            public int applyAsInt(int operand) {
+                int ret = operand + currentValue;
+                currentValue = operand;
+                return ret;
+            }
+        });
+    }
+}
+
+class FileSaver {
+    public static final String outputFileName = "output.txt";
+    private static FileWriter fileWriter;
+
+    static {
+        try {
+            fileWriter = new FileWriter(outputFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void save(String str, boolean isReverse) {
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append(str);
+            if (isReverse) sb.reverse();
+            fileWriter.write(sb.append("\n").toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void close() {
+        try {
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
