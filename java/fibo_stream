@@ -14,6 +14,8 @@ public class MainJava {
         List<Integer> fibo = FibonacciStream.stream().takeWhile(x -> x < (long) fileStream.size()).boxed().collect(Collectors.toList());
         IntStream.range(0, fileStream.size()).forEach(x -> FileSaver.save(fileStream.get(x), fibo.contains(x + 1)));
         FileSaver.close();
+        
+        FibonacciStream.stream().limit(5).forEach(x -> System.out.println(x));
     }
 }
 
