@@ -1,0 +1,2 @@
+npm install sfdx-cli --global
+sfdx plugins:install @salesforce/plugin-auth@1.4.3
