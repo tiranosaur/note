@@ -1,0 +1,8 @@
+ERROR running force:source:retrieve: Cannot read property "fileName" of undefined
+
+удалить 
+    <types>
+        <members>*</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+из package.xml
