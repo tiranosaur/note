@@ -22,3 +22,10 @@ SELECT * from tmp;
 END;
 
 call get_book_by_id_proc(55)
+
+_______________________________________________________________________________
+DROP PROCEDURE IF	EXISTS resetTimestamp;
+CREATE PROCEDURE resetTimestamp ( pid INT ) BEGIN	
+	UPDATE `page_contents` SET `updated_at` = '2020-12-18 00:00:00' WHERE page_id = pid AND lang = 'ru';
+END;
+call resetTimestamp ( 362 );
