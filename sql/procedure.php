@@ -27,5 +27,6 @@ _______________________________________________________________________________
 DROP PROCEDURE IF	EXISTS resetTimestamp;
 CREATE PROCEDURE resetTimestamp ( pid INT ) BEGIN	
 	UPDATE `page_contents` SET `updated_at` = '2020-12-18 00:00:00' WHERE page_id = pid AND lang = 'ru';
+	UPDATE `page_contents` SET `updated_at` = '2020-12-19 00:00:00' WHERE page_id = pid AND lang = 'en';
 END;
 call resetTimestamp ( 362 );
