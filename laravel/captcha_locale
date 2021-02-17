@@ -8,3 +8,7 @@ function getCaptchaLang(){
 }
 
 <script src="https://www.google.com/recaptcha/api.js?hl={{ getCaptchaLang() }}"></script>
+
+
+<?php $googleLangs = array('jp'=>'ja', 'rs'=>'sr', 'bd'=>'bn', 'cz'=>'cs', 'ge'=>'ka', 'kr'=>'ko', 'sp'=>'es', 'ua'=>'uk', 'cn' => 'zh-CN' )?>
+<script src='https://google.com/recaptcha/api.js?hl=<?=(!empty($googleLangs[LANG])) ? $googleLangs[LANG] : LANG?>'></script>
