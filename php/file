@@ -10,4 +10,7 @@ file_put_contents($GLOBALS["_FILES"]["myFile"]["name"], file_get_contents($GLOBA
 //file code
 base64_encode(file_get_contents($_FILES['image']['tmp_name']))
 
+//short
+if (!empty($_FILES)) foreach ($_FILES as $file) $this->addAttachment($file['tmp_name'], $file["name"]);
+
 
