@@ -24,7 +24,7 @@ namespace ConsoleApp
                 .ForEach(File.Delete);
             Directory
                 .GetDirectories(UserPrefs)
-                .Where(f => Regex.IsMatch(f, "(clion)|(goland)|(idea)|(phpstorm)|(pycharm)|(rider)|(clion)|(clion)"))
+                .Where(f => Regex.IsMatch(f, "(clion)|(goland)|(idea)|(phpstorm)|(pycharm)|(rider)"))
                 .ToList()
                 .ForEach(x => Directory.Delete(x, true));
             
