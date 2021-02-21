@@ -1,0 +1,35 @@
+package com.company;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.Properties;
+
+public class Main {
+    public Properties properties;
+
+    public static void main(String[] args) throws Exception {
+        Properties prop = new Properties();
+
+        // set key and value
+        prop.setProperty("db.url", "localhost");
+        prop.setProperty("db.user", "mkyong");
+        prop.setProperty("db.password", "password");
+
+        // save a properties file
+        prop.store(new FileOutputStream("company.properties"), "sdfsd");
+
+        // load a properties file
+        prop.load(new FileInputStream("company.properties"));
+
+        // get value by key
+        prop.getProperty("db.url");
+        prop.getProperty("db.user");
+        prop.getProperty("db.password");
+
+        // get all keys
+        prop.keySet();
+
+        // print everything
+        prop.forEach((k, v) -> System.out.println("Key : " + k + ", Value : " + v));
+    }
+}
