@@ -1,0 +1,12 @@
+Pattern.compile("/(clion|goland|idea|phpstorm|pycharm|rider)[/]?").matcher(x.toString()).find()
+
+
+String str = "44conso44le.log(44);";
+        System.out.println(Pattern.compile("44").matcher(str).find());
+        System.out.println(Pattern.compile("33").matcher(str).find());
+        System.out.println(Pattern.compile("44").matcher(str).replaceAll("*"));
+        System.out.println(Pattern.compile("44").matcher(str).replaceFirst("*"));
+        var x = Pattern.compile("(44)").matcher(str);
+        while (x.find()){
+            System.out.println(x.group());
+        }
