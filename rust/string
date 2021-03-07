@@ -1,0 +1,8 @@
+    let string = "abcdefghijklmnopqrstuvwxyz";
+    
+    (0..string.len()).for_each(|x| println!("{} - {}", string.chars().nth(x).unwrap(), string.chars().nth(x).unwrap().to_uppercase()));
+    string.chars().map(|x| if ['a', 'c', 'd', 'z'].contains(&x) { x.to_ascii_uppercase() } else { x }).for_each(|x| println!("{}", x));
+    
+    //regex
+    let regex1 = Regex::new("[a-f]").unwrap().replace_all(string, "*").to_string();
+    let regex2 = Regex::new("([a-f]+)([g-v]+)([wxyz]+)").unwrap().replace_all(string, "($3)-($2)-($1)").to_string();
