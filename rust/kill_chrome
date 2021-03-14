@@ -1,0 +1,24 @@
+use std::io;
+use chrono;
+use sysinfo::{System, SystemExt, Signal, ProcessExt};
+
+
+fn main() {
+    println!("Input minutes(default 30):");
+    let mut io_string = String::new();
+    io::stdin().read_line(&mut io_string).expect("Error read line!");
+
+    let minutes = match  io_string.trim().parse::<i64>(){ Ok(ok)=>ok, Err(err)=>30};
+    let finish = chrono::Utc::now()+chrono::Duration::hours(2)+chrono::Duration::seconds(minutes);
+
+    'xxx:loop {
+        let now = chrono::Utc::now() + chrono::Duration::hours(2);
+        if now>finish {break 'xxx;}
+    }
+
+    System::new_all()
+        .get_processes()
+        .iter()
+        .filter(|x| x.1.name() == "chrome")
+        .for_each(|x|  {x.1.kill(Signal::Quit);})
+}
