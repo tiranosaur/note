@@ -1,0 +1,21 @@
+CREATE TABLE mytable (
+    id INT,
+    unique_id varchar(20),
+    reference_id varchar(20)
+);
+
+INSERT INTO mytable(id,unique_id,reference_id) VALUES (43,55544,NULL);
+INSERT INTO mytable(id,unique_id,reference_id) VALUES (45,45454,43);
+INSERT INTO mytable(id,unique_id,reference_id) VALUES (66,55655,45);
+INSERT INTO mytable(id,unique_id,reference_id) VALUES (78,88877,66);
+INSERT INTO mytable(id,unique_id,reference_id) VALUES (99,454,33);
+
+
+
+with recursive cte as (
+      select t.* from mytable t where t.unique_id = 55544
+      union all
+      select t.* from cte 
+			join mytable t on cte.id = t.reference_id
+     )
+select * from cte;
