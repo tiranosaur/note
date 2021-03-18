@@ -29,7 +29,7 @@ with recursive cte as (
      )
 select * from cte;
 
-//
+//with desc order
 with recursive cte as (
       select t.* from mytable t where t.unique_id = 55544
       union all
