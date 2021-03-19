@@ -2,6 +2,9 @@ using (FileStream reader = new FileStream("filename", FileMode.Open))
 {
   XDocument.Load(reader).Element("catalog").Elements().ToList().ForEach(x => Console.WriteLine(x.Element("title")));
   XDocument.Load(reader).Root.Elements().ToList().ForEach(x => Console.WriteLine(x.Element("title")));
+  XDocument.Load(reader).Root.Elements().ToList()
+  .Where(x => (double.TryParse(x.Element("price").Value, out double dd) ? dd : 0) <= 5).ToList()
+  .ForEach(x => Console.WriteLine(x.Element("title")+x.Element("price").Value));
 }
 
 
