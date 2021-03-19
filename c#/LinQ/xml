@@ -1,6 +1,7 @@
 using (FileStream reader = new FileStream("filename", FileMode.Open))
 {
   XDocument.Load(reader).Element("catalog").Elements().ToList().ForEach(x => Console.WriteLine(x.Element("title")));
+  XDocument.Load(reader).Root.Elements().ToList().ForEach(x => Console.WriteLine(x.Element("title")));
 }
 
 
