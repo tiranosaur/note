@@ -1,0 +1,1 @@
+int myInt = int.TryParse(myString, out myInt) ? myInt : 0;
