@@ -1,0 +1,2 @@
+var xxx = new HttpClient().GetAsync("https://www.google.com/").Result.Content.ReadAsStringAsync().Result;
+Console.WriteLine(xxx);
