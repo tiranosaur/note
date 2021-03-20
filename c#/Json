@@ -12,3 +12,31 @@ public static void Main(string[] args)
                 Console.WriteLine($"{item.Key} = {item.Value}");
             }
         }
+        
+        
+        
+//-------------------------------------------------------------
+class Programm
+    {
+        public static void Main(string[] args)
+        {
+            var list = new List<Elem>();
+            list.Add(new Elem() {Id = 1, Button = "first"});
+            list.Add(new Elem() {Id = 2, Button = "second"});
+            list.Add(new Elem() {Id = 3, Button = "third"});
+            list.Add(new Elem() {Id = 4, Button = "forth"});
+            list.Add(new Elem() {Id = 5, Button = "fifth"});
+
+            var json = JsonSerializer.Serialize(list);
+            Console.WriteLine(json);
+
+            var ElemList = JsonSerializer.Deserialize<List<Elem>>(json);
+            ElemList.ForEach(x => Console.WriteLine($"{x.Id}. {x.Button}"));
+        }
+
+        class Elem
+        {
+            [JsonPropertyName("id")] public int Id { get; set; }
+            [JsonPropertyName("button")] public string Button { get; set; }
+        }
+    }
