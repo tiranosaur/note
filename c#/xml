@@ -1,0 +1,41 @@
+ class Programm
+    {
+        public static void Main(string[] args)
+        {
+            var elems = new Elems
+            {
+                new Elem() {Id = 1, Button = "first"},
+                new Elem() {Id = 2, Button = "second"},
+                new Elem() {Id = 3, Button = "third"},
+                new Elem() {Id = 4, Button = "forth"},
+                new Elem() {Id = 5, Button = "fifth"}
+            };
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Elems));
+            using (FileStream fs = new FileStream(Config.ProjectDirectory + "/test.xml", FileMode.OpenOrCreate))
+            {
+                xmlSerializer.Serialize(fs, elems);
+            }
+        }
+    }
+
+    [XmlRoot("elems")]
+    public class Elems : List<Elem>
+    {
+        [XmlAttribute("Date")] public DateTime Date { get; set; }
+        [XmlAttribute("name")] public string Name { get; set; }
+
+        public Elems()
+        {
+            Date = DateTime.Now;
+            Name = "say my name";
+        }
+    }
+
+    public class Elem
+    {
+        [XmlAttribute("myDate")] public DateTime Date { get; set; } = DateTime.Now;
+        [XmlAttribute("Name")] public string Name { get; set; } = "DateTime.Now";
+        [XmlElement("id")] public int Id { get; set; }
+        [XmlElement("button")] public string Button { get; set; }
+    }
