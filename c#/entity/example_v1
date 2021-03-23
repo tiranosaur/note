@@ -1,0 +1,131 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //select
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                var roleAdv = context.Roles.Include(x => x.Users).First(x => x.Id == 1);
+                var userAdv = context.Users.Include(x => x.Role).First(x => x.Id == 1);
+                roleAdv.Users.ForEach(x => Console.WriteLine(x.Name));
+                Console.WriteLine($"{userAdv.Id} - {userAdv.Name} - {userAdv.Role.Name}");
+
+                var articles = context.Articles
+                    .Include(x => x.ArticleUser)
+                    .ThenInclude(x => x.User)
+                    .ToList();
+
+                articles.ForEach(x => Console.WriteLine($"{x.Title}"));
+            }
+
+            //crud
+            using (ApplicationContext context = new ApplicationContext())
+            {
+                User user = new User() {Name = "Jerry"};
+                context.Users.Add(user);
+
+                Role role = context.Roles.Include(x => x.Users).First(x => x.Name == "User");
+                role.Users.Add(user);
+                context.Roles.Update(role);
+
+                context.SaveChanges();
+            }
+        }
+    }
+
+    public class ApplicationContext : DbContext
+    {
+        internal DbSet<User> Users { get; set; }
+        internal DbSet<Role> Roles { get; set; }
+        internal DbSet<Article> Articles { get; set; }
+        internal DbSet<ArticleUser> ArticleUser { get; set; }
+
+        public ApplicationContext()
+        {
+            //Database.EnsureCreated();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySql("server=127.0.0.1;port=3306;user=png;password=png;database=png;",
+                new MySqlServerVersion(new Version(5, 7)));
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //---------------------must have-----------------------------
+            modelBuilder.Entity<ArticleUser>()
+                .HasKey(t => new {t.ArticleId, t.UserId});
+
+            modelBuilder.Entity<ArticleUser>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.ArticleUser)
+                .HasForeignKey(sc => sc.UserId);
+
+            modelBuilder.Entity<ArticleUser>()
+                .HasOne(sc => sc.Article)
+                .WithMany(c => c.ArticleUser)
+                .HasForeignKey(sc => sc.ArticleId);
+            //---------------------end must have-----------------------------
+            modelBuilder.Entity<User>().HasData(
+                new User() {Id = 1, Name = "Administrator", RoleId = 1},
+                new User() {Id = 2, Name = "User1", RoleId = 2},
+                new User() {Id = 3, Name = "User2", RoleId = 1}
+            );
+            modelBuilder.Entity<Role>().HasData(
+                new Role {Id = 1, Name = "Admin"},
+                new Role {Id = 2, Name = "User"}
+            );
+            modelBuilder.Entity<Article>().HasData(
+                new Article {Id = 1, Title = "bbbbbbbbbbbbbbbbbbb"},
+                new Article {Id = 2, Title = "aaaaaaaaaaaaa"}
+            );
+            modelBuilder.Entity<ArticleUser>().HasData(
+                new ArticleUser {Id = 1, ArticleId = 1, UserId = 1},
+                new ArticleUser {Id = 2, ArticleId = 1, UserId = 2},
+                new ArticleUser {Id = 3, ArticleId = 2, UserId = 1}
+            );
+        }
+    }
+
+    public class User
+    {
+        [Key] public int? Id { get; set; }
+        public string Name { get; set; }
+        public int? RoleId;
+        [ForeignKey("RoleId")] public Role Role { get; set; }
+        public List<ArticleUser> ArticleUser { get; set; }
+    }
+
+    public class Article
+    {
+        [Key] public int Id { get; set; }
+        public string Title { get; set; }
+        public List<ArticleUser> ArticleUser { get; set; }
+    }
+
+    public class ArticleUser
+    {
+        [Key] public int Id { get; set; }
+        public int? ArticleId;
+        public Article Article;
+        public int? UserId;
+        public User User;
+    }
+
+    public class Role
+    {
+        [Key] public int? Id { get; set; }
+        public string Name { get; set; }
+        public List<User> Users { get; set; }
+    }
+}
