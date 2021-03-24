@@ -1,0 +1,34 @@
+
+DROP TABLE IF EXISTS `OCCUPATIONS`;
+CREATE TABLE `OCCUPATIONS`  (
+  `name` varchar(222),
+  `occupation` varchar(222)
+) ;
+
+INSERT INTO `OCCUPATIONS` VALUES ('Ashley', 'Professor');
+INSERT INTO `OCCUPATIONS` VALUES ('Samantha', 'Actor');
+INSERT INTO `OCCUPATIONS` VALUES ('Julia', 'Doctor');
+INSERT INTO `OCCUPATIONS` VALUES ('Britney', 'Professor');
+INSERT INTO `OCCUPATIONS` VALUES ('Maria', 'Professor');
+INSERT INTO `OCCUPATIONS` VALUES ('Meera', 'Professor');
+INSERT INTO `OCCUPATIONS` VALUES ('Priya', 'Doctor');
+INSERT INTO `OCCUPATIONS` VALUES ('Priyanka', 'Professor');
+INSERT INTO `OCCUPATIONS` VALUES ('Jennifer', 'Actor');
+INSERT INTO `OCCUPATIONS` VALUES ('Ketty', 'Actor');
+INSERT INTO `OCCUPATIONS` VALUES ('Belvet', 'Professor');
+INSERT INTO `OCCUPATIONS` VALUES ('Naomi', 'Professor');
+INSERT INTO `OCCUPATIONS` VALUES ('Jane', 'Singer');
+INSERT INTO `OCCUPATIONS` VALUES ('Jenny', 'Singer');
+INSERT INTO `OCCUPATIONS` VALUES ('Kristeen', 'Singer');
+INSERT INTO `OCCUPATIONS` VALUES ('Christeen', 'Singer');
+INSERT INTO `OCCUPATIONS` VALUES ('Eve', 'Actor');
+INSERT INTO `OCCUPATIONS` VALUES ('Aamina', 'Doctor');
+
+select d.name Doctor, p.name Professor, s.name Singer, a.name Actor 
+from (SELECT  @ind:=@ind+1 id, name FROM OCCUPATIONS,  (SELECT @ind:=0)x 
+WHERE occupation = (select occupation from OCCUPATIONS GROUP BY occupation ORDER BY COUNT(name) desc LIMIT 1)
+ORDER BY name)ind
+left JOIN (SELECT  @a:=@a+1 id, name FROM OCCUPATIONS,(SELECT @a:=0)x WHERE occupation = 'Actor' ORDER BY name)a ON ind.id = a.id
+left JOIN (SELECT  @d:=@d+1 id, name FROM OCCUPATIONS,(SELECT @d:=0)x WHERE occupation = 'Doctor' ORDER BY name)d ON ind.id = d.id
+left JOIN (SELECT  @p:=@p+1 id, name FROM OCCUPATIONS,(SELECT @p:=0)x WHERE occupation = 'Professor' ORDER BY name)p ON ind.id = p.id
+left JOIN (SELECT  @s:=@s+1 id, name FROM OCCUPATIONS,(SELECT @s:=0)x WHERE occupation = 'Singer' ORDER BY name)s ON ind.id = s.id;
