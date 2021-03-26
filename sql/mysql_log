@@ -1,0 +1,4 @@
+SET GLOBAL general_log = 0;
+SET GLOBAL log_output = 'TABLE';
+TRUNCATE table mysql.general_log;
+SELECT * FROM mysql.general_log where user_host not like '%root%';
