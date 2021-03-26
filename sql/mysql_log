@@ -1,3 +1,7 @@
+//              DON'T FORGET TO DISABLE LOG
+//
+//SHOW GLOBAL VARIABLES WHERE Variable_name in ('general_log', 'version', 'log', 'general_log', 'general_log_file', 'log_output','slow_query_log', 'slow_query_log_file');
+//
 SET GLOBAL general_log = 0;
 SET GLOBAL log_output = 'TABLE';
 TRUNCATE table mysql.general_log;
