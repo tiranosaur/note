@@ -8,3 +8,10 @@ SELECT * FROM mysql.general_log where user_host not like '%root%';
 SET GLOBAL general_log = 1;
 SET GLOBAL log_output = 'FILE';
 SET GLOBAL general_log_file = 'mysql.log';
+
+//docker -> DockerA73/data/mysql/slow.log
+SET GLOBAL slow_query_log = 1;
+SET GLOBAL long_query_time = 2;
+SET GLOBAL log_output = 'FILE';
+SET GLOBAL log_queries_not_using_indexes = 1;
+SET GLOBAL slow_query_log_file = 'slow.log';
