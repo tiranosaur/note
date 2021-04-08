@@ -1,0 +1,17 @@
+https://github.com/barryvdh/laravel-ide-helper
+
+1.
+  composer require --dev barryvdh/laravel-ide-helper
+
+2. 
+  AppServiceProvider register()
+  public function register()
+  {
+      if ($this->app->isLocal()) {
+          $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+      }    
+  }
+  
+3.
+  php artisan ide-helper:models "App\Models\User" 
+    -generate phpDoc for User
