@@ -1,0 +1,20 @@
+// add phpDoc 
+// add method
+
+
+
+/**
+ * App\Models\User
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|User myscope()
+ */
+class User extends Authenticatable
+{    
+    public function scopeMyscope($query)
+    {
+        return $query->where('role', '=', '1');
+    }
+}
+
+// Using -> 
+$admins = User::myscope()->get();
