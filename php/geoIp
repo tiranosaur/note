@@ -1,3 +1,4 @@
- $ip = '46.219.228.161';
-    $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-    var_dump($details);
+$ip = $_SERVER['REMOTE_ADDR'];
+$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+echo $details->city;
+var_dump($details);
