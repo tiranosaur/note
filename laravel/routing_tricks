@@ -1,0 +1,5 @@
+1.Sometimes you may wish to resolve Eloquent models using a column other than id. To do so, you may specify the column in the route parameter definition:
+        use App\Models\Post;
+        Route::get('/posts/{post:slug}', function (Post $post) {
+            return $post;
+        });
