@@ -1,0 +1,22 @@
+Во-первых, вы можете ограничить некоторые URL-адреса для вызова максимум 60 раз в минуту, с помощью throttle:60,1.
+
+Route::middleware('auth:api', 'throttle:60,1')->group(function () {
+    Route::get('/user', function () {
+        //
+    });
+});
+А вы знали, что можно это сделать отдельно для гостей и залогиненных пользователей?
+
+// максимум 10 запросов в минуту для гостей и 60 для пользователей
+Route::middleware('throttle:10|60,1')->group(function () {
+    //
+});
+Также вы можете создать в БД поле users.rate_limit и ограничить запросы для конкретного пользователя:
+
+Route::middleware('auth:api', 'throttle:rate_limit,1')->group(function () {
+    Route::get('/user', function () {
+        //
+    });
+});
+
+https://laravel.demiart.ru/routing-advanced-tips/
