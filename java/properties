@@ -33,3 +33,11 @@ public class Main {
         prop.forEach((k, v) -> System.out.println("Key : " + k + ", Value : " + v));
     }
 }
+
+
+
+ Properties prop = new Properties();
+        prop.load(new FileInputStream("company.properties"));
+        var x = prop.getProperty("db.url");
+        prop.getProperty("db.user");
+        prop.getProperty("db.password");
