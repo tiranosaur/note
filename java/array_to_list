@@ -1,0 +1,9 @@
+    public static void main(String[] args) {
+        var           arr  = new int[]{345, 567, 32452, 5673, 33};
+        List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+
+        Arrays.stream(arr)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .forEach(x -> System.out.println(x));
+    }
