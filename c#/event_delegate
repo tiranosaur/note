@@ -3,9 +3,6 @@
   Поведение, как будто делегат был закрыт для вызова. 
   Для целей назначения доступ задается явным модификатором доступа (например, public event).
 
-
-using System;
-
 namespace ConsoleApp1
 {
     class Program
@@ -17,17 +14,12 @@ namespace ConsoleApp1
             acc.Notify += Error;
             acc.Foo();
             acc.Handler.Invoke("1111111111");
-            acc.Notify.Invoke("1111111111");
+            acc.Notify.Invoke("1111111111"); //--------------------EROOR---------------------------------------
         }
 
         public static void Message(string str) => Console.WriteLine($"AccountMessage - {str}");
 
-        public static void Error(string str)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(str);
-            Console.ResetColor();
-        }
+        public static void Error(string str)=> Console.WriteLine($"{str}");
     }
 
     public delegate void AccountHandler(string str);
@@ -39,8 +31,8 @@ namespace ConsoleApp1
 
         public void Foo()
         {
-            Handler?.Invoke("aaaaaaaaaaa");
-            Notify?.Invoke("bbbbbbbbbb");
+            Handler?.Invoke("a");
+            Notify?.Invoke("b");
         }
     }
 }
