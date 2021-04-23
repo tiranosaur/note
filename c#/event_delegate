@@ -1,0 +1,46 @@
+1. Вы можете использовать event в интерфейсе.
+2. Доступ к вызову для делегата многоадресной рассылки ограничивается объявляющим классом. 
+  Поведение, как будто делегат был закрыт для вызова. 
+  Для целей назначения доступ задается явным модификатором доступа (например, public event).
+
+
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Account acc = new Account();
+            acc.Handler = Message;
+            acc.Notify += Error;
+            acc.Foo();
+            acc.Handler.Invoke("1111111111");
+            acc.Notify.Invoke("1111111111");
+        }
+
+        public static void Message(string str) => Console.WriteLine($"AccountMessage - {str}");
+
+        public static void Error(string str)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(str);
+            Console.ResetColor();
+        }
+    }
+
+    public delegate void AccountHandler(string str);
+
+    class Account
+    {
+        public AccountHandler Handler;
+        public event AccountHandler Notify;
+
+        public void Foo()
+        {
+            Handler?.Invoke("aaaaaaaaaaa");
+            Notify?.Invoke("bbbbbbbbbb");
+        }
+    }
+}
