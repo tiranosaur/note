@@ -1,0 +1,8 @@
+// Scan int
+  	var x int
+	_, err := fmt.Scanf("%d", &x)
+	if err == nil {
+		fmt.Println(x * x)
+	} else {
+		panic("Something went wrong!")
+	}  
