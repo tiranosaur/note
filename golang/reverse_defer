@@ -1,0 +1,12 @@
+func main() {
+	result := make([]int, 0)
+	defer func() { fmt.Println(result) }()
+	for v := range [10]int{} {
+		defer foo(&result, v)
+	}
+
+}
+
+func foo(arr *[]int, x int) {
+	*arr = append(*arr, x)
+}
