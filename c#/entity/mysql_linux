@@ -1,3 +1,5 @@
+//--------- не забывай include если связь многие ко многим или один ко многим
+
 //windows
 //microsoft.entityframeworkcore.tools  - может понадобится даунгрейд. если критует при f5
 //pomelo.entityframeworkcore.mysql
