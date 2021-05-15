@@ -1,1 +1,47 @@
 https://gunnarpeipman.com/aspnet-core-simple-localization/
+
+
+public class Startup
+    {
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseRouting();
+            app.UseMiddleware<LocaleMiddleware>().UseEndpoints(endpoint =>  //-------------------LocaleMiddleware---------------------------
+            {
+                endpoint.MapControllerRoute("home", "{lang?}/", new {controller = "Main", action = "index"});
+            });
+        }
+    }
+    
+public class LocaleMiddleware
+    {
+        private readonly RequestDelegate _next;
+ 
+        public LocaleMiddleware(RequestDelegate next)
+        {
+            this._next = next;
+        }
+        
+        public async Task InvokeAsync(HttpContext context)
+        {
+            string      lang        = context.GetRouteData().Values["lang"]?.ToString() ?? "en";
+            CultureInfo.CurrentCulture = new CultureInfo(lang);
+            CultureInfo.CurrentUICulture = new CultureInfo(lang);
+            await _next.Invoke(context);
+        }
+    }
+    
+    
+//use 
+            ViewBag.Culture1 = CultureInfo.CurrentUICulture.Name;
+            ViewBag.Culture2 = CultureInfo.CurrentCulture.Name;
