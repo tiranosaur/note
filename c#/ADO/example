@@ -1,0 +1,15 @@
+static void Main(string[] args)
+{
+    string ConnectionString = "server=localhost;port=3306;user=png;password=png;database=png;";
+    using (MySqlConnection connection = new MySqlConnection(ConnectionString))
+    {
+        connection.Open();
+        var query = "Select * from users";
+        MySqlCommand command = new MySqlCommand(query, connection);
+        MySqlDataReader result = command.ExecuteReader();
+        while (result.Read())
+        {
+            Console.WriteLine(result[1]);
+        }
+    }
+}
