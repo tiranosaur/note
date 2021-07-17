@@ -1,0 +1,60 @@
+https://jasonwatmore.com/post/2020/07/16/aspnet-core-3-hash-and-verify-passwords-with-bcrypt
+
+string passwordHash = BCrypt.Net.BCrypt.HashPassword("Pa$$w0rd");
+bool verified = BCrypt.Net.BCrypt.Verify("Pa$$w0rd", passwordHash);
+
+using BC = BCrypt.Net.BCrypt;
+using System.Linq;
+using WebApi.Entities;
+using WebApi.Helpers;
+using WebApi.Models.Accounts;
+
+namespace WebApi.Services
+{
+    public interface IAccountService
+    {
+        void Register(RegisterRequest model);
+        bool Authenticate(AuthenticateRequest model);
+    }
+
+    public class AccountService : IAccountService
+    {
+        private readonly DataContext _context;
+
+        public AccountService(DataContext context)
+        {
+            _context = context;
+        }
+
+        public void Register(RegisterRequest model)
+        {
+            // create new account object from model
+            var account = new Account(model);
+
+            // hash password
+            account.PasswordHash = BC.HashPassword(model.Password);
+
+            // save account
+            _context.Accounts.Add(account);
+            _context.SaveChanges();
+        }
+
+        public bool Authenticate(AuthenticateRequest model)
+        {
+            // get account from database
+            var account = _context.Accounts.SingleOrDefault(x => x.Email == model.Email);
+
+            // check account found and verify password
+            if (account == null || !BC.Verify(model.Password, account.PasswordHash))
+            {
+                // authentication failed
+                return false;
+            }
+            else
+            {
+                // authentication successful
+                return true;
+            }
+        }
+    }
+}
