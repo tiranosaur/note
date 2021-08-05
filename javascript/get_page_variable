@@ -1,0 +1,12 @@
+<script>
+    var xxx = {
+        value1: "ccc",
+        value2: "bbb",
+        value3: "aaa",
+        value4: "xxx",
+    }
+</script>
+<script>
+    var find = eval(Object.keys(window).filter((item) => item.indexOf('xxx') == 0)[0]).value3;
+    console.log(find);
+</script>
