@@ -1,0 +1,20 @@
+zend_extension="%sprogdir%/modules/php/%phpdriver%/ext/php_xdebug.dll"
+xdebug.mode                      = off
+xdebug.default_enable = 1
+xdebug.cli_color = 1
+xdebug.overload_var_dump = 1
+xdebug.var_display_max_children = -1
+xdebug.var_display_max_data = 4096
+xdebug.var_display_max_depth = 10
+xdebug.max_nesting_level = 250
+
+xdebug.remote_enable = 1
+xdebug.remote_autostart = 1
+xdebug.remote_connect_back = 1
+xdebug.idekey = phpstorm
+xdebug.remote_host =localhost
+xdebug.remote_log="/tmp/xdebug.log"
+
+xdebug.mode=debug
+xdebug.start_with_request=yes
+xdebug.client_host=localhost
