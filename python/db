@@ -1,0 +1,17 @@
+import pymysql as pymysql
+
+connection = pymysql.connect(
+    host='localhost',
+    port=3306,
+    database='png',
+    user='png',
+    password='png',
+    cursorclass=pymysql.cursors.DictCursor
+)
+
+with connection:
+    cur = connection.cursor()
+    cur.execute("SELECT * FROM users")
+    rows = cur.fetchall()
+    for item in rows:
+        print(item['name'])
