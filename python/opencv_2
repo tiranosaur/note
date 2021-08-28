@@ -1,0 +1,15 @@
+import cv2
+
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+img = cv2.imread('master.jpg')
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+(bodies, weights) = hog.detectMultiScale(img, winStride=(8, 8), padding=(32, 32), scale=1.05)
+for (x, y, w, h) in bodies:
+    cv2.rectangle(img, (x, y), (x + w, y + h), color=(0, 0, 255), thickness=2)
+
+cv2.imwrite('master_result_body.jpg', img)
+cv2.imshow('result_body', img)
+cv2.waitKey()
