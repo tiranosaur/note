@@ -1,0 +1,12 @@
+   try {
+            Robot robot = new Robot();
+            String format = "jpg";
+            String fileName = "FullScreenshot." + format;
+
+            Rectangle screenRect = new Rectangle(0,200, 400, 400);
+            BufferedImage screenFullImage = robot.createScreenCapture(screenRect);
+            ImageIO.write(screenFullImage, format, new File(fileName));           
+            
+        } catch (AWTException | IOException ex) {
+            System.err.println(ex);
+        }
