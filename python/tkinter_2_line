@@ -1,0 +1,26 @@
+import time
+import tkinter
+
+x=1000
+y=600
+w=50
+h=200
+
+tk = tkinter.Canvas(width=w, height=h, bg='white')
+tk.create_line(0, 0, w, 0, fill="red", width=10)
+tk.create_line(w, 0, w, h, fill="green", width=10)
+tk.create_line(0, h, w, h, fill="blue", width=10)
+tk.create_line(0, 0, 0, h, fill="pink", width=10)
+tk.place(x=0, y=0)
+tk.master.geometry(f"{w}x{h}")
+tk.master.geometry(f"+{x}+{y}")
+
+# # invisible
+# tk.master.overrideredirect(True)
+# tk.master.lift()
+# tk.master.wm_attributes("-alpha", 0.3)
+
+tk.update_idletasks()
+tk.update()
+
+time.sleep(10)
