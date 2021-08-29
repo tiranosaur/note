@@ -1,0 +1,9 @@
+  var screenX = 1920;
+  var screenY = 1200;
+  using Bitmap image = new Bitmap(screenX, screenY);
+  using (Graphics g = Graphics.FromImage(image))
+  {
+      g.CopyFromScreen(Point.Empty, Point.Empty, image.Size);
+  }
+
+  image.Save($"{DownloadPath}result.jpg", ImageFormat.Jpeg);
