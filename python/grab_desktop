@@ -1,0 +1,15 @@
+import cv2
+import numpy
+from PIL import ImageGrab
+
+cascade_db = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_fullbody.xml")
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+while True:
+    img = ImageGrab.grab(bbox=(75, 65, 1000, 800))
+    img_np = numpy.array(img)
+    cv2.imshow('rez', img_np)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
