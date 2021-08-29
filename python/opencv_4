@@ -1,0 +1,26 @@
+import cv2
+
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+import cv2
+import numpy
+from PIL import ImageGrab
+
+cascade_db = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_fullbody.xml")
+hog = cv2.HOGDescriptor()
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+
+while True:
+    img_np = ImageGrab.grab(bbox=(75, 65, 1000, 800))
+    img = numpy.array(img_np)
+    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    (bodies, weights) = hog.detectMultiScale(img_gray, winStride=(4,4), padding=(8, 8), scale=1.1)
+    for (x, y, w, h) in bodies:
+        cv2.rectangle(img, (x, y), (x + w, y + h), color=(0, 0, 255), thickness=2)
+
+    cv2.imshow('rez', img)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
