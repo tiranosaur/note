@@ -1,0 +1,21 @@
+import tkinter
+
+# # title
+# label = tkinter.Label(text='Text on the screen', font=('Times','30'), fg='black', bg='white')
+# label.master.overrideredirect(True)
+# label.master.geometry("+800+250")
+# label.master.lift()
+# label.master.wm_attributes("-alpha", 0.5)
+# label.pack()
+# label.mainloop()
+
+# draw
+w = tkinter.Canvas(width=500, height=400, bg='red')
+# w.create_rectangle(0, 0, 100, 100, fill="blue", outline = 'blue')
+# w.create_rectangle(50, 50, 100, 100, fill="red", outline = 'blue')
+w.master.overrideredirect(True)
+w.master.geometry("+800+250")
+w.master.lift()
+w.master.wm_attributes("-alpha", 0.3)
+w.pack()
+w.mainloop()
