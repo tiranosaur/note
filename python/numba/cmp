@@ -1,0 +1,51 @@
+import math
+from time import perf_counter
+from numba import prange, njit
+
+
+@njit(fastmath=True, cache=True)
+def is_prime_jit(num):
+    if num == 2:
+        return True
+    if num <= 1 or not num % 2:
+        return False
+    for div in range(3, int(math.sqrt(num) + 1), 2):
+        if not num % div:
+            return False
+    return True
+
+
+@njit(parallel=True, fastmath=True, cache=True)
+def run_program_jit(N):
+    for i in prange(N):     # prange required for parallel
+        is_prime_jit(i)
+
+
+def is_prime(num):
+    if num == 2:
+        return True
+    if num <= 1 or not num % 2:
+        return False
+    for div in range(3, int(math.sqrt(num) + 1), 2):
+        if not num % div:
+            return False
+    return True
+
+def run_program(N):
+    for i in prange(N):     # prange required for parallel
+        is_prime(i)
+
+
+n = 10000000
+start = perf_counter()
+run_program_jit(n)
+end = perf_counter()
+print('jit', end - start)
+
+n = 10000000
+start = perf_counter()
+run_program(n)
+end = perf_counter()
+print('without jit', end - start)
+
+
