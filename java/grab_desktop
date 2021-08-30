@@ -1,12 +1,25 @@
-   try {
-            Robot robot = new Robot();
-            String format = "jpg";
-            String fileName = "FullScreenshot." + format;
+try {
+   Robot robot = new Robot();
+   String format = "jpg";
+   String fileName = "FullScreenshot." + format;
 
-            Rectangle screenRect = new Rectangle(0,200, 400, 400);
-            BufferedImage screenFullImage = robot.createScreenCapture(screenRect);
-            ImageIO.write(screenFullImage, format, new File(fileName));           
-            
-        } catch (AWTException | IOException ex) {
-            System.err.println(ex);
-        }
+   Rectangle screenRect = new Rectangle(0,200, 400, 400);
+   BufferedImage screenFullImage = robot.createScreenCapture(screenRect);
+   ImageIO.write(screenFullImage, format, new File(fileName));
+
+
+   JFrame frame = new JFrame();
+   ImageIcon image = new ImageIcon("FullScreenshot.jpg");
+   JLabel imageLabel = new JLabel(image);
+   frame.add(imageLabel);
+   frame.setLayout(null);
+   imageLabel.setLocation(0, 0);
+   imageLabel.setSize(400, 400);
+   imageLabel.setVisible(true);
+   frame.setVisible(true);
+   frame.setSize(400, 400);
+   frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+} catch (AWTException | IOException ex) {
+   System.err.println(ex);
+}
