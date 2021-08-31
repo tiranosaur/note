@@ -1,12 +1,2 @@
-https://stackoverflow.com/questions/18873017/where-to-get-the-jar-for-opencv
+https://medium.com/javarevisited/setting-up-opencv-for-java-44c6eb6ae7e1
 https://medium.com/@aadimator/how-to-set-up-opencv-in-intellij-idea-6eb103c1d45c
-
-cd ~
-mkdir Vision
-cd Vision
-git clone https://github.com/opencv/opencv.git
-cd opencv
-mkdir build
-cd build
-cmake -DBUILD_SHARED_LIBS=OFF ..
-make -j8
