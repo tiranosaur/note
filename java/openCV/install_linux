@@ -1,0 +1,9 @@
+cd ~
+mkdir Vision
+cd Vision
+git clone https://github.com/opencv/opencv.git
+cd opencv
+mkdir build
+cd build
+cmake -DBUILD_SHARED_LIBS=OFF ..
+make -j8
