@@ -1,0 +1,36 @@
+using System;
+using System.Drawing;
+using Emgu.CV;
+using Emgu.CV.Structure;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var sourceImage = @"C:\emguCv\facedetection_input.jpg";
+            string haarcascade = @"C:\opencv\sources\data\haarcascades\haarcascade_frontalface_default.xml";
+
+            using (var  face = new CascadeClassifier(haarcascade))
+            {
+                var image = new Image<Bgr, Byte>(sourceImage);
+
+                using (var gray = image.Convert<Gray, Byte>())
+                {
+                    var detectedFaces = face.DetectMultiScale(gray,  1.1, 10);
+
+
+                    foreach (var rectangle in detectedFaces)
+                    {
+                        CvInvoke.Rectangle(image, rectangle, new Bgr(Color.Red).MCvScalar,3);
+                    }
+                }
+
+                CvInvoke.Imwrite(@"C:\emguCv\facedetection_output.jpg", image);
+                CvInvoke.Imshow("sddf",image);
+                CvInvoke.WaitKey();
+            }
+        }
+    }
+}
