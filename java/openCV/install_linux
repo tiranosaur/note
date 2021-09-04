@@ -1,2 +1,3 @@
-https://medium.com/javarevisited/setting-up-opencv-for-java-44c6eb6ae7e1
-https://medium.com/@aadimator/how-to-set-up-opencv-in-intellij-idea-6eb103c1d45c
+просто найти и подключить 
+ System.load("/usr/lib/jni/libopencv_java420.so");
+ а также добавить opencv-453.jar в проект
