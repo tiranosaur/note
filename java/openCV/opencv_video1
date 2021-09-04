@@ -1,1 +1,19 @@
-op
+import org.opencv.core.Mat;
+import org.opencv.highgui.HighGui;
+import org.opencv.videoio.VideoCapture;
+
+
+public class Main {
+    public static void main(String[] args) {
+        System.load("/usr/lib/jni/libopencv_java420.so");
+
+        var capture = new VideoCapture(0);
+        Mat mat = new Mat();
+        while (true){
+            capture.read(mat);
+
+            HighGui.imshow("gray", mat);
+            HighGui.waitKey(1);
+        }
+    }
+}
