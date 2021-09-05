@@ -1,0 +1,26 @@
+import asyncio
+import random
+import time
+
+
+async def myproc(name):
+    print(f"myProc started {name}...")
+    t1 = time.perf_counter()
+
+    await asyncio.sleep(random.random() * 5)
+
+    t = time.perf_counter() - t1
+    print(f"   myProc {name} finished in {t:0.5f} seconds.")
+
+
+async def method():
+    await asyncio.gather(
+        myproc(1),
+        myproc(2),
+        myproc(3),
+        myproc(4),
+        myproc(5)
+    )
+
+
+asyncio.run(method())
