@@ -1,0 +1,16 @@
+use opencv::{videoio, imgproc, highgui};
+use opencv::core::{Mat, MatTraitConstManual};
+use opencv::videoio::VideoCaptureTrait;
+
+fn main() {
+    let mut cam = videoio::VideoCapture::new(0, videoio::CAP_ANY).unwrap();
+
+    loop {
+        let mut frame = Mat::default();
+        cam.read(&mut frame);
+        let mut gray = Mat::default();
+        imgproc::cvt_color(&frame, &mut gray, imgproc::COLOR_BGR2BGRA, 0);
+        highgui::imshow("window", &gray);
+        highgui::wait_key(1);
+    }
+}
