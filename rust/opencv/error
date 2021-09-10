@@ -1,1 +1,4 @@
 apt-get install clang clang-sys libclang-dev
+
+
+windows установить clang через изменение visual studio -> отдельные компоненты
