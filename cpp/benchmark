@@ -24,14 +24,19 @@ bool isPrime(int num) {
 }
 
 int main() {
-    std::cout << "Start process" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
     //method(100000000);
-    for (int i; i < 10000000; i++) isPrime(i);
+    for (int i = 0; i < 10000000; i++) isPrime(i);
     auto stop = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    auto durationSec = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+    auto durationMilisec = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-    std::cout << "Time taken by function: " << duration.count() << " microseconds" << std::endl;
+    std::cout
+            << "Time taken by function: "
+            << durationSec.count()
+            << ":"
+            << durationMilisec.count() - durationSec.count() * 1000
+            << std::endl;
 
     return 0;
 }
