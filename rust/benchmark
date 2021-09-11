@@ -1,0 +1,30 @@
+use std::time::Instant;
+
+fn main() {
+    let start = Instant::now();
+    for  i in  0..10000000 {
+        isPrime(i);
+    }
+    let duration = start.elapsed();
+
+    println!("Time elapsed in expensive_function() is: {:?}", duration);
+}
+
+fn isPrime(num: i32) -> bool {
+    if num == 2 {
+        return true;
+    }
+    if num <= 1 || num % 2 == 0 {
+        return false;
+    }
+
+    let sqrt_num: f32 = (num as f32).sqrt();
+    let mut div = 3;
+    while div as f32 <= sqrt_num {
+        div = div + 2;
+         if num % div == 0{
+             return false;
+         }
+    }
+    return true;
+}
