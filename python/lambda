@@ -9,8 +9,8 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 
-lst = [{id_generator(4): id_generator(23)} for x in range(0, 10)]
+lst = {id_generator(4): id_generator(23) for x in range(0, 10)}
 print(lst)
 
-lst = [{x: id_generator(23)} for x in range(0, 10)]
+lst = {x: id_generator(23) for x in range(0, 10)}
 print(lst)
