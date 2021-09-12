@@ -1,0 +1,12 @@
+#include "opencv2/core.hpp"
+#include "opencv2/highgui.hpp"
+#include <iostream>
+
+int main()
+{
+    std::string image_path = "/home/tiranosaur/Documents/cpp/console/faces.jpg";
+    cv::Mat img = cv::imread(image_path);
+    cv::imshow("window", img);
+    cv::waitKey();
+    return 0;
+}
