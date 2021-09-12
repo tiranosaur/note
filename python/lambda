@@ -11,3 +11,6 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
 
 lst = [{id_generator(4): id_generator(23)} for x in range(0, 10)]
 print(lst)
+
+lst = [{x: id_generator(23)} for x in range(0, 10)]
+print(lst)
