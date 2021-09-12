@@ -1,0 +1,23 @@
+from functools import reduce
+
+arr = {
+    7: 'sam',
+    8: 'john',
+    9: 'mathew',
+    10: 'riti',
+    11: 'aadi',
+    12: 'sachin'
+}
+print(arr)
+# map
+arr_tmp = dict(map(lambda i: (i, arr[i] + " used"), arr))
+print(arr_tmp)
+# filter1
+arr_tmp = {key: value for key, value in arr.items() if key % 2 == 1}
+print(arr_tmp)
+# filter2
+arr_tmp = list(filter(lambda i: arr[i].find("i"), arr))
+print(arr_tmp)
+# reduce
+arr_tmp = reduce(lambda a, b: a+b, arr)
+print(arr_tmp)
