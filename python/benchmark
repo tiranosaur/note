@@ -7,7 +7,7 @@ from numba import njit, prange
 @njit(fastmath=True, cache=True)
 def is_prime(num):
     if num == 2:
-        return True;
+        return True
     if num <= 1 or not num % 2:
         return False
     for div in range(3, int(math.sqrt(num) + 1), 2):
