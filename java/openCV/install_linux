@@ -1,5 +1,5 @@
 просто найти и подключить 
  System.load("/usr/lib/jni/libopencv_java420.so");
- а также добавить opencv-420.jar в проект (скачать https://opencv.org/releases/)
+ а также добавить opencv-420.jar в проект (скачать win https://opencv.org/releases/)
 
 цифры(для примера 420) должны совпадать
