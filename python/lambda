@@ -1,6 +1,3 @@
-# https://www.geeksforgeeks.org/python-lambda-anonymous-functions-filter-map-reduce/
-
-
 import random
 import string
 
@@ -13,4 +10,12 @@ lst = {id_generator(4): id_generator(23) for x in range(0, 10)}
 print(lst)
 
 lst = {x: id_generator(23) for x in range(0, 10)}
+print(lst)
+
+# map
+lst = {k + 10: v for (k, v) in lst.items()}
+print(lst)
+
+# filter
+lst = {k: v for (k, v) in lst.items() if k % 2 == 0}
 print(lst)
