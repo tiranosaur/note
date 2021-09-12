@@ -1,0 +1,20 @@
+package com.company;
+
+public class Main {
+    static boolean IsPrime(int num) {
+        if (num == 2) return true;
+        if (num <= 1 || num % 2 == 0) return false;
+        double sqrt_num = Math.sqrt(num);
+        for (int div = 3; div <= sqrt_num; div += 2) {
+            if (num % div == 0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        long start = System.currentTimeMillis();
+        for (int i = 0; i < 10000000; i++) IsPrime(i);
+        long et = System.currentTimeMillis() - start;
+        System.out.println(et / 1000 + ":" + et % 1000);
+    }
+}
