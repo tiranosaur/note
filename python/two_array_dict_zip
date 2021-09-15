@@ -1,0 +1,11 @@
+langs = ["ar", "bg", "cn", "cz", "fr", "de", "en", "gr", "hu", "in", "id", "it", "ms", "pk", "pl",
+         "pt", "ro", "ru", "rs", "sk", "sp", "th", "nl", "ua", "vi", "bd", "oz", "uz", "kk"]
+
+keys = range(0, len(langs))
+
+for (k, v) in zip(keys, langs.__reversed__()):
+    print(k, v)
+
+d = {1: "aaa", 2: "bbb", 3: "cvcc"}
+for (k, v) in zip(d.keys(), d.values()):
+    print(k, v)
