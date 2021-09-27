@@ -1,3 +1,0 @@
-sdk install springboot
-
-spring init --name=flyway-demo --dependencies=web,mysql,data-jpa,flyway flyway-demo
