@@ -1,0 +1,16 @@
+Using stream.sorted() method
+Using Comparator.reverseOrder() method
+Using Comparator.naturalOrder() method
+Using Collections.reverseOrder() method
+Using Collections.sort() method
+
+
+String[] arr = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",};
+ArrayList<String> list = new ArrayList<>( Arrays.asList(arr));
+System.out.println(String.join(", ", list));
+
+Collections.reverse(list);
+System.out.println(String.join(", ", list));
+
+list.sort(Comparator.reverseOrder());
+System.out.println(String.join(", ", list));
