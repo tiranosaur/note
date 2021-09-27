@@ -1,7 +1,7 @@
 Pattern.compile("/(clion|goland|idea|phpstorm|pycharm|rider)[/]?").matcher(x.toString()).find()
 
-
-String str = "44conso44le.log(44);";
+///////////////////////////////////////////////////////////////////
+        String str = "44conso44le.log(44);";
         System.out.println(Pattern.compile("44").matcher(str).find());
         System.out.println(Pattern.compile("33").matcher(str).find());
         System.out.println(Pattern.compile("44").matcher(str).replaceAll("*"));
@@ -10,3 +10,10 @@ String str = "44conso44le.log(44);";
         while (x.find()){
             System.out.println(x.group());
         }
+
+
+
+///////////////////////////////////////////////////////////////////
+        String[] arr = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",};
+        arr = Arrays.asList(arr).stream().map(x->x.replaceAll("^[\\pL]", "")).toArray(String[]::new);
+        System.out.println(String.join(", ", arr));
