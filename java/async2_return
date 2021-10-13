@@ -1,0 +1,22 @@
+// Разница в том, что supplyAsync() принимает Supplier, а runAsync -> Runnable. Проще говоря, с помощью supplyAsync() можно вернуть результат, с runAsync() - нельзя.
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        CompletableFuture<String> thread = new CompletableFuture<>();
+        var x = thread.supplyAsync(Main::method).get();
+        System.out.println(x);
+
+        var y = CompletableFuture.supplyAsync(Main::method).get();
+        System.out.println(y);
+
+        CompletableFuture.runAsync(Main::print);
+    }
+
+    public static String method() {
+        return "finish";
+    }
+
+    public static void print() {
+        System.out.println("print");
+    }
+}
