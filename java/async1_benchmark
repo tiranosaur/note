@@ -1,0 +1,20 @@
+import java.util.concurrent.CompletableFuture;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        long start = System.nanoTime();
+        CompletableFuture.runAsync(() -> System.out.println("CompletableFuture"));
+        long et = System.nanoTime() - start;
+        System.out.println(et);
+
+        System.out.println("---");
+
+        long start1 = System.nanoTime();
+        new Thread(()-> System.out.println("Thread")).start();
+        long et1 = System.nanoTime() - start1;
+        System.out.println(et1);
+
+        Thread.sleep(3000);
+    }
+}
