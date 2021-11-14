@@ -1,3 +1,14 @@
+public class Main {
+    public static void main(String[] args) throws CloneNotSupportedException {
+        String[] arr = {"aaa", "bbb", "ccc"};
+        var list = new ArrayList<String>(Arrays.asList("zzz", "xxx"));
+        list.addAll(Arrays.stream(arr).collect(Collectors.toList()));
+        var strings = list.toArray(new String[0]);  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Arrays.stream(strings).forEach(System.out::println);
+    }
+}
+    
+    
     public static void main(String[] args) {
         var           arr  = new int[]{345, 567, 32452, 5673, 33};
         List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
