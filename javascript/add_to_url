@@ -1,0 +1,1 @@
+window.history.pushState(null, null,  'https://developer.mozilla.org/en-US/google')
