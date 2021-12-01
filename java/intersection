@@ -1,0 +1,55 @@
+public class Main {
+    public static void main(String[] args) throws Exception {
+        HashSet<String> hashSet1 = new HashSet<>();
+        hashSet1.add("xxx");
+        hashSet1.add("aaa");
+        hashSet1.add("zzz");
+
+        HashSet<String> hashSet2 = new HashSet<>();
+        hashSet2.add("a");
+        hashSet2.add("b");
+        hashSet2.add("zzz");
+
+        var result1 = hashSet1.stream().filter(hashSet2::contains).collect(Collectors.toList());
+        //other method
+        hashSet1.retainAll(hashSet2);
+        
+        System.out.println(String.join(",", result1));
+        System.out.println(String.join(",", result1));
+
+        //----------------------------------------------------------
+
+        HashSet<MyClass> hs1 = new HashSet<>();
+        hs1.add(new MyClass(1, "aaaaa"));
+        hs1.add(new MyClass(2, "zzzzz"));
+        hs1.add(new MyClass(3, "x"));
+
+        HashSet<MyClass> hs2 = new HashSet<>();
+        hs2.add(new MyClass(1, "aaa"));
+        hs2.add(new MyClass(2, "zzz"));
+        hs2.add(new MyClass(3, "x"));
+    }
+}
+
+class MyClass {
+    public int id;
+    public String name;
+
+    public MyClass(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyClass myClass = (MyClass) o;
+        return Objects.equals(id, myClass.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+}
