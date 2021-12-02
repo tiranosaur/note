@@ -18,9 +18,8 @@ public class Main {
         System.out.println(String.join(",", result1));
 
         //----------------------------------------------------------
-
         HashSet<MyClass> hs1 = new HashSet<>();
-        hs1.add(new MyClass(1, "aaaaa"));
+        hs1.add(new MyClass(1, "aaa"));
         hs1.add(new MyClass(2, "zzzzz"));
         hs1.add(new MyClass(3, "x"));
 
@@ -28,6 +27,11 @@ public class Main {
         hs2.add(new MyClass(1, "aaa"));
         hs2.add(new MyClass(2, "zzz"));
         hs2.add(new MyClass(3, "x"));
+
+        var rs = hs1.parallelStream()
+                .filter(x -> hs2.parallelStream().anyMatch(y -> x.id == y.id && x.name.equals(y.name)))
+                .collect(Collectors.toList());
+        rs.forEach(x -> System.out.println(x.id + " - " + x.name));
     }
 }
 
