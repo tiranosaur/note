@@ -18,11 +18,16 @@ namespace ConsoleApp
             // Task.Run(PrintProcessInfo);
             string emptyLine = "";
             for (int i = 0; i < Console.WindowWidth; i++) emptyLine += " ";
+            long maxMemoruUsage = 0;
+            long memoryUsage = 0;
             Stopwatch stopwatch = Stopwatch.StartNew();
             while (true)
             {
                 int x = Console.CursorLeft;
                 int y = Console.CursorTop;
+                memoryUsage = Process.GetCurrentProcess().WorkingSet64 / (1024 * 1024);
+                maxMemoruUsage = maxMemoruUsage > memoryUsage ? maxMemoruUsage : memoryUsage;
+                
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine(emptyLine);
                 Console.SetCursorPosition(0, 0);
@@ -30,7 +35,7 @@ namespace ConsoleApp
                 // Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Process uptime   -   {stopwatch.Elapsed}");
-                Console.WriteLine($"Process Memoru Usage   -   {Process.GetCurrentProcess().WorkingSet64 / (1024 * 1024)}mb");
+                Console.WriteLine($"Process Memoru Usage   -   {Process.GetCurrentProcess().WorkingSet64 / (1024 * 1024)}mb  (max-{maxMemoruUsage}mb)");
                 Console.ForegroundColor = ConsoleColor.Black;
 
                 Console.SetCursorPosition(x, y);
