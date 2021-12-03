@@ -26,7 +26,7 @@ namespace ConsoleApp
                 int x = Console.CursorLeft;
                 int y = Console.CursorTop;
                 memoryUsage = Process.GetCurrentProcess().WorkingSet64 / (1024 * 1024);
-                maxMemoruUsage = maxMemoruUsage > memoryUsage ? maxMemoruUsage : memoryUsage;
+                if (memoryUsage > maxMemoruUsage) maxMemoruUsage = memoryUsage;
                 
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine(emptyLine);
