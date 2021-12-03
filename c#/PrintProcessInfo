@@ -1,0 +1,41 @@
+namespace ConsoleApp
+{
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            Task.Run(PrintProcessInfo);
+            int x = 1;
+            while (true)
+            {
+                Console.WriteLine(x++);
+                Thread.Sleep(800);
+            }
+        }
+
+        public async static void PrintProcessInfo()
+        {
+            // Task.Run(PrintProcessInfo);
+            string emptyLine = "";
+            for (int i = 0; i < Console.WindowWidth; i++) emptyLine += " ";
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            while (true)
+            {
+                int x = Console.CursorLeft;
+                int y = Console.CursorTop;
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine(emptyLine);
+                Console.SetCursorPosition(0, 0);
+
+                // Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Process uptime   -   {stopwatch.Elapsed}");
+                Console.WriteLine($"Process Memoru Usage   -   {Process.GetCurrentProcess().WorkingSet64 / (1024 * 1024)}mb");
+                Console.ForegroundColor = ConsoleColor.Black;
+
+                Console.SetCursorPosition(x, y);
+                Thread.Sleep(1000);
+            }
+        }
+    }
+}
