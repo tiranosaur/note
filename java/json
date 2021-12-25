@@ -1,0 +1,16 @@
+    public static void main(String[] args) throws InterruptedException {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("zzz", "345634534");
+        map.put("a", "67985667u456tyeghrted");
+        map.put("ffffffffffff", "fffffffffffffffff");
+
+        try{
+            String json = new ObjectMapper().writeValueAsString(map);
+            System.out.println(json);
+
+            HashMap<String, String> result = new ObjectMapper().readValue(json, HashMap.class);
+            System.out.println(result.get("zzz"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
