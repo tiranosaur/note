@@ -1,0 +1,4 @@
+ScriptEngineManager mgr = new ScriptEngineManager();
+ScriptEngine jsEngine = mgr.getEngineByName("JavaScript");
+int result = Integer.parseInt(jsEngine.eval("2+2").toString());
+System.out.println(result);
