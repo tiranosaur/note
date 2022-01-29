@@ -1,12 +1,5 @@
 import java.sql.Timestamp;
 import java.util.Calendar;
-
-/*
-    Date date = new Date();
-    Timestamp timestamp = new Timestamp(date.getTime());
-    timestamp = TimestampUtil.getInstance().addHours(timestamp, 288);
-*/
-
 public class TimestampUtil {
     private static TimestampUtil INSTANCE;
     public final Logger LOGGER = LoggerFactory.getLogger(TimestampUtil.class);
@@ -21,6 +14,12 @@ public class TimestampUtil {
         return INSTANCE;
     }
 
+    //add hours to timestamp
+    /*
+        Date date = new Date();
+        Timestamp timestamp = new Timestamp(date.getTime());
+        timestamp = TimestampUtil.getInstance().addHours(timestamp, 288);
+    */
     public Timestamp addHours(Timestamp date, int hours) {
         LOGGER.debug("TimestampUtil.addHours(date = [{}], hours = [{}])", date, hours);
         Calendar cal = Calendar.getInstance();
