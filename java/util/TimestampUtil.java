@@ -20,10 +20,10 @@ public class TimestampUtil {
         Timestamp timestamp = new Timestamp(date.getTime());
         timestamp = TimestampUtil.getInstance().addHours(timestamp, 288);
     */
-    public Timestamp addHours(Timestamp date, int hours) {
-        LOGGER.debug("TimestampUtil.addHours(date = [{}], hours = [{}])", date, hours);
+    public Timestamp addHours(Timestamp timestamp, int hours) {
+        LOGGER.debug("TimestampUtil.addHours(date = [{}], hours = [{}])", timestamp, hours);
         Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
+        cal.setTime(timestamp);
         cal.add(Calendar.HOUR, hours);
         return new Timestamp(cal.getTime().getTime());
     }
