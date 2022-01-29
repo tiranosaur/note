@@ -2,7 +2,7 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 public class TimestampUtil {
     private static TimestampUtil INSTANCE;
-    public final Logger LOGGER = LoggerFactory.getLogger(TimestampUtil.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(TimestampUtil.class);
 
     private TimestampUtil() {
     }
