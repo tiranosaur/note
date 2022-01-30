@@ -1,0 +1,7 @@
+List to map        
+        List<String> list = new ArrayList<>();
+        list.add("aaa");
+        list.add("bbb");
+        list.add("xxx");
+        Map<String, String> map = new HashMap<>();
+        map = list.stream().collect(Collectors.toMap(Function.identity(),Function.identity()));
