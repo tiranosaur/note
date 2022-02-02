@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "8ae1b13a-f65c-43e8-abc6-3bc09d5d0019",
-		"name": "soap",
+		"_postman_id": "cc203bff-c02c-4f6f-90ab-f193cb9efec7",
+		"name": "example",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "New Request",
+			"name": "soap",
 			"protocolProfileBehavior": {
 				"disabledSystemHeaders": {
 					"content-type": true
@@ -44,6 +44,38 @@
 					"port": "8084",
 					"path": [
 						"ws"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/romanov/Desktop/java/WebApp/111.php"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://community.postman.com/t/sending-request-with-file-and-text/7385",
+					"protocol": "https",
+					"host": [
+						"community",
+						"postman",
+						"com"
+					],
+					"path": [
+						"t",
+						"sending-request-with-file-and-text",
+						"7385"
 					]
 				}
 			},
