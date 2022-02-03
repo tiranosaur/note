@@ -1,5 +1,7 @@
 import java.sql.Timestamp;
 import java.util.Calendar;
+
+//@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TimestampUtil {
     private static TimestampUtil INSTANCE;
     private final Logger LOGGER = LoggerFactory.getLogger(TimestampUtil.class);
