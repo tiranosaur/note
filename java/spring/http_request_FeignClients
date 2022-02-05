@@ -1,0 +1,149 @@
+@SpringBootApplication
+@EnableFeignClients
+public class SpringConsoleApplication implements CommandLineRunner {
+    private Logger LOGGER = LoggerFactory.getLogger(SpringConsoleApplication.class);
+    @Autowired
+    PublicFeignClient feignClient;
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringConsoleApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        getRequest();
+        getByIdRequest(888);
+        postRequest();
+        postMultipart();
+    }
+
+    private void getRequest() {
+        LOGGER.warn("GET response is [{}]", feignClient.getRequest());
+    }
+
+    private void getByIdRequest(int id) {
+        LOGGER.warn("GET response is [{}]", feignClient.getByIdRequest(String.valueOf(id)));
+    }
+
+    private void postRequest() {
+        ResponseDTO responseDTO = feignClient.postRequest();
+        LOGGER.warn("POST response is [{}]", responseDTO.getMessage());
+    }
+
+    private void postMultipart() {
+        try {
+            File file = new File("pom.xml");
+            DiskFileItem fileItem = new DiskFileItem("file", "text/plain", false, file.getName(), (int) file.length(), file.getParentFile());
+            fileItem.getOutputStream();
+            MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
+            ResponseDTO responseDTO = feignClient.postMultipartRequest(multipartFile);
+            LOGGER.warn("POST_MULTIPART response is [{}]", responseDTO.getFileName());
+        } catch (Exception e) {
+            LOGGER.error("POST_MULTIPART failed");
+        }
+    }
+}
+
+@FeignClient(value = "xxxxxx", url = "http://localhost:8084/")
+interface PublicFeignClient {
+    @RequestMapping(method = RequestMethod.GET, value = "/get")
+    String getRequest();
+
+    @RequestMapping(method = RequestMethod.GET, value = "/get/{id}")
+    String getByIdRequest(@PathVariable String id);
+
+    @RequestMapping(method = RequestMethod.POST, value = "/post", consumes = "application/json")
+    ResponseDTO postRequest();
+
+    @RequestMapping(method = RequestMethod.POST, value = "/multi", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    ResponseDTO postMultipartRequest(@Param("file") MultipartFile file);
+}
+
+@Data
+class ResponseDTO {
+    public String error;
+    public String message;
+    public String method;
+    public String fileName;
+
+    public String getFileName() {
+        return fileName == null ? "" : fileName;
+    }
+}
+
+
+
+/*
+application.properies
+    feign.client.config.default.connectTimeout=5000
+    feign.client.config.default.readTimeout=5000
+    feign.client.config.default.loggerLevel=basic
+
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+    <version>3.1.0</version>
+</dependency>
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.13.1</version>
+</dependency>
+ */
+ 
+ 
+ 
+ 
+ 
+ 
+ @Controller
+public class MainController {
+    private Logger LOGGER = LoggerFactory.getLogger(MainController.class);
+
+    @ResponseBody
+    @RequestMapping(value = {"multi"}, method = RequestMethod.POST)
+    public ResponseEntity<Object> index(MultipartFile file) {
+        String fileName = file.getOriginalFilename();
+        LOGGER.warn("{}", fileName);
+
+        Map<String, String> response = new LinkedHashMap<>();
+        response.put("error", "0");
+        response.put("message", "connected successful");
+        response.put("method", "post multipart");
+        response.put("fileName", fileName);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = {"post"}, method = RequestMethod.POST)
+    public ResponseEntity<Object> post() {
+        LOGGER.warn("post");
+        Map<String, String> response = new LinkedHashMap<>();
+        response.put("error", "0");
+        response.put("message", "connected successful");
+        response.put("method", "post");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = {"get"}, method = RequestMethod.GET)
+    public ResponseEntity<Object> get() {
+        LOGGER.warn("get");
+        Map<String, String> response = new LinkedHashMap<>();
+        response.put("error", "0");
+        response.put("message", "connected successful");
+        response.put("method", "get");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = {"get/{id}"}, method = RequestMethod.GET)
+    public ResponseEntity<Object> getId(@PathVariable int id) {
+        LOGGER.warn("get");
+        Map<String, String> response = new LinkedHashMap<>();
+        response.put("error", "0");
+        response.put("message", "connected successful. id #" + id);
+        response.put("method", "get");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+}
