@@ -1,7 +1,7 @@
 sudo apt install wine-stable
 
 
-/home/eromanov/.wine/drive_c/Program Files/PremiumSoft/Navicat Premium 12
+/home/{username}/.wine/drive_c/Program Files/PremiumSoft/Navicat Premium 12
 
 sudo apt-get remove winehq-stable
 
