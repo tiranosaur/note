@@ -1,0 +1,94 @@
+@SpringBootApplication
+public class SpringConsoleApplication implements CommandLineRunner {
+    private Logger LOGGER = LoggerFactory.getLogger(SpringConsoleApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringConsoleApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        getRequest();
+        postRequest();
+        postMultipart();
+    }
+
+    public void getRequest() {
+        try {
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            HttpGet uploadFile = new HttpGet("http://localhost:8084/get");
+
+            CloseableHttpResponse response = httpClient.execute(uploadFile);
+            HttpEntity responseEntity = response.getEntity();
+
+            String responseString = EntityUtils.toString(responseEntity, "UTF-8");
+            System.out.println(responseString);
+            httpClient.close();
+        } catch (Exception e) {
+            LOGGER.error("get request failed");
+        }
+    }
+
+    public void postRequest() {
+        try {
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            HttpPost uploadFile = new HttpPost("http://localhost:8084/post");
+
+            CloseableHttpResponse response = httpClient.execute(uploadFile);
+            HttpEntity responseEntity = response.getEntity();
+
+            String responseString = EntityUtils.toString(responseEntity, "UTF-8");
+            System.out.println(responseString);
+            httpClient.close();
+        } catch (Exception e) {
+            LOGGER.error("get request failed");
+        }
+    }
+
+    public void postMultipart() {
+        try {
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            HttpPost uploadFile = new HttpPost("http://localhost:8084/multi");
+            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            builder.addTextBody("field1", "yes", ContentType.MULTIPART_FORM_DATA);
+
+
+            File file = new File("pom.xml");
+            builder.addBinaryBody(
+                    "file",
+                    new FileInputStream(file),
+                    ContentType.APPLICATION_OCTET_STREAM,
+                    file.getName()
+            );
+
+            HttpEntity multipart = builder.build();
+            uploadFile.setEntity(multipart);
+            CloseableHttpResponse response = httpClient.execute(uploadFile);
+            HttpEntity responseEntity = response.getEntity();
+
+            String responseString = EntityUtils.toString(responseEntity, "UTF-8");
+            System.out.println(responseString);
+            httpClient.close();
+        } catch (Exception e) {
+            LOGGER.error("post multipart request failed");
+            e.printStackTrace();
+        }
+
+    }
+}
+
+
+/*
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.4.15</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+ */
