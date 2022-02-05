@@ -1,0 +1,2 @@
+//post file multipart/form-data
+curl -X POST http://localhost:8084/ -H "Content-Type:multipart/form-data" -F "file=@pom.xml;type=text/xml"
