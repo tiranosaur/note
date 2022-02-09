@@ -1,0 +1,11 @@
+public static void main(String[] args) {
+    ZonedDateTime time1 = ZonedDateTime.now();
+    ZonedDateTime time2 = ZonedDateTime.now().plusHours(10);
+    ZonedDateTime time3 = ZonedDateTime.now(ZoneId.of("Europe/London"));
+    ZonedDateTime time4 = ZonedDateTime.now(ZoneId.of("Europe/Paris"));
+
+    System.out.println(time1);
+    System.out.println(time2);
+    System.out.println(time3);
+    System.out.println(time3.isAfter(time4));
+}
