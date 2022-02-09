@@ -15,7 +15,12 @@ public class SpringConsoleApplication implements CommandLineRunner {
 
     public void getRequest() {
         try {
-            CloseableHttpClient httpClient = HttpClients.createDefault();
+            RequestConfig config = RequestConfig.custom()
+                .setConnectTimeout(100)
+                .setConnectionRequestTimeout(100)
+                .build();
+            CloseableHttpClient httpClient = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+            //CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpGet uploadFile = new HttpGet("http://localhost:8084/get");
 
             CloseableHttpResponse response = httpClient.execute(uploadFile);
