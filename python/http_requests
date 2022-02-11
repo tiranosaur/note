@@ -1,0 +1,28 @@
+import requests
+
+
+def get():
+    receive = requests.get('http://localhost:8084/get')
+    print(receive.text)
+
+
+def getById():
+    receive = requests.get('http://localhost:8084/get/888')
+    print(receive.text)
+
+
+def post():
+    receive = requests.post('http://localhost:8084/post')
+    print(receive.text)
+
+
+def postMultipart():
+    files = {'file': ("111.jpg", open("111.jpg", 'rb'), "multipart/form-data")}
+    receive = requests.post('http://localhost:8084/multi', files=files)
+    print(receive.text)
+
+
+get()
+getById()
+post()
+postMultipart()
