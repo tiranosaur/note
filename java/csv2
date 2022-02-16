@@ -1,0 +1,30 @@
+    private static final String delimeter = ",";
+
+    public static void main(String[] args) {
+        List<String> headers = Arrays.asList("xxx", "aaaa", "ffff");
+        List<List<String>> data = new ArrayList<>();
+        data.add(Arrays.asList("a1", "b1", "c1"));
+        data.add(Arrays.asList("a2", "b2", "c2"));
+        data.add(Arrays.asList("a3", "b3", "c3"));
+
+        try {
+            FileWriter writer = new FileWriter("result.csv");
+//            for windows
+//            writer.write("sep=" + delimeter);
+//            writer.write("\n");
+
+            writer.write(String.join(delimeter, headers));
+            writer.write("\n");
+
+            for (List<String> v : data) {
+                writer.write("\"");
+                writer.write(String.join("\"" + delimeter + "\"", v));
+                writer.write("\"\n");
+            }
+
+            writer.flush();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
