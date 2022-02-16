@@ -1,0 +1,22 @@
+    public static void main(String[] args)  {
+        List<String> headers = Arrays.asList("xxx", "aaaa", "ffff");
+        List<List<String>> data = new ArrayList<>();
+        data.add(Arrays.asList("a1", "xxxxxxx\txxxx,xxx", "c1"));
+        data.add(Arrays.asList("a2", "bb\nbb\nbb\nbbb\nb", "c2"));
+        data.add(Arrays.asList("a3", "ffff,ffff.ff:fff", "c3"));
+
+        try{
+            FileWriter writer = new FileWriter("result.csv");
+            writer.write(String.join(",", headers));
+            writer.write("\n");
+            for (List<String> l : data) {
+                l = l.stream().map(x -> "\"" + x + "\"").collect(Collectors.toList());
+                writer.write(String.join(",", l));
+                writer.write("\n");
+            }
+            writer.flush();
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
