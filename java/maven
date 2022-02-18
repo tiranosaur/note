@@ -1,0 +1,5 @@
+{plugin maven helper}
+
+mvn help:effective-pom                                                      - all params
+
+mvn clean dependency:copy-dependencies package
