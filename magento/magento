@@ -1,2 +1,4 @@
 Username - public key
 Password - private key
+
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento2 -vvv
