@@ -14,12 +14,17 @@ public class SerializeUtil {
         return null;
     }
 
-    public static <T> T unserializeFromString(byte[] bytes) {
+    public static <T> T unserializeTypeFromString(byte[] bytes) {
+        ByteArrayInputStream bais = null;
+        return (T) unserializeObjectFromString(bytes);
+    }
+
+    public static Object unserializeObjectFromString(byte[] bytes) {
         ByteArrayInputStream bais = null;
         try {
             bais = new ByteArrayInputStream(bytes);
             ObjectInputStream ois = new ObjectInputStream(bais);
-            return (T) ois.readObject();
+            return ois.readObject();
         } catch (Exception e) {
         }
         return null;
@@ -37,7 +42,7 @@ public class Main {
         byte[] result = SerializeUtil.serializeToString(people);
         System.out.println(new String(result, StandardCharsets.UTF_8));
 
-        List<Person> personList = SerializeUtil.<List<Person>>unserializeFromString(result);
+        List<Person> personList = SerializeUtil.<List<Person>>unserializeTypeFromString(result);
         personList.forEach(x-> System.out.println(x.getName()));
         personList.forEach(x-> System.out.println(x.getName2()));
     }
