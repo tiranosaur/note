@@ -1,0 +1,79 @@
+public class SerializeUtil {
+    public static byte[] serialize(Object object) {
+        ObjectOutputStream oos = null;
+        ByteArrayOutputStream baos = null;
+        try {
+            baos = new ByteArrayOutputStream();
+            oos = new ObjectOutputStream(baos);
+            oos.writeObject(object);
+            byte[] bytes = baos.toByteArray();
+            return bytes;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+
+    public static Object unserialize(byte[] bytes) {
+        ByteArrayInputStream bais = null;
+        try {
+            bais = new ByteArrayInputStream(bytes);
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return ois.readObject();
+        } catch (Exception e) {
+        }
+        return null;
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        List<Person> people = new ArrayList<Person>();
+        people.add(new Person(1L, "aaa", "aaaaaa"));
+        people.add(new Person(2L, "bbb", "bbbbbbb"));
+
+
+        byte[] result = SerializeUtil.serialize(people);
+        System.out.println(new String(result, StandardCharsets.UTF_8));
+
+        List<Person> personList = (List<Person>) SerializeUtil.unserialize(result);
+        personList.forEach(x-> System.out.println(x.getName()));
+    }
+}
+
+class Person implements Serializable {
+    private Long id;
+    private String name;
+    private transient String name2;
+
+    public Person(Long id, String name, String name2) {
+        this.id = id;
+        this.name = name;
+        this.name2 = name2;
+    }
+
+    public String getName2() {
+        return name2;
+    }
+
+    public void setName2(String name2) {
+        this.name2 = name2;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
