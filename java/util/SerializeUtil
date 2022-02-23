@@ -1,5 +1,5 @@
 public class SerializeUtil {
-    public static byte[] serialize(Object object) {
+    public static byte[] serializeToString(Object object) {
         ObjectOutputStream oos = null;
         ByteArrayOutputStream baos = null;
         try {
@@ -14,12 +14,12 @@ public class SerializeUtil {
         return null;
     }
 
-    public static Object unserialize(byte[] bytes) {
+    public static <T> T unserializeFromString(byte[] bytes) {
         ByteArrayInputStream bais = null;
         try {
             bais = new ByteArrayInputStream(bytes);
             ObjectInputStream ois = new ObjectInputStream(bais);
-            return ois.readObject();
+            return (T) ois.readObject();
         } catch (Exception e) {
         }
         return null;
@@ -34,10 +34,10 @@ public class Main {
         people.add(new Person(2L, "bbb", "bbbbbbb"));
 
 
-        byte[] result = SerializeUtil.serialize(people);
+        byte[] result = SerializeUtil.serializeToString(people);
         System.out.println(new String(result, StandardCharsets.UTF_8));
 
-        List<Person> personList = (List<Person>) SerializeUtil.unserialize(result);
+        List<Person> personList = SerializeUtil.<List<Person>>unserializeFromString(result);
         personList.forEach(x-> System.out.println(x.getName()));
     }
 }
