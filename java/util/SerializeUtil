@@ -39,13 +39,14 @@ public class Main {
 
         List<Person> personList = SerializeUtil.<List<Person>>unserializeFromString(result);
         personList.forEach(x-> System.out.println(x.getName()));
+        personList.forEach(x-> System.out.println(x.getName2()));
     }
 }
 
 class Person implements Serializable {
     private Long id;
     private String name;
-    private transient String name2;
+    private transient String name2; // remove from serialization
 
     public Person(Long id, String name, String name2) {
         this.id = id;
