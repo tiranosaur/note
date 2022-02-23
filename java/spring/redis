@@ -10,6 +10,50 @@
             <version>3.6.0</version>
             <optional>true</optional>
         </dependency>
+        
+        
+        
+        
+        
+        
+//application.properties
+spring.redis.host=localhost
+spring.redis.port=6379
+
+
+
+
+
+//configuration
+@Configuration
+public class RedisConfiguration {
+    @Value("${spring.redis.host}")
+    private String host;
+
+    @Value("${spring.redis.port}")
+    private int port;
+
+    @Bean
+    JedisConnectionFactory jedisConnectionFactory() {
+        JedisConnectionFactory jedisConFactory
+                = new JedisConnectionFactory();
+        jedisConFactory.setHostName(host);
+        jedisConFactory.setPort(port);
+        return jedisConFactory;
+    }
+
+    @Bean
+    public RedisTemplate<String, Object> redisTemplate() {
+        final RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+        template.setConnectionFactory(jedisConnectionFactory());
+        template.setValueSerializer(new GenericToStringSerializer<Object>(Object.class));
+        return template;
+    }
+}
+
+
+
+        
 
 @SpringBootApplication
 public class RedisApplication implements CommandLineRunner {
