@@ -24,9 +24,6 @@
   
   
   
-  
-// Match all method in interface VerbClient and subclasses implementation
- @Around(value = "execution(* com.xxx.VerbClient+.*(..))")
 
 // Match all method in interface VerbClient and subclasses implementation
  @Around(value = "execution(* com.xxx.VerbClient+.*(..))")
