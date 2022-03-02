@@ -19,7 +19,25 @@
 10. bean - по имени. аналог sql limit
   * bean(*ExternalService) - все классы оканчивающиеся на ExternalService
   
+ 
+//Выполнение любого public метода:
+  execution(public * *(..))
   
+//Выполнение любого метода, начинающегося с «set»:
+  execution(* set*(..))
+  
+//Выполнение любого метода интерфейса AccountService:
+  execution(* com.xyz.service.AccountService.*(..))
+  
+//Выполнение любого метода, определенного в пакете услуг:
+  execution(* com.xyz.service.*.*(..))
+  
+//Выполнение любого метода любого класса, определенного в пакете услуг и всех подпакетах:
+  execution(* com.xyz.service..*.*(..))
+  
+//Выполнение любого метода класса JoinPointObjP2, определенного в пакете pointcutexp и всех подпакетах:
+  execution(* com.test.spring.aop.pointcutexp..JoinPointObjP2.*(..))")
+
 //Любой метод всех классов, аннотированный @Transactional.
   @within(org.springframework.transaction.annotation.Transactional)
   @target(org.springframework.transaction.annotation.Transactional)
