@@ -20,12 +20,17 @@
   * bean(*ExternalService) - все классы оканчивающиеся на ExternalService
   
   
- //FeignClient
- @Around("@within(org.springframework.cloud.openfeign.FeignClient)")
-  
-*execution(* executeE(..)) - название метода с любыми параметрами
-*execution(* executeE(String)) - название метода со String
-*execution(* com.example.console.controllers.*.*(..))) - все методы классов в папке controllers
+//FeignClient
+  @Around("@within(org.springframework.cloud.openfeign.FeignClient)")
+
+// название метода с любыми параметрами
+  @Around("execution(* executeE(..))")
+
+// название метода со String
+  @Around("execution(* executeE(String))")
+
+// все методы классов в папке controllers
+  @Around("execution(* com.example.console.controllers.*.*(..)))")
 
 // Match all method in interface VerbClient and subclasses implementation
  @Around("execution(* com.xxx.VerbClient+.*(..))")
