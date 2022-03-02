@@ -19,6 +19,8 @@
 10. bean - по имени. аналог sql limit
   * bean(*ExternalService) - все классы оканчивающиеся на ExternalService
   
+  execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern) throws-pattern?)
+  
 //добавить + для abstract class или interface
   execution(* com.x.y.x.MyClass+.myMethod(..))
  
