@@ -3,9 +3,7 @@
 2. @args()	Метод выполнения, который ограничивает пометки параметров соответствия точки подключения аннотациями выполнения
 
 3. execution()	Соответствующий метод выполнения точки подключения
-  * execution(* executeE(..)) - название метода с любыми параметрами
-  * execution(* executeE(String)) - название метода со String
-  * execution(* com.example.console.controllers.*.*(..))) - все методы классов в папке controllers
+
   
 4. this()	Ограничьте ссылочный тип Бина точки соединения, соответствующей прокси-серверу AOP, указанным типом Бина
 
@@ -23,16 +21,21 @@
   * bean(*ExternalService) - все классы оканчивающиеся на ExternalService
   
   
+ //FeignClient
+ @Around("@within(org.springframework.cloud.openfeign.FeignClient)")
   
+*execution(* executeE(..)) - название метода с любыми параметрами
+*execution(* executeE(String)) - название метода со String
+*execution(* com.example.console.controllers.*.*(..))) - все методы классов в папке controllers
 
 // Match all method in interface VerbClient and subclasses implementation
- @Around(value = "execution(* com.xxx.VerbClient+.*(..))")
+ @Around("execution(* com.xxx.VerbClient+.*(..))")
 
 // Match all method `patchPreferences` in interface VerbClient and subclasses implementation
- @Around(value = "execution(* com.xxx.VerbClient+.patchPreferences(..))")
+ @Around("execution(* com.xxx.VerbClient+.patchPreferences(..))")
 
 // Or make IgnoreHttpClientErrorExceptions work for Type, 
 // and match all method with in annotated interface and subclass implementation
 // (@Inherited must be used)
 // By this way, you can mark your VerbClient feign interface with this annotation
- @Around(value = "execution(* (com.yyy.IgnoreHttpClientErrorExceptions *+).*(..))")
+ @Around("execution(* (com.yyy.IgnoreHttpClientErrorExceptions *+).*(..))")
