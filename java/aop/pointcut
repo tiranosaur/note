@@ -20,6 +20,14 @@
   * bean(*ExternalService) - все классы оканчивающиеся на ExternalService
   
   
+//Любой метод всех классов, аннотированный @Transactional.
+  @within(org.springframework.transaction.annotation.Transactional)
+  @target(org.springframework.transaction.annotation.Transactional)
+
+//Любой метод, аннотированный @Transactional.
+  @annotation(org.springframework.transaction.annotation.Transactional)
+  @within и @target - аннотации для классов, @annotation - аннотации для методов
+  
 //FeignClient
   @Around("@within(org.springframework.cloud.openfeign.FeignClient)")
 
