@@ -21,3 +21,21 @@
 
 10. bean - по имени. аналог sql limit
   * bean(*ExternalService) - все классы оканчивающиеся на ExternalService
+  
+  
+  
+  
+// Match all method in interface VerbClient and subclasses implementation
+ @Around(value = "execution(* com.xxx.VerbClient+.*(..))")
+
+// Match all method in interface VerbClient and subclasses implementation
+ @Around(value = "execution(* com.xxx.VerbClient+.*(..))")
+
+// Match all method `patchPreferences` in interface VerbClient and subclasses implementation
+ @Around(value = "execution(* com.xxx.VerbClient+.patchPreferences(..))")
+
+// Or make IgnoreHttpClientErrorExceptions work for Type, 
+// and match all method with in annotated interface and subclass implementation
+// (@Inherited must be used)
+// By this way, you can mark your VerbClient feign interface with this annotation
+ @Around(value = "execution(* (com.yyy.IgnoreHttpClientErrorExceptions *+).*(..))")
