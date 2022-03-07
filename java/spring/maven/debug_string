@@ -1,1 +1,1 @@
-<phase> -Dmaven.surefire.debug
+mvn <phase> -Dmaven.surefire.debug
