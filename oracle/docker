@@ -1,4 +1,7 @@
 https://hub.docker.com/_/oracle-database-enterprise-edition?tab=reviews
 
 1. docker exec .... etc to container
-2. sqlplus (login - sys as sysdba, password - Oradoc_db1)
+2. sqlplus (
+    login: sys as sysdba, 
+    password: Oradoc_db1
+    )
