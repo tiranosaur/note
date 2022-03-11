@@ -1,0 +1,2 @@
+1. docker exec .... etc to container
+2. sqlplus (login - sys as sysdba, password - Oradoc_db1)
