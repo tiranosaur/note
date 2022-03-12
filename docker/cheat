@@ -13,3 +13,10 @@ docker rm -f $(docker ps -a -q)
 
 //update docker docker-compose.yml in derectory
 docker-compose pull
+
+
+//show all stopped container
+docker ps -a 
+
+//run container
+docker start <container name>
