@@ -1,0 +1,5 @@
+https://hub.docker.com/_/oracle-database-enterprise-edition?tab=reviews
+
+Username:   sys as sysdba
+Password:   Oradoc_db1
+url:        jdbc:oracle:thin:@localhost:1521:ORCLCDB
