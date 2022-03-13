@@ -1,5 +1,7 @@
 https://hub.docker.com/_/oracle-database-enterprise-edition?tab=reviews
 
+на маке обязательно зайти в аккаунт докера в приложении.
+
 1. docker exec .... etc to container
 2. sqlplus (
     login: sys as sysdba, 
