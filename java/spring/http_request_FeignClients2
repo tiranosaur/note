@@ -8,8 +8,16 @@ public class AppConfig {
         fixedBackOffPolicy.setBackOffPeriod(10);
         retryTemplate.setBackOffPolicy(fixedBackOffPolicy);
 
-        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
-        retryPolicy.setMaxAttempts(3);
+        // include - Boolean.TRUE, exclude - Boolean.FALSE
+        Map<Class<? extends Throwable>, Boolean> includeException = new HashMap<>();
+        includeException.put(HttpServerErrorException.BadGateway.class, Boolean.TRUE);
+        includeException.put(HttpServerErrorException.GatewayTimeout.class, Boolean.TRUE);
+        includeException.put(HttpServerErrorException.InternalServerError.class, Boolean.TRUE);
+        includeException.put(HttpServerErrorException.NotImplemented.class, Boolean.TRUE);
+        includeException.put(HttpServerErrorException.ServiceUnavailable.class, Boolean.TRUE);
+
+
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy(3, includeException);
         retryTemplate.setRetryPolicy(retryPolicy);
 
         return retryTemplate;
