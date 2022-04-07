@@ -1,0 +1,54 @@
+@Configuration
+public class AppConfig {
+    @Bean
+    public RetryTemplate retryTemplate() {
+        RetryTemplate retryTemplate = new RetryTemplate();
+
+        FixedBackOffPolicy fixedBackOffPolicy = new FixedBackOffPolicy();
+        fixedBackOffPolicy.setBackOffPeriod(10);
+        retryTemplate.setBackOffPolicy(fixedBackOffPolicy);
+
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
+        retryPolicy.setMaxAttempts(3);
+        retryTemplate.setRetryPolicy(retryPolicy);
+
+        return retryTemplate;
+    }
+}
+
+
+
+@FeignClient(value = "xxxxxx", url = "http://localhost:8888/")
+interface PublicFeignClient {
+    @RequestMapping(method = RequestMethod.GET, value = "")
+    String getRequest();
+
+}
+
+
+
+@SpringBootApplication
+@Slf4j
+@EnableFeignClients
+public class SpringDemoApplication implements CommandLineRunner {
+    public static void main(String[] args) {
+        SpringApplication.run(SpringDemoApplication.class, args);
+    }
+
+    @Autowired
+    PublicFeignClient feignClient;
+
+    @Autowired
+    RetryTemplate retryTemplate;
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.error("start");
+       var x = retryTemplate.execute(arg0 -> {
+           log.error("error");
+//           throw new Exception();
+          return feignClient.getRequest();
+       });
+       log.error("{}",x);
+    }
+}
