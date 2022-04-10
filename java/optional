@@ -1,0 +1,23 @@
+import java.util.Optional;
+
+public class Main {
+    public static void main(String[] args) {
+        MyClass myClass = new MyClass();
+        myClass.name = "stttttrrrring";
+        First first = new First();
+        first.myClass = myClass;
+        
+        String str = Optional.ofNullable(first.myClass)
+                .map(x -> x.name)
+                .orElse(null);
+        System.out.println(str);
+    }
+}
+
+class First {
+    public MyClass myClass;
+}
+
+class MyClass {
+    public String name;
+}
