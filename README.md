@@ -34,3 +34,8 @@ git config core.fileMode false <br><br><br>
 
 
 https://github.com/coreybutler/nvm-windows
+
+
+
+mvn spring-boot:run
+fuser -k 8080/tcp
