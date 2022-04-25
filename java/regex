@@ -13,7 +13,14 @@ Pattern.compile("/(clion|goland|idea|phpstorm|pycharm|rider)[/]?").matcher(x.toS
 
 
 
-///////////////////////////////////////////////////////////////////
+////////////////////////////////        first delete
         String[] arr = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь",};
         arr = Arrays.asList(arr).stream().map(x->x.replaceAll("^[\\pL]", "")).toArray(String[]::new);
         System.out.println(String.join(", ", arr));
+        
+////////////    capitalize firs upper
+        String str = "the-stealth-warrior";
+        String result = Arrays.stream(str.split("([^a-zA-Z]|^)"))
+                .map(x -> x.subSequence(0, 1).toString().toUpperCase(Locale.ROOT) + x.subSequence(1, x.length()))
+                .reduce("", (x, y) -> x + y);
+        System.out.println(result);
