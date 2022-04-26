@@ -1,0 +1,6 @@
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url).queryParam("ftIds", 'list of string);
+            HttpEntity httpEntity = new HttpEntity(headers);
+
+
+            ResponseEntity<FeatureTogglesResponse> response =
+                    restTemplate.exchange(builder.build().toString(), HttpMethod.GET, httpEntity, FeatureTogglesResponse.class);
