@@ -32,6 +32,8 @@ https://mattweb.ru/moj-blog/bazy-dannykh/item/65-ispolzuem-explain-dlya-optimiza
 Игнорировать изменения прав доступа к файлам при коммите
 git config core.fileMode false <br><br><br>
 
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.password "password"
 
 https://github.com/coreybutler/nvm-windows
 
