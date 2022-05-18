@@ -1,0 +1,16 @@
+    public static void main(String[] args) {
+        var list = List.of(1, 2, 3, 4, 5, 6, 7);
+        list.parallelStream().map(Main::transformWithDelay).collect(Collectors.toList());
+        list.forEach(System.out::println);
+    }
+
+    public static Integer transformWithDelay(Integer xxx) {
+        try {
+            int s = random.nextInt(5000);
+            System.out.println(s);
+            Thread.sleep(s);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return Optional.ofNullable(xxx).map(x -> x + x).orElse(0);
+    }
