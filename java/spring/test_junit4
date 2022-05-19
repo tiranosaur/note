@@ -1,0 +1,66 @@
+package com.example.springdemo.service;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.stereotype.Service;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
+
+
+@RunWith(SpringRunner.class)
+public class TestServiceTest {
+    @MockBean
+    ProviderService providerService;
+
+    @SpyBean
+//    @InjectMocks
+//    @MockBean
+    TestService testService;
+
+    @Before
+    public void setup() {
+    }
+
+    @Test
+    public void getName_Test() {
+        String actual = "Vasia";
+        Mockito.when(providerService.getName(Mockito.any())).thenReturn("Vasia");
+
+        String expected = testService.getName();
+
+        assertEquals(expected, actual);
+    }
+}
+
+
+/*
+
+@Service
+public class TestService {
+    @Autowired
+    ProviderService providerService;
+
+    public String getName() {
+        String result = Optional.ofNullable(providerService.getName("John")).orElse("");
+        return result;
+    }
+}
+
+
+@Service
+public class ProviderService {
+    public String getName(String str) {
+        return String.format("MyName is %s", str);
+    }
+}
+
+*/
