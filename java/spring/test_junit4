@@ -64,3 +64,29 @@ public class ProviderService {
 }
 
 */
+
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(controllers = PersonController.class)
+class PersonControllerTest {
+    @Autowired
+    private MockMvc mvc;
+
+    @MockBean
+    private UserTokenProviderDecorator userTokenProviderDecorator;
+
+    @Before
+    void setup() {
+        when(userTokenProviderDecorator.getRZBK()).thenReturn("8840");
+    }
+
+    @Test
+    void getPerson() throws Exception {
+        mvc.perform(get("/person")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .param("personNumber", "1"))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.isJuristicPerson").exists())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.isJuristicPerson", is(false)));
+    }
+}
