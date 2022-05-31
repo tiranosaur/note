@@ -1,0 +1,4 @@
+        XMLGregorianCalendar value = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+        value.setYear(1960);
+        value.setDay(1);
+        value.setMonth(1);
