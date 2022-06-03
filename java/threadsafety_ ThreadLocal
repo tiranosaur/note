@@ -1,0 +1,1 @@
+private static final ThreadLocal<Boolean> NEED_CHECK = ThreadLocal.withInitial(() -> true);
