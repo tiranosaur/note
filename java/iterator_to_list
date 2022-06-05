@@ -1,0 +1,11 @@
+        List<String> list = List.of("str1", "aaa", "bbb");
+        Iterator<String> iterator = list.stream().iterator();
+//        Stream.generate(() -> null)
+//                .takeWhile(x -> iterator.hasNext())
+//                .map(n -> iterator.next())
+//                .forEach(System.out::println);
+
+        var strings = Stream.generate(() -> null)
+                .takeWhile(x -> iterator.hasNext())
+                .map(x -> iterator.next())
+                .collect(Collectors.toList());
