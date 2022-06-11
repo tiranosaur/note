@@ -1,0 +1,22 @@
+use std::{thread, time};
+use tokio; //tokio = { version = "1.19.2", features = ["full"] }
+
+#[tokio::main]
+async fn main() {
+    example2().await;
+    println!("separator)");
+    let v = example1().await;
+    println!("{} - finish", v);
+}
+
+async fn example1() -> u32 {
+    thread::sleep(time::Duration::from_secs(3));
+    let x = 888;
+    println!("{}", x);
+    return x;
+}
+
+async fn example2() {
+    thread::sleep(time::Duration::from_secs(2));
+    println!("3245345345");
+}
