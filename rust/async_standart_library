@@ -1,0 +1,23 @@
+https://stackoverflow.com/questions/52521201/how-do-i-synchronously-return-a-value-calculated-in-an-asynchronous-future-in-st
+
+use std::{thread, time};
+use futures::executor::block_on; // 0.3.1
+
+fn main() {
+    block_on(example2());
+    println!("separator)");
+    let v = block_on(example1());
+    println!("{}111", v);
+}
+
+async fn example1() -> u32 {
+    thread::sleep(time::Duration::from_secs(3));
+    let x = 888;
+    println!("{}", x);
+    return x;
+}
+
+async fn example2() {
+    thread::sleep(time::Duration::from_secs(2));
+    println!("3245345345");
+}
