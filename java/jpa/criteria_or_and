@@ -16,3 +16,22 @@
         Predicate finalPredicate= cb                .or(predicate1, predicate2);
         cq.where(finalPredicate);
         List<ReportingEntity> items = entityManager.createQuery(cq).getResultList();
+        
+        
+        
+        
+        
+         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<ReportingEntity> cq = cb.createQuery(ReportingEntity.class);
+        Root<ReportingEntity> root = cq.from(ReportingEntity.class);
+
+        List<Predicate> predicateEntityList = new ArrayList<>();
+        for (ReportingEntity entity : reportingEntitySet) {
+            Predicate predicateDatestamp = cb.equal(root.get("datestamp"), entity.getDatestamp());
+            Predicate predicateResourceId = cb.equal(root.get("resourceId"), entity.getResourceId());
+            predicateEntityList.add(cb.and(predicateDatestamp, predicateResourceId, predicateViewId, predicateDimension, predicateMetric, predicateDimensionValue));
+        }
+
+        Predicate finalPredicate = cb.or(predicateEntityList.toArray(new Predicate[0]));
+        cq.where(finalPredicate);
+        return new HashSet<>(entityManager.createQuery(cq).getResultList());
