@@ -1,0 +1,10 @@
+public class Main {
+    public static void main(String[] args) throws Exception {
+        var x = List.of(1,2,3);
+        method(x.toArray(new Integer[0]));
+    }
+
+    public static void method(Integer... args){
+        System.out.println();
+    }
+}
