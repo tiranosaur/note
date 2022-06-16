@@ -1,0 +1,18 @@
+        https://www.baeldung.com/jpa-and-or-criteria-predicates
+        
+        
+        CriteriaBuilder cb =  entityManager.getCriteriaBuilder();
+        CriteriaQuery<ReportingEntity> cq = cb.createQuery(ReportingEntity.class);
+        Root<ReportingEntity> root = cq.from(ReportingEntity.class);
+
+        Predicate predicateDimensionValue1 = cb.equal(root.get("dimensionValue"), "https://r8841-e40-e.t1.web.fiducia.de/services_cloud");
+        Predicate predicateMetricValue1 = cb.equal(root.get("metricValue"), "1");
+        Predicate predicate1 = cb.and(predicateDimensionValue1, predicateMetricValue1);
+
+        Predicate predicateDimensionValue2 = cb.equal(root.get("dimensionValue"), "https://r8841-e40-e.t1.web.fiducia.de/services_cloud/portal/proxy-gateway/serviceproxy/konto-service-ui/proxy/konto/1E38AE8DD669475A90F1530D2B1BFC7F");
+        Predicate predicateMetricValue2 = cb.equal(root.get("metricValue"), "7");
+        Predicate predicate2 = cb.and(predicateDimensionValue2, predicateMetricValue2);
+
+        Predicate finalPredicate= cb                .or(predicate1, predicate2);
+        cq.where(finalPredicate);
+        List<ReportingEntity> items = entityManager.createQuery(cq).getResultList();
