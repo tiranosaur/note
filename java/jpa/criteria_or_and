@@ -21,7 +21,14 @@
         
         
         
-         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+    @PersistenceContext
+    EntityManager entityManager;
+
+    @Autowired
+    private ReportingRepository reportingRepository;
+
+    public Set<ReportingEntity> getAll(Set<ReportingEntity> reportingEntitySet) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<ReportingEntity> cq = cb.createQuery(ReportingEntity.class);
         Root<ReportingEntity> root = cq.from(ReportingEntity.class);
 
@@ -29,9 +36,14 @@
         for (ReportingEntity entity : reportingEntitySet) {
             Predicate predicateDatestamp = cb.equal(root.get("datestamp"), entity.getDatestamp());
             Predicate predicateResourceId = cb.equal(root.get("resourceId"), entity.getResourceId());
+            Predicate predicateViewId = cb.equal(root.get("viewId"), entity.getViewId());
+            Predicate predicateDimension = cb.equal(root.get("dimension"), entity.getDimension());
+            Predicate predicateMetric = cb.equal(root.get("metric"), entity.getMetric());
+            Predicate predicateDimensionValue = cb.equal(root.get("dimensionValue"), entity.getDimensionValue());
             predicateEntityList.add(cb.and(predicateDatestamp, predicateResourceId, predicateViewId, predicateDimension, predicateMetric, predicateDimensionValue));
         }
 
         Predicate finalPredicate = cb.or(predicateEntityList.toArray(new Predicate[0]));
         cq.where(finalPredicate);
         return new HashSet<>(entityManager.createQuery(cq).getResultList());
+    }
