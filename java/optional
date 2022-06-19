@@ -1,23 +1,43 @@
-import java.util.Optional;
-
 public class Main {
     public static void main(String[] args) {
-        MyClass myClass = new MyClass();
-        myClass.name = "stttttrrrring";
         First first = new First();
-        first.myClass = myClass;
-        
-        String str = Optional.ofNullable(first.myClass)
-                .map(x -> x.name)
-                .orElse(null);
-        System.out.println(str);
+        first.setSecond(new Second());
+        first.getSecond().setThird(new Third());
+
+
+        Optional.ofNullable(first)
+                .flatMap(x -> Optional.ofNullable(x.getSecond())
+                        .flatMap(y -> Optional.ofNullable(y.getThird()))).ifPresent(Third::method);
     }
 }
 
 class First {
-    public MyClass myClass;
+    private Second second;
+
+    public Second getSecond() {
+        return second;
+    }
+
+    public void setSecond(Second second) {
+        this.second = second;
+    }
 }
 
-class MyClass {
-    public String name;
+class Second {
+    private Third third;
+
+    public Third getThird() {
+        return third;
+    }
+
+    public void setThird(Third third) {
+        this.third = third;
+    }
 }
+
+class Third {
+    public void method() {
+        System.out.println("xxx");
+    }
+}
+
