@@ -1,0 +1,27 @@
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+/*
+    https://habr.com/ru/post/116363/
+*/
+@SpringBootApplication
+@Slf4j
+public class Main {
+    private static int counter = 0;
+
+    public static void main(String[] args) {
+        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
+        scheduledExecutorService.scheduleAtFixedRate(Main::tick, 10, 1, TimeUnit.SECONDS);
+        SpringApplication.run(Main.class, args);
+    }
+
+    private static void tick() {
+        log.info("counter is - [{}]", ++counter);
+    }
+}
