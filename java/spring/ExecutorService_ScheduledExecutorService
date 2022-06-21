@@ -1,0 +1,49 @@
+/*
+    https://habr.com/ru/post/116363/
+*/
+@SpringBootApplication
+@Slf4j
+public class Main {
+    private static int counter = 0;
+
+    public static void main(String[] args) {
+        ScheduledExecutorService scheduledExecutorService = new ScheduledThreadPoolExecutor(1);
+        scheduledExecutorService.scheduleAtFixedRate(Main::tick, 10, 1, TimeUnit.SECONDS);
+        SpringApplication.run(Main.class, args);
+    }
+
+    private static void tick() {
+        log.info("counter is - [{}]", ++counter);
+    }
+}
+
+
+
+
+
+
+/*
+https://habr.com/ru/post/116363/
+ */
+@SpringBootApplication
+@Slf4j
+public class Main {
+    private static int counter = 0;
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+//        ExecutorService service = Executors.newFixedThreadPool(2);
+        ExecutorService service = Executors.newCachedThreadPool();
+        for (int i = 0; i < 10; i++) {
+//          var x =
+                  service.submit(Main::tick);
+//            System.out.println(x.get());
+        }
+
+        SpringApplication.run(Main.class, args);
+    }
+
+    private static int tick() {
+        log.info("counter is - [{}]", ++counter);
+        return counter;
+    }
+}
