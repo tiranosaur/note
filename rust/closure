@@ -16,3 +16,19 @@ fn main() {
     println!("{}", f(2));
     println!("{}", increase1(5)(10));
 }
+
+
+fn main() {
+    let increase1 = || {
+        let mut x = 0;
+        return move || {
+            x += 1;
+            x
+        };
+    };
+    let mut xxx = increase1();
+    xxx();
+    xxx();
+    xxx();
+    println!("{}", xxx())
+}
