@@ -4,3 +4,11 @@
         Date date = dateFormat.parse(str);
         System.out.println(date);
     }
+
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        String str = "2022-06-20T17:14:53.923Z";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+        System.out.println(dateTime);
+    }
