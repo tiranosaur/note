@@ -1,0 +1,18 @@
+fn main() {
+    // let increase1 = |x| {
+    //     move |y| {
+    //         println!("{}", x + y)
+    //     }
+    // };
+    let increase1 = |xx| move |yy| println!("{}", xx + yy);
+    let f = increase1(1);
+    f(2);
+    increase1(5)(10);
+}
+
+fn main() {
+    let increase1 = |xx| move |yy| xx + yy;
+    let f = increase1(1);
+    println!("{}", f(2));
+    println!("{}", increase1(5)(10));
+}
