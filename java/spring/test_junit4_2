@@ -1,0 +1,62 @@
+package com.example.springdemo.service;
+
+import com.example.springdemo.model.User;
+import com.example.springdemo.repository.UserRepository;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+import java.util.UUID;
+
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = {UserRepository.class})
+public class UserServiceTest {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Mock
+    UserRepository userRepositoryMock;
+
+    @Before
+    public void setup() {
+        userRepository.setUsers(getUserList3());
+    }
+
+    @Test
+    public void getAll_count() {
+        List<User> userList = getUserList3();
+
+        Assert.assertEquals(3, userRepository.findAll().size());
+    }
+
+    @Test
+    public void getAll_count_Mock() {
+        List<User> userList = getUserList2();
+
+        Mockito.when(userRepositoryMock.findAll()).thenReturn(userList);
+
+        Assert.assertEquals(2, userRepositoryMock.findAll().size());
+    }
+
+    private List<User> getUserList2() {
+        return List.of(
+                new User(UUID.randomUUID(), "name1", 33),
+                new User(UUID.randomUUID(), "name2", 34)
+        );
+    }
+
+    private List<User> getUserList3() {
+        return List.of(
+                new User(UUID.randomUUID(), "name1", 33),
+                new User(UUID.randomUUID(), "name2", 34),
+                new User(UUID.randomUUID(), "name3", 333)
+        );
+    }
+}
