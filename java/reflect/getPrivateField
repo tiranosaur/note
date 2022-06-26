@@ -1,0 +1,5 @@
+// get private field name
+        User user = new User();
+        Field name1 = user.getClass().getDeclaredField("name2");
+        name1.setAccessible(true);
+        System.out.println(name1.get(user));
