@@ -14,3 +14,10 @@
             e.printStackTrace();
         }
     }
+
+
+
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.findAndRegisterModules();
+        User user = objectMapper.readValue(json, User.class);
