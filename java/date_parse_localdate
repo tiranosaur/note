@@ -12,3 +12,9 @@
         LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
         System.out.println(dateTime);
     }
+    
+    public static void main(String[] args) throws Exception {
+        Date in = new Date();
+        LocalDateTime ldt = LocalDateTime.ofInstant(in.toInstant(), ZoneId.of("Europe/Berlin"));
+        System.out.println(ldt);
+    }
