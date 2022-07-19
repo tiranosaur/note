@@ -1,0 +1,1 @@
+rails new   <<app_name>>   -d oracle
