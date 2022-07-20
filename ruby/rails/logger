@@ -1,0 +1,15 @@
+# file environment.rb
+# Load the Rails application.
+require_relative "application"
+require 'logger'
+
+# Initialize the Rails application.
+Rails.application.initialize!
+
+Rails.logger = Logger.new(STDOUT)
+Rails.logger.level = Logger::DEBUG
+Rails.logger.info("enable logger")
+
+$logger = Logger.new(STDOUT)
+$logger.level = Logger::DEBUG
+$logger.info("enable short logger")
