@@ -1,4 +1,0 @@
-# response fuck
-  def home
-    render plain: "fuck"
-  end
