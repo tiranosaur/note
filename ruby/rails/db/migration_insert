@@ -13,5 +13,16 @@ end
 
 
 class User < ActiveRecord::Base
-  attr_accessor :id, :username, :email, :age, :created_at, :updated_at
 end
+
+class UsersController < ApplicationController
+  def show
+    id = params[:format]
+    if id.nil?
+      render json: User.all.to_a
+    else
+      render json: User.find(2)
+    end
+  end
+end
+
