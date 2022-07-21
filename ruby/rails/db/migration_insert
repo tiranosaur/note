@@ -17,12 +17,18 @@ end
 
 class UsersController < ApplicationController
   def show
-    id = params[:format]
-    if id.nil?
-      render json: User.all.to_a
-    else
-      render json: User.find(2)
+    param = params[:format]
+    user = User.find_by(:id => param)
+    if user.nil?
+      user = User.find_by(:username => param)
     end
+    if user.nil?
+      user = User.find_by(:username => param)
+    end
+    if user.nil?
+      user = User.all
+    end
+    render json: user
   end
 end
 
