@@ -1,0 +1,17 @@
+class CreateUsers < ActiveRecord::Migration[7.0]
+  def up
+    create_table :users do |t|
+      t.string :username
+      t.string :email
+      t.integer :age
+      t.timestamps
+    end
+    execute("insert into users (username, email, age, created_at, updated_at) values ('admin', 'admin@admin.com', 41, 'today', 'today');")
+    User.create(:username=>"user", :email=>"useremail", :age=>18)
+  end
+end
+
+
+class User < ActiveRecord::Base
+  attr_accessor :id, :username, :email, :age, :created_at, :updated_at
+end
