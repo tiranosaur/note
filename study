@@ -1,0 +1,17 @@
+1. routing
+  * send params
+  * send json
+2. Db
+  * create migration
+  * create migration for filling db
+  * create entity
+  * create second entity with relation one to one
+  * create third entity with relation many to one
+3. Send integration request
+  * simple json
+  * with auth
+  * get file
+  * send file
+  * save file
+4. roles
+5. auth bearer and basic
