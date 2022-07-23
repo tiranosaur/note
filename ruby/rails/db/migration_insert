@@ -1,34 +1,25 @@
+class CreateRoles < ActiveRecord::Migration[7.0]
+  def up
+    create_table :roles do |t|
+      t.string :name
+      t.string :description
+    end
+    Role.create(:name => "admin", :description => "admin role")
+    Role.create(:name => "user", :description => "user role")
+  end
+end
+
+
 class CreateUsers < ActiveRecord::Migration[7.0]
   def up
     create_table :users do |t|
-      t.string :username
+      t.string :name
       t.string :email
       t.integer :age
       t.timestamps
     end
-    execute("insert into users (username, email, age, created_at, updated_at) values ('admin', 'admin@admin.com', 41, 'today', 'today');")
-    User.create(:username=>"user", :email=>"useremail", :age=>18)
+    add_reference :users, :role, foreign_key: true // foreign key to role one to many
+    execute("insert into users (name, email, age, created_at, updated_at) values ('admin', 'admin@admin.com', 41, 'today', 'today');")
+    User.create(:name => "user", :email => "useremail", :age => 18)
   end
 end
-
-
-class User < ActiveRecord::Base
-end
-
-class UsersController < ApplicationController
-  def show
-    param = params[:format]
-    user = User.find_by(:id => param)
-    if user.nil?
-      user = User.find_by(:username => param)
-    end
-    if user.nil?
-      user = User.find_by(:username => param)
-    end
-    if user.nil?
-      user = User.all
-    end
-    render json: user
-  end
-end
-
