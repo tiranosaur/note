@@ -1,0 +1,24 @@
+class User
+  attr_accessor :name, :age
+
+  def initialize(name, age)
+    @name = name
+    @age = age
+  end
+
+  def to_xml
+    require 'nokogiri'
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.Users {
+        xml.User {
+          xml.Name(self.name, "mappedTo" => "event_class")
+          xml.Age(self.age)
+        }
+      }
+    end
+    builder.to_xml
+  end
+end
+
+user = User.new("Jogn", 345)
+puts user.to_xml
