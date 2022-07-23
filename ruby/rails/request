@@ -1,0 +1,5 @@
+# get request
+    url = URI("https://filesamples.com/samples/code/json/sample1.json")
+    res = Net::HTTP.get_response(url)
+    arr = JSON.parse(res.body)
+    render plain: res.body if res.is_a?(Net::HTTPSuccess)
