@@ -1,0 +1,8 @@
+# single object
+    user = User.first
+    hash = user.serializable_hash
+    render plain: hash.to_xml(:root => 'customer')
+    
+# multiple
+    users = User.all.map { |x| x.serializable_hash }
+    render plain: users.to_xml(:root => "users")
