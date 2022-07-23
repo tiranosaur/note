@@ -1,0 +1,4 @@
+    hash = Hash.new
+    hash["users"] = User.all.to_a.map { |x|x.serializable_hash }
+    hash["roles"] = Role.all.to_a.map { |x|x.serializable_hash }
+    render plain: hash.to_json
