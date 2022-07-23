@@ -6,3 +6,9 @@
 # multiple
     users = User.all.map { |x| x.serializable_hash }
     render plain: users.to_xml(:root => "users")
+    
+# hash
+    hash = Hash.new
+    hash["users"] = User.all.to_a.map { |x|x.serializable_hash }
+    hash["roles"] = Role.all.to_a.map { |x|x.serializable_hash }
+    render plain: hash.to_xml(:root => "sex")
