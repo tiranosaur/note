@@ -23,3 +23,13 @@ class CreateUsers < ActiveRecord::Migration[7.0]
     User.create(:name => "user", :email => "useremail", :age => 18)
   end
 end
+
+
+  def example
+    admin = Role.find_by(:name => "admin")
+    admin.users << User.find(1)
+
+    user = Role.find_by(:name => "user")
+    user.users << User.find(2)
+    render :json => User.first(2)
+  end
