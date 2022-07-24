@@ -2,3 +2,13 @@
     hash["users"] = User.all.to_a.map { |x|x.serializable_hash }
     hash["roles"] = Role.all.to_a.map { |x|x.serializable_hash }
     render plain: hash.to_json
+
+
+class User < ApplicationRecord
+  belongs_to :role
+  def to_json
+    result = self.serializable_hash
+    result["role"] = self.role
+    result
+  end
+end
