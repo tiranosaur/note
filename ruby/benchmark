@@ -1,0 +1,7 @@
+require 'benchmark'
+arr = []
+Benchmark.bm do|x|
+  x.report{Array.new(1000000).each_index { |x| arr.push(:sym) }}
+  x.report{Array.new(1000000).each_index { |x| arr.push("sldkjf") }}
+  x.report{Array.new(1000000).each_index { |x| arr.push("sldkjf") }}
+end
