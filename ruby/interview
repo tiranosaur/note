@@ -1,0 +1,51 @@
+33. Какие типы переменных есть в Ruby?
+  Numbers
+    Fixnum
+    Bignum
+    Float
+    Complex
+    Rational
+    BigDecimal
+  Strings
+  Symbols
+    immutable string. faster then string
+  Hashes
+  Arrays
+  Booleans
+34. Что вернётся в результате сложения 10.5 и 10?
+ 20.5
+35. Чем отличаются переменные, начинающиеся с @, @@ и $?
+
+36. Что такое attr_reader, attr_writer, attr_accessor и зачем они?
+  attr_reader - getters
+  attr_writer - setters
+  attr_accessor - all access
+37. Что такое метод?
+  a function or procedure which belong to a class or object
+38. Что значит "?" в конце названия методов? Что означает "!" в конце названия методов?
+  ?
+39. Чем отличается энумератор map от each?
+
+40. Что такое модуль? Какие есть варианты подключения модулей в класс?
+  ?
+41. Что такое класс и зачем он нужен?
+
+42. Что такое модуль и зачем его используют? Чем модуль отличается от класса?
+
+43. Что такое константа?
+
+44. Что такое блок? Что такое yield? Можно ли передавать блоки в методы? Каким образом?
+
+45. Что такое proc?
+
+46. Что такое lambda?
+
+47. В чем разница между proc и lambda?
+
+48. Что такое eigenclass?
+
+49. Какие виды условных операторов есть в Ruby? (if, unless, ternary, case)
+
+50. Есть ли разница между операторами && и and?
+
+51. Какие виды циклов есть в Ruby? (loop, while, until, for, each(), times(), upto())
