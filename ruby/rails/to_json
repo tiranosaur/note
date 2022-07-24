@@ -9,6 +9,7 @@ class User < ApplicationRecord
   def to_json
     result = self.serializable_hash
     result["role"] = self.role
+    result.delete("role_id") // delete redundant
     result
   end
 end
