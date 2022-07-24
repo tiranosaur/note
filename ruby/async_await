@@ -1,3 +1,4 @@
+https://www.codeotaku.com/journal/2018-06/asynchronous-ruby/index
 require 'async/await'
 
 class AsyncTest
