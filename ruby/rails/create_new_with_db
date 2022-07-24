@@ -1,3 +1,5 @@
 rails new   <<app_name>>   -d oracle
 
 rails new <<app_name>> -d sqlite3 --skip-action-mailer --skip-action-mailbox --skip-active-storage
+
+rails new rubin  -d sqlite3 --skip-action-mailer --skip-action-mailbox --skip-active-storage --api
