@@ -1,0 +1,3 @@
+https://medium.com/binar-academy/rails-api-jwt-authentication-a04503ea3248
+gem install bcrypt
+gem install jwt
