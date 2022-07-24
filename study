@@ -15,3 +15,5 @@
   * save file
 4. roles
 5. auth bearer and basic
+6. cash redis
+7. kafka
