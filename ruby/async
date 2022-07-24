@@ -1,0 +1,10 @@
+require 'async'
+
+Async do
+  Array.new(100).each_index do |i|
+    Async do
+      sleep 100.0 / rand(100)
+      puts i
+    end
+  end
+end
