@@ -1,0 +1,1 @@
+hex = "fc58225e-63a5-43dc-b19d-73e4c48dd9e3".replaceAll("-", "").toUpperCase()
