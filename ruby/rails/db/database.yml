@@ -1,0 +1,16 @@
+
+
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  // использовать рут имя
+  username: root
+  password: password
+  // использовать название бд из докера
+  host: rubin_db_1
+
+development:
+  <<: *default
+  // использовать название бд из докера
+  database: app
