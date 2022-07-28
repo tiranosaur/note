@@ -1,3 +1,5 @@
+docker exec -i container-name redis-cli FLUSHALL
+
 enter to instance -(terminal) redis-cli
 
 _____________________________________________________________________________________________________________
