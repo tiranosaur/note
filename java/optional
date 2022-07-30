@@ -5,7 +5,7 @@ public class Main {
         first.getSecond().setThird(new Third());
 
         Optional.ofNullable(first)
-                .map(x-> first.getSecond())
+                .map(First::getSecond)
                 .map(Second::getThird)
                 .ifPresent(Third::method);
     }
