@@ -4,10 +4,10 @@ public class Main {
         first.setSecond(new Second());
         first.getSecond().setThird(new Third());
 
-
         Optional.ofNullable(first)
-                .flatMap(x -> Optional.ofNullable(x.getSecond())
-                        .flatMap(y -> Optional.ofNullable(y.getThird()))).ifPresent(Third::method);
+                .map(x-> first.getSecond())
+                .map(Second::getThird)
+                .ifPresent(Third::method);
     }
 }
 
