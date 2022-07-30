@@ -1,0 +1,4 @@
+  openssl x509 -in <(openssl s_client -connect repnest-kafka-kafka-bootstrap-repnest-etu.apps.caas-ekad-test01.rz.bankenit.de:443 -prexit 2>/dev/null) -out /Users/xcx1016/Desktop/example.crt
+  sudo keytool -importcert -file /Users/xcx1016/Desktop/example.crt -alias example -keystore /Users/xcx1016/jvm/jdk-11.jdk/Contents/Home/lib/security/cacerts -storepass changeit
+  
+  https://ask-dev.ru/info/42873/java-sunsecurityprovidercertpathsuncertpathbuilderexception-unable-to-find-valid-certification-path-to-requested-target
