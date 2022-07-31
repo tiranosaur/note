@@ -1,0 +1,27 @@
+use std::fmt::Display;
+
+fn main() {
+    let first: First<&str> = First { id: "&str" };
+    first.print();
+
+    let first = First { id: 234 };
+    first.print();
+
+    println!("{}\n", "method");
+    method("method");
+    method(345);
+}
+
+fn method<T: Display>(x: T) {
+    println!("{}", x)
+}
+
+struct First<T> {
+    id: T,
+}
+
+impl<T: Display> First<T> where {
+    pub fn print(&self) {
+        println!("{}", self.id);
+    }
+}
