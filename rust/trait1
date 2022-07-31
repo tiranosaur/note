@@ -5,12 +5,16 @@ use crate::tnt::Single;
 fn main() {
     let user = user::User { id: 33, name: "sldkfj".to_string() };
     println!("{}", user.is_single());
+    user.scream()
 }
 
 // tnt/single.rs
 mod tnt {
     pub trait Single {
         fn is_single(&self) -> bool;
+        fn scream(&self){
+            println!("aaaaaaaaa");
+        }
     }
 }
 
