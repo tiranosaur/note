@@ -1,0 +1,7 @@
+include!("model/user.rs"); // mod addr
+use user::User;
+
+fn main() {
+    let user = User { id: 2345, name: "sdf".to_string() };
+    println!("{}", user.name);
+}
