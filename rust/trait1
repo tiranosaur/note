@@ -1,0 +1,31 @@
+//main.rs
+include!("model/user.rs");
+include!("tnt/single.rs");
+use crate::tnt::Single;
+fn main() {
+    let user = user::User { id: 33, name: "sldkfj".to_string() };
+    println!("{}", user.is_single());
+}
+
+// tnt/single.rs
+mod tnt {
+    pub trait Single {
+        fn is_single(&self) -> bool;
+    }
+}
+
+// model/user.rs
+mod user {
+    use crate::tnt;
+
+    pub struct User {
+        pub id: u32,
+        pub name: String,
+    }
+
+    impl tnt::Single for User {
+        fn is_single(&self) -> bool {
+            false
+        }
+    }
+}
