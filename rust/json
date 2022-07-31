@@ -6,11 +6,12 @@ use serde_derive::Deserialize;
 use serde_derive::Serialize;
 
 fn main() {
-    let user = User { Id: 345, name: "username".to_string() };
+    let addr = Address { id: 0, street: "aaaaa".to_string() };
+    let user = User { Id: 345, name: "username".to_string(), address: addr };
     let json = serde_json::to_string(&user).unwrap();
     println!("{}", json);
     let user200: User = serde_json::from_str(&json).unwrap();
-    println!("{}", user200.name);
+    println!("{} - {}", user200.name, user200.address.street);
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -18,4 +19,11 @@ fn main() {
 struct User {
     Id: u32,
     name: String,
+    address: Address,
+}
+
+#[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
+struct Address {
+    id: u32,
+    street: String,
 }
