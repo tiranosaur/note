@@ -7,16 +7,24 @@ fn main() {
     let first = First { id: 234 };
     first.print();
 
-    println!("{}\n", "method");
-    method("method");
+    println!("\n{}", "method1");
+    method("method2");
     method(345);
+
+    println!("\n{}", "func1");
+    func("func2");
+    func(777);
 }
 
 fn method<T: Display>(x: T) {
     println!("{}", x)
 }
 
-struct First<T> {
+fn func<T>(x: T) where T: Display {
+    println!("{}", x)
+}
+
+struct First<T: Display> {
     id: T,
 }
 
