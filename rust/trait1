@@ -9,10 +9,11 @@
         method(&user);
     }
 
-    fn method(x: &impl Single) -> &impl Single {
+    fn method(x: &dyn Single) -> &dyn Single {
         x.scream();
         return x;
     }
+
 
 // tnt/single.rs
     mod tnt {
