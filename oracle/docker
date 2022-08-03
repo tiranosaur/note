@@ -1,11 +1,10 @@
-https://hub.docker.com/_/oracle-database-enterprise-edition?tab=reviews
+0. docker pull doctorkirk/oracle-19c
+ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: pass
 
-на маке обязательно зайти в аккаунт докера в приложении.  (TERMINAL - docker login)
+1. docker run --name oracle -p 1522:1521 -e ORACLE_SID=orcl -e ORACLE_PWD=pass doctorkirk/oracle-19c
 
-1. docker exec .... etc to container
-
-sid : ORCLCDB
+sid : orcl
 2. sqlplus (
     login: sys as sysdba, 
-    password: Oradoc_db1
+    password: pass
     )
