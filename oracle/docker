@@ -2,7 +2,8 @@
 ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: pass
 
 1. docker run --name oracle -p 1522:1521 -e ORACLE_SID=orcl -e ORACLE_PWD=pass doctorkirk/oracle-19c
-
+    подожди пока докопирует файлы. смотреть в терминале
+    
 sid : orcl
 2. sqlplus (
     login: sys as sysdba, 
