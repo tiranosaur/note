@@ -1,7 +1,11 @@
-0. docker pull doctorkirk/oracle-19c
+0. 
+    docker pull absolutapps/oracle-12c-ee
+    docker pull doctorkirk/oracle-19c
 ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: pass
 
-1. docker run --name oracle -p 1522:1521 -e ORACLE_SID=orcl -e ORACLE_PWD=pass doctorkirk/oracle-19c
+1. 
+    docker run --name oracle -p 1522:1521 -e ORACLE_SID=orcl -e ORACLE_PWD=pass absolutapps/oracle-12c-ee
+    docker run --name oracle -p 1522:1521 -e ORACLE_SID=orcl -e ORACLE_PWD=pass doctorkirk/oracle-19c
     подожди пока докопирует файлы. смотреть в терминале
     
 sid : orcl
