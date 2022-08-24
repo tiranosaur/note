@@ -1,0 +1,24 @@
+public class TestingDatabase {
+    static String driver="org.postgresql.Driver";
+    static String jdbc_url="jdbc:postgresql://localhost:5432/";
+    static String username="username",password="password";
+    static PrintStream out;
+    static{
+        out=System.out;
+    }
+    public static void main(String $[]){
+        //SELECT datname FROM pg_database
+        try{
+            Class.forName(driver);
+            Connection connection= DriverManager.getConnection(jdbc_url,username,password);
+            Statement statement=connection.createStatement();
+            ResultSet result=statement.executeQuery("SELECT datname FROM pg_database");
+            while(result.next()){
+                System.out.println(result.getString(1));
+            }
+            connection.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+}
