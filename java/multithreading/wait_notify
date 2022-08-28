@@ -1,0 +1,42 @@
+public class Main {
+
+    public static void main(String[] args) {
+        Iter iter = new Iter();
+        Thread thread1 = new Thread(new MyClass(iter, "thread-1"));
+        Thread thread2 = new Thread(new MyClass(iter, "thread-2"));
+
+        thread1.start();
+        thread2.start();
+    }
+}
+
+class Iter {
+    public Integer i;
+}
+
+class MyClass implements Runnable {
+    private Iter iter;
+    private String name;
+
+    public MyClass(Iter iter, String name) {
+        this.iter = iter;
+        this.name = name;
+    }
+
+    @Override
+    public void run() {
+        synchronized (iter) {
+            this.iter.i = 0;
+            for (; iter.i < 100; iter.i++) {
+                iter.notify();
+                System.out.println(String.format("%d - %s", iter.i, name));
+                try {
+                    iter.wait();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }
+    }
+}
