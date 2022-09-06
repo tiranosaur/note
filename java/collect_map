@@ -5,3 +5,8 @@ List to map
         list.add("xxx");
         Map<String, String> map = new HashMap<>();
         map = list.stream().collect(Collectors.toMap(Function.identity(),Function.identity()));
+        
+        
+        Stream<String[]> str = Stream.of(new String[][]{{"GFG", "GeeksForGeeks"}, {"g", "geeks"}, {"G", "Geeks"}});
+        Map<String, String> map = str.collect(Collectors.toMap(p -> p[0], p -> p[1]));
+        System.out.println(""+map);
