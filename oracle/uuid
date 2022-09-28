@@ -1,0 +1,1 @@
+select SYS_GUID() from dual;
