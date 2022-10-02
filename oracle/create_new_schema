@@ -12,3 +12,6 @@ CREATE TABLE TIRAN.GRAPH_TYPES_T01
     SORT_ORDER     NUMBER(10)                 NOT NULL,
     PRIMARY KEY (TYPE_ID)
 );
+
+
+drop user TIRAN cascade ;
