@@ -1,0 +1,4 @@
+logging:
+  level:
+    com.example.springdemo.service: debug
+#    com.example.springdemo.controller: debug
