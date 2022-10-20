@@ -6,3 +6,12 @@
 		    }
 		})
 		console.log(queryStringList["<<key>>"]);
+
+//beautiful url
+// create pnr in postman params
+//get from params
+//set in beautiful url
+	var path = pm.request.url.path;
+	var query = pm.request.url.query;
+	pm.request.url.path.push(query.get("pnr"));
+	pm.request.url.query.remove("pnr");
