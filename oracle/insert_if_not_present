@@ -1,0 +1,8 @@
+MERGE INTO OPT
+USING
+    (SELECT 1 "one" FROM dual) 
+ON
+    (OPT.email= 'mom@cox.net' and OPT.campaign_id= 100) 
+WHEN NOT matched THEN
+INSERT (email, campaign_id)
+VALUES ('mom@cox.net',100) 
