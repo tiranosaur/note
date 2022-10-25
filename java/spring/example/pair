@@ -1,0 +1,12 @@
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class Pair<T1, T2> {
+    @JsonProperty("1")
+    private T1 value1;
+    @JsonProperty("2")
+    private T2 value2;
+}
