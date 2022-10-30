@@ -1,0 +1,14 @@
+#include "iostream"
+
+int main() {
+    // OK
+    int *p = new int;
+    delete p;
+
+    // Memory leak
+    int *q = new int;
+    // no delete
+
+    std::cout << "memory leak example\n";
+    return 0;
+}
