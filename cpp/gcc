@@ -1,2 +1,3 @@
 g++ -o main main.cpp -fsanitize=address && ./main
 g++ main.cpp -o main -fsanitize=address -static-libsan -g && ./main
+g++ main.cpp struct/info.cpp -Os && ./a.out
