@@ -1,0 +1,12 @@
+    @SneakyThrows
+    public static <T> void logToFile(T t) {
+        String str = (new ObjectMapper()).writeValueAsString(t);
+        str = str.replaceAll("\\s+", " ");
+        try (FileWriter fw = new FileWriter("z" + i++ + ".json")) {
+            fw.append("\n");
+            fw.append(str);
+            fw.flush();
+        } catch (Exception ex) {
+            throw new RuntimeException("duplicate file");
+        }
+    }
