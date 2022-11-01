@@ -1,0 +1,4 @@
+    std::string str = "sldfkj3456345sldkfj34sdlkfj456";
+    std::regex regex("([0-9])");
+    str = std::regex_replace(str, regex, "\\$1");
+    std::cout << str;
