@@ -7,7 +7,7 @@ docker exec -it {selected container} bash
 docker-compose pull
 docker-compose up -d
 
-//remove image
+//remove image / stop all container
 docker rm -f $(docker ps -a -q)
 
 
