@@ -1,3 +1,9 @@
+public static Integer i;
+
+    static {
+        i = 1;
+    }
+
     @SneakyThrows
     public static <T> void logToFile(T t) {
         String str = (new ObjectMapper()).writeValueAsString(t);
