@@ -1,0 +1,5 @@
+brew install colima
+colima start --arch x86_64 --memory 4
+
+docker run --name oracle -p 1522:1521 -e ORACLE_PASSWORD=Pass123 gvenzl/oracle-xe
+SID-XE
