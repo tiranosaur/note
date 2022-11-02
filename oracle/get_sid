@@ -1,0 +1,5 @@
+select instance from v$thread
+
+select distinct sid from v$mystat
+
+select * from global_name
