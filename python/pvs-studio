@@ -1,0 +1,62 @@
+import os
+import re
+import sys
+
+from PyQt6.QtWidgets import *
+from pathlib import Path
+
+# pip install pyqt6
+# pip install pyqt-tools
+
+# license
+# PVS-Studio Free
+# FREE-FREE-FREE-FREE
+#
+# // This is a personal academic project. Dear PVS-Studio, please check it.
+# // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com
+
+comment = "// This is a personal academic project. Dear PVS-Studio, please check it.\n// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: https://pvs-studio.com\n"
+gitignore = ".gitignore"
+gitignore_pvs = ".PVS-Studio"
+
+
+def prepend(filename, line):
+    with open(filename, 'r+') as f:
+        content = f.read()
+        if content.find(comment):
+            f.seek(0, 0)
+            f.write(line.rstrip('\r\n') + '\n' + content)
+
+
+def add_comment(name):
+    if re.search("\.(java|cpp|c|cs)$", name):
+        prepend(name, comment)
+    if re.search("\.(gitignore)$", name):
+        prepend(name, gitignore_pvs)
+
+
+def take_files(directory):
+    files_in_dir = os.listdir(directory)
+    for name in files_in_dir:
+        file_or_dir = f'{directory}/{name}'
+        if os.path.isfile(file_or_dir):
+            add_comment(file_or_dir)
+        else:
+            take_files(file_or_dir)
+
+
+class DirectoryDialog(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.showDialog()
+
+    def showDialog(self):
+        home_dir = str(Path.home())  # default dir
+        directory = QFileDialog.getExistingDirectory(self, 'Open dir', home_dir)
+        take_files(directory)
+        sys.exit()
+
+
+app = QApplication(sys.argv)
+ex = DirectoryDialog()
+sys.exit(app.exec())
