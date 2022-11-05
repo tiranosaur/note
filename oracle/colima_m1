@@ -6,4 +6,4 @@ docker run --name redis -p 7001:6379 -d redis
 SID-XE
 
 
-colima start --arch x86_64 --memory 4 &&  docker start $(docker ps -a -q) && dockr ps
+colima stop && colima start --arch x86_64 --memory 4 &&  docker start $(docker ps -a -q) && dockr ps && killall Terminal
