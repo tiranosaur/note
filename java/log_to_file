@@ -8,7 +8,8 @@ public static Integer i;
     public static <T> void logToFile(T t) {
         String str = (new ObjectMapper()).writeValueAsString(t);
         str = str.replaceAll("\\s+", " ");
-        try (FileWriter fw = new FileWriter("z" + i++ + ".json")) {
+        String workDir = System.getProperty("user.dir");
+        try (FileWriter fw = new FileWriter(workDir+"/zzz/file_" + i++ + ".json")) {
             fw.append("\n");
             fw.append(str);
             fw.flush();
