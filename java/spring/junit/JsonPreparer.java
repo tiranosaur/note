@@ -19,3 +19,7 @@ public class JsonPreparer<V> {
         }
     }
 }
+
+
+ List<User> userList  = JsonPreparer.prepare("json/users.json", new TypeReference<List<User>>() {
+        });
