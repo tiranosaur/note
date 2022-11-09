@@ -1,0 +1,55 @@
+import com.example.springdemo.model.User;
+import com.example.springdemo.repository.UserRepository;
+import com.example.springdemo.service.UserService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import util.JsonPreparer;
+
+import java.util.List;
+
+import static junit.framework.TestCase.assertEquals;
+import static org.mockito.Mockito.when;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(excludeAutoConfiguration = SecurityAutoConfiguration.class, controllers = UserController.class)
+public class UserControllerTest {
+    private List<User> userList;
+    @Autowired
+    private MockMvc mvc;
+
+    @SpyBean
+    UserRepository userRepository;
+
+    @SpyBean
+    UserService userService;
+
+    @Before
+    public void setUp() {
+        userList = JsonPreparer.prepare("json/users.json", new TypeReference<>() {
+        });
+        when(userRepository.findAll()).thenReturn(userList);
+    }
+
+    @Test
+    public void index_test() throws Exception {
+        MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/user").accept(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        List<User> actual = JsonPreparer.convert(result.getResponse().getContentAsString(), new TypeReference<>() {
+        });
+
+        assertEquals(result.getResponse().getStatus(), 200);
+        assertEquals(userList, actual);
+    }
+}
