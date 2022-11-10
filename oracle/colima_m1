@@ -5,6 +5,9 @@ docker run --name oracle -p 1522:1521 -e ORACLE_PASSWORD=Pass123 gvenzl/oracle-x
 docker run --name redis -p 7001:6379 -d redis
 docker run --name elasticsearch -p 9201:9200 -e "discovery.type=single-node" -d docker.elastic.co/elasticsearch/elasticsearch:8.5.0
 
+colima stop && docker context use default
+docker context use desktop-linux 
+
 default oracle SID: XE
 docker run --name elasticsearch -p 9201:9200 -e "discovery.type=single-node" -e "ELASTIC_USERNAME=admin" -e "ELASTIC_PASSWORD=admin" -d docker.elastic.co/elasticsearch/elasticsearch:8.5.0
 
