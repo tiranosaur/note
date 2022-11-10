@@ -1,0 +1,43 @@
+using Moq;
+using poligon.Controllers;
+using poligon.Models;
+using poligon.Repositories;
+using poligon.Services;
+
+namespace UnitTest.Controllers;
+//attention UserRepository mock should be the interface(IUserRepository)
+
+public class UserControllerTest
+{
+    private UserController _userController;
+    private Mock<IUserRepository> _userRepositoryMock;
+
+    [SetUp]
+    public void Setup()
+    {
+        _userRepositoryMock = new Mock<IUserRepository>();
+        _userRepositoryMock.Setup(x => x.FindAll()).Returns(new List<User>() { new User("aaa", "a", 1) });
+        UserService userService = new UserService(_userRepositoryMock.Object);
+        _userController = new UserController(userService);
+    }
+
+    [Test]
+    public void FindAll_Red_Test()
+    {
+        List<User> expected = new List<User>()
+        {
+            new User("aaa", "a", 1),
+            new User("bbb", "b", 2)
+        };
+
+        Assert.IsFalse(expected.SequenceEqual(_userController.Index()));
+    }
+
+    [Test]
+    public void FindAll_Green_Test()
+    {
+        List<User> expected = new List<User>() { new User("aaa", "a", 1) };
+        
+        Assert.IsTrue(expected.SequenceEqual(_userController.Index()));
+    }
+}
