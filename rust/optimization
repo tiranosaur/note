@@ -6,3 +6,4 @@ https://github.com/johnthagen/min-sized-rust
   lto = true          # Enable Link Time Optimization
   codegen-units = 1   # Reduce number of codegen units to increase optimizations.
   panic = 'abort'     # Abort on panic  
+cargo build --release
