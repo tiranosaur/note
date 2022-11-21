@@ -1,0 +1,49 @@
+
+public class Main {
+    public static void main(String[] args) {
+        ButtonFactory buttonFactory = new ButtonFactory();
+        Button button = buttonFactory.createButton(CreateButton.class);
+        button.click();
+    }
+}
+
+interface Button {
+    void click();
+}
+
+class CreateButton implements Button {
+    public void click() {
+        System.out.println("create event");
+    }
+}
+
+class MoveButton implements Button {
+    public void click() {
+        System.out.println("move event");
+    }
+}
+
+class ButtonFactory {
+    public CreateButton createButton(){
+        return new CreateButton();
+    }
+
+    public MoveButton createMoveButton(){
+        return new MoveButton();
+    }
+
+    //extended
+    public <T extends Button> Button createButton(Class<T> tClass) {
+        try {
+            return tClass.getDeclaredConstructor().newInstance();
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
