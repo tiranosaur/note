@@ -1,0 +1,40 @@
+public class Main {
+    public static void main(String[] args) {
+        Burger burger = BurgerBuilder.create()
+                .withCheese(true)
+                .withSize(45)
+                .build();
+        System.out.println();
+    }
+}
+
+class Burger {
+    public int size;
+    public boolean cheese = false;
+}
+
+class BurgerBuilder {
+    private int size;
+    private boolean cheese = false;
+
+    public static BurgerBuilder create() {
+        return new BurgerBuilder();
+    }
+
+    public Burger build() {
+        Burger burger = new Burger();
+        burger.cheese = cheese;
+        burger.size = size;
+        return burger;
+    }
+
+    public BurgerBuilder withSize(int size) {
+        this.size = size;
+        return this;
+    }
+
+    public BurgerBuilder withCheese(boolean isCheese) {
+        this.cheese = isCheese;
+        return this;
+    }
+}
