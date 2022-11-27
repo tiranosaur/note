@@ -1,0 +1,58 @@
+public class Main {
+    public static void main(String[] args) {
+        FirstAccount firstAccount = new FirstAccount(100);
+        SecondAccount secondAccount = new SecondAccount(500);
+        ThirdAccount thirdAccount = new ThirdAccount(1000);
+
+        firstAccount.setNext(secondAccount);
+        secondAccount.setNext(thirdAccount);
+
+        firstAccount.pay(600);
+        System.out.println();
+        firstAccount.pay(1001);
+    }
+}
+
+abstract class Account {
+    protected int balance;
+    private Account successor;
+
+    public Account setNext(Account account) {
+        this.successor = account;
+        return this;
+    }
+
+    public void pay(int amount) {
+        if (canPay(amount)) {
+            System.out.printf("payed by %s\n", this.getClass().getSimpleName());
+        } else if (successor != null) {
+            System.out.printf("can't pay by %s\n", this.getClass().getSimpleName());
+            successor.pay(amount);
+        }else {
+            System.out.printf("can't pay by %s\n", this.getClass().getSimpleName());
+            throw new RuntimeException("all accounts are too small");
+        }
+    }
+
+    private boolean canPay(int amount) {
+        return balance - amount >= 0;
+    }
+}
+
+class FirstAccount extends Account {
+    public FirstAccount(int balance) {
+        this.balance = balance;
+    }
+}
+
+class SecondAccount extends Account {
+    public SecondAccount(int balance) {
+        this.balance = balance;
+    }
+}
+
+class ThirdAccount extends Account {
+    public ThirdAccount(int balance) {
+        this.balance = balance;
+    }
+}
