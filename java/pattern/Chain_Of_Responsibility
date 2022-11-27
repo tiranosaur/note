@@ -1,0 +1,70 @@
+public class Main {
+    public static void main(String[] args) {
+        Bitcoin bitcoin = new Bitcoin(100);
+        PayPal payPal = new PayPal(200);
+        Privatbank privatbank = new Privatbank(1000);
+
+        AccountChain accountChain = new AccountChain();
+        accountChain
+                .setNextAccount(bitcoin)
+                .setNextAccount(payPal)
+                .setNextAccount(privatbank)
+                .pay(900);
+
+        System.out.println();
+
+        AccountChain chain = new AccountChain(bitcoin, payPal, privatbank);
+        chain.pay(9000);
+    }
+}
+
+class AccountChain {
+    private LinkedList<Account> accountList = new LinkedList<>();
+
+    public AccountChain(Account... accounts) {
+        accountList = new LinkedList<>(Arrays.asList(accounts));
+    }
+
+    public AccountChain setNextAccount(Account account) {
+        accountList.add(account);
+        return this;
+    }
+
+    public void pay(int amount) {
+        for (Account account : accountList) {
+            if (account.canPay(amount)) {
+                System.out.println("operation completed successfully");
+                return;
+            } else {
+                System.out.println("Can't pay. The blance is too small");
+            }
+        }
+        throw new RuntimeException("Can't finish operation. All accounts is too small");
+    }
+}
+
+abstract class Account {
+    protected int balance;
+
+    public boolean canPay(int amount) {
+        return balance - amount >= 0;
+    }
+}
+
+class Bitcoin extends Account {
+    public Bitcoin(int balance) {
+        this.balance = balance;
+    }
+}
+
+class PayPal extends Account {
+    public PayPal(int balance) {
+        this.balance = balance;
+    }
+}
+
+class Privatbank extends Account {
+    public Privatbank(int balance) {
+        this.balance = balance;
+    }
+}
