@@ -1,0 +1,5 @@
+    try {
+        throw std::runtime_error("Enemy not found");
+    } catch (const std::runtime_error &error) {
+        std::cout << error.what() << std::endl;
+    }
