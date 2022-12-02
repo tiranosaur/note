@@ -14,6 +14,7 @@ int main() {
     std::vector<std::string> words{iter, {}};
     std::vector<int> ints;
     std::transform(words.begin(), words.end(), std::back_inserter(ints), [&](std::string s) { return stoi(s); });
+    std::cout << *std::min_element(ints.begin(), ints.end()).base() << std::endl;
     for (int x: ints) {
         std::cout << x << std::endl;
     }
