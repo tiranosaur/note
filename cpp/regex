@@ -2,3 +2,20 @@
     std::regex regex("([0-9])");
     str = std::regex_replace(str, regex, "\\$1");
     std::cout << str;
+
+
+#include <iostream>
+#include <regex>
+int main() {
+    std::string userInput = "345 345 345 1 -1 0 999";
+
+    std::regex regex{R"(\s+)"};
+    std::sregex_token_iterator iter(userInput.begin(), userInput.end(), regex, -1);
+    std::vector<std::string> words{iter, {}};
+    std::vector<int> ints;
+    std::transform(words.begin(), words.end(), std::back_inserter(ints), [&](std::string s) { return stoi(s); });
+    for (int x: ints) {
+        std::cout << x << std::endl;
+    }
+    return 0;
+}
