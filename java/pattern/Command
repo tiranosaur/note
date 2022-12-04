@@ -1,0 +1,42 @@
+public class Main {
+    public static void main(String[] args) {
+        Bulb bulb = new Bulb();
+        BulbCommand bulbCommand = new BulbCommand(bulb);
+        bulbCommand.turnOn();
+        bulbCommand.turnOff();
+    }
+}
+
+class Bulb {
+    public void turnOn() {
+        System.out.println("turned on");
+    }
+
+    public void turnOff() {
+        System.out.println("turned of");
+    }
+}
+
+interface Command {
+    void turnOn();
+
+    void turnOff();
+}
+
+class BulbCommand implements Command {
+    private Bulb bulb;
+
+    public BulbCommand(Bulb bulb) {
+        this.bulb = bulb;
+    }
+
+    @Override
+    public void turnOn() {
+        bulb.turnOn();
+    }
+
+    @Override
+    public void turnOff() {
+        bulb.turnOff();
+    }
+}
