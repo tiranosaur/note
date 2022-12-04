@@ -1,0 +1,44 @@
+public class Main {
+    public static void main(String[] args) {
+        StationIterator stationIterator = new StationIterator();
+        stationIterator.addStation(new RadioStation(1));
+        stationIterator.addStation(new RadioStation(2));
+        stationIterator.addStation(new RadioStation(3));
+
+        while (stationIterator.hasNext()) {
+            System.out.println(stationIterator.next().getFrequency());
+        }
+    }
+}
+
+class RadioStation {
+    private Integer frequency;
+
+    public RadioStation(Integer frequency) {
+        this.frequency = frequency;
+    }
+
+    public Integer getFrequency() {
+        return frequency;
+    }
+}
+
+//Iterator
+class StationIterator implements Iterator<RadioStation> {
+    private List<RadioStation> radioStationList = new ArrayList<>();
+    private int index;
+
+    public void addStation(RadioStation radioStation) {
+        radioStationList.add(radioStation);
+    }
+
+    @Override
+    public boolean hasNext() {
+        return index < radioStationList.size();
+    }
+
+    @Override
+    public RadioStation next() {
+        return radioStationList.get(index++);
+    }
+}
