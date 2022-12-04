@@ -3,13 +3,16 @@ public class Main {
         Burger burger = Burger.Builder.create()
                 .withCheese(true)
                 .withSize(345)
+                .addName("name1")
+                .addNames(List.of("name2", "name3"))
                 .build();
     }
 }
 
-public class Burger {
-    public int size;
-    public boolean cheese = false;
+class Burger {
+    protected int size;
+    protected boolean cheese = false;
+    protected List<String> nameList = new ArrayList<>();
 
     static class Builder extends Burger {
         public static Builder create() {
@@ -20,6 +23,7 @@ public class Burger {
             Burger burger = new Burger();
             burger.cheese = cheese;
             burger.size = size;
+            burger.nameList = nameList;
             return burger;
         }
 
@@ -30,6 +34,16 @@ public class Burger {
 
         public Builder withCheese(boolean isCheese) {
             this.cheese = isCheese;
+            return this;
+        }
+
+        public Builder addName(String name){
+            nameList.add(name);
+            return this;
+        }
+
+        public Builder addNames(Collection<String> names){
+            nameList.addAll(names);
             return this;
         }
     }
