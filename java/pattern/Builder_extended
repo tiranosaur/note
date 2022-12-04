@@ -5,25 +5,34 @@ public class Main {
                 .withSize(345)
                 .addName("name1")
                 .addNames(List.of("name2", "name3"))
-                .build();
+                .build();  
+        Burger.Builder builder = burger.getBuilder();
     }
 }
 
+@Data
 class Burger {
-    protected int size;
-    protected boolean cheese = false;
-    protected List<String> nameList = new ArrayList<>();
+    private int size;
+    private boolean cheese = false;
+    private List<String> nameList = new ArrayList<>();
+    @Setter(value = AccessLevel.PRIVATE)
+    private Burger.Builder builder = new Builder();
 
-    static class Builder extends Burger {
+    static class Builder {
+        private int size;
+        private boolean cheese = false;
+        private List<String> nameList = new ArrayList<>();
+
         public static Builder create() {
             return new Builder();
         }
 
         public Burger build() {
             Burger burger = new Burger();
-            burger.cheese = cheese;
             burger.size = size;
+            burger.cheese = cheese;
             burger.nameList = nameList;
+            burger.builder = this;
             return burger;
         }
 
@@ -37,19 +46,19 @@ class Burger {
             return this;
         }
 
-        public Builder addName(String name){
+        public Builder addName(String name) {
             nameList.add(name);
             return this;
         }
 
-        public Builder addNames(Collection<String> names){
+        public Builder addNames(Collection<String> names) {
             nameList.addAll(names);
             return this;
         }
     }
 }
 
-----------------------------------------------------------------------
+-----------------------------------version 2-----------------------------------
 public class Main {
     public static void main(String[] args) {
         Burger burger = BurgerBuilder.create()
