@@ -1,1 +1,4 @@
- when(serviceLoadIkesaPortType.execute(argThat(x -> user.getId().equals(x.getId())), any())).thenReturn(response1);
+        User user1 =new User(1);
+        User user2 =new User(2);
+        when(service.execute(argThat(x -> Optional.ofNullable(x).map(__ -> user1.equals(__.getId())).orElse(false)), any())).thenReturn(response1);
+        when(service.execute(argThat(x -> Optional.ofNullable(x).map(__ -> user2.equals(__.getId())).orElse(false)), any())).thenReturn(response1);
