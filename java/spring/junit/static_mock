@@ -1,0 +1,13 @@
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-inline</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        
+        XMLGregorianCalendar xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar();
+        xmlGregorianCalendar.setYear(1960);
+        xmlGregorianCalendar.setDay(1);
+        xmlGregorianCalendar.setMonth(1);
+        mockStatic(DateUtils.class);
+        when(DateUtils.getXmlGregorianCalendar()).thenReturn(xmlGregorianCalendar);
