@@ -1,15 +1,14 @@
 public class XmlPreparer {
-    public static  <T> T readXml(String fileName, TypeReference<T> typeReference) {
+    public static <T> T readXml(String fileName, TypeReference<T> typeReference) {
         try {
             File file = ResourceUtils.getFile("classpath:" + fileName);
             JAXBContext jaxbContext = JAXBContext.newInstance(Class.forName(typeReference.getType().getTypeName()));
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             return (T) jaxbUnmarshaller.unmarshal(file);
 
-        } catch (JAXBException | FileNotFoundException e) {
+        } catch (JAXBException | FileNotFoundException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }
