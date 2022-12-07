@@ -1,0 +1,20 @@
+public class XmlPreparer {
+    public static  <T> T readXml(String fileName, TypeReference<T> typeReference) {
+        try {
+            File file = ResourceUtils.getFile("classpath:" + fileName);
+            JAXBContext jaxbContext = JAXBContext.newInstance(BSLiefereRolleResponse.class);
+            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            return (T) jaxbUnmarshaller.unmarshal(file);
+
+        } catch (JAXBException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+}
+
+
+
+ MyClass myobject = XmlPreparer.readXml("xml/BSLiefereRolleResponse_6592600.xml",  new TypeReference<>() {
+        });
