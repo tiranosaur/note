@@ -20,7 +20,7 @@ public class JsonPreparer {
         }
     }
 
-    public static <T> T convert(String json, TypeReference<T> typeReference) {
+    public static <T> T toObject(String json, TypeReference<T> typeReference) {
         try {
             StringReader reader = new StringReader(json);
             ObjectMapper objectMapper = new ObjectMapper();
@@ -31,6 +31,14 @@ public class JsonPreparer {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @SneakyThrows
+    public static <T> String toString(T t) {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        return mapper.writeValueAsString(t);
     }
 }
 
