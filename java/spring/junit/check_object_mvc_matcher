@@ -1,0 +1,57 @@
+@RunWith(SpringRunner.class)
+@WebMvcTest(excludeAutoConfiguration = SecurityAutoConfiguration.class, controllers = UserController.class)
+@TestPropertySource(locations = "classpath:application.yml")
+public class UserControllerTest {
+    @Autowired
+    private MockMvc mvc;
+
+    @SpyBean
+    UserController userController;
+
+    @MockBean
+    UserService userService;
+
+    @Before
+    public void setUp() {
+
+    }
+
+    @Test
+    public void index() throws Exception {
+        User user1 = new User(UUID.fromString("067fa8cf-4cca-4220-b2dc-34384fae0852"), "namexxx", 33);
+        User user2 = new User(UUID.fromString("111fa8cf-4cca-4220-b2dc-34384fae0852"), "nam222", 222);
+        String contentTrue = (new ObjectMapper()).writeValueAsString(user1);
+        String contentFalse = (new ObjectMapper()).writeValueAsString(user2);
+
+        when(userService.create(argThat(new UserMatcher(user1)))).thenReturn(user2);
+
+        mvc.perform(post("/").contentType(MediaType.APPLICATION_JSON).content(contentTrue))
+                .andExpect(status().isOk());
+        mvc.perform(post("/").contentType(MediaType.APPLICATION_JSON).content(contentFalse))
+                .andExpect(status().isOk());
+    }
+}
+
+class UserMatcher implements ArgumentMatcher<User> {
+    private User user;
+
+    public UserMatcher(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public boolean matches(User u) {
+        return user.getId().equals(u.getId());
+    }
+}
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonSerialize
+public class User {
+    private UUID id;
+    private String name;
+    private int age;
+}
