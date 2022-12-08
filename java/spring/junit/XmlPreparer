@@ -15,13 +15,16 @@ public class XmlPreparer {
 
 
 
- MyClass myobject = XmlPreparer.prepare("xml/BSLiefereRolleResponse_6592600.xml",  new TypeReference<>() {
+ MyClass myobject = XmlPreparer.prepare("xml/file.xml",  new TypeReference<>() {
         });
         
         
 // object to xml
-ByteArrayOutputStream baos = new ByteArrayOutputStream();
-XMLEncoder xmlEncoder = new XMLEncoder(baos);
-xmlEncoder.writeObject(request);
-xmlEncoder.close();
-String xml = baos.toString();
+JAXBContext context = JAXBContext.newInstance(MyClass.class);
+Marshaller m = context.createMarshaller();
+
+m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE); // To format XML
+
+StringWriter sw = new StringWriter();
+m.marshal(request, sw);
+sw.toString();
