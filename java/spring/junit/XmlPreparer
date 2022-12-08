@@ -17,3 +17,11 @@ public class XmlPreparer {
 
  MyClass myobject = XmlPreparer.prepare("xml/BSLiefereRolleResponse_6592600.xml",  new TypeReference<>() {
         });
+        
+        
+// object to xml
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+XMLEncoder xmlEncoder = new XMLEncoder(baos);
+xmlEncoder.writeObject(request);
+xmlEncoder.close();
+String xml = baos.toString();
