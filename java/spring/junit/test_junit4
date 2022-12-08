@@ -88,5 +88,6 @@ class PersonControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.isJuristicPerson").exists())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.isJuristicPerson", is(false)));
+                //.andExpect(MockMvcResultMatchers.jsonPath("$").value(companyDTOList));
     }
 }
