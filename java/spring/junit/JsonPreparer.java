@@ -33,12 +33,16 @@ public class JsonPreparer {
         }
     }
 
-    @SneakyThrows
     public static <T> String toString(T t) {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        return mapper.writeValueAsString(t);
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.registerModule(new JavaTimeModule());
+            mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+            return mapper.writeValueAsString(t);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
 
