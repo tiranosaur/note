@@ -29,7 +29,7 @@ public class XmlPreparer {
             JAXBContext jaxbContext = JAXBContext.newInstance(Class.forName(typeReference.getType().getTypeName()));
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            StringWriter sw = new StringWriter();
+            Writer sw = new StringWriter();
             marshaller.marshal(t, sw);
             return sw.toString();
         }catch (Exception e){
