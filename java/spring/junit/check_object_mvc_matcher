@@ -40,8 +40,11 @@ class UserMatcher implements ArgumentMatcher<User> {
     }
 
     @Override
-    public boolean matches(User u) {
-        return user.getId().equals(u.getId());
+    public boolean matches(User argument) {
+            if (argument==null){
+            return false;
+        }
+        return user.getId().equals(argument.getId());
     }
 }
 
