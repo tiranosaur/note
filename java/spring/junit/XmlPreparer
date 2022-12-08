@@ -6,13 +6,38 @@ public class XmlPreparer {
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             return (T) jaxbUnmarshaller.unmarshal(file);
 
-        } catch (JAXBException | FileNotFoundException | ClassNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-}
 
+    public static <T> T convert(String xmlString, TypeReference<T> typeReference) {
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Class.forName(typeReference.getType().getTypeName()));
+            Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+            Reader reader = new StringReader(xmlString);
+            return (T) unmarshaller.unmarshal(reader);
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+    }
+
+    public static <T> String toString(T t, TypeReference<T> typeReference) {
+        try {
+            JAXBContext jaxbContext = JAXBContext.newInstance(Class.forName(typeReference.getType().getTypeName()));
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            StringWriter sw = new StringWriter();
+            marshaller.marshal(t, sw);
+            return sw.toString();
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+    }
+}
 
 
  MyClass myobject = XmlPreparer.prepare("xml/file.xml",  new TypeReference<>() {
