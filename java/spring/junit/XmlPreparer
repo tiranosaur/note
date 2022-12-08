@@ -1,3 +1,11 @@
+import com.fasterxml.jackson.core.type.TypeReference;
+import org.springframework.util.ResourceUtils;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.*;
+
 public class XmlPreparer {
     public static <T> T prepare(String fileName, TypeReference<T> typeReference) {
         try {
