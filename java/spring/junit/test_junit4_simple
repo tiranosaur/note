@@ -44,6 +44,12 @@ public class UserServiceTest {
 
         Assert.assertEquals(2, userRepositoryMock.findAll().size());
     }
+    
+    @Test
+    public void index() throws Exception {
+        userService.getAll();
+        verify(userRepository, times(1)).findAll();
+    }
 
     private List<User> getUserList2() {
         return List.of(
