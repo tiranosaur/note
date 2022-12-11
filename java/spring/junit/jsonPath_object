@@ -1,0 +1,7 @@
+ users = JsonPreparer.prepare("json/users.json", new TypeReference<>() {
+        });
+        when(userRepository.findAll()).thenReturn(users);
+        List<User> list = new ArrayList<>(users);
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(equalTo(JsonPreparer.asParsedJson(list))));
