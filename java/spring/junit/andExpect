@@ -14,15 +14,15 @@
     
 // class type
     @Test
-    public void index_fault() throws Exception {
+    public void index() throws Exception {
         users = JsonPreparer.prepare("json/users.json", new TypeReference<>() {
         });
         when(userRepository.findAll()).thenReturn(users);
-        List<User> list = new ArrayList<>();
-        ResultActions resultActions = mockMvc.perform(get("/"))
-                .andExpect(status().isOk());
-
-        List<User> result = JsonPreparer.toObject(resultActions.andReturn().getResponse().getContentAsString(), new TypeReference<>() {
-        });
-        assertThat(result.get(0)).isInstanceOf(User.class);
+        var result = mockMvc.perform(post("/"))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        Assert.assertNotNull(JsonPreparer.toObject(result, new TypeReference<User>() { //!!!!!!!!!!!
+        }));
     }
