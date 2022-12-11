@@ -4,4 +4,5 @@
         List<User> list = new ArrayList<>(users);
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$").value(equalTo(JsonPreparer.asParsedJson(list))));
+                 .andExpect(jsonPath("$", equalTo(JsonPreparer.asParsedJson(list))));
+                //.andExpect(jsonPath("$").value(equalTo(JsonPreparer.asParsedJson(list))));
