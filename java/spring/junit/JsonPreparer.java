@@ -20,7 +20,7 @@ public class JsonPreparer {
         }
     }
 
-    public static <T> T toObject(String json, TypeReference<T> typeReference) {
+    public static <T> T convert(String json, TypeReference<T> typeReference) {
         try {
             StringReader reader = new StringReader(json);
             ObjectMapper objectMapper = new ObjectMapper();
