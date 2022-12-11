@@ -1,6 +1,6 @@
 // specific object
     @Test
-    public void index_fault() throws Exception {
+    public void index1() throws Exception {
         users = JsonPreparer.prepare("json/users.json", new TypeReference<>() {
         });
         when(userRepository.findAll()).thenReturn(users);
@@ -11,10 +11,22 @@
         //.andExpect(jsonPath("$").value(equalTo(JsonPreparer.asParsedJson(list))));
     }
     
+// class type
+ @Test
+    public void index2() throws Exception {
+        users = JsonPreparer.prepare("json/users.json", new TypeReference<>() {
+        });
+        when(userRepository.findAll()).thenReturn(users);
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(result -> Assert.assertNotNull(JsonPreparer.toObject(result.getResponse().getContentAsString(), new TypeReference<List<User>>() {
+                })));
+    }
+    
     
 // class type
     @Test
-    public void index() throws Exception {
+    public void index3() throws Exception {
         users = JsonPreparer.prepare("json/users.json", new TypeReference<>() {
         });
         when(userRepository.findAll()).thenReturn(users);
