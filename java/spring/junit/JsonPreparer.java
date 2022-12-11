@@ -44,6 +44,12 @@ public class JsonPreparer {
             return null;
         }
     }
+    
+    // should be in test path
+    public static <T> T asParsedJson(Object obj) throws JsonProcessingException {
+        String json = new ObjectMapper().writeValueAsString(obj);
+        return JsonPath.read(json, "$");
+    }
 }
 
 @Data
