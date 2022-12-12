@@ -1,0 +1,4 @@
+// object
+      assertThat(actual)
+                .usingRecursiveComparison()
+                .isEqualTo(expected);
