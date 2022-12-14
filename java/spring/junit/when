@@ -1,2 +1,13 @@
 // return method argument
-  when(UserService.create(any(), eq(null))).then(returnsFirstArg());
+    when(UserService.create(any(), eq(null))).then(returnsFirstArg());
+  
+// зависит от итерации
+    when(userRepository.findAll())
+                  .thenReturn(users)
+                  .thenReturn(List.of(users.get(0)))
+                  .thenReturn(null);
+
+    var x1 = userService.getAll(); // full list
+    var x2 = userService.getAll(); // 1
+    var x3 = userService.getAll(); //null
+    var x4 = userService.getAll(); //null
