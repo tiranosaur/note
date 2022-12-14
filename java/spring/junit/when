@@ -1,0 +1,2 @@
+// return method argument
+  when(UserService.create(any(), eq(null))).then(returnsFirstArg());
