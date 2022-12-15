@@ -1,2 +1,11 @@
 // terminal (baud - 115200)
-pio device monitor -b 115200
+    pio device monitor -b 115200
+
+//code
+    void setup() {
+        Serial.begin(115200);
+    }
+
+    void loop() {
+        Serial.println("hi");
+    }
