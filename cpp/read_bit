@@ -1,0 +1,8 @@
+int main() {
+    uint8_t mask = 0b01110111;
+    for (int i = 0; i < 8; ++i) {
+        bool isEnable = ((mask >> i) & 0x1);
+        cout << isEnable << endl;
+    }
+    return 0;
+}
