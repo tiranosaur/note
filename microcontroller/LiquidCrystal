@@ -1,0 +1,2 @@
+1. pio lib --global install "LiquidCrystal"
+2. create new project
