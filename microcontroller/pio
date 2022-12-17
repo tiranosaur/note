@@ -1,0 +1,7 @@
+// run device monitor
+   pio device monitor -b 9600 
+   
+// install lib from github
+  pio project init --board nodemcuv2
+  pio lib install "mikalhart/TinyGPSPlus"
+  pio lib install "plerup/EspSoftwareSerial@6.9"
