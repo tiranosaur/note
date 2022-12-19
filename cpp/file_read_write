@@ -1,0 +1,25 @@
+#include <iostream>
+#include <fstream>
+
+int main() {
+    std::string str;
+    std::string line;
+    std::fstream readStream;
+    std::ofstream writeStream;
+//read
+    std::__fs::filesystem::path cwd = std::__fs::filesystem::current_path().parent_path() / "index.html";
+    readStream.open(cwd);
+    if (readStream.is_open()) {
+        while (std::getline(readStream, line)) {
+            str += line;
+        }
+    }
+    std::cout << str << std::endl;
+//write
+    writeStream.open(cwd, std::ios::app);
+    if (writeStream.is_open()) {
+        writeStream << "added string"<<std::endl;
+    }
+
+    return 0;
+}
