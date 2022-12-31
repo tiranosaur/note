@@ -1,3 +1,9 @@
+// if clion doesn't see pio
+   ln -s ~/.platformio/penv/bin/platformio /home/<username>/.local/bin/platformio
+   ln -s ~/.platformio/penv/bin/pio /home/<username>/.local/bin/pio
+   ln -s ~/.platformio/penv/bin/piodebuggdb /home/<username>/.local/bin/piodebuggdb
+
+// upload in terminal
 pio run --target upload
 
 // run device monitor
