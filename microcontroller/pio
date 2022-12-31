@@ -11,4 +11,5 @@
    
 // install lib from github
   platformio lib --global install "mikalhart/TinyGPSPlus"
+  pio lib --global install "mikalhart/TinyGPSPlus"
   pio lib install "plerup/EspSoftwareSerial@6.9"
