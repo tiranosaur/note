@@ -4,7 +4,7 @@
    ln -s ~/.platformio/penv/bin/piodebuggdb /home/<username>/.local/bin/piodebuggdb
 
 // upload in terminal
-pio run --target upload
+   pio run --target upload
 
 // run device monitor
    pio device monitor -b 9600 
