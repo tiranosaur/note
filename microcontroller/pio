@@ -1,3 +1,5 @@
+pio run --target upload
+
 // run device monitor
    pio device monitor -b 9600 
    
