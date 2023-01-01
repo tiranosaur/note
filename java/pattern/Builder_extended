@@ -1,3 +1,53 @@
+-----------------------------------the best version-----------------------------------
+public class Main {
+    public static void main(String[] args) {
+        Burger burger = Burger.builder()
+                .withName("My Burger")
+                .isCheesed(true)
+                .withSize(45)
+                .addSpice("spice0")
+                .addSpiceList(List.of("spice1", "spice2"))
+                .build();
+  }
+}
+
+@Data
+@Builder(setterPrefix = "with")
+public class Burger {
+    private String name;
+    private int size;
+    private boolean cheese = false;
+    private List<String> spiceList;
+
+    static class BurgerBuilder {
+        // initiate list
+        private List<String> spiceList = new ArrayList<>();
+
+        // hide the default method
+        private void withSpiceList() {
+        }
+
+        public BurgerBuilder addSpice(String spice) {
+            this.spiceList.add(spice);
+            return this;
+        }
+
+        public BurgerBuilder addSpiceList(Collection<String> spiceList) {
+            this.spiceList.addAll(spiceList);
+            return this;
+        }
+
+        // hide the default method
+        private void withCheese() {
+        }
+
+        public BurgerBuilder isCheesed(boolean cheese) {
+            this.cheese = cheese;
+            return this;
+        }
+    }
+}
+-----------------------------------version 1-----------------------------------
 public class Main {
     public static void main(String[] args) {
         Burger burger = Burger.Builder.create()
