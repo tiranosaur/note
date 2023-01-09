@@ -1,0 +1,74 @@
+public class Main {
+    public static void main(String[] args) {
+        Mediator mediator = new Mediator();
+        PowerSupplier powerSupplier = new PowerSupplier();
+        Button button = new Button();
+        button.mediator = mediator;
+        Fan fan = new Fan();
+        fan.mediator = mediator;
+
+        mediator.powerSupplier = powerSupplier;
+        mediator.button = button;
+        mediator.fan = fan;
+
+        button.press();
+        button.press();
+        button.press();
+    }
+}
+
+class Mediator {
+    public Button button;
+    public Fan fan;
+    public PowerSupplier powerSupplier;
+
+    public void press() {
+        if (fan.isOn) {
+            fan.turnOff();
+        } else {
+            fan.turnOn();
+        }
+    }
+
+    public void start() {
+        powerSupplier.turnOn();
+    }
+
+    public void stop() {
+        powerSupplier.turnOff();
+    }
+}
+
+class Button {
+    public Mediator mediator;
+
+    public void press() {
+        mediator.press();
+    }
+}
+
+class Fan {
+    public Mediator mediator;
+    public boolean isOn = false;
+
+    public void turnOn() {
+        mediator.start();
+        isOn = true;
+    }
+
+    public void turnOff() {
+        isOn = false;
+        mediator.stop();
+    }
+}
+
+
+class PowerSupplier {
+    public void turnOn() {
+        System.out.println("PowerSupplier.turnOn");
+    }
+
+    public void turnOff() {
+        System.out.println("PowerSupplier.turnOff");
+    }
+}
