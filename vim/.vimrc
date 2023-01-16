@@ -1,6 +1,6 @@
 set relativenumber "номера строк со смещением
 set number "номера строк
-set ic
+set ignorecase
 "отступы
 set autoindent
 set tabstop=4 
