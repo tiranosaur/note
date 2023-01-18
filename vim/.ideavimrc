@@ -1,0 +1,22 @@
+set relativenumber 
+set number 
+set smartcase
+set ignorecase
+set autoindent
+set tabstop=4 
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set multicursor
+set multiple-cursors
+
+imap jj <Esc>
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+nmap <C-x> <Plug>SkipOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+nmap <C-p> <Plug>RemoveOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
