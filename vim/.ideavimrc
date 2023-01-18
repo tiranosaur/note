@@ -12,6 +12,7 @@ set multiple-cursors
 
 imap jj <Esc>
 " Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+" https://stackoverflow.com/questions/55202799/ideavim-multi-cursor-usage
 nmap <C-n> <Plug>NextWholeOccurrence
 xmap <C-n> <Plug>NextWholeOccurrence
 nmap g<C-n> <Plug>NextOccurrence
