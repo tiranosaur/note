@@ -1,0 +1,28 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.MapPropertySource;
+import org.springframework.core.env.MutablePropertySources;
+
+import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
+
+@Configuration
+public class AppConfiguration {
+    @Autowired
+    private ConfigurableEnvironment configurableEnvironment;
+
+    // default false
+    @Value("${wire-mock-enable}")
+    private Boolean isEnable;
+
+    @PostConstruct
+    public void propertyConfigInDev() {
+        MutablePropertySources propertySources = configurableEnvironment.getPropertySources();
+        Map<String, Object> map = new HashMap<>();
+        map.put("wire-mock-enable", true);
+        propertySources.addFirst(new MapPropertySource("newmap", map));
+    }
+}
