@@ -27,9 +27,10 @@ redis:
     ports:
       - "6379:6379"
 
-wiremock:
-    image: wiremock/wiremock:2.32.0
+ wiremock:
+    image: wiremock/wiremock
     container_name: mywiremock
+    command: "--global-response-templating --verbose"
     volumes:
       - ./__files:/home/wiremock/__files
       - ./mappings:/home/wiremock/mappings
