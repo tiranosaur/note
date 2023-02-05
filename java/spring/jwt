@@ -1,0 +1,52 @@
+@SpringBootApplication
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Map<String, Object> keys = generateRSAKeys();
+        Date creationDate = Date.from(ZonedDateTime.now().plusHours(1).toInstant());
+        Date expiredDate = Date.from(ZonedDateTime.now().plusHours(8).toInstant());
+        Map<String, String> map = new HashMap<>();
+        map.put("value", "37d6f26c-8bf5-4c21-b1cf-523b64ac803b");
+        map.put("type", "customType");
+
+        String token = null;
+        try {
+            RSAPrivateKey privateKey = (RSAPrivateKey) keys.get("private");
+            Algorithm algorithm = Algorithm.RSA256(null, privateKey);
+            token = JWT.create()
+                    .withClaim("custom-data", map)
+                    .withIssuer("user-service")
+                    .withSubject("context")
+                    .withIssuedAt(creationDate)
+                    .withExpiresAt(expiredDate)
+                    .sign(algorithm);
+        } catch (JWTCreationException e) {
+            throw e;
+        }
+        
+        try {
+            RSAPublicKey publicKey = (RSAPublicKey) keys.get("public");
+            Algorithm algorithm = Algorithm.RSA256(publicKey, null);
+            JWTVerifier verifier = JWT.require(algorithm)
+                 //    .withClaim("custom-data", map)
+                    .withIssuer("user-service")
+                    .withSubject("context")
+                    .acceptIssuedAt(creationDate.getTime())
+                    .acceptExpiresAt(expiredDate.getTime())
+                    .build();
+            DecodedJWT jwt = verifier.verify(token);
+
+            System.out.println(jwt.getToken());
+        } catch (JWTVerificationException e) {
+            throw e;
+        }
+
+    }
+
+    private static Map<String, Object> generateRSAKeys() throws Exception {
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        keyPairGenerator.initialize(2048);
+
+        KeyPair keyPair = keyPairGenerator.generateKeyPair();
+        return Map.of("private", keyPair.getPrivate(), "public", keyPair.getPublic());
+    }
+}
