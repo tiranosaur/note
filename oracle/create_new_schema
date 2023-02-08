@@ -1,4 +1,4 @@
-create user tiran identified by password;
+create user tiran identified by <my password>;
 grant connect to tiran;
 grant all privileges to tiran;
 
