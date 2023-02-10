@@ -1,0 +1,1 @@
+flyway  migrate -user="tiran" -password="Pass123" -url="jdbc:oracle:thin:@localhost:1522:XE" -table="KFORGNIS_DATA" -locations="filesystem:/Users/tiran/Desktop/demoy/src/main/resources/db/migration/DDL/V"
