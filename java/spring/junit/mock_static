@@ -1,3 +1,5 @@
+private static  MockedStatic<UserProviderDecorator>  classMock;
+
     @BeforeClass
     public static void tearDown(){
         UserContext userContext = UserContext.builder()
@@ -5,6 +7,11 @@
                 .isBankEmployee(false)
                 .withBearerJWT(BEARER_JWT_TOKEN)
                 .build();
-        MockedStatic<UserProviderDecorator> classMock = mockStatic(UserProviderDecorator.class);
+        classMock = mockStatic(UserProviderDecorator.class);
         classMock.when(() -> UserProviderDecorator.getUserContext()).thenReturn(userContext);
+    }
+    
+    @AfterAll
+    public static void close() {
+        classMock.close();
     }
