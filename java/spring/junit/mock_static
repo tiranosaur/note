@@ -2,6 +2,7 @@ private static  MockedStatic<UserProviderDecorator>  classMock;
 
     @BeforeClass
     public static void tearDown(){
+        classMock.close();
         UserContext userContext = UserContext.builder()
                 .withAge(234)
                 .isBankEmployee(false)
