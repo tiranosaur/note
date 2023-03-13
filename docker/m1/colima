@@ -3,7 +3,7 @@ colima start --arch x86_64 --memory 4
 
 docker run --name oracle -p 1522:1521 -e ORACLE_PASSWORD=Pass123 gvenzl/oracle-xe
 docker run --name redis -p 7001:6379 -d redis
-docker run -p 27016:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=Pass123 --name example-mongo mongo:latest
+docker run --name mongodb -p 27016:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=Pass123 mongo:latest
 docker run --name elasticsearch -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.5
 
 colima stop && docker context use default
