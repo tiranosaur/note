@@ -1,0 +1,71 @@
+        <dependency>
+            <groupId>de.bwaldvogel</groupId>
+            <artifactId>mongo-java-server</artifactId>
+            <version>1.43.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.bwaldvogel</groupId>
+            <artifactId>mongo-java-server-h2-backend</artifactId>
+            <version>1.43.0</version>
+        </dependency>
+        
+        
+        
+        
+---- test configuration folder
+    @Configuration
+    public class MongoTestServerConfiguration {
+        @Bean
+        public MongoTemplate mongoTemplate(MongoDatabaseFactory mongoDbFactory) {
+            return new MongoTemplate(mongoDbFactory);
+        }
+
+        @Bean
+        public MongoDatabaseFactory mongoDbFactory(MongoServer mongoServer) {
+            String connectionString = mongoServer.getConnectionString();
+            return new SimpleMongoClientDatabaseFactory(connectionString + "/test");
+        }
+
+        @Bean(destroyMethod = "shutdown")
+        public MongoServer mongoServer() {
+            MongoServer mongoServer = new MongoServer(new MemoryBackend());
+            mongoServer.bind();
+            return mongoServer;
+        }
+    }
+    
+    @Target(ElementType.TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @Import(MongoTestServerConfiguration.class)
+    public @interface EnableMongoTestServer {
+
+    }
+    
+    
+---- test
+      @ActiveProfiles("test")
+      @RunWith(SpringRunner.class)
+      @DataMongoTest
+      @EnableMongoTestServer
+      public class SimpleSpringBootTest {
+
+          @Autowired
+          private MongoRepo repository;
+
+          @Before
+          public void setUp() {
+
+              MongoServer server = new MongoServer(new H2Backend("database.mv"));
+              server.bind("localhost", 27017);
+              // initialize your repository with some test data
+              repository.deleteAll();
+              repository.save(new UserEntity());
+          }
+
+          @Test
+          public void test(){
+              System.out.println();
+              assert true;
+          }
+      }
+  
