@@ -55,8 +55,8 @@
           @Before
           public void setUp() {
 
-              MongoServer server = new MongoServer(new H2Backend("database.mv"));
-              server.bind("localhost", 27017);
+            /  MongoServer server = new MongoServer(new H2Backend("database.mv"));
+            /  server.bind("localhost", 27017);
               // initialize your repository with some test data
               repository.deleteAll();
               repository.save(new UserEntity());
