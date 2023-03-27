@@ -1,0 +1,6 @@
+        InputStream inputStream = new FileInputStream("/Users/xcx1016/Documents/english-tenses-infographic.jpg");
+        OutputStream outputStream = new ByteArrayOutputStream();
+        outputStream.write(inputStream.readAllBytes());
+        ByteArrayOutputStream byteArrayOutputStream = (ByteArrayOutputStream) outputStream;
+        byte[] bytes = byteArrayOutputStream.toByteArray();
+        InputStream result = new ByteArrayInputStream(bytes);
