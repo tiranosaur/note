@@ -5,6 +5,7 @@ docker run --name oracle -p 1522:1521 -e ORACLE_PASSWORD=Pass123 gvenzl/oracle-x
 docker run --name redis -p 7001:6379 -d redis
 docker run --name mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=Pass123 mongo:latest
 docker run --name elasticsearch -p 9300:9200  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.5
+docker run --rm -it -p 15673:15672 -p 5673:5672 rabbitmq:3-management
 
 colima stop && docker context use default
 docker context use desktop-linux 
