@@ -43,3 +43,26 @@ db.collection_name.aggregate([
         }
     },
 ])
+
+
+///spring///
+
+        MatchOperation findOne = Aggregation.match(new Criteria("_id").is("IeCQsxyCnsUqbmYB"));
+
+        Criteria criteria = Criteria.where("isFolder").is(true);
+        MongoExpression xxx = MongoExpression.create("$getField:{input:{$regexFind:{input:'$fileUrl',regex:'/([^\\/]*).vt-folder',options:'si'}},field:'captures'}");
+        Document conditionalOperators = ConditionalOperators.when(criteria).then(xxx).otherwise("---------------").toDocument();
+        AddFieldsOperation addChildren = Aggregation.addFields().addField("path_name").withValue(conditionalOperators).build();
+        UnwindOperation unwindOperation = Aggregation.unwind("path_name");
+
+
+        MongoExpression startWithExpression = MongoExpression.create("{$toString:{$concat:['$path','$path_name','/']}}");
+        AggregationExpression startWith = AggregationExpression.from(startWithExpression);
+        GraphLookupOperation graphLookupOperation = GraphLookupOperation.builder().from("collection_name")
+                .startWith(startWith)
+                .connectFrom("path")
+                .connectTo("path")
+                .as("children");
+
+        Aggregation aggregation = Aggregation.newAggregation(List.of(findOne, addChildren, unwindOperation, graphLookupOperation));
+        AggregationResults<FileInfoMongoEntity> result = mongoTemplate.aggregate(aggregation, "collection_name", FileInfoMongoEntity.class);
