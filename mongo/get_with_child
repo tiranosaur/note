@@ -1,4 +1,8 @@
-db.database_name.aggregate([
+db.collection_name.aggregate([
+    {
+        $match:
+            {"_id": "IeCQsxyCnsUqbmYB"}
+    },
     {
         $addFields: {
             "path_name": {
@@ -18,17 +22,19 @@ db.database_name.aggregate([
                         }
                     },
                     else: {
-                        $toString:"------------------------------------------"
+                        $toString: "------------------------------------------"
                     }
                 }
             }
         }
     },
-    {$unwind: "$path_name"},
+    {
+        $unwind: "$path_name"
+    },
     {
         $graphLookup: {
-            from: "database_name",
-            startWith: {$toString: {$concat:["$path","$path_name", "/"]}},
+            from: "collection_name",
+            startWith: {$toString: {$concat: ["$path", "$path_name", "/"]}},
             connectFromField: "path",
             connectToField: "path",
             as: "children",
