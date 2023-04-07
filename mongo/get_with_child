@@ -1,0 +1,39 @@
+db.database_name.aggregate([
+    {
+        $addFields: {
+            "path_name": {
+                $cond: {
+                    if: {
+                        $eq: ["$isFolder", true]
+                    },
+                    then: {
+                        $getField: {
+                            input: {
+                                $regexFind: {
+                                    input: "$fileUrl",
+                                    regex: "/([^\/]*).vt-folder",
+                                    options: "si"
+                                }
+                            }, field: "captures"
+                        }
+                    },
+                    else: {
+                        $toString:"------------------------------------------"
+                    }
+                }
+            }
+        }
+    },
+    {$unwind: "$path_name"},
+    {
+        $graphLookup: {
+            from: "database_name",
+            startWith: {$toString: {$concat:["$path","$path_name", "/"]}},
+            connectFromField: "path",
+            connectToField: "path",
+            as: "children",
+            maxDepth: 1,
+            depthField: "level"
+        }
+    },
+])
