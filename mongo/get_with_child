@@ -1,68 +1,88 @@
 db.collection_name.aggregate([
     {
         $match:
-            {"_id": "IeCQsxyCnsUqbmYB"}
+            {'_id': 'IeCQsxyCnsUqbmYB'}
     },
     {
         $addFields: {
-            "path_name": {
+            'path_name': {
                 $cond: {
                     if: {
-                        $eq: ["$isFolder", true]
+                        $eq: ['$isFolder', true]
                     },
                     then: {
                         $getField: {
                             input: {
                                 $regexFind: {
-                                    input: "$fileUrl",
-                                    regex: "/([^\/]*).vt-folder",
-                                    options: "si"
+                                    input: '$fileUrl',
+                                    regex: '/([^\/]*).vt-folder',
+                                    options: 'si'
                                 }
-                            }, field: "captures"
+                            }, field: 'captures'
                         }
                     },
                     else: {
-                        $toString: "------------------------------------------"
+                        $toString: '------------------------------------------'
                     }
                 }
             }
         }
     },
-    {
-        $unwind: "$path_name"
-    },
+    {$unwind: '$path_name'},
     {
         $graphLookup: {
-            from: "collection_name",
-            startWith: {$toString: {$concat: ["$path", "$path_name", "/"]}},
-            connectFromField: "path",
-            connectToField: "path",
-            as: "children",
-            maxDepth: 1,
-            depthField: "level"
+            from: 'recognized_files',
+            startWith: {$toString: {$concat: ['$path', '$path_name', '/']}},
+            connectFromField: 'path',
+            connectToField: 'path',
+            as: 'children'
         }
     },
+    {
+        $set: {
+            children: {
+                $sortArray: {
+                    input: '$children',
+                    sortBy: {'dateOfCreation': 1}
+                }
+            }
+        }
+    },
+    {
+        $set: {
+            children: {
+                $slice: ['$children',9]
+            }
+        }
+    }
 ])
 
 
-///spring///
 
+        String collectionName = "collection_name";
         MatchOperation findOne = Aggregation.match(new Criteria("_id").is("IeCQsxyCnsUqbmYB"));
 
         Criteria criteria = Criteria.where("isFolder").is(true);
         MongoExpression xxx = MongoExpression.create("$getField:{input:{$regexFind:{input:'$fileUrl',regex:'/([^\\/]*).vt-folder',options:'si'}},field:'captures'}");
         Document conditionalOperators = ConditionalOperators.when(criteria).then(xxx).otherwise("---------------").toDocument();
-        AddFieldsOperation addChildren = Aggregation.addFields().addField("path_name").withValue(conditionalOperators).build();
+        AddFieldsOperation addPathName = Aggregation.addFields().addField("path_name").withValue(conditionalOperators).build();
         UnwindOperation unwindOperation = Aggregation.unwind("path_name");
 
 
         MongoExpression startWithExpression = MongoExpression.create("{$toString:{$concat:['$path','$path_name','/']}}");
         AggregationExpression startWith = AggregationExpression.from(startWithExpression);
-        GraphLookupOperation graphLookupOperation = GraphLookupOperation.builder().from("collection_name")
+        GraphLookupOperation addChildren = GraphLookupOperation.builder().from(collectionName)
                 .startWith(startWith)
                 .connectFrom("path")
                 .connectTo("path")
                 .as("children");
 
-        Aggregation aggregation = Aggregation.newAggregation(List.of(findOne, addChildren, unwindOperation, graphLookupOperation));
-        AggregationResults<FileInfoMongoEntity> result = mongoTemplate.aggregate(aggregation, "collection_name", FileInfoMongoEntity.class);
+        MongoExpression sort = MongoExpression.create("$sortArray:{input:'$children',sortBy:{'dateOfCreation': 1}}");
+        SetOperation sortChildren = SetOperation.builder().set("children").toValueOf(sort);
+
+        MongoExpression limit = MongoExpression.create("$slice: ['$children',9]");
+        SetOperation limitChildren = SetOperation.builder().set("children").toValueOf(limit);
+
+        Aggregation aggregation = Aggregation.newAggregation(List.of(findOne, addPathName, unwindOperation, addChildren, sortChildren, limitChildren));
+        AggregationResults<FileInfoMongoEntity> aggregate = mongoTemplate.aggregate(aggregation, collectionName, FileInfoMongoEntity.class);
+        List<FileInfoMongoEntity> result = aggregate.getMappedResults();
