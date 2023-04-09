@@ -59,3 +59,12 @@ db.collection_name.aggregate([
     }
 
 ])
+
+@Aggregation(pipeline = {"
+            "{$addFields:{__path:{$last:{$split:['$fileUrl','/']}}}}",
+            "{$set:{__path:{$first:{$split:['$__path','" + FOLDER_SUFFIX + "']}}}}",
+            "{$set:{__path:{$cond:{if:{$eq:['$isFolder',true]},then:{$replaceAll:{input:{$concat:['$path','/','$__path','/']},find:'//',replacement:'/'}},else:{}}}}}",
+            "{$graphLookup:{from:'recognized_files',startWith:'$__path',connectFromField:'__path',connectToField:'path',as:'children'}}",
+            "{$set:{children:{$sortArray:{input:'$children',sortBy:{'dateOfCreation':1}}}}}",
+            "{$set:{children:{$slice:['$children',9]}}}"})
+    List<FileInfoMongoEntity> find();
