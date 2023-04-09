@@ -1,0 +1,65 @@
+db.collection_name.aggregate([
+    // {$match:{"_id":"IeCQsxyCnsUqbmYB"}},
+    {
+        $addFields: {
+            __path: {
+                $last: {$split: ["$fileUrl", "/"]}
+            }
+        }
+    },
+    {
+        $set: {
+            __path: {
+                $first: {$split: ["$__path", ".vt-folder"]}
+            }
+        }
+    },
+    {
+        $set: {
+            __path: {
+                $cond: {
+                    if: {
+                        $eq: ['$isFolder', true]
+                    },
+                    then: {
+                        $replaceAll:{input:{$concat: ["$path", "/", "$__path", "/"]}, find: "//", replacement:"/"}
+                    },
+                    else: {
+                        $toString: '------------------------------------------'
+                    }
+                }
+            }
+        }
+    },
+    {
+        $graphLookup: {
+            from: 'collection_name',
+            startWith: "$__path",
+            connectFromField: '__path',
+            connectToField: 'path',
+            as: 'children'
+        }
+    },
+    {
+        $set: {
+            children: {
+                $sortArray: {
+                    input: '$children',
+                    sortBy: {'dateOfCreation': 1}
+                }
+            }
+        }
+    },
+    {
+        $set: {
+            children: {
+                $slice: ['$children',9]
+            }
+        }
+    },
+
+
+    {$sort: {"isFolder": -1}},
+    {$unset: "_class"},
+
+])
