@@ -1,0 +1,16 @@
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+
+@Slf4j
+@EnableScheduling
+@Service
+public class ScheduleService {
+    @Scheduled(fixedDelay = 3000)//3 seconds delay
+    public void keepConnectionAlive() {
+        log.error("Current time - [{}]", LocalDateTime.now().toString());
+    }
+}
