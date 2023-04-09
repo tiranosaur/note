@@ -56,10 +56,6 @@ db.collection_name.aggregate([
                 $slice: ['$children',9]
             }
         }
-    },
-
-
-    {$sort: {"isFolder": -1}},
-    {$unset: "_class"},
+    }
 
 ])
