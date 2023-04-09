@@ -63,8 +63,17 @@ db.collection_name.aggregate([
     }
 ])
 
+=================================================
+    @Aggregation(pipeline = {"{$match: {'_id': ?0}}",
+            "{$match: {'path': ?1}}",
+            "{$addFields:{'path_name':{$cond:{if:{$eq:['$isFolder',true]},then:{$getField:{input:{$regexFind:{input:'$fileUrl',regex:'/([^\\/]*).vt-folder',options:'si'}},field:'captures'}},else:{$toString:'-/-/-/-/'}}}}}",
+            "{$unwind: '$path_name'}",
+            "{$graphLookup:{from:'recognized_files',startWith:{$toString:{$concat:['$path','$path_name','/']}},connectFromField:'path',connectToField:'path',as:'children'}}",
+            "{$set:{children:{$sortArray:{input:'$children',sortBy:{'dateOfCreation':1}}}}}",
+            "{$set:{children:{$slice:['$children',9]}}}"})
+    List<FileInfoMongoEntity> findByResourceIdAndPathWithChildren(Pageable page);
 
-
+==================================================
         String collectionName = "collection_name";
         MatchOperation findOne = Aggregation.match(new Criteria("_id").is("IeCQsxyCnsUqbmYB"));
 
