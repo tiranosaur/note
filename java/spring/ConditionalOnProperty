@@ -1,0 +1,31 @@
+server:
+  port: 8081
+
+custom:
+  first: 1
+  
+  
+=====================================================  
+public interface IService {
+    void scream();
+}
+=====================================================  
+@Slf4j
+@Service
+@ConditionalOnProperty(prefix = "custom",value = "second", havingValue = "1")
+public class SecondService implements IService {
+    @Override
+    public void scream() {
+        log.error("SecondService");
+    }
+}
+===================================================== 
+@Slf4j
+@Service
+@ConditionalOnProperty(prefix = "custom",value = "first", havingValue = "1")
+public class FirstService implements IService{
+    @Override
+    public void scream() {
+        log.error("FirstService");
+    }
+}
