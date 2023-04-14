@@ -7,7 +7,7 @@ docker run --name mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e 
 docker run --name elasticsearch -p 9300:9200  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.5
 docker run --name rabbitmq -it -p 15673:15672 -p 5673:5672 rabbitmq:3-management
 docker run --name postgres -p 5433:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=Pass123  -d postgres
-docker run --name mysql -e "MYSQL_ROOT_PASSWORD=admin" -e "MYSQL_USER=mysql" -e "MYSQL_PASSWORD=Pass123" -e "MYSQL_DATABASE=mysql" -p 3307:3306 mysql/mysql-server:latest
+docker run --name mysql -e "MYSQL_ROOT_PASSWORD=Pass123" -e "MYSQL_USER=mysql" -e "MYSQL_PASSWORD=Pass123" -e "MYSQL_DATABASE=mysql" -p 3307:3306 mysql/mysql-server:latest
 
 colima stop && docker context use default
 docker context use desktop-linux 
