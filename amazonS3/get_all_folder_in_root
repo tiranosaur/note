@@ -1,0 +1,5 @@
+        ListObjectsRequest request = new ListObjectsRequest()
+                .withBucketName(fullBacketName)
+                .withDelimiter("/");
+        ObjectListing objectListing = s3Client.getClient().listObjects(request);
+        List<String> folderList = objectListing.getCommonPrefixes();
