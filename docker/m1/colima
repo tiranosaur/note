@@ -1,20 +1,22 @@
+!!!!!!!!!!!!   Флаг -d — это сокращение для --detach . Эта команда запускает контейнер в фоновом режиме.   !!!!!!!!
+
 brew install colima
 colima start --arch x86_64 --memory 4
 
-docker run --name oracle -p 1522:1521 -e ORACLE_PASSWORD=Pass123 gvenzl/oracle-xe
-docker run --name redis -p 7001:6379 -d redis
-docker run --name mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=Pass123 mongo:latest
-docker run --name elasticsearch -p 9300:9200  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.5
+docker run -d --name oracle -p 1522:1521 -e ORACLE_PASSWORD=Pass123 gvenzl/oracle-xe
+docker run -d --name redis -p 7001:6379 -d redis
+docker run -d --name mongodb -p 27018:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=Pass123 mongo:latest
+docker run -d --name elasticsearch -p 9300:9200  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.17.5
 docker run -d --name elastic -e ingest.geoip.downloader.enabled=false -e xpack.security.enabled=false -e discovery.type=single-node -p 9200:9200 elastic/elasticsearch:8.6.2
-docker run --name rabbitmq -it -p 15673:15672 -p 5673:5672 rabbitmq:3-management
-docker run --name postgres -p 5433:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=Pass123  -d postgres
-docker run --name mysql -e "MYSQL_ROOT_PASSWORD=Pass123" -e "MYSQL_USER=mysql" -e "MYSQL_PASSWORD=Pass123" -e "MYSQL_DATABASE=public" -p 3307:3306 mysql:latest
+docker run -d --name rabbitmq -it -p 15673:15672 -p 5673:5672 rabbitmq:3-management
+docker run -d --name postgres -p 5433:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=Pass123  -d postgres
+docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=Pass123" -e "MYSQL_USER=mysql" -e "MYSQL_PASSWORD=Pass123" -e "MYSQL_DATABASE=public" -p 3307:3306 mysql:latest
 
 colima stop && docker context use default
 docker context use desktop-linux 
 
 default oracle SID: XE
-docker run --name elasticsearch -p 9201:9200 -e "discovery.type=single-node" -e "ELASTIC_USERNAME=admin" -e "ELASTIC_PASSWORD=admin" -d docker.elastic.co/elasticsearch/elasticsearch:8.5.0
+docker run -d --name elasticsearch -p 9201:9200 -e "discovery.type=single-node" -e "ELASTIC_USERNAME=admin" -e "ELASTIC_PASSWORD=admin" -d docker.elastic.co/elasticsearch/elasticsearch:8.5.0
 
 
 colima stop -f && colima start --arch x86_64 --memory 4 &&  docker start $(docker ps -a -q) && docker ps
