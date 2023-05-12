@@ -8,8 +8,8 @@ import (
 const http_addr = ":8080"
 
 func main() {
-	msgHandler := msg("Hello from Web Server in Go")
-	fmt.Println("Server is listening..." + http_addr)
+	msgHandler := msg("JakaL - Hello from Web Server in Go")
+	fmt.Println("My Server is listening..." + http_addr)
 	http.ListenAndServe(http_addr, msgHandler)
 }
 

@@ -1,11 +1,9 @@
-version: '3.8'
+version: "3"
 services:
-  gonator:
+  go:
+    restart: always
     build:
-      context: ./
-      dockerfile: Dockerfile
-    container_name: gonator
+      context: .
+      dockerfile: Dockerfile.gonator
     ports:
-     - "8080:8080"
-    command:
-      - ./gonator
+      - "8081:8080"
