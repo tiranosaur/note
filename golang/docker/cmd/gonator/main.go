@@ -16,5 +16,6 @@ func main() {
 type msg string
 
 func (m msg) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
+	fmt.Println("impact")
 	fmt.Fprint(resp, m)
 }

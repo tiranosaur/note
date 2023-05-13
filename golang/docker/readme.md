@@ -1,2 +1,3 @@
-gonator/cmd/gonator/main.go <br>
+make run
+<br>or<br>
 docker-compose up  --remove-orphans --build
