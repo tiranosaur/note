@@ -4,15 +4,19 @@ db.getSiblingDB("recognized_files").getCollection("recognized_files").find({reso
     print(item['_id'])
 })
 
-//update
+//update from to
 db.getSiblingDB("recognized_files").getCollection("recognized_files").find({resourceId: "9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37"}).forEach(function (item) {
+    
+    var from = item['resourceId'];
+    var to = "toResouceId";
+    
     db.getSiblingDB("recognized_files").getCollection("recognized_files").updateOne(
         {_id: item._id},
         {
             $set: {
-                fileUrl: item['fileUrl'].replace("9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37", "toResouceId"),
+                fileUrl: item['fileUrl'].replace(from, to),
                 resourceId: "toResouceId",
-                path: item['path'].replace("9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37", "toResouceId")
+                path: item['path'].replace(from, to)
             }
         });
 })
