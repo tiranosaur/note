@@ -1,0 +1,18 @@
+db.getSiblingDB("recognized_files").getCollection("recognized_files").find({resourceId: "9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37"}).count();
+
+db.getSiblingDB("recognized_files").getCollection("recognized_files").find({resourceId: "9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37"}).forEach(function (item) {
+    print(item['_id'])
+})
+
+//update
+db.getSiblingDB("recognized_files").getCollection("recognized_files").find({resourceId: "9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37"}).forEach(function (item) {
+    db.getSiblingDB("recognized_files").getCollection("recognized_files").updateOne(
+        {_id: item._id},
+        {
+            $set: {
+                fileUrl: item['fileUrl'].replace("9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37", "toResouceId"),
+                resourceId: "toResouceId",
+                path: item['path'].replace("9bb8e59e-5a1c-4bfd-ac8f-110fd4f6ec37", "toResouceId")
+            }
+        });
+})
