@@ -1,0 +1,52 @@
+https://stackoverflow.com/questions/26221274/elasticsearch-dynamic-query-add-another-field-to-each-document-returned
+
+
+GET /dm/_search
+{
+  "from": 0,
+  "size": 20,
+  "query": {
+    "match": {
+      "filePath": "570bd248-3f34-4382-be83-a7c25133d901/test/"
+    }
+  },
+  "runtime_mappings": {
+    "_fileName": {
+      "type": "keyword",
+      "script": "emit(doc['fileName'].value)"
+    }
+  },
+  "sort": {
+    "_fileName": "asc"
+  }
+}
+
+
+GET /dm/_search
+{
+  "from": 0,
+  "size": 27,
+  "sort": [
+    {
+      "fileName": "asc"
+    }
+  ],
+  "_source": [
+    "fileName",
+    "_fileName",
+    "size"
+  ],
+  "query": {
+    "match": {
+      "filePath": "570bd248-3f34-4382-be83-a7c25133d901/test/"
+    }
+  },
+  "script_fields": {
+    "_filename": {
+      "script": {
+        "source": "def result = /\\s/.matcher(doc['fileName.keyword'].value).replaceAll(''); result = /([^\\d]|^)(\\d{1})([^\\d]|$)/.matcher(result).replaceAll('$10$2$3'); result",
+        "lang": "painless"
+      }
+    }
+  }
+}}
