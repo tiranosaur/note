@@ -1,0 +1,31 @@
+переводит в нижний регистр
+удаляет пробелы
+collation сортировка цифер как чисел
+
+
+db.recognized_files.aggregate([
+    {
+        $addFields: {
+            '_filename': { $toLower: '$filename' }
+        }
+    },
+    {
+        $addFields: {
+            '_filename': {
+                $reduce: {
+                    input: { $split: ['$_filename', ' '] },
+                    initialValue: '',
+                    in: {
+                        $concat: ['$$value', '$$this']
+                    }
+                }
+            }
+        }
+    },
+    {"$sort": {"sortPriority": -1, "isFolder": -1, "_filename": 1}}, {"$limit": 50}
+], {
+    collation: {
+        locale: "en_US",
+        numericOrdering: true
+    }
+});
