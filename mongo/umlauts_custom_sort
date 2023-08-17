@@ -1,0 +1,25 @@
+    @Aggregation(pipeline = {
+            "{$match: {'resourceId': ?0}}",
+            "{$match: {'path': ?1}}",
+            "{$addFields:{'_filename':{$toLower:'$filename'}}}",
+            "{$addFields:{_filename:{$replaceAll:{input:'$filename',find:' ',replacement:''}}}}",
+            //umlauts
+            "{$addFields:{'_filename': {$concat: [' ', '$_filename']}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'Ä',replacement:'{'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'ä',replacement:'{'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'Ö',replacement:'|'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'ö',replacement:'|'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'Ü',replacement:'}'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'ü',replacement:'}'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'ẞ',replacement:'~'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'ß',replacement:'~'}}}}",
+            // ---- umlauts unicode
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'A\\u0308',replacement:'{'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'a\\u0308',replacement:'{'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'O\\u0308',replacement:'|'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'o\\u0308',replacement:'|'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'U\\u0308',replacement:'}'}}}}",
+            "{$addFields:{'_filename':{$replaceAll:{input:'$_filename',find:'u\\u0308',replacement:'}'}}}}",
+            //
+    })
+    List<FileInfoMongoEntity> findByResourceIdAndPath(String resourceId, String path, Pageable page);
