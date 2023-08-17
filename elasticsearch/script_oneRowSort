@@ -13,7 +13,10 @@ GET /dm/_search
   "runtime_mappings": {
     "_fileName": {
       "type": "keyword",
-      "script": "emit(doc['fileName'].value)"
+      "script": {
+        "source": "emit(/([^\\d]|^)(\\d{1})([^\\d]|$)/.matcher(/\\s/.matcher(doc['fileName.keyword'].value).replaceAll('')).replaceAll('$10$2$3'))",
+        "lang": "painless"
+      }
     }
   },
   "sort": {
