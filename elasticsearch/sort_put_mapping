@@ -1,0 +1,31 @@
+PUT dm/_mapping
+{
+  "runtime": {
+    "_fileName": {
+      "type": "keyword",
+      "script": {
+        "source": "emit(/([^\\d]|^)(\\d{1})([^\\d]|$)/.matcher(/\\s/.matcher(doc['fileName.keyword'].value).replaceAll('')).replaceAll('$10$2$3'))",
+        "lang": "painless"
+      }
+    }
+  }
+}
+
+
+GET /dm/_search
+{
+  "from": 0,
+  "size": 55,
+  "sort": [
+    {
+      "_fileName": "asc"
+    }
+  ],
+  "query": {
+    "match": {
+      "filePath": "570bd248-3f34-4382-be83-a7c25133d901/test/"
+    }
+  }
+}
+
+если предварительно добавляешь поле(PUT) то его сразу можно использовать
