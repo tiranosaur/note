@@ -1,0 +1,53 @@
+GET /dm/_search
+{
+  "from": 0,
+  "size": 52,
+  "sort": [
+    {
+      "_fileName": "asc"
+    }
+  ],
+  "query": {
+    "match": {
+      "filePath": "570bd248-3f34-4382-be83-a7c25133d901/test/"
+    }
+  },
+  "runtime_mappings": {
+    "_fileName": {
+      "type": "keyword",
+      "script": {
+        "source": "emit(/u\\u0308/.matcher(/U\\u0308/.matcher(/o\\u0308/.matcher(/O\\u0308/.matcher(/a\\u0308/.matcher(/A\\u0308/.matcher(/\\s/.matcher(doc['fileName.keyword'].value).replaceAll('')).replaceAll('Ä')).replaceAll('ä')).replaceAll('Ö')).replaceAll('ö')).replaceAll('Ü')).replaceAll('ü'))",
+        "lang": "painless"
+      }
+    }
+  }
+}
+==============================================
+PUT dm/_mapping
+{
+  "runtime": {
+    "_fileName": {
+      "type": "keyword",
+      "script": {
+        "source": "emit(/u\\u0308/.matcher(/U\\u0308/.matcher(/o\\u0308/.matcher(/O\\u0308/.matcher(/a\\u0308/.matcher(/A\\u0308/.matcher(/\\s/.matcher(doc['fileName.keyword'].value).replaceAll('')).replaceAll('Ä')).replaceAll('ä')).replaceAll('Ö')).replaceAll('ö')).replaceAll('Ü')).replaceAll('ü'))",
+        "lang": "painless"
+      }
+    }
+  }
+}
+
+GET /dm/_search
+{
+  "from": 0,
+  "size": 52,
+  "sort": [
+    {
+      "_fileName": "asc"
+    }
+  ],
+  "query": {
+    "match": {
+      "filePath": "570bd248-3f34-4382-be83-a7c25133d901/test/"
+    }
+  }
+}
