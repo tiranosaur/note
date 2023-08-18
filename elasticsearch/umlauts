@@ -35,7 +35,19 @@ PUT dm/_mapping
     }
   }
 }
+______________________________
+    @Autowired
+    private RestHighLevelClient restHighLevelClient;
 
+    @PostConstruct
+    public void initIndexMapping() throws IOException {
+        PutMappingRequest mappingRequest = new PutMappingRequest("dm");
+        mappingRequest.type("_doc");
+        String mappingJson = "{\"runtime\":{\"_fileName\":{\"type\":\"keyword\",\"script\":{\"source\":\"emit(/u\\\\u0308/.matcher(/U\\\\u0308/.matcher(/o\\\\u0308/.matcher(/O\\\\u0308/.matcher(/a\\\\u0308/.matcher(/A\\\\u0308/.matcher(/\\\\s/.matcher(doc['fileName.keyword'].value).replaceAll('')).replaceAll('Ä')).replaceAll('ä')).replaceAll('Ö')).replaceAll('ö')).replaceAll('Ü')).replaceAll('ü'))\",\"lang\":\"painless\"}}}}";
+        mappingRequest.source(mappingJson, XContentType.JSON);
+        restHighLevelClient.indices().putMapping(mappingRequest, RequestOptions.DEFAULT);
+    }
+______________________________
 GET /dm/_search
 {
   "from": 0,
