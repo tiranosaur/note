@@ -41,3 +41,13 @@ https://github.com/coreybutler/nvm-windows
 
 mvn spring-boot:run
 fuser -k 8080/tcp
+
+
+
+
+2020.3.3
+File -> Settings -> Plugins
+клацаем вверху шестерёнку -> manage plugin repositories
+нажимаем + и добавляем https://plugins.zhile.io
+клацаем ok, переходим в закладку marketplace, ищем и устанавливаем плагин IDE Eval Reset
+help -> Eval reset и внизу кнопку Reset
