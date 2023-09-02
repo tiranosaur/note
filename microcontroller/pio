@@ -10,6 +10,7 @@
    pio device monitor -b 9600 
    
 pio run --target upload && pio device monitor -b 9600 
+pio run --target upload && pio device monitor -b 115200
    
 // install lib from github
   platformio lib --global install "mikalhart/TinyGPSPlus"
