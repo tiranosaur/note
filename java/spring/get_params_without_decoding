@@ -1,7 +1,7 @@
-    public static Optional<String> getRequestParamByName(String name) {
+    public static String getRequestParamByName(String name) {
         return getRequestParamsMap().entrySet().stream()
-                .filter(x -> name.equals(x.getValue()))
-                .findFirst().map(Map.Entry::getValue);
+                .filter(x -> name.equals(x.getKey()))
+                .findFirst().map(Map.Entry::getValue).orElse(null);
     }
 
     public static Map<String, String> getRequestParamsMap() {
