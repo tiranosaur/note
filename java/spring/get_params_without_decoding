@@ -1,0 +1,9 @@
+   private Map<String, String> parseRequestParams() {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        String queryString = request.getQueryString();
+
+        return Arrays.stream(queryString.split("&"))
+                .map(param -> param.split("="))
+                .collect(Collectors.toMap(keyValue -> keyValue[0], keyValue -> keyValue[1]));
+    }
