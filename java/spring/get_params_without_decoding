@@ -1,4 +1,10 @@
-   private Map<String, String> parseRequestParams() {
+    public static Optional<String> getRequestParamByName(String name) {
+        return getRequestParamsMap().entrySet().stream()
+                .filter(x -> name.equals(x.getValue()))
+                .findFirst().map(Map.Entry::getValue);
+    }
+
+    public static Map<String, String> getRequestParamsMap() {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         String queryString = request.getQueryString();
