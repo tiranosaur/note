@@ -1,0 +1,26 @@
+brew install cmake
+brew install pkg-config
+brew install freetype
+brew install libpng
+brew install libjpeg
+
+
+
+git clone https://github.com/PLplot/PLplot.git
+cd PLplot
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+
+
+
+Теперь вы можете создать свой C++ проект и использовать библиотеку PLplot. Убедитесь, что вы включили заголовочные файлы и указали пути к библиотекам PLplot в вашем проекте.
+
+Добавьте флаги компиляции и связывания, необходимые для использования PLplot в вашем проекте. Вы можете использовать pkg-config для получения необходимых опций:
+
+pkg-config --cflags --libs plplotd
+Эта команда выведет флаги компиляции (--cflags) и флаги связывания (--libs), которые нужно добавить к вашему проекту.
+
+Теперь вы можете использовать библиотеку PLplot в своем C++ проекте на macOS. Убедитесь, что вы правильно настроили свой проект и включили все необходимые файлы и зависимости.
