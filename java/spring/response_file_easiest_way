@@ -1,0 +1,8 @@
+    private ObjectMapper objectMapper = new ObjectMapper();
+    @RequestMapping(value = "download")
+    public void download(HttpServletResponse response) throws IOException {
+        List<User> userList = userService.getAll();
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=result.json");
+        response.getWriter().write(objectMapper.writeValueAsString(userList));
+    }
