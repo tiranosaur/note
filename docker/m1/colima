@@ -26,6 +26,7 @@ colima stop -f && colima start --arch x86_64 --memory 4 &&  docker start $(docke
 /////mongo from dump
 docker cp ~/Documents/dump mongodb:/dump
 mongorestore -v --host=localhost:27017 --drop --username admin --password Pass123 --authenticationDatabase admin --numParallelCollections 1 --gzip --db <dbname> --archive=/dump/dump/dump.gzip
+mongoimport -v --host=localhost:27017 --drop --username admin --password Pass123 --authenticationDatabase admin --db recognized_files --collection recognized_files --jsonArray --file=/dump/review.json
 
 ////postgres from dump
 docker cp ~/Documents/dump postgres:/dump
