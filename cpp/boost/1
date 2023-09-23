@@ -1,0 +1,38 @@
+// install conan + install conan plugin + install boost
+
+========================================
+
+cmake_minimum_required(VERSION 3.26)
+project(untitled)
+
+find_package(Boost REQUIRED COMPONENTS filesystem)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(untitled main.cpp)
+target_link_libraries(untitled Boost::filesystem)
+
+========================================
+
+#include <iostream>
+#include <boost/algorithm/string.hpp>
+
+int main() {
+    std::string str = "Boost C++ Libraries";
+
+    // Convert the string to lowercase
+    boost::to_lower(str);
+    std::cout << "Lowercase: " << str << std::endl;
+
+    // Split the string into tokens based on space
+    std::vector<std::string> tokens;
+    boost::split(tokens, str, boost::is_space());
+
+    std::cout << "Tokens: ";
+    for (const std::string &token: tokens) {
+        std::cout << token << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
