@@ -5,12 +5,13 @@
 cmake_minimum_required(VERSION 3.26)
 project(untitled)
 
-find_package(Boost REQUIRED COMPONENTS filesystem)
+find_package(Boost)
 
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(untitled main.cpp)
-target_link_libraries(untitled Boost::filesystem)
+target_link_libraries(untitled boost::boost)
 
 ========================================
 
