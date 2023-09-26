@@ -1,0 +1,38 @@
+@SpringBootApplication
+public class Main {
+  public static void main(String[] args) {
+      System.setProperty("org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH", "true");
+      System.setProperty("org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH", "true");
+      SpringApplication.run(Main.class, args);
+  }
+}
+
+  @RequestMapping(value = "{str}")
+  public ResponseEntity<List<User>> index(HttpServletRequest request, @PathVariable String str) {
+      str = request.getRequestURI();
+      return null;
+  }
+
+
+
+
+    ------------for get params------------------
+<dependency>
+    <groupId>org.springframework.security</groupId>
+    <artifactId>spring-security-web</artifactId>
+    <version>5.7.2</version>
+</dependency>
+
+        
+public class FirewallConfig {
+    @Bean
+    public HttpFirewall getFirewall() {
+        StrictHttpFirewall firewall = new StrictHttpFirewall();
+        firewall.setAllowSemicolon(true);
+        firewall.setAllowUrlEncodedSlash(true);
+        firewall.setAllowBackSlash(true);
+        firewall.setAllowUrlEncodedPercent(true);
+        firewall.setAllowUrlEncodedPeriod(true);
+        return firewall;
+    }
+}
