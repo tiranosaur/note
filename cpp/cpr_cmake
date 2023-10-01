@@ -4,3 +4,30 @@ mkdir build && cd build
 cmake ..
 make
 sudo make install
+
+--------------------- CMakeLists.txt -----------------------
+
+cmake_minimum_required(VERSION 3.26)
+project(untitled)
+
+set(CMAKE_CXX_STANDARD 17)
+
+file(GLOB CLASS_SOURCES "class/*.cpp")
+file(GLOB CLASS_HEADERS "class/*.h")
+
+add_executable(
+        untitled
+        main.cpp
+        ${CLASS_SOURCES}
+        ${CLASS_HEADERS}
+)
+
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+    message(" ")
+    message("CMAKE IN DEBUG MODE")
+    message(" ")
+elseif(CMAKE_BUILD_TYPE MATCHES Release)
+    message(" ")
+    message("CMAKE IN RELEASE MODE")
+    message(" ")
+endif ()
