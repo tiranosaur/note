@@ -16,7 +16,7 @@ file(GLOB CLASS_SOURCES "class/*.cpp")
 file(GLOB CLASS_HEADERS "class/*.h")
 
 add_executable(
-        untitled
+        ${CMAKE_PROJECT_NAME}
         main.cpp
         ${CLASS_SOURCES}
         ${CLASS_HEADERS}
