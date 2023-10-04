@@ -7,10 +7,12 @@ sudo make install
 
 --------------------- CMakeLists.txt -----------------------
 
-cmake_minimum_required(VERSION 3.26)
-project(untitled)
+cmake_minimum_required(VERSION 3.25)
+project(console)
 
 set(CMAKE_CXX_STANDARD 17)
+
+find_package(fmt)
 
 file(GLOB CLASS_SOURCES "class/*.cpp")
 file(GLOB CLASS_HEADERS "class/*.h")
@@ -22,6 +24,8 @@ add_executable(
         ${CLASS_HEADERS}
 )
 
+target_link_libraries(${CMAKE_PROJECT_NAME} fmt::fmt)
+
 if (CMAKE_BUILD_TYPE MATCHES Debug)
     message(" ")
     message("CMAKE IN DEBUG MODE")
@@ -31,3 +35,4 @@ elseif(CMAKE_BUILD_TYPE MATCHES Release)
     message("CMAKE IN RELEASE MODE")
     message(" ")
 endif ()
+
