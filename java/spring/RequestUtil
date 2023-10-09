@@ -1,0 +1,24 @@
+@UtilityClass
+public class RequestUtil {
+    public static String getHeaderValue(String headerName) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        return request.getHeader(headerName);
+    }
+
+   public static String getRequestParamByName(String name) {
+        return getRequestParamsMap().entrySet().stream()
+                .filter(x -> name.equals(x.getKey()))
+                .findFirst().map(Map.Entry::getValue).orElse(null);
+    }
+
+    public static Map<String, String> getRequestParamsMap() {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        String queryString = request.getQueryString();
+
+        return Arrays.stream(queryString.split("&"))
+                .map(param -> param.split("="))
+                .collect(Collectors.toMap(keyValue -> keyValue[0], keyValue -> keyValue[1]));
+    }
+}
