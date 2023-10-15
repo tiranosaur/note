@@ -1,0 +1,119 @@
+std::string addLargeNumbers(const std::string &num1, const std::string &num2) {
+    std::string result;
+    int carry = 0;
+
+    int i = num1.size() - 1;
+    int j = num2.size() - 1;
+
+    while (i >= 0 || j >= 0 || carry) {
+        int x = (i >= 0) ? num1[i--] - '0' : 0;
+        int y = (j >= 0) ? num2[j--] - '0' : 0;
+
+        int sum = x + y + carry;
+        carry = sum / 10;
+        result = std::to_string(sum % 10) + result;
+    }
+
+    return result;
+}
+
+std::string multiplyLargeNumbers(const std::string &num1, const std::string &num2) {
+    int len1 = num1.length();
+    int len2 = num2.length();
+    std::vector<int> result(len1 + len2, 0);
+
+    for (int i = len1 - 1; i >= 0; i--) {
+        for (int j = len2 - 1; j >= 0; j--) {
+            int product = (num1[i] - '0') * (num2[j] - '0');
+            int sum = product + result[i + j + 1];
+            result[i + j + 1] = sum % 10;
+            result[i + j] += sum / 10;
+        }
+    }
+
+    std::string multiplication;
+    for (int digit : result) {
+        if (!(multiplication.empty() && digit == 0)) {
+            multiplication.push_back('0' + digit);
+        }
+    }
+
+    return multiplication.empty() ? "0" : multiplication;
+}
+
+std::string subtractLargeNumbers(const std::string &num1, const std::string &num2) {
+    int len1 = num1.length();
+    int len2 = num2.length();
+
+    // Проверка на случай, если num1 меньше num2
+    if (len1 < len2 || (len1 == len2 && num1 < num2)) {
+        return "-" + subtractLargeNumbers(num2, num1);
+    }
+
+    std::string result;
+    int borrow = 0;
+
+    int i = len1 - 1;
+    int j = len2 - 1;
+
+    while (i >= 0) {
+        int digit1 = num1[i--] - '0';
+        int digit2 = (j >= 0) ? num2[j--] - '0' : 0;
+
+        int diff = digit1 - digit2 - borrow;
+        if (diff < 0) {
+            diff += 10;
+            borrow = 1;
+        } else {
+            borrow = 0;
+        }
+
+        result = std::to_string(diff) + result;
+    }
+
+    // Удаляем ведущие нули
+    result.erase(0, result.find_first_not_of('0'));
+
+    return result.empty() ? "0" : result;
+}
+
+______________________________________________________________
+
+std::string addLargeNumbers(const std::string &num1, const std::string &num2) {
+    std::stringstream ss;
+
+    std::vector<int> vec1;
+    std::vector<int> vec2;
+
+    for (int i = num1.size() - 1; i >= 0; --i) {
+        vec1.push_back(num1[i] - 48);
+    }
+    for (int i = num2.size() - 1; i >= 0; --i) {
+        vec2.push_back(num2[i] - 48);
+    }
+
+    for (int i = 0; i < num1.size(); ++i) {
+        vec2[i] = vec1[i] + vec2[i];
+    }
+
+    for (int i = 0; i < num2.size(); ++i) {
+        if (vec2[i] < 10) {
+            continue;
+        } else {
+            if (vec2.size() > i + 1) {
+                vec2[i + 1] += vec2[i] / 10;
+            } else {
+                vec2.push_back(vec2[i] / 10);
+            }
+            vec2[i] = vec2[i] % 10;
+        }
+    }
+
+
+    for (int i = vec2.size() - 1; i >= 0; --i) {
+        ss << vec2[i];
+    }
+
+    std::string ssss = ss.str();
+    return ss.str();
+}
