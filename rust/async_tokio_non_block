@@ -4,14 +4,14 @@ use tokio; //tokio = { version = "1.19.2", features = ["full"] }
 #[tokio::main]
 async fn main() {
     tokio::spawn(example2()); // !!!!!!!!!!!!
-    println!("separator)");
+    println!("==========");
     let v = example1().await;
     println!("{} - finish", v);
 }
 
 async fn example1() -> u32 {
     thread::sleep(time::Duration::from_secs(3));
-    let x = 888;
+    let x = 777;
     println!("{}", x);
     return x;
 }
