@@ -21,3 +21,50 @@ async fn example2() {
     thread::sleep(time::Duration::from_secs(2));
     println!("3245345345");
 }
+
+
+
+============ blocked ==============
+
+use std::thread;
+use async_std::task;
+use std::time::Duration;
+
+async fn async_function() {
+    for i in 0..10 {
+        task::sleep(Duration::from_millis(500)).await;
+        println!("= = = = {} = = = =", i);
+    }
+}
+
+fn main() {
+    task::block_on(async { async_function().await; });
+    for i in 0.. {
+        thread::sleep(Duration::from_millis(100));
+        println!("{} ", i);
+    }
+}
+
+
+============ non blocked ==============
+
+use async_std::task;
+use std::time::Duration;
+
+async fn async_function() {
+    for i in 0..10 {
+        task::sleep(Duration::from_millis(500)).await;
+        println!("= = = = {} = = = =", i);
+    }
+}
+
+fn main() {
+    let async_function_handle = task::spawn(async_function());
+
+    for i in 0.. {
+        std::thread::sleep(Duration::from_millis(100));
+        println!("{} ", i);
+    }
+
+    task::block_on(async_function_handle);
+}
