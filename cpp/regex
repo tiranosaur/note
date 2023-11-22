@@ -1,3 +1,22 @@
+std::vector<std::string> splitBySpace(std::string input) {
+    std::regex regex(" ");
+    std::sregex_token_iterator iter(input.begin(), input.end(), regex, -1);
+    std::sregex_token_iterator end;
+
+    std::vector<std::string> result(iter, end);
+    return result;
+}
+
+===========================================================
+
+bool isMatch(const std::string &input, const std::string &pattern) {
+    std::regex regexPattern(pattern);
+    return std::regex_match(input, regexPattern);
+}
+
+===========================================================
+
+
     std::string str = "sldfkj3456345sldkfj34sdlkfj456";
     std::regex regex("([0-9])");
     str = std::regex_replace(str, regex, "\\$1");
