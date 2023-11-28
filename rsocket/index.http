@@ -1,0 +1,6 @@
+#@MessageMapping("ping.pong")
+#public Mono<String> pingPong(Mono<String> ping) {
+#     return Mono.just("pong");
+#}
+RSOCKET ping.pong
+Host: ws://localhost:8084/rsocket
