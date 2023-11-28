@@ -1,6 +1,16 @@
-#@MessageMapping("ping.pong")
-#public Mono<String> pingPong(Mono<String> ping) {
+#  @MessageMapping("ping.pong")
+#  public Mono<String> pingPong(Mono<String> ping) {
 #     return Mono.just("pong");
-#}
+#  }
 RSOCKET ping.pong
+Host: ws://localhost:8084/rsocket
+
+
++++++++++++++++++++++++++++++++
+
+#  @MessageMapping("ping.pong")
+#  public Flux<String> pingPong(Mono<String> ping) {
+#     return Flux.just("pong");
+#  }
+STREAM ping.pong
 Host: ws://localhost:8084/rsocket
