@@ -8,11 +8,12 @@ services:
       - 7001:6379
       - 6379:6379
 
+#  docker run -d -p 9980:9980  --name office -e "extra_params=--o:net.service_root=/office --o:ssl.enable=false —o:server_name=localhost:9195" collabora/code:22.05.12.3.1
   collabora:
-    container_name: 'collabora'
-    image: collabora/code:22.05.6.3.1
+    container_name: 'collabora-office'
+    image: collabora/code:22.05.12.3.1
     environment:
-      - extra_params=–o:ssl.enable=false --o:ssl.termination=true
+      - extra_params=--o:net.service_root=/office --o:ssl.enable=false —o:server_name=localhost:9195
     ports:
       - 9981:9980
       - 9980:9980
