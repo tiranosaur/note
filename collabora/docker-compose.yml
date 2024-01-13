@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  redis:
+    container_name: 'redis'
+    image: redis:latest
+    ports:
+      - 7001:6379
+      - 6379:6379
+
+#  docker run -d -p 9980:9980  --name office -e "extra_params=--o:net.service_root=/office --o:ssl.enable=false —o:server_name=localhost:9195" collabora/code:22.05.12.3.1
+  collabora:
+    container_name: 'collabora-office'
+    image: collabora/code:22.05.12.3.1
+    environment:
+      - extra_params=--o:net.service_root=/office --o:ssl.enable=false —o:server_name=localhost:9195
+      - domain=10.130.33.214:8081
+    ports:
+      - 9981:9980
+      - 9980:9980
+
+  elasticsearch:
+    container_name: 'elasticsearch'
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+    environment:
+      - node.name=elasticsearch
+      - discovery.type=single-node
+      - ELASTIC_CONTAINER=true
+    ports:
+      - 9201:9200
+      - 9200:9200
+
+  mongodb:
+    container_name: 'mongodb'
+    image: mongo:5.0.15
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=Pass123
+    ports:
+      - 27018:27017
+      - 27017:27017
+
+  rabbitmq:
+    container_name: 'rabbitmq'
+    image: rabbitmq:3-management
+    ports:
+      - 15673:15672
+      - 15672:15672
+      - 5673:5672
+      - 5672:5672
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Pass123
+    ports:
+      - 5433:5432
+      - 5432:5432
