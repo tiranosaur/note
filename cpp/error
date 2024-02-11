@@ -1,1 +1,7 @@
 sudo ln -s /usr/include/opencv4/opencv2 /usr/local/include/opencv2
+
+
+
+clion libstdc++-6.dll not found
+  add into cmake
+    set(CMAKE_EXE_LINKER_FLAGS "-static")
