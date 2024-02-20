@@ -16,14 +16,14 @@ func Info() *log.Logger {
 	return info
 }
 func Warning() *log.Logger {
-	if info == nil {
-		info = log.New(os.Stdout, "WARNING: ", log.Ldate|log.Ltime|log.Lshortfile)
+	if warning == nil {
+		warning = log.New(os.Stdout, "WARNING: ", log.Ldate|log.Ltime|log.Lshortfile)
 	}
-	return info
+	return warning
 }
 func Error() *log.Logger {
-	if info == nil {
-		info = log.New(os.Stdout, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
+	if error == nil {
+		error = log.New(os.Stdout, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
 	}
-	return info
+	return error
 }
