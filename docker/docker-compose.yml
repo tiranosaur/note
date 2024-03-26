@@ -1,6 +1,7 @@
 version: "3"
 
 services:
+#   admin user - root
   mysql:
     container_name: 'mysql8'
     image: mysql:8.0
