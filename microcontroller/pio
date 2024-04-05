@@ -1,3 +1,7 @@
+// installation 
+   curl -fsSL -o get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
+   python3 get-platformio.py
+
 // if clion doesn't see pio
    ln -s ~/.platformio/penv/bin/platformio /home/<username>/.local/bin/platformio
    ln -s ~/.platformio/penv/bin/pio /home/<username>/.local/bin/pio
