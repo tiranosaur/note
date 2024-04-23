@@ -1,0 +1,110 @@
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>mockwebserver</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>4.11.0</version>
+		</dependency>
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Configuration
+public class WebClientConfiguration {
+    @Bean
+    public WebClient webClient() {
+        return WebClient.create();
+    }
+}
+
+
+
+import org.example.flux.model.TestModel;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
+
+@Service
+public class TestService {
+    private WebClient webClient;
+
+    public TestService(WebClient webClient) {
+        this.webClient = webClient;
+    }
+
+    public Mono<TestModel> test() {
+        return webClient
+                .get()
+                .uri("https://filesamples.com/samples/code/json/sample1.json")
+                .retrieve()
+                .bodyToMono(TestModel.class);
+    }
+}
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class TestModel {
+    private String fruit;
+    private String size;
+    private String color;
+}
+
+
+import okhttp3.mockwebserver.MockResponse;
+import okhttp3.mockwebserver.MockWebServer;
+import org.example.flux.model.TestModel;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
+
+import java.io.IOException;
+
+public class TestServiceTest {
+    private static MockWebServer mockWebServer;
+    private static TestService testService;
+
+    @BeforeAll
+    static void setUp() throws IOException {
+        mockWebServer = new MockWebServer();
+        mockWebServer.start();
+        WebClient mockedWebClient = WebClient.builder()
+                .baseUrl(mockWebServer.url("/").toString())
+                .build();
+
+        testService = new TestService(mockedWebClient);
+    }
+
+    @AfterAll
+    static void tearDown() throws IOException {
+        mockWebServer.shutdown();
+    }
+
+    @Test
+    void test() {
+        mockWebServer.enqueue(
+                new MockResponse().setResponseCode(HttpStatus.OK.value())
+                        .setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                        .setBody("{\"fruit\":\"Apple\",\"size\":\"Large\",\"color\":\"Red\"}")
+        );
+
+        Mono<TestModel> result = testService.test();
+
+        // Then
+        StepVerifier.create(result)
+                .expectNextMatches(x -> x.getColor().equals("Red1"))
+                .verifyComplete();
+    }
+}
