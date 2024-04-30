@@ -100,3 +100,16 @@ services:
       - ./mappings:/home/wiremock/mappings
     ports:
       - 8888:8080
+
+  gpt4free:
+    image: hlohaus789/g4f:latest
+    shm_size: 2gb
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - '8080:8080'
+      - '1337:1337'
+      - '7900:7900'
