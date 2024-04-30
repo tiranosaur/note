@@ -42,7 +42,7 @@ https://github.com/coreybutler/nvm-windows
 mvn spring-boot:run
 fuser -k 8080/tcp
 
-
+<br> x = x ^ y ^ (y = x);
 
 
 2020.3.3
