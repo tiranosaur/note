@@ -102,8 +102,7 @@ services:
       - 8888:8080
 
 # python -m g4f.cli gui -port 8080 -debug
-#  Running on http://127.0.0.1:8080
-#  Running on http://192.168.1.114:8080
+# http://192.168.1.114:8080/chat/
   gpt4free:
     image: hlohaus789/g4f:latest
     shm_size: 2gb
