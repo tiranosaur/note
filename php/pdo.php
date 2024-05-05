@@ -17,8 +17,9 @@ try {
         echo $author["email"] . "<br>";
     }
 
-    $query = "SELECT * FROM users WHERE id = 101";
-    $stmt = $db->query($query);
+    $query = "SELECT * FROM users WHERE id = :id";
+    $stmt = $db->prepare($query);
+    $stmt->execute(["id" => 100]);
     $author = $stmt->fetchObject();
     print_r($author ? $author : "not found");
 
