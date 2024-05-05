@@ -1,2 +1,0 @@
-from vendor to test address
-.././vendor/bin/phpunit SolutionTest.php
