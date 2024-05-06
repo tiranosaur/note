@@ -1,5 +1,9 @@
 <?php
+$sizeCheckingEnabled =  true;
 if (!empty($_FILES["file"])) {
+    if ($sizeCheckingEnabled && $_FILES["file"]["size"] > 1024) {
+        die(json_encode(["status" => "false", "message" => "File is too big!"]));
+    }
     $target = $_FILES["file"]["name"];
     move_uploaded_file($_FILES["file"]["tmp_name"], $target);
 }
