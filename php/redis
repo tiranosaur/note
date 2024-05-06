@@ -1,0 +1,19 @@
+<?php
+
+$redis = new Redis();
+$redis->connect('redis', 6379);
+
+//====== simple array
+$names = $redis->get('names');
+$names = json_decode($names, true) ?? [];
+array_push($names, "name" . rand(1000, 9999));
+if (count($names) > 10) {
+    array_splice($names, 0, count($names) - 10);
+}
+$names = $redis->set('names', json_encode($names));
+
+$names = $redis->get('names');
+$names = json_decode($names, true) ?? [];
+foreach ($names as $name) {
+    echo $name . "<br>";
+}
