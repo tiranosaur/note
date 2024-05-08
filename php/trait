@@ -1,0 +1,26 @@
+<?php declare(strict_types=1);
+
+trait MyTrait
+{
+    public function __construct() {
+        if (!property_exists($this, "name")) {
+            throw new Exception("Name property must be defined");
+        }
+    }
+
+    public function getName(): string {
+        return $this->name;
+    }
+
+    public function setName(string $name): void {
+        $this->name = $name;
+    }
+}
+
+class First
+{
+//    protected string $name;
+    use MyTrait;
+}
+
+$first = new First();
