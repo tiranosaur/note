@@ -12,6 +12,7 @@ try {
 
     $query = "SELECT * FROM users WHERE id BETWEEN 90 AND 100";
     $stmt = $db->query($query);
+//    $stmt->debugDumpParams();        // show sql
     $authors = $stmt->fetchAll();
     foreach ($authors as $author) {
         echo $author["email"] . "<br>";
