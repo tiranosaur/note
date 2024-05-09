@@ -87,11 +87,20 @@ class PDOConnection
         $username = 'root';
         $password = 'tiger';
         $dbName = 'docker';
-        self::$pdo = new PDO("mysql:host={$host};dbname={$dbName}", $username, $password);
-        self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        try {
+            self::$pdo = new PDO("mysql:host={$host};dbname={$dbName}", $username, $password);
+            self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
     }
 
     public function getPdo(): PDO {
         return self::$pdo;
+    }
+
+    function __destruct() {
+        self::$pdo == null;
     }
 }
