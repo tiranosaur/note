@@ -13,13 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        #main > div:nth-child(0n+2) {
-            color: red;
+        #main > div:nth-child(n+3) {
+            border: 1px solid black;
         }
 
-        /*#main > div:nth-child(odd) {*/
-        /*    color: greenyellow;*/
-        /*}*/
+        #main > div:nth-child(odd) {
+            color: greenyellow;
+        }
     </style>
 </head>
 <body>
