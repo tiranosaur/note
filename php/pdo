@@ -41,3 +41,56 @@ try {
 } finally {
     $db = null;
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?php
+
+namespace app\traits;
+
+trait Singleton
+{
+    private static $instance;
+
+    public static function getInstance() {
+        if (!isset(self::$instance)) {
+            self::$instance = new static();
+        }
+        return self::$instance;
+    }
+
+    private function __construct() {
+    }
+
+    private function __clone() {
+    }
+}
+
+
+<?php
+
+namespace app\configuration;
+
+require_once "trait/Singleton.php";
+
+use app\traits\Singleton;
+use PDO;
+
+class PDOConnection
+{
+    use Singleton;
+
+    private static PDO $pdo;
+
+    private function __construct() {
+        $host = 'mysql8';
+        $username = 'root';
+        $password = 'tiger';
+        $dbName = 'docker';
+        self::$pdo = new PDO("mysql:host={$host};dbname={$dbName}", $username, $password);
+    }
+
+    public function getPdo(): PDO {
+        return self::$pdo;
+    }
+}
