@@ -10,9 +10,12 @@ try {
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $query = "SELECT * FROM users WHERE id BETWEEN 90 AND 100";
-    $stmt = $db->query($query);
-//    $stmt->debugDumpParams();        // show sql
+    $query = "SELECT * FROM users WHERE id LIMIT :limit OFFSET :offset";
+    $stmt = $db->prepare($query);
+    //    $stmt->debugDumpParams();        // show sql
+    $stmt->bindValue(':limit', 10, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', 1, PDO::PARAM_INT);
+    $stmt->execute();
     $authors = $stmt->fetchAll();
     foreach ($authors as $author) {
         echo $author["email"] . "<br>";
