@@ -1,4 +1,30 @@
 // POST
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo json_encode(["message" => substr(md5(mt_rand()), 0, 32)]);
+    die();
+}
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #main > div:nth-child(even) {
+            color: red;
+        }
+
+        #main > div:nth-child(odd) {
+            color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<div id="main"></div>
 <script>
     var mainDiv = document.querySelector("#main");
     let timerId = setInterval(() => {
@@ -11,10 +37,12 @@
             }
             return response.json();
         }).then(result => {
-            mainDiv.textContent = result.message;
+            mainDiv.innerHTML += `<div>${result.message}</div>`;
             console.log(result);
         }).catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
     }, 2000);
 </script>
+</body>
+</html>
