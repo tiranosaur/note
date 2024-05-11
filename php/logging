@@ -15,7 +15,7 @@ require_once __DIR__ . "/util/logger.php";
 
 use app\util\Logger;
 
-Logger::getLogger()->debug("woooooooooooooooooooooooooooooooooooooooooooo");
+Logger::getLogger()->error("erooooooooooooooooooor", [ __FILE__, __LINE__]);
 */
 
 class Logger
