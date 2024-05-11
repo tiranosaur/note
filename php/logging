@@ -1,0 +1,15 @@
+composer require monolog/monolog
+
+<?php
+require __DIR__."/vendor/autoload.php";
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+$logger = new Logger("example-app");
+$stream_handler = new StreamHandler("php://stdout");
+$logger->pushHandler($stream_handler);
+
+$logger->debug("This file has been executed.");
+$logger->info('This is an informational message.');
+$logger->error('An error occurred: ' . '$errorMessage');
