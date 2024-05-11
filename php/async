@@ -1,0 +1,31 @@
+<?php
+$start = microtime(true);
+$path = __DIR__ . '/send_email.php';
+
+// output to /dev/null & so we don't block to wait for the result
+$command = 'php ' . $path . ' --email=%s > /dev/null &';
+$emails = ['joe@blogs.com', 'jack@test.com'];
+
+// for each of the emails, call exec to start a new script
+foreach ($emails as $email) {
+    // Execute the command
+    exec(sprintf($command, $email));
+}
+
+// record the finish time of the web request
+$finish = microtime(true);
+$duration = round($finish - $start, 4);
+
+// output duration of web request
+echo "finished web request in $duration\n";
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+$email = explode('--email=', $argv[1])[1];
+// this blocking sleep won't affect the web request duration
+// (illustrative purposes only)
+sleep(5);
+
+// here we can send the email
+echo "sending email to $email\n";
