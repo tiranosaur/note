@@ -9,7 +9,7 @@ use Monolog\Handler\StreamHandler;
     ---DEPENDENCY---
 composer require monolog/monolog
 
-    ---USING---
+    ---USAGE---
 require_once __DIR__ . "/vendor/autoload.php";
 require_once __DIR__ . "/util/logger.php";
 
