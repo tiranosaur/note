@@ -1,3 +1,5 @@
+https://habr.com/ru/companies/otus/articles/745538/
+
 <?php
 $start = microtime(true);
 $path = __DIR__ . '/send_email.php';
