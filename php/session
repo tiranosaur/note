@@ -1,8 +1,0 @@
-<?php
-if (isset($_COOKIE['PHPSESSID'])) {
-    setcookie('PHPSESSID', $_COOKIE['PHPSESSID'], time() - 1, "/");
-    echo "Session destroyed.";
-} else {
-    session_start();
-    echo "Session started.";
-}
