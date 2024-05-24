@@ -59,7 +59,7 @@ services:
 
   logstash:
     container_name: 'ELK-logstash'
-    image: logstash:7.16.2
+    image: logstash:8.2.3
     environment:
       LS_JAVA_OPTS: "-Xmx512m -Xms512m"
     ports:
