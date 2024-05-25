@@ -1,5 +1,4 @@
 
-https://drive.google.com/file/d/1BEI7WduNjV2Mnbu5Xz5JtZhcFB6why29/view?usp=drivesdk
 php artisan view:clear              <br>
 php artisan route:clear              <br>
 php artisan route:cache              <br>
