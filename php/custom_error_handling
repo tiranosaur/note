@@ -1,5 +1,6 @@
 <?php
 
+//Deprecated: ini_set(): assert.warning INI setting is deprecated in /var/www/html/symfony.example.loc/vendor/symfony/runtime/Internal/BasicErrorHandler.php on line 35
 set_error_handler(function($errno, $errstr) {
     return strpos($errstr, 'ini_set()') === 0;
 }, E_DEPRECATED);
