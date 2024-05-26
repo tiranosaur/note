@@ -1,4 +1,6 @@
 composer create-project symfony/website-skeleton my_project_name
+
+composer require --dev symfony/maker-bundle
 composer require --dev symfony/test-pack
 
 // start tests
