@@ -1,2 +1,5 @@
 Deprecated: ini_set(): assert.warning INI setting is deprecated in /var/www/html/symfony.example.loc/vendor/symfony/runtime/Internal/BasicErrorHandler.php on line 35
+ini_set('zend.assertions', 1);
+
+
 https://github.com/tiranosaur/note/blob/master/php/custom_error_handling
