@@ -17,6 +17,7 @@ php ./bin/console doctrine:cache:clear-metadata
 php ./bin/console doctrine:cache:clear-query
 php ./bin/console doctrine:cache:clear-query-region
 php ./bin/console doctrine:cache:clear-result
+composer dump-autoload
 
 cache:clear                             Clears the cache
 cache:pool:clear                        Clears cache pools
