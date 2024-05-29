@@ -1,9 +1,0 @@
-    public static String makeValidName(String item) {
-        return item
-                .replace('?', '？')
-                .replace('#', '＃')
-                .replace('%', '％')
-                .replace('/', '∕')
-                .replace('\\', '⧵')
-                .replace(';', ';');
-    }
