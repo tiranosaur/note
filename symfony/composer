@@ -3,28 +3,3 @@ composer create-project symfony/website-skeleton my_project_name
 composer require --dev symfony/maker-bundle
 composer require --dev symfony/test-pack
 
-// start tests
-php ./bin/phpunit
-
-
-/////// ------------------------------ ///////////////////////
-php ./bin/console cache:clear
-php ./bin/console cache:pool:clear
-php ./bin/console cache:warmup
-php ./bin/console doctrine:cache:clear-collection-region
-php ./bin/console doctrine:cache:clear-entity-region
-php ./bin/console doctrine:cache:clear-metadata
-php ./bin/console doctrine:cache:clear-query
-php ./bin/console doctrine:cache:clear-query-region
-php ./bin/console doctrine:cache:clear-result
-composer dump-autoload
-
-cache:clear                             Clears the cache
-cache:pool:clear                        Clears cache pools
-cache:warmup                            Warms up an empty cache
-doctrine:cache:clear-collection-region  Clear a second-level cache collection region.
-doctrine:cache:clear-entity-region      Clear a second-level cache entity region.
-doctrine:cache:clear-metadata           Clears all metadata cache for an entity manager
-doctrine:cache:clear-query              Clears all query cache for an entity manager
-doctrine:cache:clear-query-region       Clear a second-level cache query region.
-doctrine:cache:clear-result             Clears result cache for an entity manager
