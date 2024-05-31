@@ -7,40 +7,42 @@ import (
 	"strings"
 )
 
-var infoLog *log.Logger = nil
-var warningLog *log.Logger = nil
-var errorLog *log.Logger = nil
+var (
+	infoLog    *log.Logger
+	warningLog *log.Logger
+	errorLog   *log.Logger
+)
 
-const placeholder string = "{}"
+const placeholder = "{}"
+
+func initLog(logPtr **log.Logger, prefix string) {
+	if *logPtr == nil {
+		*logPtr = log.New(os.Stdout, prefix, log.Ldate|log.Ltime|log.Llongfile)
+	}
+}
+
+func replacePlaceholders(str string, args ...interface{}) string {
+	for _, arg := range args {
+		str = strings.Replace(str, placeholder, fmt.Sprint(arg), 1)
+	}
+	return str
+}
 
 func WARN(str string, args ...interface{}) {
-	if warningLog == nil {
-		warningLog = log.New(os.Stdout, "WARN: ", log.Ldate|log.Ltime|log.Llongfile)
-	}
-	for _, arg := range args {
-		str = strings.Replace(str, placeholder, fmt.Sprint(arg), 1)
-	}
-	warningLog.Println(str)
+	initLog(&warningLog, "WARN: ")
+	warningLog.Println(replacePlaceholders(str, args...))
 }
+
 func INFO(str string, args ...interface{}) {
-	if infoLog == nil {
-		infoLog = log.New(os.Stdout, "INFO: ", log.Ldate|log.Ltime|log.Llongfile)
-	}
-	for _, arg := range args {
-		str = strings.Replace(str, placeholder, fmt.Sprint(arg), 1)
-	}
-	infoLog.Println(str)
+	initLog(&infoLog, "INFO: ")
+	infoLog.Println(replacePlaceholders(str, args...))
 }
 
 func ERROR(str string, args ...interface{}) {
-	if errorLog == nil {
-		errorLog = log.New(os.Stdout, "ERROR: ", log.Ldate|log.Ltime|log.Llongfile)
-	}
-	for _, arg := range args {
-		str = strings.Replace(str, placeholder, fmt.Sprint(arg), 1)
-	}
-	errorLog.Println(str)
+	initLog(&errorLog, "ERROR: ")
+	errorLog.Println(replacePlaceholders(str, args...))
 }
+
 
 
 // USAGE
