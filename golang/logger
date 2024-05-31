@@ -1,0 +1,57 @@
+package Logger
+
+import (
+	"fmt"
+	"log"
+	"os"
+	"strings"
+)
+
+var infoLog *log.Logger = nil
+var warningLog *log.Logger = nil
+var errorLog *log.Logger = nil
+
+const placeholder string = "{}"
+
+func WARN(str string, args ...interface{}) {
+	if warningLog == nil {
+		warningLog = log.New(os.Stdout, "WARN: ", log.Ldate|log.Ltime|log.Llongfile)
+	}
+	for _, arg := range args {
+		str = strings.Replace(str, placeholder, fmt.Sprint(arg), 1)
+	}
+	warningLog.Println(str)
+}
+func INFO(str string, args ...interface{}) {
+	if infoLog == nil {
+		infoLog = log.New(os.Stdout, "INFO: ", log.Ldate|log.Ltime|log.Llongfile)
+	}
+	for _, arg := range args {
+		str = strings.Replace(str, placeholder, fmt.Sprint(arg), 1)
+	}
+	infoLog.Println(str)
+}
+
+func ERROR(str string, args ...interface{}) {
+	if errorLog == nil {
+		errorLog = log.New(os.Stdout, "ERROR: ", log.Ldate|log.Ltime|log.Llongfile)
+	}
+	for _, arg := range args {
+		str = strings.Replace(str, placeholder, fmt.Sprint(arg), 1)
+	}
+	errorLog.Println(str)
+}
+
+
+// USAGE
+package main
+
+import (
+	Logger "console/internal/logging"
+)
+
+func main() {
+	Logger.WARN("warning {} {} {}", "wmessage", 23, true)
+	Logger.INFO("info {} {} {}", "InfMessage", 23, true)
+	Logger.ERROR("error {} {} {}", "ERRmessage", 23, true)
+}
