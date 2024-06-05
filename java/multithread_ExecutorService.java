@@ -25,6 +25,7 @@ public class Main {
         }
 
         System.out.println(result);
+        executorService.shutdown();
     }
 
     @SneakyThrows
