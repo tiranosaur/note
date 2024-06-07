@@ -9,3 +9,5 @@ sudo chmod 755 -R /opt/tomcat                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // windows A service with the given Service Name Already Installed
 cmd -> 
   sc delete "Tomcat9"
+// открыть общий доступ
+// после выбора папки в идее поставить точку
