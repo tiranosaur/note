@@ -5,3 +5,6 @@ Git Bash
 "C:\Program Files\Git\bin\bash.exe" --cd=C:/
 echo "PROMPT_COMMAND='history -a'" >> ~/.bash_profile
 echo "PROMPT_COMMAND='history -a'" >> ~/.bashrc
+
+// remove distro
+wsl --unregister DISTRO-NAME
