@@ -1,0 +1,7 @@
+Ubuntu
+C:\Windows\System32\wsl.exe -d Ubuntu-24.04 --cd /mnt/c
+
+Git Bash
+C:\Program Files\Git\bin\bash.exe
+echo "PROMPT_COMMAND='history -a'" >> ~/.bash_profile
+echo "PROMPT_COMMAND='history -a'" >> ~/.bashrc
