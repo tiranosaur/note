@@ -4,3 +4,8 @@ https://www.youtube.com/watch?v=hk4rzwH9-kY&list=PLAma_mKffTOTTFqIkLXgHqVuL6xJhb
 
 
 sudo chmod 755 -R /opt/tomcat                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+// windows A service with the given Service Name Already Installed
+cmd -> 
+  sc delete "Tomcat9"
