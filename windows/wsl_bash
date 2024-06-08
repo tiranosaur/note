@@ -1,3 +1,6 @@
+// get all images to install
+wsl --list --online 
+
 Ubuntu
 C:\Windows\System32\wsl.exe -d Ubuntu-24.04 --cd /mnt/c
 
