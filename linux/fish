@@ -5,6 +5,10 @@ sudo apt install fish
 //default shell
 chsh -s $(which fish)
 
+//or default shell
+nano ~/.bashrc
+exec zsh
+
 //fisher
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
