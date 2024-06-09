@@ -5,7 +5,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 sudo nano ~/.zshrc
 ZSH_THEME="af-magic"
 
-
+chsh -s $(which fish)
 
 -------------------------------------------------------------
 
