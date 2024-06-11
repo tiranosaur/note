@@ -1,0 +1,48 @@
+      func index(w http.ResponseWriter, r *http.Request) {
+      	if r.Method == http.MethodGet {
+      		dict := map[string]interface{}{
+      			"id":       "9q3428tjiquyrbnvo8u",
+      			"username": "Frank",
+      		}
+      		result, err := json.Marshal(dict)
+      		if err != nil {
+      			http.Error(w, "Method not allowed", http.StatusBadGateway)
+      		}
+      		fmt.Fprintf(w, string(result))
+      	} else {
+      		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+      	}
+      }
+      
+      func main() {
+      	http.HandleFunc("/", index)
+      	fmt.Println("Starting server on :8089")
+      	if err := http.ListenAndServe(":8089", nil); err != nil {
+      		fmt.Println("Error starting server:", err)
+      	}
+      }
+++++++++++++++++++++
+$output = file_get_contents('http://localhost:8089');
+$arr = json_decode($output, true);
+echo $output;
+
+====================================================================================================
+
+      func main() {
+      	argsWithoutProg := os.Args[1:]
+      	fmt.Println(argsWithoutProg)
+      	dict := map[string]interface{}{
+      		"id":       "9q3428tjiquyrbnvo8u",
+      		"username": "Frank",
+      	}
+      	result, err := json.Marshal(dict)
+      	if err != nil {
+      		fmt.Println()
+      	}
+      	fmt.Println(string(result))
+      }
+++++++++++++++++++++++
+$output = shell_exec('./console');
+$output = preg_replace("^\[\]\\n", "", $output);
+$arr = json_decode($output, true);
+echo $output;
