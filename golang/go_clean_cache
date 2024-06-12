@@ -1,0 +1,1 @@
+go clean -modcache -cache -testcache -i -r
