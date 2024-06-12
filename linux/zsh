@@ -4,6 +4,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 sudo nano ~/.zshrc
 ZSH_THEME="af-magic"
+setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
 
 chsh -s $(which fish)
 
