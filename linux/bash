@@ -2,6 +2,6 @@
 nano ~/.bashrc
 
 export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=10000
-export HISTFILESIZE=20000
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
