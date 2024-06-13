@@ -1,2 +1,2 @@
 sudo apt-get update
-sudo apt-get install cmake gcc clang gdb build-essential
+sudo apt-get install cmake gcc g++ clang gdb build-essential
