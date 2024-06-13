@@ -1,0 +1,4 @@
+vim ~/.wslconfig  
+
+[wsl2]
+memory=2GB
