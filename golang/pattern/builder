@@ -1,0 +1,45 @@
+type User struct {
+	Username string `json:"username"`
+}
+
+func _() {
+	var u User
+	var _ fmt.Stringer = u
+}
+
+func (u User) String() string {
+	if str, err := json.Marshal(u); err == nil {
+		return string(str)
+	} else {
+		return "{}"
+	}
+}
+
+=======================================================================================================================================
+
+type builder struct {
+	user User
+}
+
+type builderInterface interface {
+	SetUsername(username string) *builder
+	Build() User
+}
+
+func _() {
+	var ub builder
+	var _ builderInterface = &ub
+}
+
+func Builder() *builder {
+	return &builder{User{}}
+}
+
+func (b *builder) SetUsername(username string) *builder {
+	b.user.Username = username
+	return b
+}
+
+func (b builder) Build() User {
+	return b.user
+}
