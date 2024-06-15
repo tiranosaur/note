@@ -21,17 +21,17 @@ type builder struct {
 	user User
 }
 
-type builderInterface interface {
+type Interface interface {
 	SetUsername(username string) *builder
 	Build() User
 }
 
 func _() {
 	var ub builder
-	var _ builderInterface = &ub
+	var _ Interface = &ub
 }
 
-func Builder() *builder {
+func Builder() Interface {
 	return &builder{User{}}
 }
 
