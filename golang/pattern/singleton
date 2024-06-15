@@ -1,0 +1,39 @@
+type provider struct {
+	Name string
+}
+
+type Interface interface {
+	GetName() string
+	SetName(name string)
+	Call()
+}
+
+func (p *provider) _() {
+	p = new(provider)
+	var _ Interface = p
+}
+
+func (p *provider) GetName() string {
+	return p.Name
+}
+
+func (p *provider) SetName(name string) {
+	p.Name = name
+}
+
+func (p *provider) Call() {
+	fmt.Printf("Provider - %v is calling\n", p.Name)
+}
+
+
+====================================================================
+
+var once sync.Once
+var instance *provider
+
+func GetInstance() Interface {
+	once.Do(func() {
+		instance = &provider{Name: "ProvName"}
+	})
+	return instance
+}
