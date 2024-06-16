@@ -1,4 +1,0 @@
-Step 1 : Got to Jmeter site and download binaries . Here . After this Unzip at some preferred location.
-
-Step 2 : Once downloaded , open ur terminal in MAC. Got to the location where the Jmeter is. 
-  See the bin folder. Go inside it. Then type sh ./jmeter.sh . Basically the bin folder have jmeter.sh file which executes it.
