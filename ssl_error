@@ -1,2 +1,0 @@
-chrome console
-sendCommand(SecurityInterstitialCommandId.CMD_PROCEED)
