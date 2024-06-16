@@ -1,3 +1,0 @@
-1. install
-2. network -> adapter1 nat-> port forwarding -> ssh tcp 127.0.1.1 2222 empty 22
-3. connect ssh <name>@127.0.1.1 -p2222

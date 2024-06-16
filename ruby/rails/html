@@ -1,2 +1,0 @@
-# link, need resource :photos, only: [:show]
-<%= link_to 'photos', photos_path(@photos) %>

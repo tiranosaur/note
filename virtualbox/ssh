@@ -1,8 +1,0 @@
-install open ssh
-
-clear   host system /home/john/.ssh/known_hosts
-
- ssh tiranosaur@127.0.0.1 -p 2222
- 
- 
- ifconfig узнать ip virtualbox

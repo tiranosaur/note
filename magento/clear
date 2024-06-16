@@ -1,4 +1,0 @@
-php bin/magento setup:upgrade
-php bin/magento setup:static-content:deploy
-rm -rf var/cache/*
-rm -rf var/generation/*
