@@ -17,3 +17,20 @@
 5. auth bearer and basic
 6. cash redis
 7. kafka
+
+
+<ol>
+<li>ALL redirects</li>
+<li>validation</li>
+<li>ajax</li>
+<li>File handling</li>
+<li>User crud</li>
+<li>role</li>
+<li>auth</li>
+<li>redis</li>
+<li>rabbit</li>
+<li>push notification</li>
+<li>chat socket</li>
+<li>blade</li>
+<li>s3li</li>
+</ol>
