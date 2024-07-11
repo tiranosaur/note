@@ -17,7 +17,11 @@
 5. auth bearer and basic
 6. cash redis
 7. kafka
-
+email
+redis
+push notification
+chat & socket
+s3
 
 <ol>
 <li>ALL redirects</li>
