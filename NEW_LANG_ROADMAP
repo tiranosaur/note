@@ -17,6 +17,7 @@
 5. auth bearer and basic
 6. cash redis
 7. kafka
+validation
 email
 redis
 push notification
@@ -24,8 +25,6 @@ chat & socket
 s3
 
 <ol>
-<li>ALL redirects</li>
-<li>validation</li>
 <li>ajax</li>
 <li>File handling</li>
 <li>User crud</li>
