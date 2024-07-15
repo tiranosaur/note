@@ -16,3 +16,6 @@ docker exec oracle ./setPassword.sh Pass123
 
  CREATE USER new_username IDENTIFIED BY password;
  GRANT ALL PRIVILEGES TO new_username;
+
+
+DROP USER new_username CASCADE ;
