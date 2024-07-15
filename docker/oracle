@@ -10,4 +10,9 @@ docker run -d --name oracle -p 1521:1521 -e ORACLE_PASSWORD=Pass123 -v oracle-vo
 
 //change password
 docker exec oracle ./setPassword.sh Pass123
+// username: SYSTEM
 //password: Pass123
+
+
+ CREATE USER new_username IDENTIFIED BY password;
+ GRANT ALL PRIVILEGES TO new_username;
