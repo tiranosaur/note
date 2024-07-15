@@ -3,9 +3,11 @@ https://medium.com/@mark.chen.im/oracle-database-free-for-docker-install-and-con
 
 docker pull container-registry.oracle.com/database/free:latest
 docker run -d --name oracle -p 1521:1521 -e ORACLE_PASSWORD=Pass123 -v oracle-volume:/opt/oracle/oradata container-registry.oracle.com/database/free:latest
-// username SYSTEM
+// username: SYSTEM
+// password: password
 // SID - FREE
 
 
 //change password
-docker exec oracle ./setPassword.sh Password
+docker exec oracle ./setPassword.sh Pass123
+//password: Pass123
