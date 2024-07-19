@@ -89,6 +89,7 @@ networks:
 # ===============ELK end     
 
 # AWS ------------------------
+# aws configure 
   localstack:
     image: localstack/localstack:latest
     container_name: localstack
