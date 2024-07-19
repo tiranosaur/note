@@ -96,7 +96,7 @@ networks:
       - "4566:4566"  # основной порт API
       - "4571:4571"  # порт S3
     environment:
-      - SERVICES=s3,rds
+      - SERVICES=s3,ec2,lambda,dynamodb
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
       - AWS_ACCESS_KEY_ID=key123
