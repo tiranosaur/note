@@ -89,9 +89,6 @@ networks:
 # ===============ELK end     
 
   # AWS
-  # aws --endpoint-url=http://localhost:4566 s3 ls
-  # aws --endpoint-url=http://localhost:4566 s3 mb s3://tiranosaur
-  # aws --endpoint-url=http://localhost:4566 s3 ls
   localstack:
     image: localstack/localstack:latest
     container_name: localstack
@@ -99,11 +96,11 @@ networks:
       - "4566:4566"  # основной порт API
       - "4571:4571"  # порт S3
     environment:
-      - SERVICES=s3,ec2,lambda,dynamodb
+      - SERVICES=s3,rds
       - DEBUG=1
       - DATA_DIR=/tmp/localstack/data
-      - AWS_ACCESS_KEY_ID=test
-      - AWS_SECRET_ACCESS_KEY=test
+      - AWS_ACCESS_KEY_ID=key123
+      - AWS_SECRET_ACCESS_KEY=key345
     volumes:
 #      - "./data/localstack:/tmp/localstack/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
