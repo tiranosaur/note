@@ -88,8 +88,10 @@ networks:
     driver: bridge
 # ===============ELK end     
 
-# AWS ------------------------
-# aws configure 
+  # AWS
+  # aws --endpoint-url=http://localhost:4566 s3 ls
+  # aws --endpoint-url=http://localhost:4566 s3 mb s3://tiranosaur
+  # aws --endpoint-url=http://localhost:4566 s3 ls
   localstack:
     image: localstack/localstack:latest
     container_name: localstack
