@@ -88,6 +88,23 @@ networks:
     driver: bridge
 # ===============ELK end     
 
+# AWS ------------------------
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    ports:
+      - "4566:4566"  # основной порт API
+      - "4571:4571"  # порт S3
+    environment:
+      - SERVICES=s3,ec2,lambda,dynamodb
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    volumes:
+#      - "./data/localstack:/tmp/localstack/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+# end AWS ------------------------
 
   mongodb:
     container_name: 'mongodb'
