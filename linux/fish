@@ -22,6 +22,7 @@ function fish_prompt
   echo -n ' > '
 end
 set LANG en_US
+set -U fish_greeting
 " >> ~/.config/fish/config.fish
 ======================================= themes ====================================================
 //fisher
