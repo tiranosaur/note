@@ -12,6 +12,7 @@ C:\msys64\usr\bin\bash.exe --login -i -c "cd /c && exec bash"
 
 # Export system vars
 ```
-export -p > env_vars.sh
-source env_vars.sh
+echo $PATH > path.txt
+export PATH=$(cat path.txt)
+export PATH=$PATH:/c/Program\ Files/Maven/apache-maven-3.9.8/bin
 ```
