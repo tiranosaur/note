@@ -10,7 +10,8 @@ jetbrains: settings -> version controle-> git -> C:\msys64\usr\bin\git.exe
 C:\msys64\usr\bin\bash.exe --login -i -c "cd /c && exec bash"
 
 
-# Enable Docker
+# Export system vars
 ```
-   export PATH=$PATH:/c/Program\ Files/Docker/Docker/resources/bin
+export -p > env_vars.sh
+source env_vars.sh
 ```
