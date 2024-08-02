@@ -1,0 +1,78 @@
+package org.example;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class Main {
+    private static final CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+
+    public static void main(String[] args) throws InterruptedException {
+        DoubleLock lock = new DoubleLock();
+        Thread thread1 = new Thread(() -> proceed1("===1===", lock));
+        Thread thread2 = new Thread(() -> proceed2("===2===", lock));
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+
+        System.out.println(list);
+    }
+
+    private static void proceed1(String s, DoubleLock lock) {
+        lock.lockSecond();
+        list.add(s);
+        lock.waitFirst();
+        lock.lockSecond();
+        list.add(s);
+        lock.waitFirst();
+        lock.lockSecond();
+        list.add(s);
+    }
+
+    private static void proceed2(String s, DoubleLock lock) {
+        lock.lockFirst();
+        list.add(s);
+        lock.waitSecond();
+        lock.lockFirst();
+        list.add(s);
+        lock.waitSecond();
+        lock.lockFirst();
+        list.add(s);
+    }
+}
+
+class DoubleLock {
+    private boolean first = false;
+    private boolean second = false;
+
+    public synchronized void lockFirst() {
+        first = false;
+        second = true;
+        notify();
+    }
+
+    public synchronized  void lockSecond() {
+       second = false;
+       first = true;
+       notify();
+    }
+
+    public synchronized  void waitFirst() {
+        while (first) {
+            try {
+                wait(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public synchronized  void waitSecond() {
+        while (second) {
+            try {
+                wait(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+}
