@@ -1,0 +1,20 @@
+create table user
+(
+    id        int primary key auto_increment not null,
+    username  varchar(128) unique            not null,
+    timestamp timestamp
+);
+
+CREATE TRIGGER after_update_user
+    BEFORE UPDATE ON user
+    FOR EACH ROW
+BEGIN
+    SET NEW.timestamp = NOW();
+END;
+
+# select * from information_schema.TRIGGERS;
+# drop trigger after_update_user;
+
+INSERT INTO docker.user (id, username, timestamp) VALUES (1, 'q34', DEFAULT);
+
+UPDATE docker.user t SET t.username = '111' WHERE t.id = 1
