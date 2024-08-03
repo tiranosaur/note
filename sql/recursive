@@ -1,17 +1,31 @@
-CREATE TABLE mytable (
-    id INT,
-    unique_id varchar(20),
+CREATE TABLE mytable
+(
+    id           INT,
+    name         varchar(128) not null,
+    unique_id    varchar(20),
     reference_id varchar(20)
 );
 
-INSERT INTO mytable(id,unique_id,reference_id) VALUES (43,55544,NULL);
-INSERT INTO mytable(id,unique_id,reference_id) VALUES (45,45454,43);
-INSERT INTO mytable(id,unique_id,reference_id) VALUES (66,55655,45);
-INSERT INTO mytable(id,unique_id,reference_id) VALUES (78,88877,66);
-INSERT INTO mytable(id,unique_id,reference_id) VALUES (99,454,33);
+INSERT INTO mytable(id, name, unique_id, reference_id)
+VALUES (1, 'http://example.com', 1, NULL),
+       (43, 'aaa', 55544, 1),
+       (45, 'bbb', 45454, 43),
+       (66, 'ccc', 55655, 45),
+       (78, 'ddd', 88877, 66),
+       (99, 'sss', 454, 33);
+
+// full url from table
+with recursive cte as (
+    select t.* from mytable t where t.reference_id is null
+    union all
+    select t.* from cte
+                        inner join mytable t on cte.id = t.reference_id
+)
+SELECT GROUP_CONCAT(name SEPARATOR '/') AS concatenated_names
+FROM cte;
 
 
-
+// 
 with recursive cte as (
       select t.* from mytable t where t.unique_id = 55544
       union all
