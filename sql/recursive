@@ -45,9 +45,9 @@ select * from cte;
 
 //with desc order
 with recursive cte as (
-      select t.* from mytable t where t.unique_id = 55544
-      union all
-      select t.* from cte 
-			inner join mytable t on cte.id = t.reference_id
-     )
-select @rownum:=@rownum+1 rank, cte.* from cte, (SELECT @rownum:=0) r ORDER BY rank desc
+    select t.* from mytable t where t.reference_id is null
+    union all
+    select t.* from cte
+                        inner join mytable t on cte.id = t.reference_id
+)
+select @rownum:=@rownum+1 pp, cte.* from cte, (SELECT @rownum:=0) r ORDER BY id
