@@ -38,7 +38,7 @@ ORDER BY num) tt;
 
 -----------------------create db for test-----------------------------------
 CREATE TABLE authors (id int PRIMARY KEY auto_increment, name VARCHAR(64), main VARCHAR(64));
-CREATE TABLE articles (id int PRIMARY KEY auto_increment, name VARCHAR(64), authorId int, FOREIGN KEY (`authorId`) REFERENCES authors (`id`));
+CREATE TABLE articles (id int PRIMARY KEY auto_increment, name VARCHAR(64), authorId int, is_deleted boolean default true, FOREIGN KEY (`authorId`) REFERENCES authors (`id`));
 
 INSERT INTO authors
 SELECT tt.num, CONV(FLOOR(RAND() * 99999999999999), 10, 36), CONCAT('autor',num+1)
@@ -60,7 +60,7 @@ FROM (SELECT DISTINCT(10*e+f) num  FROM
 INSERT INTO authors (`name`, `main`)VALUES('tiranosaur', 'author0');
 
 INSERT INTO articles
-SELECT tt.num, CONV(FLOOR(RAND() * 99999999999999), 10, 36), ceil(rand()*100)
+SELECT tt.num, CONV(FLOOR(RAND() * 99999999999999), 10, 36), ceil(rand()*100), (rand()>0.5)
 FROM (SELECT DISTINCT(100000*a+10000*b+1000*c+100*d+10*e+f) num  FROM
     (SELECT 1 a UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 0) aa
         CROSS JOIN
