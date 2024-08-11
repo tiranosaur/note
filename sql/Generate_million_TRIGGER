@@ -1,0 +1,23 @@
+create table article_log
+(
+    id         int auto_increment primary key,
+    article_id int,
+    author_id  int,
+    timestamp timestamp,
+    foreign key (author_id) references authors (id),
+    foreign key (article_id) references articles (id)
+);
+
+select * from information_schema.triggers;
+
+drop trigger if exists after_article_insert;
+
+create trigger after_article_insert
+    after insert on articles
+    for each row
+begin
+    insert into article_log (article_id, author_id, timestamp)
+    values (new.id, new.authorid, now());
+end;
+
+insert into articles (name, authorid, is_deleted) values ('laskdjfalskdj', 100, false);
