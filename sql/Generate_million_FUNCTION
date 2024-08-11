@@ -1,0 +1,14 @@
+CREATE FUNCTION GetStatisticsByName(authorName VARCHAR(255))
+    RETURNS INT
+BEGIN
+    DECLARE totalCount INT;
+
+    SELECT COUNT(ar.id) INTO totalCount
+    FROM authors a
+             INNER JOIN articles ar ON a.id = ar.authorId
+    WHERE a.name = authorName;
+
+    RETURN totalCount;
+END;
+
+SELECT GetStatisticsByName('tiranosaur') AS articleCount;
