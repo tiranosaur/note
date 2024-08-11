@@ -1,0 +1,20 @@
+CREATE PROCEDURE GetStatistics()
+BEGIN
+    SELECT a.id, a.name, COUNT(ar.id) AS count
+    FROM authors a
+             INNER JOIN articles ar ON a.id = ar.authorId
+    GROUP BY a.id, a.name;
+END ;
+
+call GetStatistics();
+
+CREATE PROCEDURE GetStatisticsByName(IN authorName VARCHAR(255))
+BEGIN
+    SELECT a.id, a.name, COUNT(ar.id) AS count
+    FROM authors a
+             INNER JOIN articles ar ON a.id = ar.authorId
+    WHERE a.name = authorName
+    GROUP BY a.id, a.name;
+END;
+
+CALL GetStatisticsByName('tiranosaur');
