@@ -1,3 +1,5 @@
+DROP PROCEDURE IF	EXISTS GetStatistics;
+
 CREATE PROCEDURE GetStatistics()
 BEGIN
     SELECT a.id, a.name, COUNT(ar.id) AS count
