@@ -1,0 +1,7 @@
+CREATE VIEW statistic AS
+SELECT a.id, a.name, count(ar.id) as count
+FROM authors a
+         inner join articles ar on a.id = ar.authorId
+group by a.id;
+
+select * from statistic where name = 'tiranosaur';
