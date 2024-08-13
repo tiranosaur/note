@@ -15,6 +15,7 @@
    
 pio run --target upload && pio device monitor -b 9600 
 pio run --target upload && pio device monitor -b 115200
+pio run --target upload --upload-port COM5 && pio device monitor -b 9600 --port COM5
    
 // install lib from github
   platformio lib --global install "mikalhart/TinyGPSPlus"
