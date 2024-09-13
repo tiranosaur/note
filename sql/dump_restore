@@ -1,0 +1,1 @@
+mysqldump -h 94.228.125.129 -u root -p downloader_db > /dump/backup.sql
