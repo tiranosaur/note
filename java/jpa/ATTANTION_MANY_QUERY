@@ -17,7 +17,7 @@
 
 //query
     @Query("select o from orders o " +
-            "join fetch o.delivery " +
+            "join fetch o.delivery " +    //!!!!!!!!!!!!!!!!!!!
             "inner join o.unitBarcode b " +
             "inner join b.unit u " +
             "inner join u.cabinet c " +
