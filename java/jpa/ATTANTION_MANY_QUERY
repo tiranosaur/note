@@ -3,6 +3,7 @@
   remove mappedBy
 
 для того чтобы фетч заработал колонка связи должна быть в обоих сущностях. подключать через запрос
+
 //order
     @OneToOne(
             fetch = FetchType.LAZY,
@@ -10,14 +11,27 @@
             orphanRemoval = true
     )
     private Delivery delivery;
+    @OneToMany(
+            mappedBy = "order",
+            cascade = CascadeType.ALL
+    )
+    @Builder.Default
+    private List<Report> reportList = new ArrayList<>();
+
 //delivery
     @JoinColumn
     @OneToOne(fetch = FetchType.LAZY)
     private Order order;
 
+//report
+    @JoinColumn  //???????????????????
+    @ManyToOne
+    private Order order;
+
 //query
     @Query("select o from orders o " +
-            "join fetch o.delivery " +    //!!!!!!!!!!!!!!!!!!!
+            "join fetch o.delivery " +     //!!!!!!!!!!! подгружает
+            "join fetch o.reportList " +   //!!!!!!!!!!!! подгружает
             "inner join o.unitBarcode b " +
             "inner join b.unit u " +
             "inner join u.cabinet c " +
