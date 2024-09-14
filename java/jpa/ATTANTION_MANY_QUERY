@@ -1,0 +1,25 @@
+@OneToOne
+  set fetch = FetchType.LAZY by default
+  remove mappedBy
+
+для того чтобы фетч заработал колонка связи должна быть в обоих сущностях. подключать через запрос
+//order
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Delivery delivery;
+//delivery
+    @JoinColumn
+    @OneToOne(fetch = FetchType.LAZY)
+    private Order order;
+
+//query
+    @Query("select o from orders o " +
+            "join fetch o.delivery " +
+            "inner join o.unitBarcode b " +
+            "inner join b.unit u " +
+            "inner join u.cabinet c " +
+            "where c = :cabinet")
+    List<Order> getAllByCabinet(@Param("cabinet") Cabinet cabinet);
