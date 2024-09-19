@@ -9,4 +9,6 @@ git config core.fileMode false
 
 git config --global user.name "FIRST_NAME LAST_NAME"
 
+git config --global user.email "YOUR_EMAIL"
+
 git config --global user.password "password"
