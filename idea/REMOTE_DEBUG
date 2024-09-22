@@ -1,0 +1,2 @@
+mvn clean package -DskipTests
+java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=127.0.0.1:8001  target/demo-0.0.1-SNAPSHOT.jar
