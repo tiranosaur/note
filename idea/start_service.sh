@@ -22,12 +22,12 @@ echo "5) Fraud"
 echo "6) Gateway"
 echo "7) Admin"
 echo "-----------"
-echo "000) Build projects"
 echo "10) Kill process on a custom port"
 echo "11) Spanner Emulator"
 echo "12) Pub/Sub Emulator"
+echo "Press Enter to build"
 echo "---------------------------------"
-read -p "Enter your choice (1-12, 000): " choice
+read -p "Enter your choice (1-12, Enter): " choice
 
 case $choice in
   1)
@@ -132,7 +132,7 @@ case $choice in
     echo "Starting Pub/Sub Emulator..."
     gcloud beta emulators pubsub start --host-port=0.0.0.0:8085
     ;;
-  000)
+  *)
     echo "Please select the project to build:"
     echo "---------------------------------"
     echo "1. turbospaces-boot"
@@ -148,24 +148,38 @@ case $choice in
 
     case $build_choice in
       1)
+	(set_title "1. TURBOSPACES-BOOT is building" &)
+    	trap "kill $!" EXIT
         cd "$BASE_DIR/turbospaces-boot" && mvn clean install -DskipTests
         ;;
       2)
+	(set_title "2. UAM-COMMONS is building" &)
+    	trap "kill $!" EXIT
         cd "$BASE_DIR/uam-commons" && mvn clean install -DskipTests
         ;;
       3)
+	(set_title "3. UAM is building" &)
+    	trap "kill $!" EXIT
         cd "$BASE_DIR/uam" && mvn clean install -DskipTests
         ;;
       4)
+	(set_title "4. CRM is building" &)
+    	trap "kill $!" EXIT
         cd "$BASE_DIR/crm" && mvn clean install -DskipTests
         ;;
       5)
+	(set_title "5. FRAUD is building" &)
+    	trap "kill $!" EXIT
         cd "$BASE_DIR/fraud" && mvn clean install -DskipTests
         ;;
       6)
+	(set_title "6. PAYMENT is building" &)
+    	trap "kill $!" EXIT
         cd "$BASE_DIR/payment" && mvn clean install -DskipTests
         ;;
       0)
+	(set_title "0. Everything is building" &)
+    	trap "kill $!" EXIT
         cd "$BASE_DIR/turbospaces-boot" && mvn clean install -DskipTests &&
         cd "$BASE_DIR/uam-commons" && mvn clean install -DskipTests &&
         cd "$BASE_DIR/uam" && mvn clean install -DskipTests &&
@@ -178,8 +192,5 @@ case $choice in
         exit 1
         ;;
     esac
-    ;;
-  *)
-    echo "Invalid choice. Exiting..."
     ;;
 esac
