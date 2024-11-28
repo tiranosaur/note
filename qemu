@@ -1,0 +1,10 @@
+linux on macos
+    qemu-img create -f qcow2 ubuntu.qcow2 50g
+
+    qemu-system-x86_64 \
+      -cdrom "ubuntu-24.04.1-desktop-amd64.iso" \
+      -hda "ubuntu.qcow2" \
+      -machine "type=q35,accel=tcg" \
+      -m "8G" \
+      -netdev "user,id=n1,hostfwd=tcp::2222-:22" \
+      -device "virtio-net-pci,netdev=n1,bus=pcie.0,addr=0x19"
