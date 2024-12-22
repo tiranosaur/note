@@ -13,3 +13,7 @@ jenv (нужно установить в системе)
 
 ====================JAVA================================
 Maven Helper
+
+qaPlug findBugs
+qaPlug checkStyle
+qaPlug PMD
