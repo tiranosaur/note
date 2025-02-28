@@ -5,4 +5,4 @@ create table public.test
 );
 
 
-INSERT INTO auth.test (name) SELECT md5(random()::text) FROM generate_series(1, 1000000);
+INSERT INTO auth.test (id, name) SELECT *,md5(random()::text) FROM generate_series(1, 1000000);
