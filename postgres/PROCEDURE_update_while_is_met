@@ -1,0 +1,36 @@
+create table public.test
+(
+    id   serial,
+    name varchar(255) not null
+);
+
+INSERT INTO auth.test (id, name) SELECT val, val * 10 FROM generate_series(1, 1000000) as val;
+
+
+-- UPDATING TABLE UNTILL SOME CONDITION IS MET
+
+-- procedure
+CREATE OR REPLACE PROCEDURE uam.update_while_is_met(get_query text, update_query text)
+    LANGUAGE plpgsql
+AS $$
+declare
+    ids_to_update int[];
+    counter int:= 0;
+begin
+    execute concat('SELECT ARRAY(', get_query, ')') into ids_to_update;
+    WHILE array_length(ids_to_update, 1) > 0 LOOP
+            execute format(update_query, array_to_string(ids_to_update, ','));
+            raise info 'Iteration executed: %', counter;
+            counter := counter + 1;
+            COMMIT;
+            execute concat('SELECT ARRAY(', get_query, ')') into ids_to_update;
+        END LOOP ;
+END;
+$$;
+
+
+-- call
+call uam.update_while_is_met(
+        'select id from auth.test where (id * 10)::text = name limit 10',
+        'UPDATE auth.test SET name = id * 10 +1 WHERE id in (%s)'
+     );
