@@ -31,6 +31,6 @@ $$;
 
 -- call
 call uam.update_while_is_met(
-        'select id from auth.test where (id * 10)::text = name limit 10',
-        'UPDATE auth.test SET name = id * 10 +1 WHERE id in (%s)'
+        'select id from test where (id * 10)::text = name limit 10',
+        'UPDATE test SET name = id * 10 +1 WHERE id in (%s)'
      );
