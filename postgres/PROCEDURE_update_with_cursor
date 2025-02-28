@@ -1,0 +1,61 @@
+create table public.test
+(
+    id   serial,
+    name varchar(255) not null
+);
+
+INSERT INTO auth.test (id, name) SELECT val, val * 10 FROM generate_series(1, 1000000) as val;
+
+-- Using cursor to iterate some result set
+-- This one is not a universal procedure and must be created per case, cause row type can’t be set via function params.
+
+-- procedure
+CREATE OR REPLACE PROCEDURE uam.update_with_cursor(get_query text, update_query text) LANGUAGE plpgsql AS
+$$
+DECLARE
+    c refcursor := 'curs';
+    /* set correct table type */
+    selected_val uam.accounts%rowtype;
+    counter int:= 0;
+BEGIN
+    /* dynamic SQL to create the cursor */
+    EXECUTE format('DECLARE curs CURSOR WITH HOLD FOR %s FOR READ ONLY', get_query);
+    LOOP
+        FETCH c INTO selected_val;
+        EXIT WHEN NOT FOUND;
+        /*
+         * We need to make sure that the cursor is closed
+         * in the case of an error.  For that, we need an
+         * extra block, because COMMIT cannot be used in
+         * a block with an EXCEPTION clause.
+         */
+        BEGIN
+            EXECUTE update_query using selected_val;
+            /* avoid SQL injection */
+        EXCEPTION
+            WHEN OTHERS THEN
+                CLOSE c;
+                RAISE;
+            WHEN query_canceled THEN
+                CLOSE c;
+                RAISE;
+        END;
+        COMMIT;
+        /* log execution */
+        IF counter % 100 = 0 then
+            RAISE INFO 'Items processed: %', counter;
+        END IF;
+        counter := counter + 1;
+    END LOOP;
+    RAISE INFO 'Items processed: %', counter;
+    /* we need to close the cursor */
+    CLOSE c;
+END;
+$$;
+
+
+-- call
+call uam.update_with_cursor(
+        'select id from test where (id * 10)::text = name',
+        'UPDATE test SET name = id * 10 +1 WHERE id = $1.id'
+     );
