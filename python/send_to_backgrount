@@ -1,0 +1,21 @@
+from asyncio import sleep
+from time import sleep
+
+import cv2
+import numpy as np
+import pyautogui
+import win32api
+import win32con
+import win32gui
+
+
+hwnd = win32gui.FindWindow(None, "Russian Fishing 4")
+
+
+def send_key(key):
+    print("Sending key:", key)
+    win32api.PostMessage(hwnd, win32con.WM_KEYDOWN, ord(key), 0)
+    sleep(1)
+    win32api.PostMessage(hwnd, win32con.WM_KEYUP, ord(key), 0)
+
+send_key('4')
