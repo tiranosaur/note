@@ -21,3 +21,6 @@ pio run --target upload --upload-port COM5 && pio device monitor -b 9600 --port 
   platformio lib --global install "mikalhart/TinyGPSPlus"
   pio lib --global install "mikalhart/TinyGPSPlus"
   pio lib install "plerup/EspSoftwareSerial@6.9"
+
+// send to com port directly
+pio device monitor -p COM5 -b 9600 --echo --filter direct
