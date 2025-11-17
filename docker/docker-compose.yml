@@ -197,3 +197,18 @@ networks:
       - ./data:/var/opt/mssql/data
       - ./log:/var/opt/mssql/log
       - ./secrets:/var/opt/mssql/secrets
+
+  bigquery-emulator:
+    image: ghcr.io/goccy/bigquery-emulator:latest
+    platform: linux/amd64
+    container_name: bigquery-emulator
+    ports:
+      - "9050:9050"
+    environment:
+      BIGQUERY_EMULATOR_PROJECT: localproject
+      BIGQUERY_EMULATOR_DATASET: localdataset
+      BIGQUERY_EMULATOR_DATABASE: /data/emulator.db
+    volumes:
+      - ./data/bq-emulator:/data
+    networks:
+      - local-net
