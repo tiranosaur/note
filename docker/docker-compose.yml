@@ -137,13 +137,13 @@ networks:
       
 #  kafka
   zookeeper:
-    image: 'bitnami/zookeeper:latest'
+    image: 'bitnamilegacy/zookeeper:latest'
     ports:
       - '2181:2181'
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
-    image: 'bitnami/kafka:latest'
+    image: 'bitnamilegacy/kafka:latest'
     ports:
       - '9092:9092'
     environment:
